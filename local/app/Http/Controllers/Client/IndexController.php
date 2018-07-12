@@ -10,4 +10,7 @@ class IndexController extends Controller
     public function index(){
         return view('client.index.index');
     }
+    public function time(){
+    	return view('client.index.time');
+    }
 }
