@@ -1,0 +1,416 @@
+.articel-new{
+	height:850px;
+}
+
+.articel-new .new-left{
+	width: 800px;
+	margin-right: 50px;
+}
+
+.articel-new .new-right{
+	flex: 1;
+}
+
+.articel-new .new-left .new-item{
+	width: 560px;
+	margin-left: 15px;
+	margin-right: 30px;
+}
+
+.articel-new .new-left .new-list-right{
+	flex: 1;
+}
+
+.articel-new .new-left .new-item .avatar{
+	width: 560px;
+	height: 360px;
+	overflow: hidden;
+}
+
+.articel-new .new-left .new-item .title{
+	font-size: 24px;
+	font-weight: Bold;
+	font-family: "Times New Roman";
+}
+
+.articel-new .new-left .new-item .caption{
+	font-size: 14px;
+	font-family: "Times New Roman";
+}
+
+.articel-new .new-left .new-list-right .title{
+	font-size: 15px;
+	font-family: "Times New Roman";
+	font-weight: Bold;
+}
+
+.articel-new .new-left .new-list-right-item{
+	border-bottom: 1px dashed #bfbfbf;
+}
+
+.articel-new .new-list-bottom {
+	padding-top: 20px;
+}
+
+.articel-new .new-list-bottom .avatar{
+	width: 193px;
+	height: 120px;
+	overflow: hidden;
+}
+
+.articel-new .new-list-bottom .title{
+	font-size: 15px;
+	font-family: "Times New Roman";
+	font-weight: Bold;
+}
+
+.articel-new .new-right .category{
+	border-bottom: 2px solid #000000;
+	margin-bottom: 14px;
+}
+
+.articel-new .new-right .category h3{
+	color: #d71a21;
+	font-size: 16px;
+	font-family: "Times New Roman";
+	font-weight: Bold;
+}
+
+.articel-new .new-right .title{
+	height: 65px;
+	padding-top: 10px;
+	background-color: #f5f5f5;
+}
+
+.articel-new .new-right .title h3{
+	font-weight: Bold;
+	font-size: 16px;
+	text-align: center;
+}
+
+.articel-new .new-right-2{
+	margin-top: 30px;
+}
+
+.list-video{
+	margin-top: 10px;
+}
+
+.list-video ul{
+	padding: 0;
+	list-style-type: none;
+}
+
+.list-video ul li{
+	border-bottom: 1px dashed #bfbfbf;
+}
+
+.list-video p{
+	font-weight: Bold;
+	font-size: 16px;
+	text-align: center;
+}
+
+.quangcao-2 img{
+	width:100%;
+}
+
+.quangcao-2{
+	margin: 0;
+	width: 810px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.category-1 .category-1-left{
+	width: 745px;
+	height: 790px;
+	margin-right: 30px;
+}
+
+.category-1 .category-1-right{
+	flex: 1;
+	border: 1px solid #999999;
+}
+
+.menu {
+	margin-top: 20px;
+}
+
+.menu-parent{
+	width: 114px;
+	height: 42px;
+	background-color: #d71a21;
+	text-align: center;
+}
+
+.menu-parent h3 {
+	color: #ffffff;
+}
+
+.menu-child{
+	flex: 1;
+	text-align: left;
+	line-height: 42px;
+}
+
+.child {
+	padding: 0;
+}
+
+.child li {
+	line-height: 30px;
+	display: inline-block;
+	border-left: 1px solid #000000;
+	padding: 0 10px;
+	margin: 0;
+	font-family: 'Muli', sans-serif;
+}
+
+.menu-child ul > :first-child {
+	border-left: 0px;
+}
+
+.child li a{
+	font-size: 14px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.category-1 .content{
+	margin-right: 0;
+}
+
+.category-1 .content .item-category{
+	width: 490px;
+	margin-right: 30px;
+	margin-left: 15px;
+}
+
+.category-1 .content .list-right{
+	flex: 1;
+}
+
+.item-category .avatar {
+	height: 528px;
+	overflow: hidden;
+}
+
+.item-category .title {
+	font-size: 24px;
+	font-weight: Bold;
+	font-family: "Times New Roman";
+}
+
+.item-category .caption {
+	font-size: 14px;
+	font-family: "Times New Roman";
+}
+
+.category-1-left .list-right-item {
+	padding-bottom: 25px;
+}
+
+.category-1-left .list-right-item .avatar img{
+	width: 100%;
+}
+
+.category-1-left .list-right-item .title{
+	font-size: 18px;
+	font-weight: Bold;
+	font-family: "Times New Roman";
+}
+
+.category-1-left .list-right-item .caption{
+	font-size: 14px;
+	font-family: "Times New Roman";
+}
+
+.category-1 .category-1-right .title{
+	margin: 25px;
+}
+
+.category-1 .category-1-right .title h3{
+	font-size: 14px;
+	font-weight: Bold;
+	font-family: "Times New Roman";
+}
+
+.category-1 .category-1-right .item-top-view{
+	margin: 25px;
+	display: flex;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #bfbfbf;
+}
+
+.category-1 .category-1-right .item-top-view .stt{
+	width: 32px;
+}
+
+.category-1 .category-1-right .item-top-view .stt p{
+	line-height: 20px;
+	color: #999999;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.category-1 .category-1-right .item-top-view .caption{
+	flex: 1;
+}
+
+.category-1 .category-1-right .item-top-view .caption a{
+	text-decoration: none;
+	color: #000000;
+}
+
+.category-1 .category-1-right .item-top-view .caption h3{
+	font-family: "Times New Roman";
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.category-1 .category-1-right .item-top-view .avatar{
+	width: 80px;
+}
+
+.category-1 .category-1-right .item-top-view .avatar img{
+	width: 100%;
+}
+
+.category-1 .category-1-right .quangcao-3{
+	margin: 25px;
+	width: 300px;
+	height: 250px;
+	overflow: hidden;
+}
+
+.category-1 .category-1-right .quangcao-3 img{
+	width: 100%;
+}
+
+.category >div{
+	margin: 0 -30px;
+}
+
+.category .title-articel{
+	height: 42px;
+	padding: 0px 15px 0;
+	background-color: #d71a21;
+	text-align: left;
+	color: #ffffff;
+	padding-top: 6px;
+	margin: 20px 15px 0;
+	margin-bottom: -15px;
+}
+
+.category .item{
+	padding: 20px 15px 0;
+	border-left: 1px solid #999999;
+}
+
+.category .item a{
+	text-decoration: none;
+}
+
+.category .item h3{
+	font-size: 16px;
+	font-family: "Times New Roman";
+	color: #000000;
+}
+
+.category .item .avatar {
+	width: auto;
+	height:175px;
+	overflow: hidden;
+}
+
+.category .item .avatar img {
+	width: 100%;
+}
+
+
+.category div :first-child .item{
+	border-left: 0px solid #999999;
+}
+
+
+.item-category{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.item-category .title-articel h3 {
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.item-category .title {
+	border-bottom: 1px dashed #bfbfbf;
+}
+
+.item-category .title:last-of-type {
+	border-bottom: 0px dashed #bfbfbf;
+}
+
+.item-category hr {
+	padding: 0px 15px 0;
+	border-top: 4px solid #000000;
+	margin: 20px 15px 0;
+}
+
+
+
+
+
+
+.articel-bottom-left{
+	width: 810px;
+	margin-right: 30px;
+}
+
+.articel-bottom-right{
+	flex: 1;
+}
+
+.articel-bottom-left-item img{
+	width: 100%;
+}
+
+.quangcao-group .item-quangcao img{
+	width: 100%;
+}
+
+.quangcao-group .item-quangcao{
+	height: 250px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.articel-bottom-left-item  h3{
+	margin-top: 10px;
+	font-size: 18px;
+	font-family: "Times New Roman";
+	font-weight: bold;
+}
+
+.articel-bottom-left-item  .caption{
+	font-size: 14px;
+	font-family: "Times New Roman";
+}
+
+.quangcao-4 {
+	margin-top: 30px;
+	height: 125px;
+	overflow: hidden;
+}
+.carousel-inner img {
+	width: 100%;
+	height: 100%;
+}
+
+.date-time {
+	margin: -5px 0 5px;
+	font-size: 12px;
+	color: #999999;
+}
