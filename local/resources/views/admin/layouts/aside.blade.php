@@ -32,7 +32,30 @@
               </p>
             </a>
           </li>
-          
+          <li class="nav-item has-treeview">
+            <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif"">
+              <i class="fas fa-users-cog nav-icon"></i>
+              <p>
+                Quản lí tài khoản
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartjs.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Danh sách tài khoản</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/charts/flot.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Thêm mới</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
           <li class="nav-item has-treeview">
             <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif"">
               <i class="fas fa-user-shield nav-icon"></i>
@@ -58,10 +81,33 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-elementor"></i>
+              <p>
+                Danh mục tin
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/tables/simple.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Sắp xếp</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/tables/data.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Thêm danh mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link @if (Request::segment(2) == 'news') active @endif"">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
-                Quản trị nội dung
+                Quản trị tin
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
@@ -82,6 +128,58 @@
                 <a href="pages/UI/buttons.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Viết bài</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-ellipsis-h"></i>
+              <p>
+                Danh mục Video
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/tables/simple.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Sắp xếp</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/tables/data.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Thêm danh mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-video"></i>
+              <p>
+                Video
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/tables/simple.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Video đã duyệt</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/tables/data.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Video chờ duyệt</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/tables/data.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Thêm video</p>
                 </a>
               </li>
             </ul>
@@ -132,35 +230,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-paper-plane"></i>
-              <p>
-                Video
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Video đã duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Video chờ duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Thêm video</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
