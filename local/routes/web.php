@@ -16,3 +16,13 @@ Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index');
     Route::get('time','IndexController@time');
 });
+
+
+
+
+Route::group(['namespace' => 'Admin'], function (){
+	Route::group(['prefix' => 'admin'], function (){
+		Route::get('/', 'HomeController@getHome');
+		Route::get('/{slug}', 'HomeController@getHome');
+	});
+});

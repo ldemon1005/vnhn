@@ -1,0 +1,22 @@
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+.sidebar::-webkit-scrollbar-track {
+    background: #343a40; 
+}
+
+/* Handle */
+.sidebar::-webkit-scrollbar-thumb {
+    background: #ebececc7; 
+}
+
+/* Handle on hover */
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #ebecec; 
+}
+
+.nav-link.active{
+	background: #dc3545 !important;
+}
