@@ -19,10 +19,39 @@ Route::group(['namespace' => 'Client'],function (){
 
 
 
+Route::get('login', 'Admin\LoginController@getLogin')->middleware('CheckLogout');
+Route::post('login', 'Admin\LoginController@postLogin');
+
+Route::get('logout', 'Admin\LoginController@getLogout');
+
 
 Route::group(['namespace' => 'Admin'], function (){
-	Route::group(['prefix' => 'admin'], function (){
+	Route::group(['prefix' => 'admin', 'middleware' => 'CheckLogin'], function (){
 		Route::get('/', 'HomeController@getHome');
-		Route::get('/{slug}', 'HomeController@getHome');
+		// Route::get('/{slug}', 'HomeController@getHome');
+
+
+		Route::group(['prefix' => 'account'], function(){
+			Route::get('/', 'AccountController@getList');
+
+			Route::get('add','AccountController@getAdd');
+			Route::post('add','AccountController@postAdd');
+
+			Route::get('edit/{id}','AccountController@getEdit');
+			Route::post('edit/{id}','AccountController@postEdit');
+
+			Route::get('delete/{id}','AccountController@getDelete');
+
+		});
+
+		Route::group(['prefix' => 'profile'], function(){
+			Route::get('/', 'ProfileController@getDetail');
+			Route::post('/', 'ProfileController@postDetail');
+
+			Route::get('change_pass', 'ProfileController@getChangePass');
+			Route::post('change_pass', 'ProfileController@postChangePass');
+
+		});
+
 	});
 });
