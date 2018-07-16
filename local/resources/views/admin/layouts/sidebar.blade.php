@@ -11,10 +11,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('local/storage/app/avatar/resized-'.Auth::user()->img) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ asset('admin') }}" class="d-block">Alexander Pierce</a>
+          <a href="{{ asset('admin') }}" class="d-block">{{Auth::user()->fullname}}</a>
         </div>
       </div>
 
@@ -31,30 +31,33 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif"">
-              <i class="fas fa-users-cog nav-icon"></i>
-              <p>
-                Quản lí tài khoản
-                <i class="right fa fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Danh sách tài khoản</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Thêm mới</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
+          @if (Auth::user()->level < 3)
+            <li class="nav-item has-treeview">
+              <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'account') active @endif"">
+                <i class="fas fa-users-cog nav-icon"></i>
+                <p>
+                  Quản lí tài khoản
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ asset('admin/account') }}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Danh sách tài khoản</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ asset('admin/account/add') }}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Thêm mới</p>
+                  </a>
+                </li>
+                
+              </ul>
+            </li>
+          @endif
+          
           <li class="nav-item has-treeview">
             <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif"">
               <i class="fas fa-user-shield nav-icon"></i>
@@ -65,13 +68,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ asset('admin/profile') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Thông tin cá nhân</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ asset('admin/profile/change_pass') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Đổi mật khẩu</p>
                 </a>
@@ -220,6 +223,14 @@
               <i class="nav-icon fas fa-comments"></i>
               <p>
                 Quản trị bình luận
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{ asset('logout') }}" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Đăng xuất
               </p>
             </a>
           </li>

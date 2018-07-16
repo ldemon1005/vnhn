@@ -20,3 +20,8 @@
 .nav-link.active{
 	background: #dc3545 !important;
 }
+
+.imgTable{
+	height: 50px;
+	border-radius: 50%;
+}
