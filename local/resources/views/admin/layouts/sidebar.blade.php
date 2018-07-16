@@ -1,5 +1,4 @@
-  <link rel="stylesheet" type="text/css" href="css/aside.css">
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     {{-- <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -96,15 +95,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{route('admin_group')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Thêm danh mục</p>
+                  <p>Danh sách mục</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link @if (Request::segment(2) == 'news') active @endif"">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 Quản trị tin
@@ -113,15 +112,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="{{route('admin_articel')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon text-warning"></i>
-                  <p>Bài chờ duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon text-info"></i>
-                  <p>Bài đã duyệt</p>
+                  <p>Danh sách bài viết 1</p>
                 </a>
               </li>
               <li class="nav-item">
