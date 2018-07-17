@@ -56,17 +56,7 @@
 
 <!-- OPTIONAL SCRIPTS -->
 
-<script>
-//    $(function () {
-//        CKEDITOR.replace( 'editor1', {
-//            filebrowserBrowseUrl: 'manage/source/bower_components/ckfinder/ckfinder.html',
-//            filebrowserImageBrowseUrl: 'manage/source/bower_components/ckfinder/ckfinder.html?type=Images',
-//            filebrowserFlashBrowseUrl: 'manage/source/bower_components/ckfinder/ckfinder.html?type=Flash',
-//            filebrowserUploadUrl: 'manage/source/bower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-//            filebrowserImageUploadUrl: 'manage/source/bower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-//            filebrowserFlashUploadUrl: 'manage/source/bower_components/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-//        } );
-//    })
+<script type="text/javascript">
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -82,14 +72,13 @@
         })
     });
 
-
 </script>
 @yield('script')
 
 <script type="text/javascript">
     function changeImg(input){
       var inputFile = $(this);
-      
+
       console.log($(input).next());
           //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
           if(input.files && input.files[0]){
@@ -99,7 +88,7 @@
                   //Thay đổi đường dẫn ảnh
                   // $('#avatar').attr('src',e.target.result);
                   $(input).next().attr('src',e.target.result);
-                  
+
               }
               reader.readAsDataURL(input.files[0]);
           }

@@ -117,7 +117,7 @@
               <li class="nav-item">
                 <a href="{{route('admin_articel')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon text-warning"></i>
-                  <p>Danh sách bài viết 1</p>
+                  <p>Danh sách bài viết</p>
                 </a>
               </li>
               <li class="nav-item">
