@@ -31,6 +31,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
+              
               <form role="form" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                 	<div class="form-group">
@@ -73,7 +74,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <input type="submit" class="btn btn-primary" value="Thêm mới">
+                  <input type="submit" class="btn btn-primary" value="Thay đổi">
                   {{csrf_field()}}
                 </div>
 
