@@ -11,7 +11,7 @@
                                     <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i>9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
@@ -166,7 +166,7 @@
                                     <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-3.png')}}"></a>
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i>9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
@@ -471,7 +471,7 @@
                                     <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i>9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
@@ -482,7 +482,7 @@
                                     <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i>9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
@@ -493,7 +493,7 @@
                                     <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i>9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
@@ -504,7 +504,7 @@
                                     <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i>9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
