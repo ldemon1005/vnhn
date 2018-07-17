@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active"></li>
+                            <li class="breadcrumb-item active">Danh sách danh mục</li>
                         </ol>
                     </div>
                 </div>
@@ -77,8 +77,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="row pull-right">
-                                {!! $list_group->links() !!}
+                            <div class="row form-group pull-right" style="margin: 10px 0px">
+                                {!! $list_group->links('vendor.pagination.bootstrap-4') !!}
                             </div>
                         </div>
                         <!-- /.card-body -->

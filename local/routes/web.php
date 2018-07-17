@@ -68,6 +68,10 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('/action_articel','ArticelController@action_articel')->name('action_articel');
             Route::get('/delete_articel/{id}','ArticelController@delete_articel')->name('delete_articel');
         });
+
+        Route::group(['prefix' => 'video'], function(){
+            Route::get('/form_video/{id}','VideoController@form_video');
+        });
 	});
 });
 
