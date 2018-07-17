@@ -24,10 +24,15 @@
   <link rel="stylesheet" type="text/css" href="css/aside.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/master.css">
   @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
+<div class="errorAlert">
+  @include('errors.note')
+</div>
 <div class="wrapper">
+
   @include('admin.layouts.header')
   <!-- Navbar -->
   
@@ -82,33 +87,39 @@
 @yield('script')
 
 <script type="text/javascript">
-    function changeImg(input){
-      var inputFile = $(this);
+  function changeImg(input){
+    var inputFile = $(this);
 
-      console.log($(input).next());
-          //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-          if(input.files && input.files[0]){
-              var reader = new FileReader();
-              //Sự kiện file đã được load vào website
-              reader.onload = function(e){
-                  //Thay đổi đường dẫn ảnh
-                  // $('#avatar').attr('src',e.target.result);
-                  $(input).next().attr('src',e.target.result);
+    console.log($(input).next());
+        //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
+      if(input.files && input.files[0]){
+          var reader = new FileReader();
+          //Sự kiện file đã được load vào website
+          reader.onload = function(e){
+              //Thay đổi đường dẫn ảnh
+              // $('#avatar').attr('src',e.target.result);
+              $(input).next().attr('src',e.target.result);
 
-              }
-              reader.readAsDataURL(input.files[0]);
           }
+          reader.readAsDataURL(input.files[0]);
       }
-      $(document).ready(function() {
-          // $('#avatar').click(function(){
-          //     $(this).prev().click();
-          // });
-          $('.cssInput').click(function(){
-            $(this).prev().click();
-          })
-      });
-
-
+  }
+  $(document).ready(function() {
+    // $('#avatar').click(function(){
+    //     $(this).prev().click();
+    // });
+    $('.cssInput').click(function(){
+      $(this).prev().click();
+    })
+    $('.errorAlert').css('bottom','100px');
+    setTimeout(function(){
+      $('.errorAlert').css('bottom', '-200px');
+    }, 3000);
+    setTimeout(function(){
+      $('.errorAlert').fadeOut();
+    }, 3900);
+    localStorage.setItem('username', '{{Auth::user()->username}}');
+  });
 
   </script>
 </body>

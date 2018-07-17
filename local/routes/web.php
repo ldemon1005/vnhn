@@ -23,6 +23,8 @@ Route::get('login', 'Admin\LoginController@getLogin')->middleware('CheckLogout')
 Route::post('login', 'Admin\LoginController@postLogin');
 
 Route::get('logout', 'Admin\LoginController@getLogout');
+Route::get('lockscreen', 'Admin\LoginController@getLockScreen');
+Route::post('lockscreen', 'Admin\LoginController@postLockScreen');
 
 
 Route::group(['namespace' => 'Admin'], function (){

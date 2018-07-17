@@ -5,14 +5,16 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Http\Requests\ProfileEditRequest;
+
 use Auth;
 class ProfileController extends Controller
 {
     public function getDetail(){
     	$data['item'] = Account::find(Auth::user()->id);
-    	return view('admin.index.profile', $data);
+    	return view('admin.profile.profile', $data);
     }
-    public function postDetail(Request $request){
+    public function postDetail(ProfileEditRequest $request){
     	$acc = Account::find(Auth::user()->id);
     	$acc->username = $request->username;
     	$acc->fullname = $request->fullname;
@@ -27,7 +29,7 @@ class ProfileController extends Controller
     }
     public function getChangePass(){
     	$data['item'] = Account::find(Auth::user()->id);
-    	return view('admin.index.profile_change_pass', $data);
+    	return view('admin.profile.profile_change_pass', $data);
     }
     public function postChangePass(Request $request){
     	$arr = ['username' => Auth::user()->username, 'password' => $request->old_password];

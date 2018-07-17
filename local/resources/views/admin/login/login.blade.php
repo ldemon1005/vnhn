@@ -18,8 +18,12 @@
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body class="hold-transition login-page">
+<div class="errorAlert">
+  @include('errors.note')
+</div>
 <div class="login-box">
   <div class="login-logo">
     <a href="{{ asset('') }}">
@@ -29,6 +33,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
+      
       <form method="post">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -53,7 +58,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat" >Đăng nhập</button>
           </div>
           <!-- /.col -->
         </div>
@@ -72,6 +77,7 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 <script>
   $(function () {
     $('input').iCheck({
@@ -80,6 +86,9 @@
       increaseArea : '20%' // optional
     })
   })
+  setTimeout(function(){
+    $('.errorAlert').hide();
+  }, 3000);
 </script>
 </body>
 </html>

@@ -42,15 +42,15 @@
         <div class="container">
             <div class="row">
                 <ul class="menu-header">
-                    <li style="border-left: 0px"><a href=""><i class="fas fa-home"></i></a></li>
-                    <li><a href="">Media</a></li>
-                    <li><a href="">Thời sự</a></li>
-                    <li><a href="">Thế giới</a></li>
-                    <li><a href="">Kinh doanh</a></li>
-                    <li><a href="">Từ chính sách tới thực tiễn</a></li>
-                    <li><a href="">Khoa học - Công nghệ</a></li>
-                    <li><a href="">Số hóa</a></li>
-                    <li><a href="">Nghiên cứu trao đổi</a></li>
+                    <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
+                    <li><a href="{{ asset('') }}">Media</a></li>
+                    <li><a href="{{ asset('') }}">Thời sự</a></li>
+                    <li><a href="{{ asset('') }}">Thế giới</a></li>
+                    <li><a href="{{ asset('') }}">Kinh doanh</a></li>
+                    <li><a href="{{ asset('') }}">Từ chính sách tới thực tiễn</a></li>
+                    <li><a href="{{ asset('') }}">Khoa học - Công nghệ</a></li>
+                    <li><a href="{{ asset('') }}">Số hóa</a></li>
+                    <li><a href="{{ asset('') }}">Nghiên cứu trao đổi</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Danh mục khác <span class="caret"></span></a>

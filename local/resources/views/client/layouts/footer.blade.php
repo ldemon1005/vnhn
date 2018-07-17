@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row menu-footer">
                 <ul class="menu-footer-top">
-                    <li class="lang" style="border: 0px"><a href="">RSS</a></li>
-                    <li class="lang"><a href="">Đặt làm trang chủ</a></li>
-                    <li class="lang"><a href="">Liên hệ quảng cáo</a></li>
-                    <li class="lang"><a href="#">Đường dây nóng: 0964.32.83.83</a></li>
-                    <li class="lang"><a href="#">Email: info@vietnamhoinhap.com</a></li>
+                    <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
+                    <li class="lang"><a href="{{ asset('') }}">Đặt làm trang chủ</a></li>
+                    <li class="lang"><a href="{{ asset('') }}">Liên hệ quảng cáo</a></li>
+                    <li class="lang"><a href="{{ asset('') }}">Đường dây nóng: 0964.32.83.83</a></li>
+                    <li class="lang"><a href="{{ asset('') }}">Email: info@vietnamhoinhap.com</a></li>
                 </ul>
             </div>
 

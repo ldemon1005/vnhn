@@ -6,84 +6,43 @@
                 <div class="row articel-new">
                     <div class="new-left">
                         <div class="row">
-                            <div class="new-item">
+                            <a href="{{ asset('') }}" class="new-item">
                                 <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
+                                    <img src="{{asset('/local/resources/uploads/images/articel-1.png')}}">
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i> 9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
                                     hoàn thành môn ngữ văn</p>
-                            </div>
+                            </a>
                             <div class="new-list-right">
-                                <div class="new-list-right-item">
-                                    <h3 class="title">
-                                        Hết năm 2020, Việt Nam vào nhóm 4 nước dẫn đầu ASEAN về phát triển Chính phủ
-                                        điện tử
-                                    </h3>
-                                    <p class="date-time">9 giờ trước</p>
-                                </div>
-                                <div class="new-list-right-item">
-                                    <h3 class="title">
-                                        Hết năm 2020, Việt Nam vào nhóm 4 nước dẫn đầu ASEAN về phát triển Chính phủ
-                                        điện tử
-                                    </h3>
-                                    <p class="date-time">9 giờ trước</p>
-                                </div>
-                                <div class="new-list-right-item">
-                                    <h3 class="title">
-                                        Hết năm 2020, Việt Nam vào nhóm 4 nước dẫn đầu ASEAN về phát triển Chính phủ
-                                        điện tử
-                                    </h3>
-                                    <p class="date-time">9 giờ trước</p>
-                                </div>
-                                <div class="new-list-right-item">
-                                    <h3 class="title">
-                                        Hết năm 2020, Việt Nam vào nhóm 4 nước dẫn đầu ASEAN về phát triển Chính phủ
-                                        điện tử
-                                    </h3>
-                                    <p class="date-time">9 giờ trước</p>
-                                </div>
-                                <div class="new-list-right-item">
-                                    <h3 class="title">
-                                        Hết năm 2020, Việt Nam vào nhóm 4 nước dẫn đầu ASEAN về phát triển Chính phủ
-                                        điện tử
-                                    </h3>
-                                    <p class="date-time">9 giờ trước</p>
-                                </div>
+                                @for (  $i = 0;   $i < 5;    $i++)
+                                    <a href="{{ asset('') }}" class="new-list-right-item">
+                                        <h3 class="title">
+                                            Hết năm 2020, Việt Nam vào nhóm 4 nước dẫn đầu ASEAN về phát triển Chính phủ
+                                            điện tử
+                                        </h3>
+                                        <p class="date-time">9 giờ trước</p>
+                                    </a>
+                                @endfor
+                                
                             </div>
                         </div>
                         <div class="row new-list-bottom">
-                            <div class="col-md-3">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
+                            @for (  $i = 0;   $i < 4;    $i++)
+                                <div class="col-md-3">
+                                    <a href="{{ asset('') }}" class="article">
+                                        <div class="avatar">
+                                           <img src="{{asset('/local/resources/uploads/images/articel-2.png')}}">
+                                        </div>
+                                        <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
+                                        <p class="date-time">9 giờ trước</p>
+                                    </a>
+                                        
                                 </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time">9 giờ trước</p>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time">9 giờ trước</p>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time">9 giờ trước</p>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time">9 giờ trước</p>
-                            </div>
+                            @endfor
                         </div>
                         <div class="row quangcao-2">
                             <a href="#"><img src="{{asset('/local/resources/uploads/images/quang-cao-2.png')}}"></a>
@@ -133,11 +92,26 @@
                             </div>
                             <div class="list-video">
                                 <ul>
-                                    <li><p>Bản tin VNHN Ngày 7.5.2018</p></li>
-                                    <li><p>Bản tin VNHN Ngày 7.5.2018</p></li>
-                                    <li><p>Bản tin VNHN Ngày 7.5.2018</p></li>
-                                    <li><p>Bản tin VNHN Ngày 7.5.2018</p></li>
-                                    <li><p>Bản tin VNHN Ngày 7.5.2018</p></li>
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        Bản tin VNHN Ngày 7.5.2018
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        Kí sự - Chuyến hành trình “Tri ân đồng đội - hướng về nguồn cội”
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        Bản tin VNHN Ngày 7.5.2018
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        Kí sự - Chuyến hành trình “Tri ân đồng đội - hướng về nguồn cội”
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-caret-right"></i>
+                                        Bản tin VNHN Ngày 7.5.2018
+                                    </li>
                                 </ul>
                             </div>
                         </section>
@@ -166,7 +140,7 @@
                                     <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-3.png')}}"></a>
                                 </div>
                                 <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
+                                <p class="date-time"><i class="far fa-clock"></i> 9 giờ trước</p>
                                 <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
                                     biết dự
                                     kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
@@ -198,41 +172,16 @@
                             <h3>Đọc nhiều</h3>
                         </div>
                         <section class="top-view">
-                            <div class="item-top-view">
-                                <div class="stt"><p>1.</p></div>
-                                <div class="caption"><a href="#"><h3>Hà nội lên tiếng lý giải việc đổi 700ha lấy 5 tuyến</h3></a></div>
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                            </div>
-                            <div class="item-top-view">
-                                <div class="stt"><p>1.</p></div>
-                                <div class="caption"><a href="#"><h3>Hà nội lên tiếng lý giải việc đổi 700ha lấy 5 tuyến</h3></a></div>
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                            </div>
-                            <div class="item-top-view">
-                                <div class="stt"><p>1.</p></div>
-                                <div class="caption"><a href="#"><h3>Hà nội lên tiếng lý giải việc đổi 700ha lấy 5 tuyến</h3></a></div>
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                            </div>
-                            <div class="item-top-view">
-                                <div class="stt"><p>1.</p></div>
-                                <div class="caption"><a href="#"><h3>Hà nội lên tiếng lý giải việc đổi 700ha lấy 5 tuyến</h3></a></div>
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                            </div>
-                            <div class="item-top-view">
-                                <div class="stt"><p>1.</p></div>
-                                <div class="caption"><a href="#"><h3>Hà nội lên tiếng lý giải việc đổi 700ha lấy 5 tuyến</h3></a></div>
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                </div>
-                            </div>  
+                            @for ($i = 1; $i < 6; $i++)
+                                <a href="{{ asset('') }}" class="item-top-view">
+                                    <div class="stt">{{$i}}.</div>
+                                    <div class="caption"><h3>Hà nội lên tiếng lý giải việc đổi 700ha lấy 5 tuyến</h3></div>
+                                    <div class="avatar">
+                                        <img src="{{asset('/local/resources/uploads/images/articel-2.png')}}">
+                                    </div>
+                                </a>
+                            @endfor
+                            
                         </section>
                         
                         <div class="quangcao-3">
@@ -250,193 +199,51 @@
         <section class="section2">
             <div class="container category">
                 <div class="row form-group ">
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
+                    @for (  $i = 0;   $i < 4;    $i++)
+                        <div class="col-md-3 item-category">
+                            <div class="title-articel">
+                                <h3>Thế giới kinh doanh</h3>
                             </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
+                            <hr/>
+                            <div class="item">
+                                <div class="avatar">
+                                    <a href="{{ asset('') }}">
+                                        <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
+                                    </a>
+                                </div>
+                                @for (  $j = 0;   $j < 4 ;    $j++)
+                                    <div class="title">
+                                        <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
+                                    </div>
+                                @endfor
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endfor
+                    
                 </div>
                 <hr style="margin: 20px -15px"/>
                 <div class="row form-group">
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
+                    @for (  $i = 0;   $i < 4;    $i++)
+                        <div class="col-md-3 item-category">
+                            <div class="title-articel">
+                                <h3>Thế giới kinh doanh</h3>
                             </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
+                            <hr/>
+                            <div class="item">
+                                <div class="avatar">
+                                    <a href="{{ asset('') }}">
+                                        <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
+                                    </a>
+                                </div>
+                                @for (  $j = 0;   $j < 4 ;    $j++)
+                                    <div class="title">
+                                        <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
+                                    </div>
+                                @endfor
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 item-category">
-                        <div class="title-articel">
-                            <h3>Thế giới kinh doanh</h3>
-                        </div>
-                        <hr/>
-                        <div class="item">
-                            <div class="avatar">
-                                <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                            <div class="title">
-                                <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endfor
+                    
                 </div>
                 <hr style="margin: 20px -15px"/>
             </div>
@@ -466,50 +273,20 @@
                         </div>
 
                         <div class="row articel-bottom-left-item">
-                            <div class="col-md-6">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
+                            @for (  $i = 0;   $i < 4;    $i++)
+                                <div class="col-md-6">
+                                    <div class="avatar">
+                                        <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
+                                    </div>
+                                    <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
+                                    <p class="date-time"><i class="far fa-clock"></i> 9 giờ trước</p>
+                                    <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
+                                        biết dự
+                                        kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
+                                        hoàn thành môn ngữ văn</p>
                                 </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
-                                <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
-                                    biết dự
-                                    kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
-                                    hoàn thành môn ngữ văn</p>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
-                                </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
-                                <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
-                                    biết dự
-                                    kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
-                                    hoàn thành môn ngữ văn</p>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
-                                </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
-                                <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
-                                    biết dự
-                                    kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
-                                    hoàn thành môn ngữ văn</p>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
-                                </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="fal fa-clock"></i>9 giờ trước</p>
-                                <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
-                                    biết dự
-                                    kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
-                                    hoàn thành môn ngữ văn</p>
-                            </div>
+                            @endfor
+                            
                         </div>
                     </div>
                     <div class="articel-bottom-right">
