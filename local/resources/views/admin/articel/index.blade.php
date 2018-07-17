@@ -94,14 +94,14 @@
                                         <td>
                                             {{$articel->created_at}}--{{$articel->updated_at}}
                                         </td>
-                                        <td><img style="height: 50px" src="{{asset('/local/resources'.$articel->avatar)}}"></td>
+                                        <td><img style="height: 50px" src="{{asset('/local/resources'.$articel->fimage)}}"></td>
                                         <td>
                                             <button class="btn btn-block btn-sm {{ $articel->status == 2 ? 'btn-danger' : 'btn-success' }}">{{ $articel->status ? 'Không hoạt động' : 'Hoạt động' }}</button>
                                         </td>
                                         <td>
                                             <div class="row form-group">
-                                                <a href="{{route('form_group',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-6 text-primary"><i class="fa fa-wrench"></i></a>
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_group',$articel->id)}}" class="col-sm-6 text-danger"><i
+                                                <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-6 text-primary"><i class="fa fa-wrench"></i></a>
+                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-6 text-danger"><i
                                                             class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
@@ -109,7 +109,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="row pull-right">
+                            <div class="pull-right">
                                 {!! $list_articel->links() !!}
                             </div>
                         </div>

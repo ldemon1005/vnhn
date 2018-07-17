@@ -61,8 +61,13 @@ Route::group(['namespace' => 'Admin'], function (){
         /*
          * articel
          */
-        Route::get('/articel','ArticelController@get_list')->name('admin_articel');
-        Route::get('/articel/form_articel/{id}','ArticelController@form_articel')->name('form_articel');
+
+        Route::group(['prefix' => 'articel'], function(){
+            Route::get('/','ArticelController@get_list')->name('admin_articel');
+            Route::get('/form_articel/{id}','ArticelController@form_articel')->name('form_articel');
+            Route::post('/action_articel','ArticelController@action_articel')->name('action_articel');
+            Route::get('/delete_articel/{id}','ArticelController@delete_articel')->name('delete_articel');
+        });
 	});
 });
 

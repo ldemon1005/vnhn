@@ -8,6 +8,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="shortcut icon" href="http://vietnamhoinhap.vn/images/favicon.ico" />
   <title>VNHN | @yield('title')</title>
+
   <link rel="stylesheet" type="text/css" href="../css/all.css">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
@@ -15,6 +16,8 @@
   <link rel="stylesheet" href="plugins/select2/select2.min.css">
 
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
@@ -53,6 +56,9 @@
 
 <!-- Select2 -->
 <script src="plugins/select2/select2.full.min.js"></script>
+
+<script src="plugins/bootstrap/js/bootstrap.js"></script>
+
 
 <!-- OPTIONAL SCRIPTS -->
 
