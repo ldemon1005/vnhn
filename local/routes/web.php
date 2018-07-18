@@ -55,5 +55,23 @@ Route::group(['namespace' => 'Admin'], function (){
 
 		});
 
+		Route::group(['prefix' => 'advert'], function(){
+			Route::get('/', 'AdvertController@index');
+
+			Route::get('add','AdvertController@create');
+			Route::post('add','AdvertController@store');
+
+			Route::get('edit/{id}','AdvertController@edit');
+			Route::post('edit/{id}','AdvertController@update');
+
+			Route::get('delete/{id}','AdvertController@destroy');
+
+			Route::get('top', 'AdvertController@getTop');
+			Route::get('top/{id}', 'AdvertController@getGroup');
+			Route::get('top_add/{id}/{ad_id}', 'AdvertController@addTopAdvert');
+			Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
+		});
+
+
 	});
 });

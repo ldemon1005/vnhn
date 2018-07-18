@@ -36,7 +36,7 @@
 	    $max_size = $resized_size;
 	    foreach ($input as $image) {
 
-	        $filename = 'hs_'.date("Y-m-d").'_'.round(microtime(true)).'.'.$image->extension();
+	        $filename = 'img_'.date("Y-m-d").'_'.round(microtime(true)).'.'.$image->extension();
 	        $image->storeAs($path,$filename);
 	        $imgArr[] = $filename;
 

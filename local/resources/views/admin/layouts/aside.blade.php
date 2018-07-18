@@ -85,9 +85,9 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fab fa-elementor"></i>
+              <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>
-                Danh mục tin
+                Danh mục
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
@@ -131,29 +131,6 @@
                 <a href="pages/UI/buttons.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Viết bài</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-ellipsis-h"></i>
-              <p>
-                Danh mục Video
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Sắp xếp</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Thêm danh mục</p>
                 </a>
               </li>
             </ul>
@@ -206,19 +183,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="{{ asset('admin/advert/add') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Thêm mới</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{ asset('admin/advert') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Quản trị</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{ asset('admin/advert/top') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Sắp xếp</p>
                 </a>
