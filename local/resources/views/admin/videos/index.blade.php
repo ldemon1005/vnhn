@@ -39,19 +39,19 @@
                         @endif
 
                         <div class="card-header">
-                            <a href="{{route('form_articel',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới Bài viết</h3></a>
+                            <a href="{{route('form_video',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới Video</h3></a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
 
-                                <form action="{{ url('/admin/articel') }}" method="get">
+                                <form action="{{ url('/admin/video') }}" method="get">
                                     <div class="row form-group">
                                         <div class="col-md-4">
-                                            <input class="form-control" name="articel[key_search]" placeholder="Từ khóa tìm kiếm">
+                                            <input class="form-control" name="video[key_search]" placeholder="Từ khóa tìm kiếm">
                                         </div>
                                         <div class="col-md-3">
                                             <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Lọc theo danh mục" name="articel[group_id][]"
+                                                    data-placeholder="Lọc theo danh mục" name="video[group_id][]"
                                                     style="width: 100%;">
                                                 @foreach($list_group as $group_item)
                                                     <option value="{{ $group_item->id }}">{{ $group_item->title }}</option>
@@ -61,12 +61,10 @@
 
                                         <div class="col-md-3">
                                             <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Lọc theo trạng thái" name="articel[status][]"
+                                                    data-placeholder="Lọc theo trạng thái" name="video[status][]"
                                                     style="width: 100%;">
-                                                <option value="1">Mới</option>
-                                                <option value="2">Chưa duyệt</option>
-                                                <option value="3">Đã duyệt</option>
-                                                <option value="4">Đã hủy</option>
+                                                <option value="1">Đã duyệt</option>
+                                                <option value="0">Chưa duyệt</option>
                                             </select>
                                         </div>
                                         <div class="col-md-2 float-right">
@@ -78,31 +76,32 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th style="width: 30%">Tiêu đề bài viết</th>
+                                    <th style="width: 30%">Tiêu đề video</th>
                                     <th>Đường dẫn</th>
                                     <th>Ngày tạo--Ngày update</th>
                                     <th>Avatar</th>
-                                    <th style="width: 10%">Trạng thái</th>
-                                    <th>Thao tác</th>
+                                    <th style="width: 8%">Trạng thái</th>
+                                    <th style="width: 10%">Thao tác</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($list_articel as $articel)
+                                @foreach($list_video as $video)
                                     <tr>
-                                        <td>{{$articel->title}}</td>
-                                        <td>{{$articel->slug}}</td>
+                                        <td>{{$video->title}}</td>
+                                        <td>{{$video->slug}}</td>
                                         <td>
-                                            {{$articel->created_at}}--{{$articel->updated_at}}
+                                            {{$video->created_at}}--{{$video->updated_at}}
                                         </td>
-                                        <td><img style="height: 50px" src="{{asset('/local/resources'.$articel->fimage)}}"></td>
-                                        <td>
-                                            <button class="btn btn-block btn-sm {{ $articel->status == 2 ? 'btn-danger' : 'btn-success' }}">{{ $articel->status ? 'Không hoạt động' : 'Hoạt động' }}</button>
+                                        <td><img style="height: 50px" src="{{asset('/local/resources'.$video->avatar)}}"></td>
+                                        <td id="status_video">
+                                            <button onclick="change_status({{$video->id}},{{$video->status}})" id="status_video" class="btn btn-block btn-sm {{ $video->status == 0 ? 'btn-danger' : 'btn-success' }}">{{ $video->status == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</button>
                                         </td>
                                         <td>
-                                            <div class="row form-group">
-                                                <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-6 text-primary"><i class="fa fa-wrench"></i></a>
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-6 text-danger"><i
+                                            <div class="row form-group text-center">
+                                                <a href="{{route('form_video',$video->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
+                                                <a data-toggle="tooltip" title="Xóa" onclick="return confirm('Bạn có chắc chắn xóa? Một số dữ liệu sẽ không thể khôi phục!')" href="{{route('delete_video',$video->id)}}" class="col-sm-4 text-danger"><i
                                                             class="fa fa-trash"></i></a>
+                                                <a style="cursor: pointer" onclick="historyVideo({{$video->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -110,7 +109,7 @@
                                 </tbody>
                             </table>
                             <div class="row form-group pull-right" style="margin: 10px 0px">
-                                {!! $list_articel->links('vendor.pagination.bootstrap-4') !!}
+                                {!! $list_video->links('vendor.pagination.bootstrap-4') !!}
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -120,6 +119,13 @@
 
         </section>
         <!-- /.content -->
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="history_video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
     </div>
 @stop
 
@@ -131,4 +137,7 @@
 @section('script')
     <!-- Select2 -->
     <script src="plugins/select2/select2.full.min.js"></script>
+
+
+    <script src="js/custom.js"></script>
 @stop

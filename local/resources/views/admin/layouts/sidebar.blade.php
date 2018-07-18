@@ -161,21 +161,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="{{route('admin_video')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Video đã duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Video chờ duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Thêm video</p>
+                  <p>Danh sách video</p>
                 </a>
               </li>
             </ul>
