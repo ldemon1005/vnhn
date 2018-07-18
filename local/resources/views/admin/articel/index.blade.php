@@ -96,7 +96,7 @@
                                         </td>
                                         <td><img style="height: 50px" src="{{asset('/local/resources'.$articel->fimage)}}"></td>
                                         <td>
-                                            <button class="btn btn-block btn-sm {{ $video->status == 0 ? 'btn-danger' : 'btn-success' }}">{{ $video->status == 0 ? 'Không hoạt động' : 'Hoạt động' }}</button>
+                                            <button class="btn btn-block btn-sm {{ $articel->status == 2 ? 'btn-danger' : 'btn-success' }}">{{ $articel->status ? 'Không hoạt động' : 'Hoạt động' }}</button>
                                         </td>
                                         <td>
                                             <div class="row form-group">
