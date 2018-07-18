@@ -99,7 +99,7 @@ class ArticelController extends Controller
             $articel = DB::table('news_vn')->find($id);
             $articel->groupid = explode(',',$articel->groupid);
             $content = DB::table('logfile_vn')->where('LogId',$articel->id)->first();
-            $articel->content = $content->noidung;
+            $articel->content = $content ? $content->noidung : '';
             $date = $articel->release_time;
             $articel->release_time = (object)[
                 'day' => date('Y-m-d',$date),
