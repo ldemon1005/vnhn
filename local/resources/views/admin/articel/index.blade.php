@@ -94,15 +94,20 @@
                                         <td>
                                             {{$articel->created_at}}--{{$articel->updated_at}}
                                         </td>
-                                        <td><img style="height: 50px" src="{{asset('/local/resources'.$articel->fimage)}}"></td>
+                                        <td>
+                                            <div class="avatar">
+                                                <img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}">
+                                            </div>
+                                        </td>
                                         <td>
                                             <button class="btn btn-block btn-sm {{ $articel->status == 2 ? 'btn-danger' : 'btn-success' }}">{{ $articel->status ? 'Không hoạt động' : 'Hoạt động' }}</button>
                                         </td>
                                         <td>
                                             <div class="row form-group">
-                                                <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-6 text-primary"><i class="fa fa-wrench"></i></a>
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-6 text-danger"><i
+                                                <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
+                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger"><i
                                                             class="fa fa-trash"></i></a>
+                                                <a style="cursor: pointer" onclick="historyVideo({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
                                             </div>
                                         </td>
                                     </tr>

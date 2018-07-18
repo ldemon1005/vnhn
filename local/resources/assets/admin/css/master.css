@@ -6,3 +6,12 @@
 	z-index: 9999;
 	transition: 2s;
 }
+
+.avatar {
+	width: 100px;
+	height: 60px;
+}
+
+.avatar img{
+	width: 100%;
+}

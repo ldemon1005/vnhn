@@ -111,7 +111,7 @@ class ArticelController extends Controller
             'list_group' => $result
         ];
 
-        return view('admin.articel.form_group',$data);
+        return view('admin.articel.form_articel',$data);
     }
 
     public function action_articel(Request $request){
