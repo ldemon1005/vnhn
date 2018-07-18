@@ -1,4 +1,5 @@
- <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <link rel="stylesheet" type="text/css" href="css/aside.css">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     {{-- <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -84,55 +85,9 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fab fa-elementor"></i>
-              <p>
-                Danh mục tin
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Sắp xếp</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('admin_group')}}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Danh sách mục</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-newspaper"></i>
-              <p>
-                Quản trị tin
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('admin_articel')}}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon text-warning"></i>
-                  <p>Danh sách bài viết</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Viết bài</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>
-                Danh mục Video
+                Danh mục
                 <i class="fa fa-angle-left right"></i>
               </p>
             </a>
@@ -147,6 +102,35 @@
                 <a href="pages/tables/data.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Thêm danh mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link @if (Request::segment(2) == 'news') active @endif"">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Quản trị tin
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/UI/general.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon text-warning"></i>
+                  <p>Bài chờ duyệt</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/UI/icons.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon text-info"></i>
+                  <p>Bài đã duyệt</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/UI/buttons.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Viết bài</p>
                 </a>
               </li>
             </ul>
@@ -199,19 +183,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="{{ asset('admin/advert/add') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Thêm mới</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{ asset('admin/advert') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Quản trị</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{ asset('admin/advert/top') }}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Sắp xếp</p>
                 </a>
