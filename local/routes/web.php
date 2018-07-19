@@ -79,6 +79,24 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/history_video/{id}','VideoController@history_video')->name('history_video');
             Route::get('/update_status/{id}','VideoController@update_status')->name('update_status');
         });
+		Route::group(['prefix' => 'advert'], function(){
+			Route::get('/', 'AdvertController@index');
+
+			Route::get('add','AdvertController@create');
+			Route::post('add','AdvertController@store');
+
+			Route::get('edit/{id}','AdvertController@edit');
+			Route::post('edit/{id}','AdvertController@update');
+
+			Route::get('delete/{id}','AdvertController@destroy');
+
+			Route::get('top', 'AdvertController@getTop');
+			Route::get('top/{id}', 'AdvertController@getGroup');
+			Route::get('top_add/{id}/{ad_id}', 'AdvertController@addTopAdvert');
+			Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
+		});
+
+
 	});
 });
 
