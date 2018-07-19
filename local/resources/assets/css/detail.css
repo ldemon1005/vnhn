@@ -1,0 +1,41 @@
+.section1{
+	width: 1142px;
+	margin: auto;
+}
+
+.detailTitle{
+	border-bottom: 1px solid #000;
+	padding-bottom:  5px;
+}
+.detailTitle a{
+	color: #000;
+	text-decoration: none;
+
+}
+.detailTitle a:first-child{
+	font-weight: bold;
+	
+}
+
+.detailMain{
+	display: flex;
+}
+.mainDetailLeft{
+	flex: auto;
+}
+.mainDetailLeft h1{
+	font-family: "Times New Roman";
+	font-weight: 600;
+}
+.mainDetailLeftTime{
+	color: #a3a3a3;
+	font-size: 13px;
+	border-bottom: 1px doted #dfdfdf;
+}
+
+
+.mainDetailRight{
+	width: 300px;
+	flex: auto;
+
+}

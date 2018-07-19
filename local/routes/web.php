@@ -14,7 +14,7 @@ use \Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index');
-    Route::get('time','IndexController@time');
+    Route::get('/{slug}','IndexController@getGroup');
 });
 
 
