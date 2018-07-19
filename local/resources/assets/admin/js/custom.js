@@ -10,6 +10,41 @@ function historyVideo(video_id) {
     });
 }
 
+function historyArticel(id) {
+    $.ajax({
+        url: '/admin/articel/history_articel/'+id,
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+    }).done(function (data, status) {
+        $("#history_articel").html(data.content);
+        $("#history_articel").modal('show');
+    });
+}
+
+function updateWebsiteInfo(id) {
+    $.ajax({
+        url: '/admin/website_info/get_detail/'+id,
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+    }).done(function (data, status) {
+        $("#add_info").html(data.content);
+        $("#add_info").modal('show');
+    });
+}
+
+function getMunuChild(id) {
+    $.ajax({
+        url: '/admin/group/form_sort_group/'+id,
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+    }).done(function (data, status) {
+        $("#group-child").html(data.content);
+    });
+}
+
 function change_status(video_id,status_video) {
     $('#status_video').addClass('disabled');
     $.ajax({

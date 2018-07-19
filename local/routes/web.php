@@ -59,6 +59,8 @@ Route::group(['namespace' => 'Admin'], function (){
 		Route::get('/group/form_group/{id}',['as' => 'form_group','uses' => 'GroupController@form_group']);
 		Route::post('/action_group',['as' => 'action_group','uses' => 'GroupController@action_group']);
 		Route::get('/delete_group/{id}',['as' => 'delete_group','uses' => 'GroupController@delete_group']);
+		Route::get('/group/form_sort_group/{id}',['as' => 'form_sort_group','uses' => 'GroupController@form_sort_group']);
+		Route::post('/group/update_order',['as' => 'update_order','uses' => 'GroupController@update_order']);
 
         /*
          * articel
@@ -69,6 +71,8 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/form_articel/{id}','ArticelController@form_articel')->name('form_articel');
             Route::post('/action_articel','ArticelController@action_articel')->name('action_articel');
             Route::get('/delete_articel/{id}','ArticelController@delete_articel')->name('delete_articel');
+            Route::get('/history_articel/{id}','ArticelController@history_articel')->name('history_articel');
+            Route::get('/view_log/{id}','ArticelController@view_log')->name('view_log');
         });
 
         Route::group(['prefix' => 'video'], function(){
@@ -96,6 +100,13 @@ Route::group(['namespace' => 'Admin'], function (){
 			Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
 		});
 
+		Route::group(['prefix' => 'website_info'],function(){
+		    Route::get('/','WebsiteInfoController@index')->name('website_info');
+            Route::post('/add_info','WebsiteInfoController@add_info')->name('add_info');
+            Route::get('/get_detail/{id}','WebsiteInfoController@get_detail')->name('get_detail');
+            Route::post('/update_info','WebsiteInfoController@update_info')->name('update_info');
+            Route::get('/delete_info/{id}','WebsiteInfoController@delete_info')->name('delete_info');
+        });
 
 	});
 });

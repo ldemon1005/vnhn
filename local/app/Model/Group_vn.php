@@ -10,21 +10,9 @@ class Group_vn extends Model
 
     public $timestamps = false;
 
-
-    protected $fillable = [
-        'title',
-        'parentid',
-        'summary',
-        'status',
-        'avatar',
-        'keywords',
-        'titlemeta',
-        'slug',
-    ];
+    protected $graud = [];
 
     public function get_news(){
         return $this->belongsToMany(News::class,'group_news_vn','group_vn_id','news_vn_id')->orderByDesc('id')->get();
     }
-
-
 }

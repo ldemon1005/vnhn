@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class ArticelController extends Controller
 {
@@ -241,11 +242,38 @@ class ArticelController extends Controller
             'userId' => $user_login->id,
             'created_at' => time(),
             'noidung' => $articel->content,
-            'groupid' => $articel->groupid
+            'groupid' => $articel->groupid,
+            'title' => $articel->title
         ];
 
         if(LogFile_vn::create($log_data)){
             return true;
         }else return false;
+    }
+
+    public function history_articel($id){
+        $log = DB::table('logfile_vn')->where('LogId',$id)->paginate(8);
+        foreach ($log as $item){
+            $item->created_at = date('d/m/Y H:m',$item->created_at);
+            $user = DB::table('accounts')->find($item->userId);
+            $item->user = $user;
+        }
+
+        $data = [
+            'list_history' => $log
+        ];
+        $view =  View::make('admin.articel.history_news', $data)->render();
+        return json_encode([
+            'content' => $view
+        ]);
+    }
+
+    function view_log($id){
+        $log = DB::table('logfile_vn')->find($id);
+        $data = [
+            'log' => $log
+        ];
+
+        return view('admin.articel.view_articel', $data);
     }
 }

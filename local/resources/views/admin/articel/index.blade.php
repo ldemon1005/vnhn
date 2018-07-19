@@ -43,43 +43,11 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-
-                                <form action="{{ url('/admin/articel') }}" method="get">
-                                    <div class="row form-group">
-                                        <div class="col-md-4">
-                                            <input class="form-control" name="articel[key_search]" placeholder="Từ khóa tìm kiếm">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Lọc theo danh mục" name="articel[group_id][]"
-                                                    style="width: 100%;">
-                                                @foreach($list_group as $group_item)
-                                                    <option value="{{ $group_item->id }}">{{ $group_item->title }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-3">
-                                            <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Lọc theo trạng thái" name="articel[status][]"
-                                                    style="width: 100%;">
-                                                <option value="1">Mới</option>
-                                                <option value="2">Chưa duyệt</option>
-                                                <option value="3">Đã duyệt</option>
-                                                <option value="4">Đã hủy</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2 float-right">
-                                            <button class="btn btn-primary float-right" type="submit"><i class="fa fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th style="width: 30%">Tiêu đề bài viết</th>
-                                    <th>Đường dẫn</th>
+                                    <th style="width: 20%"></th>
+                                    <th style="width: 20%;">Đường dẫn</th>
                                     <th>Ngày tạo--Ngày update</th>
                                     <th>Avatar</th>
                                     <th style="width: 10%">Trạng thái</th>
@@ -107,7 +75,7 @@
                                                 <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
                                                 <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger"><i
                                                             class="fa fa-trash"></i></a>
-                                                <a style="cursor: pointer" onclick="historyVideo({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
+                                                <a style="cursor: pointer" onclick="historyArticel({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -125,6 +93,11 @@
 
         </section>
         <!-- /.content -->
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="history_articel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
     </div>
 @stop
 

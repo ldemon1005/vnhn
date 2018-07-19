@@ -14,6 +14,17 @@
         <div class="box-header with-border">
             <h3 class="box-title">Thêm mới Danh mục </h3>
         </div>
+        @if (session('error'))
+            <div class="alert alert-error">
+                <p>{{ session('error') }}</p>
+            </div>
+        @endif
+
+        @if (session('status'))
+            <div class="alert alert-success">
+                <p>{{ session('status') }}</p>
+            </div>
+        @endif
         <section class="content">
             <form id="create_group" action="{{ url('/admin/action_group') }}" method="post">
                 {{csrf_field()}}

@@ -93,6 +93,52 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="{{route('form_sort_group','00')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Sắp xếp</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin_group')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Danh sách mục</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                Quản trị tin
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin_articel')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon text-warning"></i>
+                  <p>Danh sách bài viết</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/UI/buttons.html" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Viết bài</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-ellipsis-h"></i>
+              <p>
+                Danh mục Video
+                <i class="fa fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
                 <a href="pages/tables/simple.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Sắp xếp</p>
@@ -102,35 +148,6 @@
                 <a href="pages/tables/data.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Thêm danh mục</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link @if (Request::segment(2) == 'news') active @endif"">
-              <i class="nav-icon fas fa-newspaper"></i>
-              <p>
-                Quản trị tin
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon text-warning"></i>
-                  <p>Bài chờ duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon text-info"></i>
-                  <p>Bài đã duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Viết bài</p>
                 </a>
               </li>
             </ul>
@@ -198,6 +215,16 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ asset('admin/website_info') }}" class="nav-link">
+              <i class="nav-icon far fa-info"></i>
+              <p>
+                Thông tin website
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item has-treeview">
             <a href="{{ asset('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -206,6 +233,8 @@
               </p>
             </a>
           </li>
+
+
           
         </ul>
       </nav>

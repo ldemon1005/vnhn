@@ -137,7 +137,4 @@
 @section('script')
     <!-- Select2 -->
     <script src="plugins/select2/select2.full.min.js"></script>
-
-
-    <script src="js/custom.js"></script>
 @stop

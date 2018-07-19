@@ -6,6 +6,7 @@ use App\Model\Group_vn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Mockery\Exception;
 
 class GroupController extends Controller
@@ -163,5 +164,43 @@ class GroupController extends Controller
             return redirect()->route('admin_group')->with('status','Xóa thành công');
         }
         return redirect()->route('admin_group')->with('error','Xóa không thành công');
+    }
+
+    function form_sort_group($parent_id = 0){
+        if($parent_id == 0){
+            $list_group = DB::table('group_vn')->where('parentid','00')->orderBy('order')->get();
+
+            $data = [
+                'list_group' => $list_group
+            ];
+
+            return view('admin.group.sort_group',$data);
+        }else {
+            $list_group = DB::table('group_vn')->where('parentid',$parent_id)->orderBy('order')->get();
+            $group_parent = DB::table('group_vn')->find($parent_id);
+            $data = [
+                'list_group' => $list_group,
+                'group_parent' => $group_parent
+            ];
+            $view =  View::make('admin.group.child_group', $data)->render();
+            return json_encode([
+                'content' => $view
+            ]);
+        }
+
+    }
+
+    public function update_order(Request $request){
+        $data = $request->get('group');
+        $check = 1;
+        foreach ($data as $key => $item){
+            $data['parentid'] ? $order = $data['parentid'].$item : $order = $item;
+            DB::table('group_vn')->where('id',$key)->update(['order' => $order]);
+        }
+        if($check == 1){
+            return redirect()->route('form_sort_group', '00' )->with('status','Sắp xếp thành công');
+        }else {
+            return redirect()->route('form_sort_group', '00')->with('error','Sắp xếp không thành công');
+        }
     }
 }

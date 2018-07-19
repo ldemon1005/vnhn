@@ -50,6 +50,8 @@
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 <script src="plugins/jquery/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
@@ -62,7 +64,13 @@
 <!-- Select2 -->
 <script src="plugins/select2/select2.full.min.js"></script>
 
+{{--<script src="dist/js/pages/dashboard.js"></script>--}}
+
+<script src="dist/js/adminlte.js"></script>
+
 <script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+<script src="js/custom.js"></script>
 
 
 <!-- OPTIONAL SCRIPTS -->
