@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/time.css">
     <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
     @yield('css')
 <!-- Styles -->
 </head>
@@ -28,5 +30,7 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
 <script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
 
+@yield('script')
 </html>
