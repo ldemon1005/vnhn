@@ -2,6 +2,10 @@
 	margin-bottom: 35px;
 }
 
+.avatar img{
+	width: 100%;
+}
+
 .articel-new .new-left{
 	width: 800px;
 	margin-right: 50px;
@@ -160,7 +164,7 @@
 }
 
 .menu-parent{
-	width: 114px;
+	width: auto;
 	height: 42px;
 	background-color: #d71a21;
 	text-align: center;
@@ -172,6 +176,7 @@
     margin-bottom: 0px;
     font-family: "Times New Roman";
     font-weight: bold;
+	padding: 0 10px;
 }
 
 .menu-child{
@@ -412,6 +417,12 @@ a.article{
 
 .articel-bottom-right{
 	flex: 1;
+}
+
+.articel-bottom-left-item .avatar {
+	height: 265px;
+	width: auto;
+	overflow: hidden;
 }
 
 .articel-bottom-left-item img{

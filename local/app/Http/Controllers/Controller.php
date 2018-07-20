@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\DB;
 
 class Controller extends BaseController
 {
@@ -20,5 +21,10 @@ class Controller extends BaseController
                 self::recusiveGroup($data,$item->id,$text."--",$result);
             }
         }
+    }
+
+    public static function get_menu_top(){
+        $menu = DB::table('group_vn')->where('status',1)->where('parentid','00')->orderBy('order')->get();
+        return $menu;
     }
 }

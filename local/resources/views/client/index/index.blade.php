@@ -8,37 +8,33 @@
                         <div class="row">
                             <a href="{{ asset('') }}" class="new-item">
                                 <div class="avatar">
-                                    <img src="{{asset('/local/resources/uploads/images/articel-1.png')}}">
+                                    <img src="{{ file_exists(asset('/local/resources'.$list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}">
                                 </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="far fa-clock"></i> 9 giờ trước</p>
-                                <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
-                                    biết dự
-                                    kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
-                                    hoàn thành môn ngữ văn</p>
+                                <h3 class="title">{{$list_articel_new[0]->title}}</h3>
+                                <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_new[0]->release_time}}</p>
+                                <p class="caption">{{$list_articel_new[0]->summary}}</p>
                             </a>
                             <div class="new-list-right">
-                                @for (  $i = 0;   $i < 5;    $i++)
+                                @for (  $i = 1;   $i < 6;    $i++)
                                     <a href="{{ asset('') }}" class="new-list-right-item">
                                         <h3 class="title">
-                                            Hết năm 2020, Việt Nam vào nhóm 4 nước dẫn đầu ASEAN về phát triển Chính phủ
-                                            điện tử
+                                            {{$list_articel_new[$i]->title}}
                                         </h3>
-                                        <p class="date-time">9 giờ trước</p>
+                                        <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
                                     </a>
                                 @endfor
                                 
                             </div>
                         </div>
                         <div class="row new-list-bottom">
-                            @for (  $i = 0;   $i < 4;    $i++)
+                            @for (  $i = 6;   $i < 10;    $i++)
                                 <div class="col-md-3">
                                     <a href="{{ asset('') }}" class="article">
                                         <div class="avatar">
-                                           <img src="{{asset('/local/resources/uploads/images/articel-2.png')}}">
+                                           <img src="{{ file_exists(asset('/local/resources'.$list_articel_new[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}">
                                         </div>
-                                        <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                        <p class="date-time">9 giờ trước</p>
+                                        <h3 class="title">{{$list_articel_new[$i]->title}}</h3>
+                                        <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
                                     </a>
                                         
                                 </div>
@@ -87,31 +83,22 @@
                             </div>
                             <div class="video">
                                 <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                                    <iframe class="embed-responsive-item" src="{{ (file_exists(asset('/local/resources'.$list_video_new[0]->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$list_video_new[0]->url_video) ? : '') ? : $list_video_new[0]->url_video }}" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="list-video">
                                 <ul>
                                     <li>
                                         <i class="fas fa-caret-right"></i>
-                                        Bản tin VNHN Ngày 7.5.2018
+                                        {{$list_video_new[0]->title}}
                                     </li>
-                                    <li>
-                                        <i class="fas fa-caret-right"></i>
-                                        Kí sự - Chuyến hành trình “Tri ân đồng đội - hướng về nguồn cội”
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-caret-right"></i>
-                                        Bản tin VNHN Ngày 7.5.2018
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-caret-right"></i>
-                                        Kí sự - Chuyến hành trình “Tri ân đồng đội - hướng về nguồn cội”
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-caret-right"></i>
-                                        Bản tin VNHN Ngày 7.5.2018
-                                    </li>
+
+                                    @for($i = 1;$i < count($list_video_new); $i++)
+                                        <li>
+                                            <i class="fas fa-caret-right"></i>
+                                            {{$list_video_new[$i]->title}}
+                                        </li>
+                                    @endfor
                                 </ul>
                             </div>
                         </section>
@@ -122,47 +109,36 @@
                     <div class="category-1-left">
                         <div class="row menu">
                             <div class="menu-parent">
-                                <h3>Thời sự</h3>
+                                <h3>{{$menu_parent_item->title}}</h3>
                             </div>
                             <div class="menu-child">
                                 <ul class="child">
-                                    <li><a href="#">Tiêu điểm nóng</a></li>
-                                    <li><a href="#">Phóng sự</a></li>
-                                    <li><a href="#">Cộng đồng quan tâm</a></li>
-                                    <li><a href="#">Văn hóa - Xã hội</a></li>
-                                    <li><a href="#">Nhịp cầu nhân ái</a></li>
+                                    @for($i = 0;$i < count($menu_child_item) ;$i++)
+                                        <li><a href="#">{{$menu_child_item[$i]->title}}</a></li>
+                                    @endfor
                                 </ul>
                             </div>
                         </div>
                         <div class="row content">
                             <div class="item-category">
                                 <div class="avatar">
-                                    <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-3.png')}}"></a>
+                                    <a href="#"><img src="{{ file_exists(asset('/local/resources'.$list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}"></a>
                                 </div>
-                                <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                <p class="date-time"><i class="far fa-clock"></i> 9 giờ trước</p>
-                                <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
-                                    biết dự
-                                    kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
-                                    hoàn thành môn ngữ văn</p>
+                                <h3 class="title">{{$list_articel_item[0]->title}}</h3>
+                                <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
+                                <p class="caption">{{$list_articel_item[0]->summary}}</p>
                             </div>
                             <div class="list-right">
-                                <div class="list-right-item">
-                                    <div class="avatar">
-                                        <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
+                                @for($i = 1;$i < count($list_articel_item);$i++)
+                                    <div class="list-right-item">
+                                        <div class="avatar">
+                                            <a href="#"><img src="{{ file_exists(asset('/local/resources'.$list_articel_item[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}"></a>
+                                        </div>
+                                        <h3 class="title">{{$list_articel_item[$i]->title}}</h3>
+                                        <p class="date-time">{{$list_articel_item[$i]->release_time}}</p>
+                                        <p class="caption">{{$list_articel_item[$i]->summary}}</p>
                                     </div>
-                                    <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                    <p class="date-time">9 giờ trước</p>
-                                    <p class="caption">VNHN - Vụ cháy bùng phát tại cửa hàng vật liệu xây dựng ở Hà Nội khiến nhiều người hoảng sợ tháo chạy.</p>
-                                </div>
-                                <div class="list-right-item">
-                                    <div class="avatar">
-                                        <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-2.png')}}"></a>
-                                    </div>
-                                    <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                    <p class="date-time">9 giờ trước</p>
-                                    <p class="caption">VNHN - Vụ cháy bùng phát tại cửa hàng vật liệu xây dựng ở Hà Nội khiến nhiều người hoảng sợ tháo chạy.</p>
-                                </div>
+                                @endfor
                             </div>
                         </div>
                     </div>
@@ -172,16 +148,16 @@
                             <h3>Đọc nhiều</h3>
                         </div>
                         <section class="top-view">
-                            @for ($i = 1; $i < 6; $i++)
+                            @for ($i = 0; $i < count($list_top_view); $i++)
                                 <a href="{{ asset('') }}" class="item-top-view">
-                                    <div class="stt">{{$i}}.</div>
-                                    <div class="caption"><h3>Hà nội lên tiếng lý giải việc đổi 700ha lấy 5 tuyến</h3></div>
+                                    <div class="stt">{{$i + 1}}.</div>
+                                    <div class="caption"><h3>{{$list_top_view[$i]->title}}</h3></div>
                                     <div class="avatar">
-                                        <img src="{{asset('/local/resources/uploads/images/articel-2.png')}}">
+                                        <img src="{{ file_exists(asset('/local/resources'.$list_top_view[$i]->fimage)) ? asset('/local/resources'.$list_top_view[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_top_view[$i]->fimage }}">
                                     </div>
                                 </a>
                             @endfor
-                            
+
                         </section>
                         
                         <div class="quangcao-3">
@@ -198,54 +174,34 @@
 
         <section class="section2">
             <div class="container category">
-                <div class="row form-group ">
-                    @for (  $i = 0;   $i < 4;    $i++)
-                        <div class="col-md-3 item-category">
-                            <div class="title-articel">
-                                <h3>Thế giới kinh doanh</h3>
-                            </div>
-                            <hr/>
-                            <div class="item">
-                                <div class="avatar">
-                                    <a href="{{ asset('') }}">
-                                        <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                                    </a>
+
+                @foreach($list_group as $group_list)
+                    <div class="row form-group ">
+                        @foreach($group_list as $group)
+                            <div class="col-md-3 item-category">
+                                <div class="title-articel">
+                                    <h3>{{$group->title}}</h3>
                                 </div>
-                                @for (  $j = 0;   $j < 4 ;    $j++)
-                                    <div class="title">
-                                        <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
+                                <hr/>
+                                @foreach($group->articel as $articel)
+                                    <div class="item">
+                                        @if($loop->index == 0)
+                                            <div class="avatar">
+                                                <a href="{{ asset('') }}">
+                                                    <img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}">
+                                                </a>
+                                            </div>
+                                        @endif
+                                        <div class="title">
+                                            <a href="#"><h3>{{$articel->title}}</h3></a>
+                                        </div>
                                     </div>
-                                @endfor
+                                @endforeach
                             </div>
-                        </div>
-                    @endfor
-                    
-                </div>
-                <hr style="margin: 20px -15px"/>
-                <div class="row form-group">
-                    @for (  $i = 0;   $i < 4;    $i++)
-                        <div class="col-md-3 item-category">
-                            <div class="title-articel">
-                                <h3>Thế giới kinh doanh</h3>
-                            </div>
-                            <hr/>
-                            <div class="item">
-                                <div class="avatar">
-                                    <a href="{{ asset('') }}">
-                                        <img src="{{asset('local/resources/uploads/images/articel-2.png')}}">
-                                    </a>
-                                </div>
-                                @for (  $j = 0;   $j < 4 ;    $j++)
-                                    <div class="title">
-                                        <a href="#"><h3>Anh nghĩ tới Việt Nam với FTA sau Brexit</h3></a>
-                                    </div>
-                                @endfor
-                            </div>
-                        </div>
-                    @endfor
-                    
-                </div>
-                <hr style="margin: 20px -15px"/>
+                        @endforeach
+                    </div>
+                    <hr style="margin: 20px -15px"/>
+                @endforeach
             </div>
         </section>
 
@@ -259,33 +215,28 @@
 
                         <div class="row menu">
                             <div class="menu-parent">
-                                <h3>Thời sự</h3>
+                                <h3>{{$menu_parent_item_2->title}}</h3>
                             </div>
                             <div class="menu-child">
                                 <ul class="child">
-                                    <li><a href="#">Tiêu điểm nóng</a></li>
-                                    <li><a href="#">Phóng sự</a></li>
-                                    <li><a href="#">Cộng đồng quan tâm</a></li>
-                                    <li><a href="#">Văn hóa - Xã hội</a></li>
-                                    <li><a href="#">Nhịp cầu nhân ái</a></li>
+                                    @for($i = 0;$i < count($menu_child_item_2) ;$i++)
+                                        <li><a href="#">{{$menu_child_item_2[$i]->title}}</a></li>
+                                    @endfor
                                 </ul>
                             </div>
                         </div>
 
                         <div class="row articel-bottom-left-item">
-                            @for (  $i = 0;   $i < 4;    $i++)
+                          @foreach($list_articel_item_2 as $articel)
                                 <div class="col-md-6">
                                     <div class="avatar">
-                                        <a href="#"><img src="{{asset('/local/resources/uploads/images/articel-1.png')}}"></a>
+                                        <a href="#"><img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
                                     </div>
-                                    <h3 class="title">Hà Nội: Kiến nghị thu hồi 459m2 “đất vàng” bị Hapro bỏ hoang nhiều</h3>
-                                    <p class="date-time"><i class="far fa-clock"></i> 9 giờ trước</p>
-                                    <p class="caption">Chiều 14/7, ông Nguyễn Văn Hiếu (Phó giám đốc sở giáo dục và đào tạo) cho
-                                        biết dự
-                                        kiến trong hôm nay các hội đồng chấm thi THPT quốc gia tại TP.Hồ Chí Minh sẽ
-                                        hoàn thành môn ngữ văn</p>
+                                    <h3 class="title">{{$articel->title}}</h3>
+                                    <p class="date-time"><i class="far fa-clock"></i> {{$articel->release_time}}</p>
+                                    <p class="caption">{{$articel->summary}}</p>
                                 </div>
-                            @endfor
+                            @endforeach
                             
                         </div>
                     </div>

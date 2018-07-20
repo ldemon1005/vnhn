@@ -121,10 +121,11 @@
                   <p>Danh sách bài viết</p>
                 </a>
               </li>
+
               <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
+                <a href="{{route('sort_hot_articel')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Viết bài</p>
+                  <p>Danh sách bài viết hot</p>
                 </a>
               </li>
             </ul>

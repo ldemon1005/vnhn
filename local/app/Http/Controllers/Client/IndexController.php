@@ -2,15 +2,141 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Model\Group_vn;
+use App\Model\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
     public function index(){
-        return view('client.index.index');
+
+        /*
+         *  phần new
+         */
+        $menu = $this->get_menu_top();
+
+        $list_articel_new = $this->get_new_articel();
+
+        $list_video_new = $this->get_video_new();
+
+        /*
+         * group thứ nhất
+         */
+
+        $articel_times_1 = $this->get_articel_item(0);
+
+
+        /*
+         *  danh sách bào viết theo danh mục
+         */
+
+        $groups = $this->get_articel_group();
+
+        /*
+         *  group thứ 2
+         */
+
+        $articel_times_2 = $this->get_articel_item(1);
+
+        $data = [
+            'menu' => $menu,
+            'list_articel_new' => $list_articel_new,
+            'list_video_new' => $list_video_new,
+
+            'menu_parent_item' => $articel_times_1['menu_time'],
+            'menu_child_item' => $articel_times_1['menu_child'],
+            'list_articel_item' => $articel_times_1['list_articel'],
+            'list_top_view' => $articel_times_1['list_top_view'],
+
+            'menu_parent_item_2' => $articel_times_2['menu_time'],
+            'menu_child_item_2' => $articel_times_2['menu_child'],
+            'list_articel_item_2' => $articel_times_2['list_articel'],
+
+            'list_group' => $groups
+        ];
+
+        return view('client.index.index',$data);
     }
     public function time(){
     	return view('client.index.time');
+    }
+
+    public function get_new_articel(){
+        $list_articel_new = DB::table('news_vn')->where('hot_main',1)->where('release_time','<=',time())->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
+        foreach ($list_articel_new as $item){
+            if(time() - $item->release_time > 86400) {
+                $item->release_time = date('d/m/Y H:m',$item->release_time);
+            }else {
+                $time = time() - $item->release_time;
+                $item->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+            }
+        }
+        return $list_articel_new;
+    }
+
+    public function get_video_new(){
+        $list_video_new = DB::table('video_vn')->where('release_time','<=',time())->take(5)->get();
+        return $list_video_new;
+    }
+
+    public function get_articel_item($position){
+        $menu_time = DB::table('group_vn')->where('home_index',1)->orderBy('order')->take(2)->get()->chunk(1);
+        $menu_time = $menu_time[$position][$position];
+
+        $menu_child = DB::table('group_vn')->where('parentid',$menu_time->id)->get();
+
+        $list_group_ids[] = $menu_time->id;
+
+        foreach ($menu_child as $menu){
+            $list_group_ids[] = $menu->id;
+        }
+
+        $list_articel_ids = DB::table('group_news_vn')->whereIn('group_vn_id',$list_group_ids)->get(['news_vn_id'])->toJson();
+        $list_articel_ids = array_column(json_decode($list_articel_ids,true),'news_vn_id');
+
+        if($position == 0){
+            $list_articel = DB::table('news_vn')->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(3)->get();
+        }else {
+            $list_articel = DB::table('news_vn')->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(4)->get();
+        }
+
+        foreach ($list_articel as $item){
+            if(time() - $item->release_time > 86400) {
+                $item->release_time = date('d/m/Y H:m',$item->release_time);
+            }else {
+                $time = time() - $item->release_time;
+                $item->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+            }
+        }
+
+        $list_top_view = DB::table('news_vn')->whereIn('id',$list_articel_ids)->orderByDesc('view')->take(5)->get();
+
+        foreach ($list_top_view as $item){
+            if(time() - $item->release_time > 86400) {
+                $item->release_time = date('d/m/Y H:m',$item->release_time);
+            }else {
+                $time = time() - $item->release_time;
+                $item->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+            }
+        }
+
+        return [
+            'menu_time' => $menu_time,
+            'menu_child' => $menu_child->take(4),
+            'list_articel' => $list_articel,
+            'list_top_view' => $list_top_view
+        ];
+    }
+
+    public function get_articel_group(){
+        $groups = Group_vn::where('home_index',1)->orderBy('order')->take(10)->get()->slice(2,8);
+
+        foreach ($groups as $group){
+            $group->articel = $group->belongsToMany(News::class,'group_news_vn','group_vn_id','news_vn_id')->orderByDesc('id')->take(5)->get();
+        }
+        $groups = $groups->chunk(4);
+        return $groups;
     }
 }

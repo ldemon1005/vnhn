@@ -43,6 +43,38 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+
+                                <form action="{{ url('/admin/articel') }}" method="get">
+                                    <div class="row form-group">
+                                        <div class="col-md-4">
+                                            <input class="form-control" name="articel[key_search]" placeholder="Từ khóa tìm kiếm">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <select class="form-control select2" multiple="multiple"
+                                                    data-placeholder="Lọc theo danh mục" name="articel[group_id][]"
+                                                    style="width: 100%;">
+                                                @foreach($list_group as $group_item)
+                                                    <option value="{{ $group_item->id }}">{{ $group_item->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <select class="form-control select2" multiple="multiple"
+                                                    data-placeholder="Lọc theo trạng thái" name="articel[status][]"
+                                                    style="width: 100%;">
+                                                <option value="1">Mới</option>
+                                                <option value="2">Chưa duyệt</option>
+                                                <option value="3">Đã duyệt</option>
+                                                <option value="4">Đã hủy</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 float-right">
+                                            <button class="btn btn-primary float-right" type="submit"><i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>

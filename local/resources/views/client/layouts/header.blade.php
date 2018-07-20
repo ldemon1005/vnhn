@@ -43,20 +43,16 @@
             <div class="row">
                 <ul class="menu-header">
                     <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
-                    <li><a href="{{ asset('') }}">Media</a></li>
-                    <li><a href="{{ asset('') }}">Thời sự</a></li>
-                    <li><a href="{{ asset('') }}">Thế giới</a></li>
-                    <li><a href="{{ asset('') }}">Kinh doanh</a></li>
-                    <li><a href="{{ asset('') }}">Từ chính sách tới thực tiễn</a></li>
-                    <li><a href="{{ asset('') }}">Khoa học - Công nghệ</a></li>
-                    <li><a href="{{ asset('') }}">Số hóa</a></li>
-                    <li><a href="{{ asset('') }}">Nghiên cứu trao đổi</a></li>
+                    @foreach($menu->chunk(6)[0] as $item)
+                        <li><a href="{{ asset('') }}">{{$item->title}}</a></li>
+                    @endforeach
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Danh mục khác <span class="caret"></span></a>
-                        <ul class="dropdown-menu dropdown-menu-right" style="background-color: #d71a21">
-                            <li><a href="#">Danh mục khác</a></li>
-                            <li><a href="#">Thời sự</a></li>
+                        <ul class="dropdown-menu scrollable-menu dropdown-menu-right text-left" style="background-color: #d71a21">
+                            @for($i = 6;$i<$menu->count();$i++)
+                                <li><a href="#">{{$menu[$i]->title}}</a></li>
+                            @endfor
                         </ul>
                     </li>
                 </ul>

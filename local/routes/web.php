@@ -73,6 +73,10 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/delete_articel/{id}','ArticelController@delete_articel')->name('delete_articel');
             Route::get('/history_articel/{id}','ArticelController@history_articel')->name('history_articel');
             Route::get('/view_log/{id}','ArticelController@view_log')->name('view_log');
+            Route::get('/sort_hot_articel','ArticelController@sort_hot_articel')->name('sort_hot_articel');
+            Route::post('/sort_hot_articel_post','ArticelController@sort_hot_articel_post')->name('sort_hot_articel_post');
+            Route::post('/update_order_articel','ArticelController@update_order_articel')->name('update_order_articel');
+            Route::get('/delete_articel_hot/{groupid}/{id}','ArticelController@delete_articel_hot')->name('delete_articel_hot');
         });
 
         Route::group(['prefix' => 'video'], function(){

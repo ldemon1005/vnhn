@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="img-avatar {{ $articel->fimage == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
-                            <img id="blog_avatar" style="width: 100%" src="{{asset("/local/resources".$articel->fimage)}}" alt="">
+                            <img id="blog_avatar" style="width: 100%" src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}" alt="">
                             <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
                                onclick="removeImage()"></i>
                         </div>
@@ -154,6 +154,23 @@
                 </div>
 
                 <div class="row form-group">
+                    <label class="col-sm-2">Hiển thị</label>
+                    <div class="col-sm-10">
+                        <div class="row form-group">
+                            <label class="col-sm-4">
+                                <input type="checkbox" value="1" class="minimal" name="articel[hot_main]" {{$articel->hot_main == 1 ? 'checked' : ''}}>
+                                Hot trang chủ
+                            </label>
+
+                            <label class="col-sm-4">
+                                <input type="checkbox" value="1" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>
+                                Hot danh mục
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
                     <label class="col-sm-2">Loại</label>
                     <div class="col-sm-10">
                         <select class="form-control" name="articel[loaiview]">
@@ -185,6 +202,14 @@
                 filebrowserImageUploadUrl: 'plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
                 filebrowserFlashUploadUrl: 'plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
             } );
+
+            //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue',
+                radioClass   : 'iradio_minimal-blue'
+            })
         });
+
+
     </script>
 @stop

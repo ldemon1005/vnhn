@@ -93,7 +93,9 @@ class ArticelController extends Controller
                 'release_time' => (object)[
                     'day' => date('d/m/Y',time()),
                     'h' => date('h:i A',time())
-                ]
+                ],
+                'hot_main' => 0,
+                'hot_item' => 0
             ];
             $articel = (object)$data;
         }else{
@@ -275,5 +277,91 @@ class ArticelController extends Controller
         ];
 
         return view('admin.articel.view_articel', $data);
+    }
+
+    public function sort_hot_articel()
+    {
+        /*
+ *  lấy danh sách danh mục
+ */
+        $list_group = DB::table('group_vn')->where('status', 1)->get()->toArray();
+        $root = [
+            'id' => 0,
+            'title' => 'Trang chủ'
+        ];
+        $result[] = (object)$root;
+        $this->recusiveGroup($list_group, 0, "", $result);
+
+        $arrticel_hot = DB::table('news_vn')->where('hot_main',1)->orderBy('order_main')->paginate(20);
+
+        $data = [
+            'list_articel' => $arrticel_hot,
+            'list_group' => $result,
+            'group_id' => 0
+        ];
+
+        return view('admin.articel.sort_articel',$data);
+    }
+
+    public function sort_hot_articel_post(Request $request)
+    {
+        $group_id = $request->get('groupid');
+
+        /*
+ *  lấy danh sách danh mục
+ */
+        $list_group = DB::table('group_vn')->where('status', 1)->get()->toArray();
+        $root = [
+            'id' => 0,
+            'title' => 'Trang chủ'
+        ];
+        $result[] = (object)$root;
+        $this->recusiveGroup($list_group, 0, "", $result);
+
+        if($group_id == 0){
+            $arrticel_hot = DB::table('news_vn')->where('hot_main',1)->orderBy('order_main')->get();
+        }else {
+            $articel_hot_ids = DB::table('group_news_vn')->where('group_vn_id',$group_id)->where('hot',1)->get(['news_vn_id'])->toJson();
+
+            $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
+
+            $arrticel_hot = DB::table('news_vn')->whereIn('id',$articel_hot_ids)->orderBy('hot_item')->get();
+        }
+
+        $data = [
+            'list_articel' => $arrticel_hot,
+            'list_group' => $result,
+            'group_id' => $group_id
+        ];
+
+        return view('admin.articel.sort_articel',$data);
+    }
+
+    public function update_order_articel(Request $request){
+        $data = $request->get('articel');
+        if($data['groupid'] == null){
+            unset($data['groupid']);
+            foreach ($data as $key => $val){
+                DB::table('news_vn')->where('id',$key)->update(['order_main' => $val]);
+            }
+        }else {
+            unset($data['groupid']);
+            foreach ($data as $key => $val){
+                DB::table('news_vn')->where('id',$key)->update(['order_item' => $val]);
+            }
+        }
+        return redirect()->route('sort_hot_articel' )->with('status','Sắp xếp thành công');
+    }
+
+    public function delete_articel_hot($groupid,$id){
+        if($groupid == 0){
+            if(DB::table('news_vn')->where('id',$id)->update(['hot_main' => 0])){
+                return redirect()->route('sort_hot_articel' )->with('status','Xóa thành công');
+            }else return redirect()->route('sort_hot_articel' )->with('error','Xóa không thành công');
+        }else {
+            if(DB::table('news_vn')->where('id',$id)->update(['hot_item' => 0])){
+                return redirect()->route('sort_hot_articel' )->with('status','Xóa thành công');
+            }else return redirect()->route('sort_hot_articel' )->with('error','Xóa không thành công');
+        }
     }
 }
