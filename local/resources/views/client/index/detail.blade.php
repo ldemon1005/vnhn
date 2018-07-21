@@ -73,7 +73,7 @@
                     <div class="mainDetailLeftBanner">
                         <img src="images/Banner trung tâm 1 (728x90).png">
                     </div>
-                    <div class="mainDetailLeftRecommend">
+                    {{-- <div class="mainDetailLeftRecommend">
                         <div class="mainDetailLeftRecommendItem left">
                             <div class="mainDetailLeftRecommendItemImg">
                                 <img src="images/Layer 66.png">
@@ -98,24 +98,84 @@
                                 Sở Giáo dục Hà Giang đề nghị khởi tố điều tra sai phạm về điểm thi
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="mainDetailLeftInvolve">
-                        <h4 class="mainDetailRightTitle red">Bài được quan tâm</h4> 
-                        <div class="involve-carousel">
-                            <div class="item">
-                                <img src="images/Layer 69.png">
-                                
+                        <h4 class="mainDetailLeftTitle">Bài được quan tâm</h4> 
+                        <div class="mainDetailLeftInvolveMain">
+                            <div class="mainDetailLeftInvolveItem">
+                                <div class="mainDetailLeftInvolveItemImg">
+                                    <img src="images/Layer 69.png">
+                                </div>
+                                <div class="mainDetailLeftInvolveItemContent">
+                                    Hà Nội sẽ trở thành đô thị thông minh an toàn, thân thiện
+                                </div>
+                                <div class="mainDetailLeftInvolveItemTime">
+                                    <i class="far fa-clock"></i>
+                                    9 giờ trước
+                                </div>
                             </div>
-                            <div class="item">
-                                <img src="images/Layer 69.png">
+                            <div class="mainDetailLeftInvolveItem">
+                                <div class="mainDetailLeftInvolveItemImg">
+                                    <img src="images/Layer 69.png">
+                                </div>
+                                <div class="mainDetailLeftInvolveItemContent">
+                                    Hà Nội sẽ trở thành đô thị thông minh an toàn, thân thiện
+                                </div>
+                                <div class="mainDetailLeftInvolveItemTime">
+                                    <i class="far fa-clock"></i>
+                                    9 giờ trước
+                                </div>
                             </div>
-                            <div class="item">
-                                <img src="images/Layer 69.png">
+                            <div class="mainDetailLeftInvolveItem">
+                                <div class="mainDetailLeftInvolveItemImg">
+                                    <img src="images/Layer 69.png">
+                                </div>
+                                <div class="mainDetailLeftInvolveItemContent">
+                                    Hà Nội sẽ trở thành đô thị thông minh an toàn, thân thiện
+                                </div>
+                                <div class="mainDetailLeftInvolveItemTime">
+                                    <i class="far fa-clock"></i>
+                                    9 giờ trước
+                                </div>
                             </div>
-                            
                         </div>
                     </div>
+                    <div class="mainDetailLeftComment">
+                        <h4 class="mainDetailLeftTitle">Ý kiến của bạn</h4> 
+                        <div class="mainDetailLeftCommentMain">
+                            <form method="post">
+                                <label>Nội dung</label>
+                                <div class="form-group">
+                                    <textarea rows="4" name="content"></textarea>
+                                </div>
+                                <div class="mainDetailLeftCommentMainName_Email">
+                                    <div class="mainDetailLeftCommentMainName">
+                                        <label>Họ tên</label>
+                                        <div class="form-group">
+                                            <input type="text" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="mainDetailLeftCommentMainEmail">
+                                        <label>Email</label>
+                                        <div class="form-group">
+                                            <input type="text" name="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <label>Mã xác thực</label>
+                                <div class="form-group">
+                                    <input type="text" name="code">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="sbm" value="gửi bình luận">
+                                </div>
+                                
+                                
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="mainDetailRight">
                     <div class="mainDetailRightFollow">
@@ -183,9 +243,9 @@
         autoHeight:true,
         responsive:{
             0:{
-                items:2
+                items:1
             },
-            600:{
+            992:{
                 items:2
             },
             1000:{
@@ -193,22 +253,22 @@
             }
         }
     });
-    $('.involve-carousel').owlCarousel({
-        loop:true,
-        margin:0,
-        nav:true,
-        autoHeight:true,
-        responsive:{
-            0:{
-                items:3
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:3
-            }
-        }
-    });
+    // $('.involve-carousel').owlCarousel({
+    //     loop:true,
+    //     margin:0,
+    //     nav:true,
+    //     autoHeight:true,
+    //     responsive:{
+    //         0:{
+    //             items:3
+    //         },
+    //         600:{
+    //             items:3
+    //         },
+    //         1000:{
+    //             items:3
+    //         }
+    //     }
+    // });
 </script>
 @stop
