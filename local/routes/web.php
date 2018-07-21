@@ -14,7 +14,9 @@ use \Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index');
-    Route::get('time','IndexController@time');
+    Route::group(['prefix'=>'articel'],function(){
+        Route::get('/{slug}','ArticelController@get_detail')->name('get_detail');
+    });
 });
 
 

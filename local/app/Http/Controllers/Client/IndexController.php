@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Model\Group_vn;
 use App\Model\News;
+use App\Models\Video_vn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,13 @@ class IndexController extends Controller
         /*
          *  phần new
          */
-        $menu = $this->get_menu_top();
+//        $menu = $this->get_menu_top();
 
         $list_articel_new = $this->get_new_articel();
 
         $list_video_new = $this->get_video_new();
+
+        $magazine_new = $this->get_magazine_new();
 
         /*
          * group thứ nhất
@@ -41,9 +44,10 @@ class IndexController extends Controller
         $articel_times_2 = $this->get_articel_item(1);
 
         $data = [
-            'menu' => $menu,
+//            'menu' => $menu,
             'list_articel_new' => $list_articel_new,
             'list_video_new' => $list_video_new,
+            'magazine_new' => $magazine_new,
 
             'menu_parent_item' => $articel_times_1['menu_time'],
             'menu_child_item' => $articel_times_1['menu_child'],
@@ -81,6 +85,11 @@ class IndexController extends Controller
         return $list_video_new;
     }
 
+    public function get_magazine_new(){
+        $magazine = DB::table('magazine_vn')->where('status',1)->orderByDesc('id')->first();
+        $magazine->slide_show = json_decode($magazine->slide_show);
+        return $magazine;
+    }
     public function get_articel_item($position){
         $menu_time = DB::table('group_vn')->where('home_index',1)->orderBy('order')->take(2)->get()->chunk(1);
         $menu_time = $menu_time[$position][$position];
@@ -139,4 +148,5 @@ class IndexController extends Controller
         $groups = $groups->chunk(4);
         return $groups;
     }
+
 }

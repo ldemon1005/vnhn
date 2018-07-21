@@ -313,6 +313,10 @@
 	overflow: auto;
 }
 
+.slimScrollBar {
+	border-radius: 0 !important;
+}
+
 .scrollable-menu >li{
 	padding: 0 10px;
 }

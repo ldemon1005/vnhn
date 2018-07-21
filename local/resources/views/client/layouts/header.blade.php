@@ -4,7 +4,7 @@
             <div class="row ">
                 <div class="top-header">
                     <div class="e-magazine">
-                        <a><img src="{{asset('/local/resources/uploads/images/e-magazine.png')}}"></a>
+                        <a href="{{ asset('') }}"><img src="{{asset('/local/resources/uploads/images/e-magazine.png')}}"></a>
                     </div>
                     <div class="top-header-menu">
                         <ul class="menu-left">
@@ -49,7 +49,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Danh mục khác <span class="caret"></span></a>
-                        <ul class="dropdown-menu scrollable-menu dropdown-menu-right text-left" style="background-color: #d71a21">
+                        <ul id="either-menu" class="dropdown-menu scrollable-menu dropdown-menu-right text-left" style="background-color: #d71a21">
                             @for($i = 6;$i<$menu->count();$i++)
                                 <li><a href="#">{{$menu[$i]->title}}</a></li>
                             @endfor
@@ -60,3 +60,6 @@
         </div>
     </section>
 </div>
+
+@section('script')
+@stop

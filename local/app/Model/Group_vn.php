@@ -10,7 +10,7 @@ class Group_vn extends Model
 
     public $timestamps = false;
 
-    protected $graud = [];
+    protected $guarded = [];
 
     public function get_news(){
         return $this->belongsToMany(News::class,'group_news_vn','group_vn_id','news_vn_id')->orderByDesc('id')->get();

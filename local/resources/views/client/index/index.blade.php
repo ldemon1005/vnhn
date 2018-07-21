@@ -6,7 +6,7 @@
                 <div class="row articel-new">
                     <div class="new-left">
                         <div class="row">
-                            <a href="{{ asset('') }}" class="new-item">
+                            <a href="{{ route('get_detail',$list_articel_new[0]->slug.'--'.$list_articel_new[0]->id) }}" class="new-item">
                                 <div class="avatar">
                                     <img src="{{ file_exists(asset('/local/resources'.$list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}">
                                 </div>
@@ -53,15 +53,11 @@
 
                                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="d-block w-100" src="{{asset('/local/resources/uploads/images/magazine.png')}}" alt="First slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100" src="{{asset('/local/resources/uploads/images/magazine.png')}}" alt="Second slide">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100" src="{{asset('/local/resources/uploads/images/magazine.png')}}" alt="Third slide">
-                                        </div>
+                                        @foreach($magazine_new->slide_show as $slide_show)
+                                            <div class="carousel-item {{$loop->index == 0 ? 'active' : ''}}">
+                                                <img class="d-block w-100" src="{{asset('/local/resources'.$slide_show)}}" alt="Second slide">
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -74,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="title">
-                                <h3>Tạp chí Việt Nam Hội Nhập số 44 Ra mắt ngày 15/04/2018</h3>
+                                <h3>{{$magazine_new->title}}</h3>
                             </div>
                         </section>
                         <section class="new-right-2">
