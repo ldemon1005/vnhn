@@ -218,6 +218,15 @@
           </li>
 
           <li class="nav-item has-treeview">
+            <a href="{{ asset('admin/magazine') }}" class="nav-link">
+              <i class="nav-icon fas fa-book-open"></i>
+              <p>
+                Quản lý magazine
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
             <a href="{{ asset('admin/website_info') }}" class="nav-link">
               <i class="nav-icon far fa-info"></i>
               <p>

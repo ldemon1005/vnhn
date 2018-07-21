@@ -112,6 +112,12 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/delete_info/{id}','WebsiteInfoController@delete_info')->name('delete_info');
         });
 
+        Route::group(['prefix' => 'magazine'], function(){
+            Route::get('/','MagazineController@index')->name('admin_magazine');
+            Route::get('/form_magazine/{id}','MagazineController@form_magazine')->name('form_magazine');
+            Route::post('/action_magazine','MagazineController@action_magazine')->name('action_magazine');
+            Route::get('/delete_magazine/{id}','MagazineController@delete_magazine')->name('delete_magazine');
+        });
 	});
 });
 

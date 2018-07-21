@@ -39,6 +39,7 @@ class ClientController extends Controller
                     'data' => '/uploads/'.$dir_name . '/' . $img_name,
                     'path' => url('/').'/local/resources'.'/uploads/'.$dir_name . '/' . $img_name,
                     'message' => 'Thao tác thành công',
+                    'name_img' => explode('.',$img_name)
                 ];
                 return json_encode($rs);
             }

@@ -64,6 +64,10 @@ function removeImage() {
     $('div.img-avatar').addClass('d-none');
     $('div.blog-avatar').removeClass('d-none');
 }
+
+function removeImageSlide() {
+    $(this).closest('div').remove();
+}
 /* KẾT THÚC UPLOAD ẢNH */
 // type = 1 là success
 // type = 2 là error
@@ -81,4 +85,49 @@ function snackbar(type, message) {
     setTimeout(function () {
         $("#snackbar").removeClass('show');
     }, 3000);
+}
+
+
+function uploadSlideImage(input, image) {
+    if (image != undefined) {
+        var valid = check_image(image);
+        if (!valid) {
+            snackbar(2, get_check_message());
+            input.value = '';
+            return;
+        }
+        var formData = new FormData();
+        formData.append('file', image);
+
+        $.ajax({
+            url: '/upload_image',
+            method: 'post',
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            data: formData
+        }).fail(function (ui, status) {
+            console.log('đéo chào');
+            snackbar(2, 'Có lỗi xảy ra!');
+        }).done(function (data, status) {
+            if (data.status) {
+                var str = '          <div class="col-sm-3 img-avatar" style="position: relative;width: 100%;margin-top: 15px">\n' +
+                    '                                <img id="blog_avatar" style="width: 100%" src="'+data.path+'" alt="">\n' +
+                    '                                <i class="fa fa-trash text-danger pointer delete-slide-img" style="position: absolute;top: 10px;right: 15px;cursor: pointer"\n' +
+                    '                                   onclick="$(this).closest(\'div\').remove();"></i>\n' +
+                    '                                <input class="d-none" name="magazine[slide_show][]" value="'+data.data+'" type="text">\n' +
+                    '                            </div>';
+
+                $('.image-slide').append(str);
+            }
+            else {
+                snackbar(2, 'Có lỗi xảy ra!');
+            }
+        });
+        input.value = '';
+    }
+    else {
+        snackbar(2, 'Ảnh không tồn tại! Vui lòng chọn lại!');
+    }
 }
