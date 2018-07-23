@@ -44,7 +44,27 @@
                 <ul class="menu-header">
                     <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
                     @foreach($menu->chunk(6)[0] as $item)
-                        <li><a href="{{ asset('') }}">{{$item->title}}</a></li>
+                        <li>
+                            <a href="{{ asset('') }}">{{$item->title}}</a>
+                            <div class="btn_dropdown_menu_head">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="{{ asset('') }}">Phóng sự</a>
+                                </li>
+                                <li>
+                                    <a href="{{ asset('') }}">Cộng đồng quan tâms</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ asset('') }}">Nhịp cầu nhân ái</a>
+                                </li>
+                                <li>
+                                    <a href="{{ asset('') }}">Giá trị cuộc sống</a>
+                                </li>
+                            </ul>
+                        </li>
                     @endforeach
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -55,10 +75,16 @@
                             @endfor
                         </ul>
                     </li>
+                    <div class="btn_close_menu">
+                        <i class="fas fa-times"></i>
+                    </div>
                 </ul>
             </div>
         </div>
     </section>
+    <div id="header_btnMenu">
+        <i class="fas fa-bars"></i>
+    </div>
 </div>
 
 @section('script')
