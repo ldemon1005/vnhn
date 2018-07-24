@@ -23,68 +23,6 @@ class GroupController extends Controller
         return view("admin.group.index",$data);
     }
 
-/*function show_group($list_group,$parent_id = '00',$char = '',&$str){
-        $group_child = [];
-        foreach ($list_group as $key => $item)
-        {
-            if ($item->parentid == $parent_id) {
-                $group_child[] = $item;
-                unset($list_group[$key]);
-            }
-        }
-
-        if ($group_child && $parent_id != 00) {
-            $str[] = '<ul class="nav nav-treeview">';
-            foreach ($group_child as $key => $item) {
-                $str[] = '<li class="nav-item has-treeview">'.'<input style="margin-top: 15px" type="checkbox" value=""> &nbsp&nbsp'.' <a href="javascrip:;" class="nav-link">'.$char.$item->title.'</a>';
-                $this->show_group($list_group, $item->id, $char.'&nbsp&nbsp&nbsp&nbsp',$str);
-                $str[] = '</li>';
-            }
-            $str[] = '</ul>';
-        }else{
-            $str[] = '<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">';
-            foreach ($group_child as $key => $item) {
-                $str[] = '<li class="nav-item has-treeview">'.'<input style="margin-top: 15px" type="checkbox" value=""> &nbsp&nbsp'.'<a href="javascrip:;" class="nav-link">'.$char.$item->title.'</a>';
-                $this->show_group($list_group, $item->id, $char.'&nbsp&nbsp&nbsp&nbsp',$str);
-                $str[] = '</li>';
-            }
-            $str[] = '</ul>';
-        }
-    }*/
-
-//   function show_group($list_group,$parent_id = '00',$char = '',&$str){
-//        $group_child = [];
-//        foreach ($list_group as $key => $item)
-//        {
-//            if ($item->parentid == $parent_id) {
-//                $group_child[] = $item;
-//                unset($list_group[$key]);
-//            }
-//        }
-//
-//        if ($group_child && $parent_id != 00) {
-//            $str[] = '<ul class="nav nav-treeview">';
-//            foreach ($group_child as $key => $item) {
-//                $icon = '';
-//                if($this->check_has_chlid($list_group,$item->id)) $icon = '<i class="fa fa-plus"></i>&nbsp&nbsp';
-//                $str[] = '<li class="nav-item has-treeview"> <div><a href="javascrip:;"><i class="fa fa-plus text-primary"></i></a>&nbsp&nbsp<a href="javascrip:;"><i class="fa fa-pencil text-success"></i></a>&nbsp&nbsp<a href="javascrip:;"><i class="fa fa-trash text-danger"></i></a></div> <a href="javascrip:;" class="nav-link">'.$char.$icon.$item->title.'</a>';
-//                $this->show_group($list_group, $item->id, $char.'&nbsp&nbsp&nbsp&nbsp',$str);
-//                $str[] = '</li>';
-//            }
-//            $str[] = '</ul>';
-//        }else{
-//            $str[] = '<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">';
-//            foreach ($group_child as $key => $item) {
-//                $icon = '';
-//                if($this->check_has_chlid($list_group,$item->id)) $icon = '<i class="fa fa-plus"></i>&nbsp&nbsp';
-//                $str[] = '<li class="nav-item has-treeview"> <div><a href="javascrip:;"><i class="fa fa-plus text-primary"></i></a>&nbsp&nbsp<a href="javascrip:;"><i class="fa fa-pencil text-success"></i></a>&nbsp&nbsp<a href="javascrip:;"><i class="fa fa-trash text-danger"></i></a></div> <a href="javascrip:;" class="nav-link">'.$char.$icon.$item->title.'</a>';
-//                $this->show_group($list_group, $item->id, $char.'&nbsp&nbsp&nbsp&nbsp',$str);
-//                $str[] = '</li>';
-//            }
-//            $str[] = '</ul>';
-//        }
-//    }
-
     function check_has_chlid($list_group,$id){
         foreach ($list_group as $value){
             if($value->parentid == $id){
@@ -95,7 +33,7 @@ class GroupController extends Controller
     }
 
     public function form_group($id){
-        $list_group = DB::table('group_vn')->where('status',1)->get()->toArray();
+        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'root'

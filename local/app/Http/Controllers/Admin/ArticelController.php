@@ -51,7 +51,7 @@ class ArticelController extends Controller
         /*
          *  lấy danh sách danh mục
          */
-        $list_group = DB::table('group_vn')->where('status', 1)->get()->toArray();
+        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'root'
@@ -73,7 +73,7 @@ class ArticelController extends Controller
         /*
          *  lấy danh sách danh mục
          */
-        $list_group = DB::table('group_vn')->where('status',1)->get()->toArray();
+        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
         $this->recusiveGroup($list_group,0,"",$result);
         if($id == 0){
             $data = [
@@ -284,7 +284,7 @@ class ArticelController extends Controller
         /*
  *  lấy danh sách danh mục
  */
-        $list_group = DB::table('group_vn')->where('status', 1)->get()->toArray();
+        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'Trang chủ'
@@ -310,7 +310,7 @@ class ArticelController extends Controller
         /*
  *  lấy danh sách danh mục
  */
-        $list_group = DB::table('group_vn')->where('status', 1)->get()->toArray();
+        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'Trang chủ'

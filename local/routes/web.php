@@ -13,9 +13,14 @@ use \Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'Client'],function (){
-    Route::get('/','IndexController@index');
+    Route::get('/','IndexController@index')->name('home');
     Route::group(['prefix'=>'articel'],function(){
-        Route::get('/{slug}','ArticelController@get_detail')->name('get_detail');
+        Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
+        Route::post('action_comment','ArticelController@action_comment')->name('action_comment');
+    });
+
+    Route::group(['prefix' => 'group'],function(){
+        Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
     });
 });
 

@@ -38,6 +38,14 @@ class Controller extends BaseController
         return $menu;
     }
 
-
+    public function get_time($articel){
+        if(time() - $articel->release_time > 86400) {
+            $articel->release_time = date('d/m/Y H:m',$articel->release_time);
+        }else {
+            $time = time() - $articel->release_time;
+            $articel->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+        }
+        return $articel;
+    }
 
 }

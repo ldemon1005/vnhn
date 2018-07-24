@@ -44,14 +44,14 @@
                 <ul class="menu-header">
                     <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
                     @foreach($menu->chunk(6)[0] as $item)
-                        <li><a href="{{ asset('') }}">{{$item->title}}</a></li>
+                        <li><a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a></li>
                     @endforeach
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Danh mục khác <span class="caret"></span></a>
                         <ul id="either-menu" class="dropdown-menu scrollable-menu dropdown-menu-right text-left" style="background-color: #d71a21">
                             @for($i = 6;$i<$menu->count();$i++)
-                                <li><a href="#">{{$menu[$i]->title}}</a></li>
+                                <li><a href="{{ route('get_articel_by_group',$menu[$i]->slug.'---n-'.$menu[$i]->id) }}">{{$menu[$i]->title}}</a></li>
                             @endfor
                         </ul>
                     </li>

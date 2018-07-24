@@ -187,6 +187,11 @@
 .menu-child ul.child{
 	margin-bottom: 0;
 }
+
+.menu a{
+	text-decoration: none;
+	color: #000000;
+}
 .child {
 	padding: 0;
 }
@@ -234,6 +239,12 @@
 	font-weight: Bold;
 	font-family: "Times New Roman";
 }
+
+.item-category a{
+	text-decoration: none;
+	color: #ffffff;
+}
+
 
 .item-category .caption {
 	font-size: 14px;
@@ -465,4 +476,9 @@ a.article{
 	margin: -5px 0 5px;
 	font-size: 12px;
 	color: #999999;
+}
+
+.list-right-item a{
+	text-decoration: none;
+	color: #000000;
 }

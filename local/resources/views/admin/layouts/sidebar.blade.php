@@ -165,6 +165,13 @@
               <li class="nav-item">
                 <a href="{{route('admin_video')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Danh mục video</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{route('admin_video')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
                   <p>Danh sách video</p>
                 </a>
               </li>

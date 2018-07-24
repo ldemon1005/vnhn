@@ -1,0 +1,123 @@
+<?php
+
+namespace App\Http\Controllers\Client;
+
+use App\Model\Group_vn;
+use function GuzzleHttp\Psr7\str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+
+class GroupController extends Controller{
+    function get_articel_by_group($slug){
+        $slug = explode('---n-',$slug);
+
+        /*
+         *  group menu
+         */
+
+        $group_menu = $this->menu_top_group($slug[1]);
+
+        /*
+         * list articel hot articel
+         */
+
+        $list_group = DB::table('group_vn')->where('status',1)->get();
+
+        $result[] = $slug[1];
+        $this->recusive_find_child($list_group,$slug[1],$result);
+        $result = array_unique($result);
+        $list_articel_hot_ids = DB::table('group_news_vn')->whereIn('group_vn_id',$result)->where('hot',1)->get(['news_vn_id'])->toJson();
+
+        $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids,true),'news_vn_id');
+
+        $list_articel_hot = DB::table('news_vn')->whereIn('id',$list_articel_hot_ids)->take(5)->get();
+
+        $not_ids = [];
+
+        foreach ($list_articel_hot as $val){
+            $val->release_time = date('d/m/Y H:m',$val->release_time);
+            $not_ids[] = $val->id;
+        }
+
+        /*
+         *  articel top view
+         */
+
+        $list_articel_ids = DB::table('group_news_vn')->whereIn('group_vn_id',$result)->get()->toJson();
+        $list_articel_ids = array_column(json_decode($list_articel_ids,true),'news_vn_id');
+
+        $articel_top_view = $this->articel_top_view($list_articel_ids,$not_ids);
+
+        foreach ($articel_top_view as $val){
+            $val->title = cut_string_name($val->title,70);
+            $val->release_time = date('d/m/Y H:m',$val->release_time);
+            $not_ids[] = $val->id;
+        }
+
+        /*
+         * list articel
+         */
+
+        $list_articel = DB::table('news_vn')->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->paginate(7);
+
+        $group_ids = array_column(json_decode($group_menu->toJson(),true),'id');
+
+        unset($group_ids[0]);
+
+        $group_articel = Group_vn::whereIn('id',$group_ids)->take(3)->get();
+
+        foreach ($group_articel as $item){
+            $item->articel = $item->get_news_take_4();
+        }
+        $data = [
+            'group_menu_id' => $slug[1],
+            'group_menu_cate' => $group_menu,
+
+            'list_articel_hot' => $list_articel_hot,
+            'articel_top_view' => $articel_top_view,
+
+            'list_articel' => $list_articel,
+            'group_articel' => $group_articel
+        ];
+
+        return view('client.index.time',$data);
+    }
+
+    function recusive_find_child($list_group,$parentid,&$result){
+        foreach ($list_group as $key => $group){
+            if($parentid == $group->parentid){
+                $result[] = $group->parentid;
+                unset($list_group[$key]);
+                $this->recusive_find_child($list_group,$group->id,$result);
+            }
+        }
+    }
+
+    function articel_top_view($list_articel_ids,$not_ids){
+        $articel_top_view = DB::table('news_vn')->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->orderBy('view')->paginate(5);
+        return $articel_top_view;
+    }
+
+    public function menu_top_group($group_id){
+        $group = Group_vn::find($group_id);
+
+        if($group->parentid == '00'){
+            $ids[] = $group->id;
+            $group_menu = DB::table('group_vn')->where('parentid',$group_id)->take(6)->get();
+            foreach ($group_menu as $menu){
+                $ids[] = $menu->id;
+            }
+            $group_menu = DB::table('group_vn')->whereIn('id',$ids)->take(6)->get();
+        }else{
+            $parentid = $group->parentid;
+            $ids[] = $parentid;
+            $group_menu = DB::table('group_vn')->where('parentid',$parentid)->take(6)->get();
+            foreach ($group_menu as $menu){
+                $ids[] = $menu->id;
+            }
+            $group_menu = DB::table('group_vn')->whereIn('id',$ids)->take(6)->get();
+        }
+        return $group_menu;
+    }
+}

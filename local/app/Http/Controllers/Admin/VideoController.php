@@ -29,13 +29,6 @@ class VideoController extends Controller
             $list_video = $list_video->whereIn('status',$status);
         }
 
-        if(count($group_id)){
-            $list_video_ids = DB::table('group_video_vn')->whereIn('group_vn_id',$group_id)->get(['video_vn_id'])->toArray();
-            $list_video_ids = array_column(json_decode(json_encode($list_video_ids),true),'video_vn_id');
-
-            $list_video =  $list_video->whereIn('id',$list_video_ids);
-        }
-
         if($key_search){
             $list_video = $list_video->where('title','like',"%$key_search%")->orWhere('summary','like',"%$key_search%");
         }
@@ -49,11 +42,10 @@ class VideoController extends Controller
         /*
          *  lấy danh sách danh mục
          */
-        $list_group = DB::table('group_vn')->where('status', 1)->get()->toArray();
-        $this->recusiveGroup($list_group, 0, "", $result);
+        $list_group = DB::table('menu_video')->where('status', 1)->get()->toArray();
 
         $data = [
-            'list_group' => $result,
+            'list_group' => $list_group,
             'list_video' => $list_video,
             'articel' => $paramater
         ];
@@ -67,8 +59,7 @@ class VideoController extends Controller
         /*
          *  lấy danh sách danh mục
          */
-        $list_group = DB::table('group_vn')->where('status',1)->get()->toArray();
-        $this->recusiveGroup($list_group,0,"",$result);
+        $list_group = DB::table('menu_video')->where('status', 1)->get()->toArray();
 
         if($id == 0){
             $data = [
@@ -100,7 +91,7 @@ class VideoController extends Controller
         }
         $data = [
             'video' => $video,
-            'list_group' => $result
+            'list_group' => $list_group
         ];
         return view('admin.videos.form_video',$data);
     }
@@ -144,20 +135,6 @@ class VideoController extends Controller
                 $status_str = "Đăng mới";
                 if(!$this->add_log($video,$status_id,$status_str)) $check = 0;
 
-                $data_group_news = [];
-
-                if(count($group_id)){
-                    foreach ($group_id as $val){
-                        $item = [
-                            'group_vn_id' => $val,
-                            'video_vn_id' => (string)$video->id
-                        ];
-                        $data_group_news[] = $item;
-                    }
-                }
-                if(count($data_group_news)){
-                    if(!DB::table('group_video_vn')->insert($data_group_news)) $check = 0;
-                }
             }else $check = 0;
 
             if($check == 1){
@@ -180,26 +157,6 @@ class VideoController extends Controller
             DB::beginTransaction();
             $check = 1;
             if(!$video->update($data)) $check = 0;
-
-            if(!DB::table('group_video_vn')->where('video_vn_id',$video->id)->delete()) {$check = 0;}
-
-
-
-            $data_group_video = [];
-
-            if(count($group_id)){
-                foreach ($group_id as $val){
-                    $item = [
-                        'group_vn_id' => $val,
-                        'video_vn_id' => (string)$video->id
-                    ];
-                    $data_group_video[] = $item;
-                }
-            }
-
-            if(count($data_group_video)){
-                if(!DB::table('group_video_vn')->insert($data_group_video)){$check = 0;}
-            }
 
             $status_id = 0;
             $status_str = "Editted: Sửa video";
@@ -225,8 +182,6 @@ class VideoController extends Controller
         $video = DB::table('video_vn')->find($id);
 
         if(!DB::table('video_vn')->delete($id)) $check = 0;
-
-        if(!DB::table('group_video_vn')->where('video_vn_id',$id)->delete()) $check = 0;
 
         $status_id = 4;
         $status_str = "Xóa video";
@@ -305,4 +260,6 @@ class VideoController extends Controller
             ]);
         }
     }
+
+
 }

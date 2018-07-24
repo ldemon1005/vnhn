@@ -9,10 +9,20 @@
 	}
 	function cut_string_name($text, $length)
 	{
+	    $check = strlen($text) > $length;
 	    if(strlen($text) > $length) {
 	    	$text = $text.' ';
 	        $text = substr($text, 0, $length).'...';
 	    }
+
+	    $tmp = explode(' ',$text);
+	    if($check) unset($tmp[count($tmp) - 1]);
+	    if($check){
+            $text = implode(' ',$tmp).'...';
+        }else {
+            $text = implode(' ',$tmp);
+        }
+
 	    return $text;
 	}
 
