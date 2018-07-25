@@ -4,10 +4,10 @@
             <div class="row menu-footer">
                 <ul class="menu-footer-top">
                     <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
-                    <li class="lang"><a href="{{ asset('') }}">Đặt làm trang chủ</a></li>
+                    <li class="lang respon768"><a href="{{ asset('') }}">Đặt làm trang chủ</a></li>
                     <li class="lang"><a href="{{ asset('') }}">Liên hệ quảng cáo</a></li>
-                    <li class="lang"><a href="{{ asset('') }}">Đường dây nóng: 0964.32.83.83</a></li>
-                    <li class="lang"><a href="{{ asset('') }}">Email: info@vietnamhoinhap.com</a></li>
+                    <li class="lang respon768"><a href="{{ asset('') }}">Đường dây nóng: 0964.32.83.83</a></li>
+                    <li class="lang respon768"><a href="{{ asset('') }}">Email: info@vietnamhoinhap.com</a></li>
                 </ul>
             </div>
 

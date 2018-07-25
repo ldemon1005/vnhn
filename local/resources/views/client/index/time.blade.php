@@ -1,5 +1,15 @@
 @extends('client.master')
 @section('css')
+    <style>
+        a{
+            text-decoration: none;
+            color: #000000;
+        }
+        a:hover{
+            text-decoration: none;
+            color: #000000;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="css/time.css">
 @stop
 @section('main')
@@ -19,12 +29,14 @@
                     <div class="new-left-time">
                         <div class="row">
                             <div class="new-item-time">
-                                <div class="avatar">
-                                    <a href="#"><img src="{{ file_exists(asset('/local/resources'.$list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}"></a>
-                                </div>
-                                <h3 class="title">{{$list_articel_hot[0]->title}}</h3>
-                                <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
-                                <p class="caption">{{$list_articel_hot[0]->summary}}</p>
+                                <a href="{{ route('get_detail_articel',$list_articel_hot[0]->slug.'---n-'.$list_articel_hot[0]->id) }}">
+                                    <div class="avatar">
+                                        <img src="{{ file_exists(asset('/local/resources'.$list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}">
+                                    </div>
+                                    <h3 class="title">{{$list_articel_hot[0]->title}}</h3>
+                                    <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
+                                    <p class="caption">{{$list_articel_hot[0]->summary}}</p>
+                                </a>
                             </div>
                             <div class="new-list-right-time">
                                 <div class="caption">
@@ -33,8 +45,10 @@
                                 <div class="list-new">
                                     @foreach($articel_top_view as $top_view)
                                         <div class="item-top-view">
-                                            <h3 class="title">{{$top_view->title}}</h3>
-                                            <p class="date-time">{{$top_view->release_time}}</p>
+                                            <a href="{{ route('get_detail_articel',$top_view->slug.'---n-'.$top_view->id) }}">
+                                                <h3 class="title">{{$top_view->title}}</h3>
+                                                <p class="date-time">{{$top_view->release_time}}</p>
+                                            </a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -44,13 +58,15 @@
                             <div class="new-list-bottom-time">
                                 @for($i = 1;$i<count($list_articel_hot);$i++)
                                     <div class="item-bottom">
-                                        <div class="avatar">
-                                            <a href="#"><img src="{{ file_exists(asset('/local/resources'.$list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[$i]->fimage }}"></a>
-                                        </div>
-                                        <div class="content">
-                                            <h3 class="title">{{$list_articel_hot[$i]->title}}</h3>
-                                            <p class="date-time">{{$list_articel_hot[$i]->release_time}}</p>
-                                        </div>
+                                        <a href="{{ route('get_detail_articel',$list_articel_hot[$i]->slug.'---n-'.$list_articel_hot[$i]->id) }}">
+                                            <div class="avatar">
+                                                <img src="{{ file_exists(asset('/local/resources'.$list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[$i]->fimage }}">
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">{{$list_articel_hot[$i]->title}}</h3>
+                                                <p class="date-time">{{$list_articel_hot[$i]->release_time}}</p>
+                                            </div>
+                                        </a>
                                     </div>
                                 @endfor
                             </div>
@@ -84,14 +100,16 @@
                                 <div class="list-section2-left-top">
                                     @foreach($list_articel as $articel)
                                         <div class="item">
-                                            <div class="content">
-                                                <h3 class="title">{!! cut_string_name($articel->title,60) !!}</h3>
-                                                <p class="date-time">{{date('d/m/Y H:m',$articel->release_time)}}</p>
-                                                <p class="caption">{{substr($articel->summary,0,220)}} {{strlen($articel->summary) >220 ? '...':''}}</p>
-                                            </div>
-                                            <div class="avatar">
-                                                <a href="#"><img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
-                                            </div>
+                                            <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
+                                                <div class="content">
+                                                    <h3 class="title">{!! cut_string_name($articel->title,60) !!}</h3>
+                                                    <p class="date-time">{{date('d/m/Y H:m',$articel->release_time)}}</p>
+                                                    <p class="caption">{{substr($articel->summary,0,220)}} {{strlen($articel->summary) >220 ? '...':''}}</p>
+                                                </div>
+                                                <div class="avatar">
+                                                    <a href="#"><img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
+                                                </div>
+                                            </a>
                                         </div>
                                         <hr style="border-top: 2px solid #999999"/>
                                     @endforeach
@@ -114,13 +132,15 @@
                                             <div class="content">
                                                 @foreach($item->articel as $articel)
                                                     <div class="item-top">
-                                                        <h3 class="title">{!! cut_string_name($articel->title,60) !!}</h3>
-                                                        @if($loop->index == 0)
-                                                            <div class="avatar">
-                                                                <a href="#"><img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
-                                                            </div>
-                                                        @endif
-                                                        <p class="date-time">{{$articel->release_time}}</p>
+                                                        <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
+                                                            <h3 class="title">{!! cut_string_name($articel->title,60) !!}</h3>
+                                                            @if($loop->index == 0)
+                                                                <div class="avatar">
+                                                                    <a href="#"><img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
+                                                                </div>
+                                                            @endif
+                                                            <p class="date-time">{{$articel->release_time}}</p>
+                                                        </a>
                                                     </div>
                                                 @endforeach
                                             </div>

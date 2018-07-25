@@ -132,29 +132,6 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-ellipsis-h"></i>
-              <p>
-                Danh mục Video
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Sắp xếp</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Thêm danh mục</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-video"></i>
               <p>
                 Video
@@ -165,26 +142,10 @@
               <li class="nav-item">
                 <a href="{{route('admin_video')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Danh mục video</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="{{route('admin_video')}}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
                   <p>Danh sách video</p>
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-paperclip"></i>
-              <p>
-                Quản trị tin tiêu điểm
-              </p>
-            </a>
-            
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -216,7 +177,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{ asset('admin') }}" class="nav-link">
+            <a href="{{ asset('admin/comment') }}" class="nav-link">
               <i class="nav-icon fas fa-comments"></i>
               <p>
                 Quản trị bình luận

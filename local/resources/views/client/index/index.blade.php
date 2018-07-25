@@ -79,20 +79,24 @@
                             </div>
                             <div class="video">
                                 <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="{{ (file_exists(asset('/local/resources'.$list_video_new[0]->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$list_video_new[0]->url_video) ? : '') ? : $list_video_new[0]->url_video }}" allowfullscreen></iframe>
+                                    <iframe id="{{$list_video_new[0]->id}}" class="embed-responsive-item" src="{{ (file_exists(asset('/local/resources'.$list_video_new[0]->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$list_video_new[0]->url_video) ? : '') ? : $list_video_new[0]->url_video }}" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="list-video">
                                 <ul>
                                     <li>
-                                        <i class="fas fa-caret-right"></i>
-                                        {{$list_video_new[0]->title}}
+                                        <a style="cursor: pointer;text-decoration: none;color: #000000">
+                                            <i class="fas fa-caret-right"></i>
+                                            {{$list_video_new[0]->title}}
+                                        </a>
                                     </li>
 
                                     @for($i = 1;$i < count($list_video_new); $i++)
                                         <li>
-                                            <i class="fas fa-caret-right"></i>
-                                            {{$list_video_new[$i]->title}}
+                                            <a style="cursor: pointer;text-decoration: none;color: #000000" onclick="open_video('{{route('open_video',$list_video_new[$i]->id)}}')">
+                                                <i class="fas fa-caret-right"></i>
+                                                {{$list_video_new[$i]->title}}
+                                            </a>
                                         </li>
                                     @endfor
                                 </ul>
@@ -125,7 +129,7 @@
                                     </div>
                                     <h3 class="title">{{$list_articel_item[0]->title}}</h3>
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
-                                    <p class="caption">{{$list_articel_item[0]->summary}}</p>
+                                    <p class="caption">{!! $list_articel_item[0]->summary !!}</p>
                                 </a>
 
                             </div>

@@ -67,11 +67,11 @@
 }
 .menu-footer-top>li{
 	display: inline-block;
-    font-family: 'Muli', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    flex: auto;
-    border-left: 1px solid #ffffff;
+	font-family: 'Muli', sans-serif;
+	font-weight: 600;
+	font-size: 12px;
+	flex: auto;
+	border-left: 1px solid #ffffff;
 }
 .menu-footer-top>li:first-child{
 	border-left: 0;
@@ -262,7 +262,7 @@
 	height: 90px;
 	flex: 1;
 	text-align: right;
-	
+
 }
 
 #header-menu .menu-header {
@@ -279,13 +279,13 @@
 
 #header-menu .menu-header >li {
 	display: inline-block;
-    font-weight: 300;
-    font-size: 16px;
-    border-left: 1px solid #de474c;
-    margin-left: auto;
-    /*padding-left: 25px;*/
-    flex: auto;
-    text-align: center;
+	font-weight: 300;
+	font-size: 16px;
+	border-left: 1px solid #de474c;
+	margin-left: auto;
+	/*padding-left: 25px;*/
+	flex: auto;
+	text-align: center;
 }
 #header-menu .menu-header >li:last-child {
 	margin-right: -15px;
@@ -301,10 +301,10 @@
 
 #header-menu .menu-header >li a{
 	display: block;
-    font-family: 'Muli', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    width: 100%;
+	font-family: 'Muli', sans-serif;
+	font-weight: 600;
+	font-size: 12px;
+	width: 100%;
 }
 .scrollable-menu {
 	height: auto;

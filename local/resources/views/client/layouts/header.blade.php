@@ -44,7 +44,11 @@
                 <ul class="menu-header">
                     <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
                     @foreach($menu->chunk(6)[0] as $item)
-                        <li><a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a></li>
+                        @if($item->id == 19)
+                            <li><a href="javascrip:;">{{$item->title}}</a></li>
+                        @else
+                            <li><a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a></li>
+                        @endif
                     @endforeach
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

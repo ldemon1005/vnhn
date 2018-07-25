@@ -280,6 +280,16 @@ ul.mainDetailRightList li a{
 	height: 32px;
 	line-height: 32px;
 }
+
+.mainDetailLeftCommentMain input[type=email]{
+
+	background: #fafafa;
+	border: 1px solid #ccc;
+	outline: none;
+	height: 32px;
+	line-height: 32px;
+	width: 100%;
+}
 .mainDetailLeftCommentMain .mainDetailLeftCommentMainName_Email input[type=text]{
 	width: 100%;
 }

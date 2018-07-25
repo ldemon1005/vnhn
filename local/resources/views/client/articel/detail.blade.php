@@ -1,5 +1,11 @@
 @extends('client.master')
 @section('css')
+    <style>
+        .error{
+            color: red;
+            font-style: italic;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="css/detail.css">
 @stop
 @section('main')
@@ -23,7 +29,7 @@
                         {{$articel->day_in_week_str}}, {{$articel->release_time}} (GMT+7)
                     </div>
                     <div class="mainDetailLeftContent">
-                        {{$articel->content}}
+                        {!! $articel->content !!}
                     </div>
 
                     <div class="mainDetailLeftBanner">
@@ -61,16 +67,19 @@
                         <div class="mainDetailLeftInvolveMain">
                             @foreach($articel_related as $art_related)
                                 <div class="mainDetailLeftInvolveItem">
-                                    <div class="mainDetailLeftInvolveItemImg">
-                                        <img src="{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
-                                    </div>
-                                    <div class="mainDetailLeftInvolveItemContent">
-                                        {{$art_related->title}}
-                                    </div>
-                                    <div class="mainDetailLeftInvolveItemTime">
-                                        <i class="far fa-clock"></i>
-                                        {{$art_related->release_time}}
-                                    </div>
+                                    <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
+                                        <div class="mainDetailLeftInvolveItemImg">
+                                            <img src="{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
+                                        </div>
+                                        <div class="mainDetailLeftInvolveItemContent">
+                                            {{$art_related->title}}
+                                        </div>
+                                        <div class="mainDetailLeftInvolveItemTime">
+                                            <i class="far fa-clock"></i>
+                                            {{$art_related->release_time}}
+                                        </div>
+                                    </a>
+
                                 </div>
                             @endforeach
 
@@ -79,32 +88,32 @@
                     <div class="mainDetailLeftComment">
                         <h4 class="mainDetailLeftTitle">Ý kiến của bạn</h4> 
                         <div class="mainDetailLeftCommentMain">
-                            <form method="post" action="{{route('action_comment')}}">
+                            <form id="comment_art" method="post" action="{{route('action_comment')}}">
                                 {{ csrf_field() }}
                                 <label>Nội dung</label>
                                 <div class="form-group">
-                                    <textarea name="comment[content]" rows="4" name="content"></textarea>
+                                    <textarea name="comment[content]" rows="4" required></textarea>
                                 </div>
                                 <div class="mainDetailLeftCommentMainName_Email">
                                     <div class="mainDetailLeftCommentMainName">
                                         <label>Họ tên</label>
                                         <div class="form-group">
-                                            <input name="comment[fullname]" type="text" name="name">
+                                            <input name="comment[fullname]" type="text" required>
                                         </div>
                                     </div>
                                     <div class="mainDetailLeftCommentMainEmail">
                                         <label>Email</label>
                                         <div class="form-group">
-                                            <input name="comment[email]" type="text" name="email">
+                                            <input name="comment[email]" type="email"  required>
                                         </div>
                                     </div>
                                 </div>
                                 <input name="comment[idnew]" value="{{$articel->id}}" class="d-none">
                                 <input name="comment[groupid]" value="{{$articel->groupid}}" class="d-none">
                                 <input name="comment[slug]" value="{{$articel->slug}}" class="d-none">
-                                <div class="g-recaptcha" data-sitekey="6LdT0GUUAAAAAD5_seQrV-mCYa7YQZ2iQ6O_hHot"></div>
-                                <div class="form-group">
-                                    <input type="submit" name="sbm" value="gửi bình luận">
+                                <div class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"></div>
+                                <div class="form-group" style="margin-top: 10px">
+                                    <button id="submit-comment" type="button" class="btn btn-danger">gửi bình luận</button>
                                 </div>
                             </form>
                         </div>
@@ -116,7 +125,7 @@
                         <h4 class="mainDetailRightTitle red">Bài được quan tâm</h4>
                         <ul class="mainDetailRightList">
                             @foreach($articel_top_view as $articel)
-                                <li><a href="{{ route('get_detail_articel',$articel->slug.'--'.$articel->id) }}"><i class="fas fa-caret-right"></i>{{$articel->title}}</a></li>
+                                <li><a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}"><i class="fas fa-caret-right"></i>{{$articel->title}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -148,13 +157,22 @@
                         <h4 class="mainDetailRightTitle red">
                             VNHN Video
                         </h4>
-                        <iframe width="100%" height="auto" src="https://www.youtube.com/embed/UXdPQnSJQp8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         <ul class="mainDetailRightList">
-                            <li><a href="{{ asset('') }}"><i class="fas fa-caret-right"></i>Ra mắt CLB Nhà báo Thành Nam</a></li>
-                            <li><a href="{{ asset('') }}"><i class="fas fa-caret-right"></i>Kí sự - Chuyến hành trình "Tri ân đồng đội - hướng về cội nguồn"</a></li>
-                            <li><a href="{{ asset('') }}"><i class="fas fa-caret-right"></i>Bản tin tạp trí Việt Nam Hội Nhập - Ngày 07.05.2018</a></li>
-                            <li><a href="{{ asset('') }}"><i class="fas fa-caret-right"></i>Kí sự - Chuyến hành trình "Tri ân đồng đội - hướng về cội nguồn"</a></li>
-                            <li><a href="{{ asset('') }}"><i class="fas fa-caret-right"></i>Bản tin tạp trí Việt Nam Hội Nhập - Ngày 07.05.2018</a></li>
+                            @foreach($list_video_new as $video)
+
+                                @if($loop->index == 0)
+                                    @if(file_exists(asset('/local/resources'.$video->url_video)))
+                                        <video height="auto" width="100%">
+                                            <source src="{{ asset('/local/resources'.$video->url_video) }}">
+                                        </video>
+                                    @else
+                                        <iframe width="100%" height="auto" src="{{ (file_exists(asset('/local/resources'.$video->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$video->url_video) ? : '') ? : $video->url_video }}">
+                                        </iframe>
+                                    @endif
+                                @endif
+                                <li><a style="cursor: pointer" onclick="open_video('{{route('open_video',$video->id)}}')"><i class="fas fa-caret-right"></i>{{$video->title}}</a></li>
+
+                            @endforeach
                         </ul>
                             
                     </div>
@@ -195,9 +213,42 @@
 </script>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script>
+        $("#comment_art").validate({
+            ignore: [],
+            rules : {
+                'comment[content]' : {
+                    required : true
+                },
+                'articel[fullname]' : {
+                    required : true
+                },
+                'articel[email]' : {
+                    required : true,
+                    email : true
+                }
+            },
+            messages : {
+                'comment[content]' : {
+                    required : 'Vui lòng nhập nội dung'
+                },
+                'comment[fullname]' : {
+                    required : 'Vui lòng nhập họ tên'
+                },
+                'comment[email]' : {
+                    required : 'Vui lòng chọn email',
+                    email : 'Vui lòng nhập đúng định dạnh email'
+                }
+            }
+        });
 
 
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-        async defer>
-</script>
+        $('#submit-comment').click(function () {
+            var recaptcha = $("#g-recaptcha-response").val();
+            if(recaptcha != ''){
+                $('#comment_art').submit();
+            }
+        })
+    </script>
 @stop

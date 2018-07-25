@@ -22,6 +22,31 @@ function historyArticel(id) {
     });
 }
 
+function open_comment(comment) {
+    $('.modal-body').html(comment);
+    $('#show_comment').modal('show');
+}
+
+function update_comment(id) {
+    $('#cm-status').addClass('disabled');
+    $.ajax({
+        url: '/admin/comment/update_comment/'+id,
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+        $('#cm-status').removeClass('disabled');
+    }).done(function (data, status) {
+        if(data.data == 0){
+            var str = '<button class="btn btn-sm btn-danger" onclick="update_comment('+id+')">Chưa duyệt</button>';
+        }else {
+            var str = '<button class="btn btn-sm btn-success" onclick="update_comment('+id+')">Đã duyệt</button>'
+        }
+        $('#status_comment').html(str);
+
+        $('#cm-status').removeClass('disabled');
+    });
+}
+
 function updateWebsiteInfo(id) {
     $.ajax({
         url: '/admin/website_info/get_detail/'+id,

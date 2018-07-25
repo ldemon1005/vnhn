@@ -132,7 +132,7 @@ class GroupController extends Controller
         $data = $request->get('group');
         $check = 1;
         foreach ($data as $key => $item){
-            $data['parentid'] ? $order = $data['parentid'].$item : $order = $item;
+            isset($data['parentid']) ? $order = $data['parentid'].$item : $order = $item;
             DB::table('group_vn')->where('id',$key)->update(['order' => $order]);
         }
         if($check == 1){

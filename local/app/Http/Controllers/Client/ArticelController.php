@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Model\News;
 use App\Models\Comment_vn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,10 @@ class ArticelController extends Controller
     public function get_detail($slug){
         $slug = explode('---n-',$slug);
 
-        $articel = DB::table('news_vn')->find($slug[1]);
+        $articel = News::find($slug[1]);
+
+        $articel->update(['view' => $articel->view + 1]);
+
         $content = DB::table('logfile_vn')->where('LogId',$slug[1])->first();
 
         $group_id = explode(',',$articel->groupid)[0];
@@ -124,7 +128,7 @@ class ArticelController extends Controller
 
         $comment['created_at'] = time();
 
-        $link = $comment['slug'].'--'.$comment['idnew'];
+        $link = $comment['slug'].'---n-'.$comment['idnew'];
 
         unset($comment['slug']);
 

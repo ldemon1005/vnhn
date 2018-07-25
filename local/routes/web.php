@@ -22,6 +22,8 @@ Route::group(['namespace' => 'Client'],function (){
     Route::group(['prefix' => 'group'],function(){
         Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
     });
+
+    Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
 });
 
 
@@ -124,6 +126,11 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/form_magazine/{id}','MagazineController@form_magazine')->name('form_magazine');
             Route::post('/action_magazine','MagazineController@action_magazine')->name('action_magazine');
             Route::get('/delete_magazine/{id}','MagazineController@delete_magazine')->name('delete_magazine');
+        });
+
+        Route::group(['prefix'=>'comment'],function(){
+            Route::get('/','CommentController@index')->name('admin_comment');
+            Route::get('/update_comment/{id}','CommentController@update_status')->name('update_comment');
         });
 	});
 });
