@@ -8,8 +8,7 @@
                         <div class="row">
                             <div class="col-md-12 new-left-main">
                                 <a href="{{ route('get_detail_articel',$list_articel_new[0]->slug.'---n-'.$list_articel_new[0]->id) }}" class="new-item">
-                                    <div class="avatar">
-                                        <img src="{{ file_exists(asset('/local/resources'.$list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}">
+                                    <div class="avatar" style="background: url('{{ file_exists(asset('/local/resources'.$list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}') no-repeat center /cover;">
                                     </div>
                                     <h3 class="title">{{$list_articel_new[0]->title}}</h3>
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_new[0]->release_time}}</p>
@@ -33,8 +32,7 @@
                             @for (  $i = 6;   $i < 10;    $i++)
                                 <div class="col-md-3">
                                     <a href="{{ route('get_detail_articel',$list_articel_new[$i]->slug.'---n-'.$list_articel_new[$i]->id) }}" class="article">
-                                        <div class="avatar">
-                                           <img src="{{ file_exists(asset('/local/resources'.$list_articel_new[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}">
+                                        <div class="avatar" style="background: url('{{ file_exists(asset('/local/resources'.$list_articel_new[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}');">
                                         </div>
                                         <h3 class="title">{{$list_articel_new[$i]->title}}</h3>
                                         <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
@@ -144,8 +142,7 @@
                                 @for($i = 1;$i < count($list_articel_item);$i++)
                                     <div class="list-right-item">
                                         <a href="{{ route('get_detail_articel',$list_articel_item[$i]->slug.'---n-'.$list_articel_item[$i]->id) }}">
-                                            <div class="avatar">
-                                                <img src="{{ file_exists(asset('/local/resources'.$list_articel_item[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}">
+                                            <div class="avatar" style="background: url('{{ file_exists(asset('/local/resources'.$list_articel_item[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}') no-repeat center /cover;">
                                             </div>
                                             <h3 class="title">{{$list_articel_item[$i]->title}}</h3>
                                             <p class="date-time">{{$list_articel_item[$i]->release_time}}</p>
@@ -203,8 +200,8 @@
                                     <div class="item">
                                         <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
                                             @if($loop->index == 0)
-                                                <div class="avatar">
-                                                    <img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}">
+                                                <div class="avatar" style="background: url('{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}') no-repeat center /cover;">
+                                                    
                                                 </div>
                                             @endif
                                             <div class="title">
@@ -249,17 +246,16 @@
 
                         <div class="row articel-bottom-left-item">
                             @foreach($list_articel_item_2 as $articel)
-                                <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
-                                    <div class="col-md-6">
-                                        <div class="avatar">
-                                            <a href="#"><img
-                                                        src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
+                                
+                                <div class="col-md-6">
+                                    <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
+                                        <div class="avatar" style="background: url('{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}') no-repeat center /cover;">
                                         </div>
                                         <h3 class="title">{{$articel->title}}</h3>
                                         <p class="date-time"><i class="far fa-clock"></i> {{$articel->release_time}}</p>
                                         <p class="caption">{{$articel->summary}}</p>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             @endforeach
                             
                         </div>

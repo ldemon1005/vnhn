@@ -19,12 +19,12 @@
 }
 
 .articel-new .new-left a.new-item{
-	width: 295px;
+	width: 65%;
     margin-right: 30px;
     display: block;
     color: #000;
     text-decoration: none;
-    flex: auto;
+    
 }
 
 .articel-new .new-left .new-list-right{
@@ -37,6 +37,11 @@
     overflow: hidden;
     margin-bottom: 10px;
 
+}
+.articel-new .new-left .new-item .avatar:after{
+	content: "";
+    display: block;
+    padding-top: 56%;
 }
 
 .articel-new .new-left .new-item .title{
@@ -70,9 +75,14 @@
 }
 
 .articel-new .new-list-bottom .avatar{
-	width: 193px;
-	height: 120px;
-	overflow: hidden;
+
+    background-position: center;
+    background-size: cover;
+}
+.articel-new .new-list-bottom .avatar:after {
+    content: "";
+    display: block;
+    padding-top: 56%;
 }
 
 .articel-new .new-list-bottom .title{
@@ -239,8 +249,8 @@
 	flex: 1;
 }
 
-.item-category .avatar {
-	height: 528px;
+.category-1-left .item-category .avatar {
+	height: 60vh;
 	overflow: hidden;
 
 }
@@ -341,10 +351,15 @@ a{
 }
 
 .category-1 .category-1-right .item-top-view .avatar{
-	width: 80px;
+	width: 28%;
 	margin-left: 10px;
 }
+/*.category-1 .category-1-right .item-top-view .avatar:after{
+	content: "";
+	display: block;
+	margin-top: 56%;
 
+}*/
 .category-1 .category-1-right .item-top-view .avatar img{
 	width: 100%;
 }
@@ -392,9 +407,14 @@ a{
 }
 
 .category .item .avatar {
-	width: auto;
-	height:175px;
-	overflow: hidden;
+	display: block;
+	margin-bottom: 10px;
+}
+.category .item .avatar:after{
+	content: "";
+	display: block;
+	padding-bottom: 56%;
+
 }
 
 .category .item .avatar img {
@@ -453,11 +473,17 @@ a.article{
 .articel-bottom-right{
 	flex: 1;
 }
-
+.articel-bottom-left-item a{
+	text-decoration: none;
+	color: #000;
+}
 .articel-bottom-left-item .avatar {
-	height: 265px;
 	width: auto;
-	overflow: hidden;
+}
+.articel-bottom-left-item .avatar:after{
+	content: "";
+	display: block;
+	padding-bottom: 56%;
 }
 
 .articel-bottom-left-item img{
@@ -505,6 +531,15 @@ a.article{
 .list-right-item a{
 	text-decoration: none;
 	color: #000000;
+}
+.list-right-item a .avatar{
+	display: block;
+}
+.list-right-item a .avatar:after{
+	content: "";
+    display: block;
+    padding-top: 56%;
+	
 }
 
 
