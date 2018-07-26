@@ -6,7 +6,9 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController
@@ -14,12 +16,17 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public $menu;
+    public $db;
 
     public function __construct()
     {
         // Fetch the Site Settings object
-        $this->menu = $this->get_menu_top();
-        View::share('menu', $this->menu);
+        $this->middleware(function ($request, $next) {
+            $this->db = (object)$this->get_db();
+            $this->menu = $this->get_menu_top();
+            View::share('menu', $this->menu);
+            return $next($request);
+        });
     }
 
     public static function recusiveGroup($data,$parent_id = 0,$text = "",&$result){
@@ -33,8 +40,11 @@ class Controller extends BaseController
         }
     }
 
-    public static function get_menu_top(){
-        $menu = DB::table('group_vn')->where('status',1)->where('parentid','00')->orderBy('order')->get();
+    public function get_menu_top(){
+        $menu = DB::table($this->db->group)->where('status',1)->where('parentid','00')->orderBy('order')->get();
+        foreach ($menu as $val){
+            $val->child = DB::table($this->db->group)->where('parentid',$val->id)->get();
+        }
         return $menu;
     }
 
@@ -48,4 +58,38 @@ class Controller extends BaseController
         return $articel;
     }
 
+
+    function get_db(){
+        $lang = Session::get('lang','vn');
+        Config::set('app.locale',$lang);
+        if($lang == 'vn'){
+            return [
+                'group_news' => 'group_news_vn',
+                'group' => 'group_vn',
+                'group_video' => 'group_video_vn',
+                'menu_video' => 'menu_video_vn',
+                'logfile' => 'logfile_vn',
+                'menu_top' => 'menu_top_vn',
+                'new_news' => 'new_news_vn',
+                'news' => 'news_vn',
+                'video' => 'video_vn',
+                'web_info' => 'webinfo_vn',
+                'magazine' => 'magazine_vn'
+            ];
+        }else{
+            return [
+                'group_news' => 'group_news_en',
+                'group' => 'group_en',
+                'group_video' => 'group_video_en',
+                'menu_video' => 'menu_video_en',
+                'logfile' => 'logfile_en',
+                'menu_top' => 'menu_top_en',
+                'new_news' => 'new_news_en',
+                'news' => 'news_en',
+                'video' => 'video_vn',
+                'web_info' => 'webinfo_en',
+                'magazine' => 'magazine_vn'
+            ];
+        }
+    }
 }

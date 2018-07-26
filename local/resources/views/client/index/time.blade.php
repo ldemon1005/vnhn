@@ -40,7 +40,7 @@
                             </div>
                             <div class="new-list-right-time">
                                 <div class="caption">
-                                    <h3>ĐỌC NHIỀU</h3>
+                                    <h3>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đọc nhiều' : 'Top view'}}</h3>
                                 </div>
                                 <div class="list-new">
                                     @foreach($articel_top_view as $top_view)
@@ -93,7 +93,7 @@
                         <div class="row section2-left-top">
                             <div class="time-hot">
                                 <div class="title-parent">
-                                    <p>Danh sách bài viết</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List articel'}}</p>
                                 </div>
                                 <hr style="border-top: 2px solid #000000"/>
 

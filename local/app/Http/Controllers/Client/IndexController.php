@@ -8,11 +8,11 @@ use App\Models\Video_vn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
 {
     public function index(){
-
         /*
          *  phần new
          */
@@ -63,12 +63,13 @@ class IndexController extends Controller
 
         return view('client.index.index',$data);
     }
+
     public function time(){
     	return view('client.index.time');
     }
 
     public function get_new_articel(){
-        $list_articel_new = DB::table('news_vn')->where('hot_main',1)->where('release_time','<=',time())->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
+        $list_articel_new = DB::table($this->db->news)->where('hot_main',1)->where('release_time','<=',time())->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
         foreach ($list_articel_new as $item){
             if(time() - $item->release_time > 86400) {
                 $item->release_time = date('d/m/Y H:m',$item->release_time);
@@ -81,20 +82,21 @@ class IndexController extends Controller
     }
 
     public function get_video_new(){
-        $list_video_new = DB::table('video_vn')->where('release_time','<=',time())->take(5)->get();
+        $list_video_new = DB::table($this->db->video)->where('release_time','<=',time())->take(5)->get();
         return $list_video_new;
     }
 
     public function get_magazine_new(){
-        $magazine = DB::table('magazine_vn')->where('status',1)->orderByDesc('id')->first();
+        $magazine = DB::table($this->db->magazine)->where('status',1)->orderByDesc('id')->first();
         $magazine->slide_show = json_decode($magazine->slide_show);
         return $magazine;
     }
     public function get_articel_item($position){
-        $menu_time = DB::table('group_vn')->where('home_index',1)->orderBy('order')->take(2)->get()->chunk(1);
+        $menu_time = DB::table($this->db->group)->where('home_index',1)->orderBy('order')->take(2)->get()->chunk(1);
+
         $menu_time = $menu_time[$position][$position];
 
-        $menu_child = DB::table('group_vn')->where('parentid',$menu_time->id)->get();
+        $menu_child = DB::table($this->db->group)->where('parentid',$menu_time->id)->get();
 
         $list_group_ids[] = $menu_time->id;
 
@@ -102,13 +104,13 @@ class IndexController extends Controller
             $list_group_ids[] = $menu->id;
         }
 
-        $list_articel_ids = DB::table('group_news_vn')->whereIn('group_vn_id',$list_group_ids)->get(['news_vn_id'])->toJson();
+        $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$list_group_ids)->get(['news_vn_id'])->toJson();
         $list_articel_ids = array_column(json_decode($list_articel_ids,true),'news_vn_id');
 
         if($position == 0){
-            $list_articel = DB::table('news_vn')->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(3)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(3)->get();
         }else {
-            $list_articel = DB::table('news_vn')->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(4)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(4)->get();
         }
 
         foreach ($list_articel as $item){
@@ -120,7 +122,7 @@ class IndexController extends Controller
             }
         }
 
-        $list_top_view = DB::table('news_vn')->whereIn('id',$list_articel_ids)->orderByDesc('view')->take(5)->get();
+        $list_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->orderByDesc('view')->take(5)->get();
 
         foreach ($list_top_view as $item){
             if(time() - $item->release_time > 86400) {
@@ -130,7 +132,6 @@ class IndexController extends Controller
                 $item->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
             }
         }
-
         return [
             'menu_time' => $menu_time,
             'menu_child' => $menu_child->take(4),
@@ -143,7 +144,7 @@ class IndexController extends Controller
         $groups = Group_vn::where('home_index',1)->orderBy('order')->take(10)->get()->slice(2,8);
 
         foreach ($groups as $group){
-            $group->articel = $group->belongsToMany(News::class,'group_news_vn','group_vn_id','news_vn_id')->orderByDesc('id')->take(5)->get();
+            $group->articel = $group->belongsToMany(News::class,$this->db->group_news,'group_vn_id','news_vn_id')->orderByDesc('id')->take(5)->get();
         }
         $groups = $groups->chunk(4);
         return $groups;

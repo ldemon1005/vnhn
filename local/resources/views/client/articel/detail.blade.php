@@ -63,7 +63,7 @@
                     </div> --}}
 
                     <div class="mainDetailLeftInvolve">
-                        <h4 class="mainDetailLeftTitle">Bài được quan tâm</h4> 
+                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
                         <div class="mainDetailLeftInvolveMain">
                             @foreach($articel_related as $art_related)
                                 <div class="mainDetailLeftInvolveItem">
@@ -86,17 +86,17 @@
                         </div>
                     </div>
                     <div class="mainDetailLeftComment">
-                        <h4 class="mainDetailLeftTitle">Ý kiến của bạn</h4> 
+                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ý kiến của bạn' : 'Your opinion'}}</h4>
                         <div class="mainDetailLeftCommentMain">
                             <form id="comment_art" method="post" action="{{route('action_comment')}}">
                                 {{ csrf_field() }}
-                                <label>Nội dung</label>
+                                <label>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Nội dung' : 'Content'}}</label>
                                 <div class="form-group">
                                     <textarea name="comment[content]" rows="4" required></textarea>
                                 </div>
                                 <div class="mainDetailLeftCommentMainName_Email">
                                     <div class="mainDetailLeftCommentMainName">
-                                        <label>Họ tên</label>
+                                        <label>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Họ tên' : 'Fullname'}}</label>
                                         <div class="form-group">
                                             <input name="comment[fullname]" type="text" required>
                                         </div>
@@ -113,7 +113,7 @@
                                 <input name="comment[slug]" value="{{$articel->slug}}" class="d-none">
                                 <div class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"></div>
                                 <div class="form-group" style="margin-top: 10px">
-                                    <button id="submit-comment" type="button" class="btn btn-danger">gửi bình luận</button>
+                                    <button id="submit-comment" type="button" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'gửi bình luận' : 'submit comment'}}</button>
                                 </div>
                             </form>
                         </div>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="mainDetailRight">
                     <div class="mainDetailRightFollow">
-                        <h4 class="mainDetailRightTitle red">Bài được quan tâm</h4>
+                        <h4 class="mainDetailRightTitle red">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
                         <ul class="mainDetailRightList">
                             @foreach($articel_top_view as $articel)
                                 <li><a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}"><i class="fas fa-caret-right"></i>{{$articel->title}}</a></li>
@@ -131,7 +131,7 @@
                     </div>
                     <div class="mainDetailRightJournal">
                         <h4 class="mainDetailRightTitle red">
-                            Tạp trí thường kì
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tạp trí thường kì' : 'Regular magazine'}}
                         </h4>
                         <div class="slide">
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -191,54 +191,61 @@
     </div>
 @stop
 @section('script')
+    <script src="js/jquery.validate.min.js"></script>
 
-<script type="text/javascript">
-    $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:0,
-        nav:true,
-        autoHeight:true,
-        responsive:{
-            0:{
-                items:1
-            },
-            992:{
-                items:2
-            },
-            1000:{
-                items:2
+    <script type="text/javascript">
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 0,
+            nav: true,
+            autoHeight: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                992: {
+                    items: 2
+                },
+                1000: {
+                    items: 2
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+
+
+    @if(\Illuminate\Support\Facades\Config::get('app.locale') == 'vn')
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    @else
+        <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
+    @endif
+    {{--<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>--}}
     <script>
         $("#comment_art").validate({
             ignore: [],
-            rules : {
-                'comment[content]' : {
-                    required : true
+            rules: {
+                'comment[content]': {
+                    required: true
                 },
-                'articel[fullname]' : {
-                    required : true
+                'articel[fullname]': {
+                    required: true
                 },
-                'articel[email]' : {
-                    required : true,
-                    email : true
+                'articel[email]': {
+                    required: true,
+                    email: true
                 }
             },
-            messages : {
-                'comment[content]' : {
-                    required : 'Vui lòng nhập nội dung'
+            messages: {
+                'comment[content]': {
+                    required: 'Vui lòng nhập nội dung'
                 },
-                'comment[fullname]' : {
-                    required : 'Vui lòng nhập họ tên'
+                'comment[fullname]': {
+                    required: 'Vui lòng nhập họ tên'
                 },
-                'comment[email]' : {
-                    required : 'Vui lòng chọn email',
-                    email : 'Vui lòng nhập đúng định dạnh email'
+                'comment[email]': {
+                    required: 'Vui lòng chọn email',
+                    email: 'Vui lòng nhập đúng định dạnh email'
                 }
             }
         });
@@ -246,7 +253,7 @@
 
         $('#submit-comment').click(function () {
             var recaptcha = $("#g-recaptcha-response").val();
-            if(recaptcha != ''){
+            if (recaptcha != '') {
                 $('#comment_art').submit();
             }
         })
