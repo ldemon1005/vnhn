@@ -7,6 +7,7 @@ use App\Models\Comment_vn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ArticelController extends Controller
 {
@@ -17,11 +18,11 @@ class ArticelController extends Controller
 
         $articel->update(['view' => $articel->view + 1]);
 
-        $content = DB::table('logfile_vn')->where('LogId',$slug[1])->first();
+        $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->first();
 
         $group_id = explode(',',$articel->groupid)[0];
 
-        $groups = DB::table('group_vn')->where('status',1)->get();
+        $groups = DB::table($this->db->group)->where('status',1)->get();
 
         $this->recusive_menu_parent($groups,$group_id,$result,$group_related);
 
@@ -29,9 +30,9 @@ class ArticelController extends Controller
 
         $group_related = array_unique($group_related);
 
-        $list_group = DB::table('group_vn')->whereIn('id',$result)->get();
+        $list_group = DB::table($this->db->group)->whereIn('id',$result)->get();
 
-        $articel_related = DB::table('news_vn')->whereIn('groupid',$group_related)->orderBy('order_item')->orderByDesc('release_time')->take(3)->get();
+        $articel_related = DB::table($this->db->news)->whereIn('groupid',$group_related)->orderBy('order_item')->orderByDesc('release_time')->take(3)->get();
 
         foreach ($articel_related as $item){
             $this->get_time($item);
@@ -45,15 +46,28 @@ class ArticelController extends Controller
 
         $day_in_week_str = '';
 
-        switch ($day_in_week){
-            case 1 : $day_in_week_str = 'Thứ 2';break;
-            case 2 : $day_in_week_str = 'Thứ 3';break;
-            case 3 : $day_in_week_str = 'Thứ 4';break;
-            case 4 : $day_in_week_str = 'Thứ 5';break;
-            case 5 : $day_in_week_str = 'Thứ 6';break;
-            case 6 : $day_in_week_str = 'Thứ 7';break;
-            case 7 : $day_in_week_str = 'Chủ nhật';break;
+        if(Session::get('lang') == 'vn'){
+            switch ($day_in_week){
+                case 1 : $day_in_week_str = 'Thứ 2';break;
+                case 2 : $day_in_week_str = 'Thứ 3';break;
+                case 3 : $day_in_week_str = 'Thứ 4';break;
+                case 4 : $day_in_week_str = 'Thứ 5';break;
+                case 5 : $day_in_week_str = 'Thứ 6';break;
+                case 6 : $day_in_week_str = 'Thứ 7';break;
+                case 7 : $day_in_week_str = 'Chủ nhật';break;
+            }
+        }else {
+            switch ($day_in_week){
+                case 1 : $day_in_week_str = 'Monday';break;
+                case 2 : $day_in_week_str = 'Tuesday';break;
+                case 3 : $day_in_week_str = 'Wednesday';break;
+                case 4 : $day_in_week_str = 'Thursday';break;
+                case 5 : $day_in_week_str = 'Friday';break;
+                case 6 : $day_in_week_str = 'Saturday';break;
+                case 7 : $day_in_week_str = 'Sunday';break;
+            }
         }
+
 
         $articel->day_in_week_str = $day_in_week_str;
 
@@ -91,19 +105,19 @@ class ArticelController extends Controller
     }
 
     function articel_top_view($list_group){
-        $list_articel = DB::table('news_vn')->whereIn('groupid',$list_group)->orderBy('view')->orderByDesc('release_time')->take(5)->get();
+        $list_articel = DB::table($this->db->news)->whereIn('groupid',$list_group)->orderBy('view')->orderByDesc('release_time')->take(5)->get();
 
         return $list_articel;
     }
 
     public function get_magazine_new(){
-        $magazine = DB::table('magazine_vn')->where('status',1)->orderByDesc('id')->first();
+        $magazine = DB::table($this->db->magazine)->where('status',1)->orderByDesc('id')->first();
         $magazine->slide_show = json_decode($magazine->slide_show);
         return $magazine;
     }
 
     public function get_video_new(){
-        $list_video_new = DB::table('video_vn')->where('release_time','<=',time())->take(5)->get();
+        $list_video_new = DB::table($this->db->video)->where('release_time','<=',time())->take(5)->get();
         return $list_video_new;
     }
 

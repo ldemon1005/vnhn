@@ -8,6 +8,10 @@
                     </div>
                     <div class="top-header-menu">
                         <ul class="menu-left">
+                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 25px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
+                            <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
+                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 25px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
+                            <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="#"><p><i class="fas fa-phone"></i>096 432 8383</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="#"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>
@@ -78,7 +82,7 @@
                     
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Danh mục khác <span class="caret"></span></a>
+                           aria-expanded="false">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục khác' : 'Other Categories'}} <span class="caret"></span></a>
                         <ul id="either-menu" class="dropdown-menu scrollable-menu dropdown-menu-right text-left" style="background-color: #d71a21">
                             @for($i = 6;$i<$menu->count();$i++)
                                 <li><a href="{{ route('get_articel_by_group',$menu[$i]->slug.'---n-'.$menu[$i]->id) }}">{{$menu[$i]->title}}</a></li>

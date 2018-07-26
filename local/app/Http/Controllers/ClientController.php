@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -48,5 +49,12 @@ class ClientController extends Controller
             return "file not present";
         }
 
+    }
+
+    function set_lang($lang){
+        Session::put('lang',$lang);
+        return json_encode([
+            'status' => 1
+        ]);
     }
 }

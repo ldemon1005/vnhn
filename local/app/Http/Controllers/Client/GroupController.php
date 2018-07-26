@@ -22,16 +22,16 @@ class GroupController extends Controller{
          * list articel hot articel
          */
 
-        $list_group = DB::table('group_vn')->where('status',1)->get();
+        $list_group = DB::table($this->db->group)->where('status',1)->get();
 
         $result[] = $slug[1];
         $this->recusive_find_child($list_group,$slug[1],$result);
         $result = array_unique($result);
-        $list_articel_hot_ids = DB::table('group_news_vn')->whereIn('group_vn_id',$result)->where('hot',1)->get(['news_vn_id'])->toJson();
+        $list_articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->where('hot',1)->get(['news_vn_id'])->toJson();
 
         $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids,true),'news_vn_id');
 
-        $list_articel_hot = DB::table('news_vn')->whereIn('id',$list_articel_hot_ids)->take(5)->get();
+        $list_articel_hot = DB::table($this->db->news)->whereIn('id',$list_articel_hot_ids)->take(5)->get();
 
         $not_ids = [];
 
@@ -44,7 +44,7 @@ class GroupController extends Controller{
          *  articel top view
          */
 
-        $list_articel_ids = DB::table('group_news_vn')->whereIn('group_vn_id',$result)->get()->toJson();
+        $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->get()->toJson();
         $list_articel_ids = array_column(json_decode($list_articel_ids,true),'news_vn_id');
 
         $articel_top_view = $this->articel_top_view($list_articel_ids,$not_ids);
@@ -59,7 +59,7 @@ class GroupController extends Controller{
          * list articel
          */
 
-        $list_articel = DB::table('news_vn')->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->paginate(7);
+        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->paginate(7);
 
         $group_ids = array_column(json_decode($group_menu->toJson(),true),'id');
 
@@ -70,6 +70,7 @@ class GroupController extends Controller{
         foreach ($group_articel as $item){
             $item->articel = $item->get_news_take_4();
         }
+
         $data = [
             'group_menu_id' => $slug[1],
             'group_menu_cate' => $group_menu,
@@ -95,7 +96,7 @@ class GroupController extends Controller{
     }
 
     function articel_top_view($list_articel_ids,$not_ids){
-        $articel_top_view = DB::table('news_vn')->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->orderBy('view')->paginate(5);
+        $articel_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->orderBy('view')->paginate(5);
         return $articel_top_view;
     }
 
@@ -104,19 +105,19 @@ class GroupController extends Controller{
 
         if($group->parentid == '00'){
             $ids[] = $group->id;
-            $group_menu = DB::table('group_vn')->where('parentid',$group_id)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->where('parentid',$group_id)->take(6)->get();
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table('group_vn')->whereIn('id',$ids)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->take(6)->get();
         }else{
             $parentid = $group->parentid;
             $ids[] = $parentid;
-            $group_menu = DB::table('group_vn')->where('parentid',$parentid)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->where('parentid',$parentid)->take(6)->get();
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table('group_vn')->whereIn('id',$ids)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->take(6)->get();
         }
         return $group_menu;
     }

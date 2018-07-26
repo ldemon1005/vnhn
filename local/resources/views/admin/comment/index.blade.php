@@ -43,9 +43,10 @@
                                 <form action="{{ url('/admin/comment') }}" method="get">
                                     <div class="row form-group">
                                         <div class="col-md-3">
-                                            <select class="form-control select2" multiple="multiple"
+                                            <select class="form-control select2"
                                                     data-placeholder="Lọc theo trạng thái" name="comment[status][]"
                                                     style="width: 100%;">
+                                                <option value="3">Trạng thái</option>
                                                 <option value="0">Chưa duyệt</option>
                                                 <option value="1">Đã duyệt</option>
                                             </select>
@@ -72,7 +73,7 @@
                                     <tr>
                                         <td>{{$comment->news->title}}</td>
                                         <td>
-                                            <a href="{{ route('get_detail_articel',$comment->news->slug.'---n-'.$comment->news->id) }}">{{$comment->news->slug}}</a>
+                                            <a href="{{ route('get_detail_articel',$comment->news->slug.'---n-'.$comment->news->id) }}" target="_blank">{{$comment->news->slug}}</a>
                                         </td>
                                         <td>
                                             {{$comment->created_at}}

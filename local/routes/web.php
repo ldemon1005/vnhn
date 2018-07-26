@@ -26,7 +26,7 @@ Route::group(['namespace' => 'Client'],function (){
     Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
 });
 
-
+Route::get('/set_lang/{lang}','ClientController@set_lang')->name('set_lang');
 
 Route::get('login', 'Admin\LoginController@getLogin')->middleware('CheckLogout');
 Route::post('login', 'Admin\LoginController@postLogin');

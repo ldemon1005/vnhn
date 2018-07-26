@@ -24,10 +24,10 @@
                                             <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
                                         </a>
                                     @endfor
-                                    
+
                                 </div>
                             </div>
-                                
+
                         </div>
                         <div class="row new-list-bottom">
                             @for (  $i = 6;   $i < 10;    $i++)
@@ -47,10 +47,11 @@
                             <a href="#"><img src="{{asset('/local/resources/uploads/images/quang-cao-2.png')}}"></a>
                         </div>
                     </div>
+
                     <div class="new-right">
                         <section class="new-right-1">
                             <div class="category">
-                                <h3>Tạp chí thường kỳ</h3>
+                                <h3>{{\Illuminate\Support\Facades\Config::get('') == 'vn' ? 'Tạp chí thường kỳ' : 'Regular magazine'}}</h3>
                             </div>
                             <div class="slide">
 
@@ -113,10 +114,7 @@
                         <div class="row menu">
                             <div class="menu-parent">
                                 <a href="{{ route('get_articel_by_group',$menu_parent_item->slug.'---n-'.$menu_parent_item->id) }}">
-                                    <h3>
-                                        {{$menu_parent_item->title}}
-                                        
-                                    </h3>
+                                    <h3>{{cut_string_name($menu_parent_item->title,30)}}</h3>
                                 </a>
                             </div>
                             <div class="btnShowMenuChild">
@@ -140,8 +138,8 @@
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
                                     <p class="caption">{!! $list_articel_item[0]->summary !!}</p>
                                 </a>
-
                             </div>
+
                             <div class="list-right">
                                 @for($i = 1;$i < count($list_articel_item);$i++)
                                     <div class="list-right-item">
@@ -161,7 +159,7 @@
 
                     <div class="category-1-right">
                         <div class="title">
-                            <h3>Đọc nhiều</h3>
+                            <h3>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đọc nhiều' : 'Top view'}}</h3>
                         </div>
                         <section class="top-view">
                             @for ($i = 0; $i < count($list_top_view); $i++)
@@ -234,7 +232,7 @@
                         <div class="row menu">
                             <div class="menu-parent">
                                 <a href="{{ route('get_articel_by_group',$menu_parent_item_2->slug.'---n-'.$menu_parent_item_2->id) }}">
-                                    <h3>{{$menu_parent_item_2->title}}</h3>
+                                    <h3>{{cut_string_name($menu_parent_item_2->title,30)}}</h3>
                                 </a>
                             </div>
                             <div class="btnShowMenuChild">
