@@ -10,18 +10,21 @@
 	width: 800px;
 	margin-right: 50px;
 }
+.new-left-main{
+	display: flex;
+}
 
 .articel-new .new-right{
 	flex: 1;
 }
 
 .articel-new .new-left a.new-item{
-	width: 560px;
-	margin-left: 15px;
-	margin-right: 30px;
-	display: block;
-	color: #000;
-	text-decoration: none;
+	width: 295px;
+    margin-right: 30px;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    flex: auto;
 }
 
 .articel-new .new-left .new-list-right{
@@ -29,10 +32,10 @@
 }
 
 .articel-new .new-left .new-item .avatar{
-	width: 560px;
-	height: 360px;
-	overflow: hidden;
-	margin-bottom: 10px;
+	width: auto;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 10px;
 
 }
 
@@ -138,7 +141,7 @@
 
 .quangcao-2{
 	margin: 0;
-	width: 811px;
+	width: 100%;
 	height: 100px;
 	overflow: hidden;
 }
@@ -172,17 +175,25 @@
 
 .menu-parent h3 {
 	color: #ffffff;
-    line-height: 42px;
+    line-height: 30px;
     margin-bottom: 0px;
     font-family: "Times New Roman";
     font-weight: bold;
 	padding: 0 10px;
 }
-
+.btnShowMenuChild{
+	position: absolute;
+    padding: 7px 15px 7px 20px;
+    top: 0;
+    right: 0;
+    color: #fff;
+    line-height: 1;
+}
 .menu-child{
 	flex: 1;
 	text-align: left;
 	line-height: 42px;
+	display: block;
 }
 .menu-child ul.child{
 	margin-bottom: 0;
@@ -216,13 +227,12 @@
 }
 
 .category-1 .content{
-	margin-right: 0;
+	margin: 0;
 }
 
 .category-1 .content .item-category{
 	width: 490px;
 	margin-right: 30px;
-	margin-left: 15px;
 }
 
 .category-1 .content .list-right{
@@ -232,6 +242,7 @@
 .item-category .avatar {
 	height: 528px;
 	overflow: hidden;
+
 }
 
 .item-category .title {
@@ -242,7 +253,7 @@
 
 .item-category a{
 	text-decoration: none;
-	color: #000000;
+	color: #000;
 }
 
 
@@ -352,6 +363,7 @@
 	padding-top: 6px;
 	margin: 20px 15px 0;
 	margin-bottom: -15px;
+	overflow: hidden;
 }
 
 .category .item{
@@ -393,6 +405,7 @@
 .item-category .title-articel h3 {
 	font-size: 18px;
 	line-height: 30px;
+	color: #fff;
 }
 
 .item-category .title {
@@ -401,6 +414,7 @@
 
 .item-category .title:last-of-type {
 	border-bottom: 0px dashed #bfbfbf;
+	color: #d71a21;
 }
 
 .item-category hr {
@@ -464,7 +478,7 @@ a.article{
 
 .quangcao-4 {
 	margin-top: 30px;
-	height: 125px;
+	height: auto;
 	overflow: hidden;
 }
 .carousel-inner img {
@@ -482,3 +496,218 @@ a.article{
 	text-decoration: none;
 	color: #000000;
 }
+
+
+@media only screen and (max-width: 1200px) {
+    .articel-new .new-left{
+    	width: 730px;
+    }
+    .articel-new .new-list-bottom .avatar {
+	     width: auto; 
+	    height: 90px;
+	    margin-bottom: 10px;
+	}
+	
+	.category-1 .content .item-category {
+	    width: 100%;
+	    margin-right: 0;
+	}
+	.item-category .avatar {
+	    height: 40vh;
+	    margin-bottom: 10px;
+	}
+	.list-right-item a .avatar{
+		width: 22vw;
+	    float: left;
+	    margin-right: 20px;
+	}
+
+
+
+
+	.category-1 .category-1-left {
+	    width: 400px;
+	    height: auto;
+	    flex: auto;
+	}
+	.category-1 .category-1-right {
+	    flex: 1;
+	    width: 350px;
+	}
+	.category-1 .category-1-right .quangcao-3 {
+	    margin: 25px;
+	    width: 300px;
+	    height: 250px;
+	    overflow: hidden;
+	}
+	.menu-child {
+	    display: block;
+	}
+}
+@media only screen and (max-width: 992px) {
+    .articel-new .new-left {
+	    margin-right: 0; 
+	}
+
+
+	.category-1-left{
+		margin-right: 0;
+	}
+	.quangcao-4 a img{
+		width: 100%;
+	}
+
+	.category-1 .category-1-right .quangcao-3 {
+	    margin: 25px auto;
+	    width: 350px;
+	    height: auto;
+	}
+	.menu-child {
+	    display: block;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+   	.new-left-main {
+    	display: block;
+	}
+	.articel-new .new-left a.new-item {
+	    width: auto;
+	    margin-right: 0;
+	}
+	.articel-new .new-left a.new-item h3 {
+	    color: #d71a20;
+	}
+	.articel-new .new-right {
+	    display: none;
+	}
+	.articel-new .new-list-bottom .avatar {
+	    width: 20vw;
+	    height: auto;
+	    margin-bottom: 10px;
+	    margin-right: 20px;
+	    float: left;
+	}
+	.category-1 .category-1-left{
+		margin-right: 0;
+	}
+	.menu-parent {
+	    width: 100%;
+	    height: auto;
+	    background-color: #d71a21;
+	    text-align: left;
+	}
+	.menu-parent h3 {
+	    color: #ffffff;
+	    line-height: 30px;
+	    margin-bottom: 0px;
+	    font-family: 'Open Sans', sans-serif;
+	    font-weight: bold;
+	    padding: 0 10px;
+	    font-size: 12px;
+	    text-transform: uppercase;
+	}
+	.menu {
+	    padding-bottom: 0; 
+	    border-bottom: 0; 
+	    margin-bottom: 25px;
+	    margin-right: 0;
+	    position: relative;
+	}
+
+	.menu-child {
+	    flex: 1;
+	    text-align: left;
+	    /* line-height: 42px; */
+	    box-shadow: 1px 1px 4px #0002;
+	    position: absolute;
+	    width: 100%;
+	    background: #fff;
+	    top: 30px;
+	    z-index: 1;
+	    display: none;
+	}
+	.child li {
+	    line-height: 12px;
+	    display: block;
+	    border-left: 0; 
+	    padding: 0; 
+	    margin: 0;
+	    
+	}
+	.child li a {
+	    font-size: 14px;
+	    color: #000000;
+	    text-decoration: none;
+	    display: block;
+	    padding: 10px 30px;
+	    font-weight: 600;
+	    font-family: 'Open Sans', sans-serif;
+	    border-bottom: 1px solid #E5E5E5;
+	}
+
+
+	.item-category hr {
+		display: none;
+	}
+	.category .title-articel {
+	    height: auto;
+	    padding: 0;
+	    background-color: #d71a21;
+	    text-align: left;
+	    color: #ffffff;
+	    
+	    margin-bottom: 0;
+	    
+	}
+	.item-category .title-articel h3 {
+	    color: #ffffff;
+	    line-height: 30px;
+	    margin-bottom: 0px;
+	    font-family: 'Open Sans', sans-serif;
+	    font-weight: bold;
+	    padding: 0 10px;
+	    font-size: 12px;
+	    text-transform: uppercase;
+	}
+	.category .item .avatar {
+	    height: auto;
+	}
+	.item-category .item:first-child a .title h3{
+	    color: #d71a21;
+	}
+	.category .item{
+		border-left: 0;
+	}
+
+	.quangcao-group .item-quangcao{
+		height: auto;
+	}
+	.articel-bottom-left {
+	    width: 810px;
+	    margin-right: 0; 
+	}
+	.menu-footer {
+	    margin: 0; 
+	}
+
+}
+@media only screen and (max-width: 576px) {
+	#main{
+		width: 90vw;
+   		margin: auto;
+	}
+	.category-1-left .list-right-item .caption {
+	    font-size: 14px;
+	    font-family: "Times New Roman";
+	    display: none;
+	}
+}
+
+
+@media only screen and (max-width: 425px) {
+	.category-1 .category-1-right .quangcao-3 {
+	    width: 80vw;
+	}
+}
+

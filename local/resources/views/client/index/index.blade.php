@@ -6,25 +6,28 @@
                 <div class="row articel-new">
                     <div class="new-left">
                         <div class="row">
-                            <a href="{{ route('get_detail_articel',$list_articel_new[0]->slug.'---n-'.$list_articel_new[0]->id) }}" class="new-item">
-                                <div class="avatar">
-                                    <img src="{{ file_exists(asset('/local/resources'.$list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}">
+                            <div class="col-md-12 new-left-main">
+                                <a href="{{ route('get_detail_articel',$list_articel_new[0]->slug.'---n-'.$list_articel_new[0]->id) }}" class="new-item">
+                                    <div class="avatar">
+                                        <img src="{{ file_exists(asset('/local/resources'.$list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}">
+                                    </div>
+                                    <h3 class="title">{{$list_articel_new[0]->title}}</h3>
+                                    <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_new[0]->release_time}}</p>
+                                    <p class="caption">{{$list_articel_new[0]->summary}}</p>
+                                </a>
+                                <div class="new-list-right">
+                                    @for (  $i = 1;   $i < 6;    $i++)
+                                        <a href="{{ route('get_detail_articel',$list_articel_new[$i]->slug.'---n-'.$list_articel_new[$i]->id) }}" class="new-list-right-item">
+                                            <h3 class="title">
+                                                {{$list_articel_new[$i]->title}}
+                                            </h3>
+                                            <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
+                                        </a>
+                                    @endfor
+                                    
                                 </div>
-                                <h3 class="title">{{$list_articel_new[0]->title}}</h3>
-                                <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_new[0]->release_time}}</p>
-                                <p class="caption">{{$list_articel_new[0]->summary}}</p>
-                            </a>
-                            <div class="new-list-right">
-                                @for (  $i = 1;   $i < 6;    $i++)
-                                    <a href="{{ route('get_detail_articel',$list_articel_new[$i]->slug.'---n-'.$list_articel_new[$i]->id) }}" class="new-list-right-item">
-                                        <h3 class="title">
-                                            {{$list_articel_new[$i]->title}}
-                                        </h3>
-                                        <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
-                                    </a>
-                                @endfor
-                                
                             </div>
+                                
                         </div>
                         <div class="row new-list-bottom">
                             @for (  $i = 6;   $i < 10;    $i++)
@@ -110,8 +113,14 @@
                         <div class="row menu">
                             <div class="menu-parent">
                                 <a href="{{ route('get_articel_by_group',$menu_parent_item->slug.'---n-'.$menu_parent_item->id) }}">
-                                    <h3>{{$menu_parent_item->title}}</h3>
+                                    <h3>
+                                        {{$menu_parent_item->title}}
+                                        
+                                    </h3>
                                 </a>
+                            </div>
+                            <div class="btnShowMenuChild">
+                                <i class="fas fa-ellipsis-h"></i>
                             </div>
                             <div class="menu-child">
                                 <ul class="child">
@@ -124,8 +133,8 @@
                         <div class="row content">
                             <div class="item-category">
                                 <a href="{{ route('get_detail_articel',$list_articel_item[0]->slug.'---n-'.$list_articel_item[0]->id) }}">
-                                    <div class="avatar">
-                                        <img src="{{ file_exists(asset('/local/resources'.$list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}">
+                                    <div class="avatar" style="background: url('{{ file_exists(asset('/local/resources'.$list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}') no-repeat center 100% /cover;">
+                                        {{-- <img src="{{ file_exists(asset('/local/resources'.$list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}"> --}}
                                     </div>
                                     <h3 class="title">{{$list_articel_item[0]->title}}</h3>
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
@@ -228,6 +237,9 @@
                                     <h3>{{$menu_parent_item_2->title}}</h3>
                                 </a>
                             </div>
+                            <div class="btnShowMenuChild">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
                             <div class="menu-child">
                                 <ul class="child">
                                     @for($i = 0;$i < count($menu_child_item_2) ;$i++)
@@ -274,4 +286,7 @@
             </div>
         </section>
     </div>
+@stop
+@section('script')
+<script type="text/javascript" src="js/main.js"></script>
 @stop

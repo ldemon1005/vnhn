@@ -20,8 +20,8 @@ $(document).ready(function(){
 
 	var count1 = 2;
 	$('.btn_dropdown_menu_head').click(function(){
-		$(this).next().slideToggle();
-		// count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
-		// count1++;
+		$(this).prev().slideToggle();
+		count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
+		count1++;
 	});
 });

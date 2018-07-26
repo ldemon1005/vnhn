@@ -34,7 +34,8 @@ class Controller extends BaseController
     }
 
     public static function get_menu_top(){
-        $menu = DB::table('group_vn')->where('status',1)->where('parentid','00')->orderBy('order')->get();
+        // $menu = DB::table('group_vn')->where('status',1)->where('parentid','00')->orderBy('order')->get();
+        $menu = DB::table('group_vn')->where('status',1)->orderBy('order')->get();
         return $menu;
     }
 

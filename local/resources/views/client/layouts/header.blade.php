@@ -43,13 +43,39 @@
             <div class="row">
                 <ul class="menu-header">
                     <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
-                    @foreach($menu->chunk(6)[0] as $item)
-                        @if($item->id == 19)
-                            <li><a href="javascrip:;">{{$item->title}}</a></li>
-                        @else
-                            <li><a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a></li>
+                    <?php $count = 0;?>
+                    @foreach($menu as $item)
+                        @if ($item->parentid == '00')
+                            @if($item->id == 19)
+                                <li><a href="javascrip:;">{{$item->title}}</a></li>
+                            @else
+                                <li class="@if ( $count >= 5 ) menu_head_hide @endif">
+                                    <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
+                                    <?php $count1 = 0?>
+                                    <ul>
+                                        @foreach ($menu as $item3)
+                                            @if ($item3->parentid == $item->id)
+                                                <li>
+                                                    <a href="{{ route('get_articel_by_group',$item3->slug.'---n-'.$item3->id) }}">{{$item3->title}}</a>
+                                                </li>
+                                                <?php $count1 ++;?>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                    
+                                    @if ($count1 != 0)
+                                        <div class="btn_dropdown_menu_head">
+                                            <i class="fas fa-angle-down"></i>
+                                        </div>
+                                        
+                                    @endif
+                                </li>
+                            @endif
+                            <?php $count++ ;?>
+                            
                         @endif
                     @endforeach
+                    
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Danh mục khác <span class="caret"></span></a>
@@ -59,11 +85,17 @@
                             @endfor
                         </ul>
                     </li>
+                    <div class="btn_close_menu">
+                        <i class="fas fa-times"></i>
+                    </div>  
                 </ul>
             </div>
         </div>
     </section>
+    <div id="header_btnMenu">
+        <i class="fas fa-bars"></i>
+    </div>
 </div>
 
-@section('script')
-@stop
+{{-- @section('script')
+@stop --}}
