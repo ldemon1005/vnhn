@@ -156,7 +156,13 @@
 #header-menu .menu-header>li>ul{
 	display: none;
 	padding: 0;
+    height: 205px;
+    overflow-y: scroll;
 }
+#header-menu .menu-header>li>ul::-webkit-scrollbar{
+	width: 0px;
+}
+
 #header-menu .menu-header>li>ul>li>a{
 	display: block;
 	font-family: 'Muli', sans-serif;
@@ -327,8 +333,10 @@ ul.dropdown_child li a{
 
 #footer .footer-bottom{
 	display: flex;
-	padding-top: 25px;
+	padding-top: 30px;
 	padding-bottom: 55px;
+	font-family: 'Roboto', sans-serif;
+
 }
 
 #footer .footer-bottom .log-vnhn{
@@ -341,7 +349,7 @@ ul.dropdown_child li a{
 	width: 250px;
 	height: 142px;
 	margin-right: 36px;
-	line-height: 2px;
+	font-size: 13px;
 }
 
 #footer .footer-left p {
@@ -350,7 +358,6 @@ ul.dropdown_child li a{
 }
 
 #footer .footer-left .title{
-	line-height: 5px;
 	margin-top: 12px;
 }
 
@@ -358,7 +365,6 @@ ul.dropdown_child li a{
 	width: 200px;
 	height: 142px;
 	margin-left: 50px;
-	line-height: 5px;
 }
 
 #footer .footer-right .logo-social {
@@ -375,9 +381,10 @@ ul.dropdown_child li a{
 }
 
 #footer .footer-mid .title{
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: Bold;
 	color: #d71a21;
+	text-transform: uppercase;
 }
 
 #footer .footer-right .title{
@@ -397,15 +404,15 @@ ul.dropdown_child li a{
 
 #footer .footer-mid{
 	flex: 1;
-	line-height: 11px;
+	
 }
 
 #footer .footer-mid p{
-	font-size: 12px;
+	font-size: 13px;
+	line-height: 11px;
 }
 
 #footer .footer-mid span{
-	font-family: Arial;
 	font-weight: Bold;
 }
 
