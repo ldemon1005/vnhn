@@ -27,8 +27,9 @@
 	display: flex;
 }
 .mainDetailLeft{
-	width: 820px;
-	margin-right: 50px;
+	width: auto;
+    margin-right: 50px;
+    flex: 1;
 }
 .mainDetailLeft h1{
 	font-family: "Times New Roman";
@@ -42,7 +43,7 @@
 
 
 .mainDetailRight{
-	flex: 1;
+	width: 300px;
 }
 
 .mainDetailRightFollow{
@@ -366,16 +367,26 @@ ul.mainDetailRightList li a{
 	    height: 106px;
 	}
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
     .section1{
 		width: 540px;
 	}
 	.detailMain{
 		display: block;
 	}
+	.detailTitle{
+		border-bottom: 0;
+    	padding-bottom: 0;
+    	background: #F5F5F5;
+    	height: 34px;
+    	line-height: 34px;
+    	padding: 0 11px;
+    	font-size: 12px;
+	}
 	.mainDetailLeft{
 		margin-right: 0;
 		display: block;
+		width: 100%;
 	}
 	.mainDetailRight{
 		display: block;
@@ -433,9 +444,7 @@ ul.mainDetailRightList li a{
 	#header-top{
 		display: none;
 	}
-	#header-menu{
-		display: none;
-	}
+	
 	#header-banner{
 		line-height: 0;
 		height: 64px;
@@ -453,7 +462,7 @@ ul.mainDetailRightList li a{
 
 
     .section1{
-		width: 90%;
+		width: auto;
 		margin: auto;
 	}
 	.detailMain{
@@ -470,15 +479,7 @@ ul.mainDetailRightList li a{
 		width: 100%;
 	}
 
-	.detailTitle{
-		border-bottom: 0;
-    	padding-bottom: 0;
-    	background: #F5F5F5;
-    	height: 34px;
-    	line-height: 34px;
-    	padding: 0 11px;
-    	font-size: 12px;
-	}
+	
 	.mainDetailLeft h1 {
 	    font-family: "Times New Roman";
 	    font-weight: 600;

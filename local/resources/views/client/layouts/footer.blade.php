@@ -1,7 +1,26 @@
 <div id="footer">
     <section id="footer-top">
+        <div class="menu_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="menu_footer_left">
+                        <ul>
+                            <li class="lang respon768"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
+                            <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
+                            
+                            <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7: 0964.32.83.83</a></li>
+                            <li class="lang respon768"><a href="{{ asset('') }}">Đặt mua Tạp chí</a></li>
+                            <li class="lang"><a href="{{ asset('') }}">Liên hệ quảng cáo</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu_footer_right">
+                        [Trở về dầu trang]
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
-            <div class="row menu-footer">
+            {{-- <div class="row menu-footer">
                 <ul class="menu-footer-top">
                     <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
                     <li class="lang respon768"><a href="{{ asset('') }}">Đặt làm trang chủ</a></li>
@@ -9,7 +28,7 @@
                     <li class="lang respon768"><a href="{{ asset('') }}">Đường dây nóng: 0964.32.83.83</a></li>
                     <li class="lang respon768"><a href="{{ asset('') }}">Email: info@vietnamhoinhap.com</a></li>
                 </ul>
-            </div>
+            </div> --}}
 
             <div class="row footer-bottom">
                 <div class="footer-left">

@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="new-right">
-                        <section class="new-right-1">
+                        {{-- <section class="new-right-1">
                             <div class="category">
                                 <h3>{{\Illuminate\Support\Facades\Config::get('') == 'vn' ? 'Tạp chí thường kỳ' : 'Regular magazine'}}</h3>
                             </div>
@@ -74,7 +74,11 @@
                             <div class="title">
                                 <h3>{{$magazine_new->title}}</h3>
                             </div>
-                        </section>
+                        </section> --}}
+
+                        <div class="item-quangcao">
+                            <a><img src="{{asset('/local/resources/uploads/images/quang-cao-3.png')}}"></a>
+                        </div>
                         <section class="new-right-2">
                             <div class="category">
                                 <h3>VNHN video</h3>
@@ -262,9 +266,35 @@
                     </div>
                     <div class="articel-bottom-right">
                         <div class="quangcao-group">
-                            <div class="item-quangcao">
-                                <a><img src="{{asset('/local/resources/uploads/images/quang-cao-3.png')}}"></a>
-                            </div>
+                            <section class="new-right-1">
+                                <div class="category">
+                                    <h3>{{\Illuminate\Support\Facades\Config::get('') == 'vn' ? 'Tạp chí thường kỳ' : 'Regular magazine'}}</h3>
+                                </div>
+                                <div class="slide">
+
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach($magazine_new->slide_show as $slide_show)
+                                                <div class="carousel-item {{$loop->index == 0 ? 'active' : ''}}">
+                                                    <img class="d-block w-100" src="{{asset('/local/resources'.$slide_show)}}" alt="Second slide">
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <h3>{{$magazine_new->title}}</h3>
+                                </div>
+                            </section>
+                            
                             <div class="item-quangcao">
                                 <a><img src="{{asset('/local/resources/uploads/images/quang-cao-3.png')}}"></a>
                             </div>

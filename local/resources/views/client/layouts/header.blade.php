@@ -47,47 +47,46 @@
             <div class="row">
                 <ul class="menu-header">
                     <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
-                    <?php $count = 0;?>
-                    @foreach($menu as $item)
-                        @if ($item->parentid == '00')
-                            @if($item->id == 19)
-                                <li><a href="javascrip:;">{{$item->title}}</a></li>
-                            @else
-                                <li class="@if ( $count >= 5 ) menu_head_hide @endif">
-                                    <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
-                                    <?php $count1 = 0?>
-                                    <ul>
-                                        @foreach ($menu as $item3)
-                                            @if ($item3->parentid == $item->id)
-                                                <li>
-                                                    <a href="{{ route('get_articel_by_group',$item3->slug.'---n-'.$item3->id) }}">{{$item3->title}}</a>
-                                                </li>
-                                                <?php $count1 ++;?>
-                                            @endif
-                                        @endforeach
-                                    </ul>
+                    
+                    {{-- {{$menu->child}} --}}
+                    <?php $count=0?>
+                    @foreach ($menu as $item)
+                        @if($item->id == 19)
+                            <li><a href="javascrip:;">{{$item->title}}</a></li>
+                        @else
+                            <li class="@if ( $count >= 5 ) menu_head_hide @endif">
+                                <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
+                                <?php $count1 = 0?>
+                                @if (isset($item->child) && $item->child->count())
+                                <ul>
+                                    @foreach ($item->child as $child)
+                                        <li>
+                                            <a href="{{ route('get_articel_by_group',$child->slug.'---n-'.$child->id) }}">{{$child->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                
+                                <div class="btn_dropdown_menu_head">
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
                                     
-                                    @if ($count1 != 0)
-                                        <div class="btn_dropdown_menu_head">
-                                            <i class="fas fa-angle-down"></i>
-                                        </div>
-                                        
-                                    @endif
-                                </li>
-                            @endif
-                            <?php $count++ ;?>
-                            
+                                @endif
+                            </li>
                         @endif
+                        <?php $count++;?>
                     @endforeach
                     
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục khác' : 'Other Categories'}} <span class="caret"></span></a>
-                        <ul id="either-menu" class="dropdown-menu scrollable-menu dropdown-menu-right text-left" style="background-color: #d71a21">
-                            @for($i = 6;$i<$menu->count();$i++)
+                        <a>Chuyên mục khác</a>
+                        <?php $count1 = 0?>
+                        <ul class="dropdown_child">
+                            @for($i = 6; $i<$menu->count(); $i++)
                                 <li><a href="{{ route('get_articel_by_group',$menu[$i]->slug.'---n-'.$menu[$i]->id) }}">{{$menu[$i]->title}}</a></li>
                             @endfor
                         </ul>
+                        <div class="btn_dropdown_menu_head">
+                            <i class="fas fa-angle-down"></i>
+                        </div>
                     </li>
                     <div class="btn_close_menu">
                         <i class="fas fa-times"></i>

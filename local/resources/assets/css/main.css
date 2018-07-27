@@ -7,15 +7,16 @@
 }
 
 .articel-new .new-left{
-	width: 800px;
-	margin-right: 50px;
+	width: auto;
+    margin-right: 50px;
+    flex: 1;
 }
 .new-left-main{
 	display: flex;
 }
 
 .articel-new .new-right{
-	flex: 1;
+	width: 300px;
 }
 
 .articel-new .new-left a.new-item{
@@ -145,6 +146,9 @@
 	text-align: center;
 }
 
+.item-quangcao a img{
+	width: 100%;
+}
 .quangcao-2 img{
 	width:100%;
 }
@@ -466,12 +470,13 @@ a.article{
 }
 
 .articel-bottom-left{
-	width: 810px;
-	margin-right: 30px;
+	width: auto;
+    margin-right: 30px;
+    flex: 1;
 }
 
 .articel-bottom-right{
-	flex: 1;
+	width: 300px;
 }
 .articel-bottom-left-item a{
 	text-decoration: none;
@@ -495,7 +500,7 @@ a.article{
 }
 
 .quangcao-group .item-quangcao{
-	height: 250px;
+	height: auto;
 	overflow: hidden;
 	margin-bottom: 20px;
 }
@@ -545,7 +550,7 @@ a.article{
 
 @media only screen and (max-width: 1200px) {
     .articel-new .new-left{
-    	width: 730px;
+    	
     }
     .articel-new .new-list-bottom .avatar {
 	     width: auto; 
@@ -557,7 +562,7 @@ a.article{
 	    width: 100%;
 	    margin-right: 0;
 	}
-	.item-category .avatar {
+	.category-1-left .item-category .avatar {
 	    height: 40vh;
 	    margin-bottom: 10px;
 	}
@@ -587,15 +592,19 @@ a.article{
 	}
 	.menu-child {
 	    display: block;
+	    height: 42px;
+	    overflow: hidden;
 	}
 }
 @media only screen and (max-width: 992px) {
     .articel-new .new-left {
 	    margin-right: 0; 
 	}
+	.articel-new .new-right{
+		display: none;
+	}
 
-
-	.category-1-left{
+	.category-1 .category-1-left{
 		margin-right: 0;
 	}
 	.quangcao-4 a img{
@@ -610,9 +619,15 @@ a.article{
 	.menu-child {
 	    display: block;
 	}
+	.articel-bottom{
+		flex-direction: column;
+	}
+	.articel-bottom-right {
+	    width: auto;
+	}
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
    	.new-left-main {
     	display: block;
 	}
@@ -633,9 +648,12 @@ a.article{
 	    margin-right: 20px;
 	    float: left;
 	}
-	.category-1 .category-1-left{
+	/*.category-1 .category-1-left{
 		margin-right: 0;
-	}
+	}*/
+
+
+
 	.menu-parent {
 	    width: 100%;
 	    height: auto;
@@ -708,6 +726,7 @@ a.article{
 	.item-category .title-articel h3 {
 	    color: #ffffff;
 	    line-height: 30px;
+	    height: 30px;
 	    margin-bottom: 0px;
 	    font-family: 'Open Sans', sans-serif;
 	    font-weight: bold;
@@ -729,7 +748,7 @@ a.article{
 		height: auto;
 	}
 	.articel-bottom-left {
-	    width: 810px;
+	    width: auto;
 	    margin-right: 0; 
 	}
 	.menu-footer {
