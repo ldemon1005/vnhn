@@ -177,8 +177,10 @@
 }
 #header-menu .menu-header>li.dropdown .btn_dropdown_menu_head{
 	display: block;
-	color: #fff;
-	padding: 0;
+    color: #fff;
+    padding: 0 10px;
+    cursor: pointer;
+    margin-right: -15px;
 }
 #header-menu .menu-header>li.dropdown>a{
 	cursor: pointer;

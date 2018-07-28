@@ -240,12 +240,16 @@ ul.mainDetailRightList li a{
 	margin-left: 0;
 }
 .mainDetailLeftInvolveItemImg{
-	height: 163px;
 	margin-bottom: 10px;
 	overflow: hidden;
 }
-.mainDetailLeftInvolveItemImg img{
+/*.mainDetailLeftInvolveItemImg img{
 	height: 100%;
+}*/
+.mainDetailLeftInvolveItemImg:after{
+	content: "";
+	display: block;
+	padding-top: 56%;
 }
 .mainDetailLeftInvolveItemContent{
 	font-family: "Times New Roman";
@@ -364,7 +368,7 @@ ul.mainDetailRightList li a{
 		width: 142px;
 	}
 	.mainDetailLeftInvolveItemImg {
-	    height: 106px;
+	    height: auto;
 	}
 }
 @media only screen and (max-width: 768px) {
@@ -382,6 +386,7 @@ ul.mainDetailRightList li a{
     	line-height: 34px;
     	padding: 0 11px;
     	font-size: 12px;
+    	overflow: hidden;
 	}
 	.mainDetailLeft{
 		margin-right: 0;
@@ -424,8 +429,8 @@ ul.mainDetailRightList li a{
 		float: left;
 		margin-right: 20px;
 		margin-bottom: 0;
-		width: auto;
-		height: 104px;
+		width: 30vw;
+		height: auto;
 	}
 	.mainDetailLeftInvolveItemTime{
 		display: block;
@@ -494,6 +499,8 @@ ul.mainDetailRightList li a{
 	.mainDetailLeftCommentMainName_Email>div{
 		margin-left: 0;
 	}
-
+	.mainDetailLeftInvolveItemContent{
+		font-size: 13px;
+	}
 
 }

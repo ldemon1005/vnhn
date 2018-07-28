@@ -54,7 +54,7 @@
                         @if($item->id == 19)
                             <li><a href="javascrip:;">{{$item->title}}</a></li>
                         @else
-                            <li class="@if ( $count >= 5 ) menu_head_hide @endif">
+                            <li class="@if ( $count > 5 ) menu_head_hide @endif">
                                 <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
                                 <?php $count1 = 0?>
                                 @if (isset($item->child) && $item->child->count())

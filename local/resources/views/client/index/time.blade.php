@@ -22,6 +22,9 @@
                             <li class="{{$menu_cate->id == $group_menu_id ? 'active' : ''}}"><a href="{{ route('get_articel_by_group',$menu_cate->slug.'---n-'.$menu_cate->id) }}">{{$menu_cate->title}}</a></li>
                         @endforeach
                     </ul>
+                    <div class="btnShowListMenu"><i class="fas fa-ellipsis-h"></i>
+
+                    </div>
                 </div>
                 <hr style="margin: -13px -15px;border-bottom: 2px solid #000000;"/>
 
@@ -170,6 +173,6 @@
     </div>
 @stop
 
-@section('scrip')
+@section('script')
     <script src="{{ asset('local/resources/assets/js/time.js') }}"></script>
 @stop

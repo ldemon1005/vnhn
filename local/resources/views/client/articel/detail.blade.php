@@ -16,7 +16,7 @@
                     @if($loop->index != 0)
                         <i class="fas fa-angle-right"></i>
                     @endif
-                    <a href="{{ asset('') }}">
+                    <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">
                         {{$group->title}}
                     </a>
                 @endforeach
@@ -68,8 +68,7 @@
                             @foreach($articel_related as $art_related)
                                 <div class="mainDetailLeftInvolveItem">
                                     <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
-                                        <div class="mainDetailLeftInvolveItemImg">
-                                            <img src="{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
+                                        <div class="mainDetailLeftInvolveItemImg" style="background: url('{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}') no-repeat center /cover;">
                                         </div>
                                         <div class="mainDetailLeftInvolveItemContent">
                                             {{$art_related->title}}
