@@ -33,10 +33,10 @@
         <div class="container">
             <div class="row">
                 <div class="logo-vnhn">
-                    <a href="#"><img src="{{asset('local/resources/uploads/images/logo-vnhn.png')}}"></a>
+                    <a href="{{ asset('') }}"><img src="{{asset('local/resources/uploads/images/logo-vnhn.png')}}"></a>
                 </div>
                 <div class="quangcao-1">
-                    <a href="#"><img src="{{asset('local/resources/uploads/images/quang-cao-1.png')}}"></a>
+                    <a href="{{ asset('') }}"><img src="{{asset('local/resources/uploads/images/quang-cao-1.png')}}"></a>
                 </div>
             </div>
         </div>
