@@ -12,13 +12,13 @@
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 25px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a href="#"><p><i class="fas fa-phone"></i>096 432 8383</p></a></li>
+                            <li class="header-lang"><a href="#"><p><i class="fas fa-phone"></i>{{$web_info->hotline}}</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="#"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="list-icon">
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
+                                <a href="{{$web_info->facebook}}"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{$web_info->youtobe}}"><i class="fab fa-youtube"></i></a>
                                 <a href=""><i class="fas fa-envelope"></i></a>
                                 <a href=""><i class="fas fa-search" style="color: #303840"></i></a>
                             </li>

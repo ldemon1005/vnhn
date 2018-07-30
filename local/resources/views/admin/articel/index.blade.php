@@ -96,7 +96,7 @@
                                         </td>
                                         <td>
                                             <div class="avatar">
-                                                <img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}">
+                                                <img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}">
                                             </div>
                                         </td>
                                         <td>
