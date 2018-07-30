@@ -196,7 +196,7 @@
 
           <li class="nav-item has-treeview">
             <a href="{{ asset('admin/website_info') }}" class="nav-link">
-              <i class="nav-icon far fa-info"></i>
+              <i class="nav-icon fas fa-info-circle"></i>
               <p>
                 Thông tin website
               </p>

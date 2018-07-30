@@ -14,7 +14,7 @@
 .btn_close_menu{
 	position: absolute;
     top: 0;
-    right: 100%;
+    right: 20%;
     font-size: 22px;
     color: #fff;
     padding: 7px 20px;
@@ -156,7 +156,13 @@
 #header-menu .menu-header>li>ul{
 	display: none;
 	padding: 0;
+    height: 205px;
+    overflow-y: scroll;
 }
+#header-menu .menu-header>li>ul::-webkit-scrollbar{
+	width: 0px;
+}
+
 #header-menu .menu-header>li>ul>li>a{
 	display: block;
 	font-family: 'Muli', sans-serif;
@@ -168,6 +174,33 @@
     padding: 8px 15px;
     background: #F3F3F3;
 
+}
+#header-menu .menu-header>li.dropdown .btn_dropdown_menu_head{
+	display: block;
+    color: #fff;
+    padding: 0 10px;
+    cursor: pointer;
+    margin-right: -15px;
+}
+#header-menu .menu-header>li.dropdown>a{
+	cursor: pointer;
+}
+.dropdown_child {
+    position: absolute;
+    top: 102%;
+    right: -15px;
+    width: 200px;
+    z-index: 1;
+}
+.dropdown_child li{
+	list-style: none;
+}
+ul.dropdown_child li a{
+	background: #d71a21 !important;
+	padding: 0 15px !important;
+	color: #fff !important;
+	border-bottom: 1px solid #de474c;
+	text-align: right;
 }
 .btn_dropdown_menu_head{
 	display: none;
@@ -216,11 +249,49 @@
 
 #footer {
 	margin-top: 30px;
-	height: 235px;
-	background-color: #ffffff;
-	border-top: 3px solid #000000;
+/*	height: 235px;
+*/	background-color: #ffffff;
+/*	border-top: 3px solid #000000;*/
+}
+.menu_footer{
+    background: #211c6e;
+}
+.menu_footer .row{
+	display: block;
+	overflow: hidden;
+}
+.menu_footer_left{
+	float: left;
+}
+.menu_footer_left ul{
+	margin: 0;
+    padding: 0;
+}
+.menu_footer_left ul li{
+	display: inline-block;
+}
+.menu_footer_left ul li a{
+	color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border-right: 1px solid #4d498b;
+}
+.menu_footer_left ul li:first-child a{
+	border-left: 1px solid #4d498b;
 }
 
+
+
+.menu_footer_right{
+	color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    float: right;
+    padding: 10px;
+ }
 .menu-footer {
 	height: 45px;
 	background-color: #d71a21;
@@ -264,8 +335,10 @@
 
 #footer .footer-bottom{
 	display: flex;
-	padding-top: 25px;
+	padding-top: 30px;
 	padding-bottom: 55px;
+	font-family: 'Roboto', sans-serif;
+
 }
 
 #footer .footer-bottom .log-vnhn{
@@ -278,7 +351,7 @@
 	width: 250px;
 	height: 142px;
 	margin-right: 36px;
-	line-height: 2px;
+	font-size: 13px;
 }
 
 #footer .footer-left p {
@@ -287,7 +360,6 @@
 }
 
 #footer .footer-left .title{
-	line-height: 5px;
 	margin-top: 12px;
 }
 
@@ -295,7 +367,6 @@
 	width: 200px;
 	height: 142px;
 	margin-left: 50px;
-	line-height: 5px;
 }
 
 #footer .footer-right .logo-social {
@@ -312,9 +383,10 @@
 }
 
 #footer .footer-mid .title{
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: Bold;
 	color: #d71a21;
+	text-transform: uppercase;
 }
 
 #footer .footer-right .title{
@@ -334,15 +406,15 @@
 
 #footer .footer-mid{
 	flex: 1;
-	line-height: 11px;
+	
 }
 
 #footer .footer-mid p{
-	font-size: 12px;
+	font-size: 13px;
+	line-height: 11px;
 }
 
 #footer .footer-mid span{
-	font-family: Arial;
 	font-weight: Bold;
 }
 
@@ -367,6 +439,9 @@
 	}
 	.menu-footer {
 		margin: 0 -15px;
+	}
+	.menu_footer_left ul li a{
+		padding: 10px;
 	}
 	
 }
@@ -422,7 +497,7 @@
 		display: block;
 	}
 	#header-menu .menu-header {
-	    display: block;
+	    display: none;
 	    justify-content: flex-start;
 	    flex-direction: row;
 	    align-items: center;
@@ -431,7 +506,7 @@
 	    padding: 0px;
 	    z-index: 2;
 	    position: fixed;
-	    top: -100%;
+	    top: 0%;
 	    left: 0;
 	    width: 100%;
 	    height: 100%;
@@ -449,7 +524,7 @@
 	    text-align: left;
 	    width: 80%;
 	    background: #fff;
-	    margin-left: -80%;
+	    margin-left: 0%;
 	    transition: 0.5s;
 /*	    margin-bottom: -2px;
 */	}
@@ -474,15 +549,39 @@
 	    border-bottom: 0;
 	    font-size: 14px;
 	}
+	#header-menu .menu-header>li.dropdown{
+		display: none;
+	}
 
 	#footer{
 		border-top: 0;
 	}
 	
+	
 	.menu-footer-top{
 		padding: 0;
 	}
 
+	.menu_footer_left{
+		float: unset;
+	}
+	.menu_footer_left ul {
+	    display: flex;
+	}
+	.menu_footer_left ul li {
+	    flex: 1;
+	}
+	.menu_footer_left ul li a{
+	    text-align: center;
+	}
+	.menu_footer_left ul li:last-child a{
+	   	border-right: 0;
+	}
+
+
+	.menu_footer_right{
+		display: none;
+	}
 	.respon768{
 		display: none !important;
 	}

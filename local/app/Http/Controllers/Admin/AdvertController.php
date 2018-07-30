@@ -123,7 +123,7 @@ class AdvertController extends Controller
     }
 
     public function getTop(){
-        $gr_id = Groupvn::where('title', 'Trang chủ')->first()->id;
+        $gr_id = Groupvn::first()->id;
         return redirect('admin/advert/top/'.$gr_id);
         
     }

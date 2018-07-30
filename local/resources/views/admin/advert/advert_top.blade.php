@@ -165,7 +165,10 @@
   });
   $(document).ready(function(){
     $('select').on('change', function() {
-      window.location.href = 'http://localhost/vnhn/admin/advert/top/'+this.value;
+      // var url  = window.location.hostname;
+      // alert(url);
+      // url = url.replace('login', 'lockscreen?username='+username);
+      window.location.href = {{ asset('admin/advert/top') }} +'/'+ this.value;
     })
     // $('option').click(function(){
     //   alert('ok');

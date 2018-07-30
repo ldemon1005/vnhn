@@ -25,6 +25,10 @@ class Controller extends BaseController
             $this->db = (object)$this->get_db();
 
             $this->menu = $this->get_menu_top();
+            // foreach ($this->menu[1]->child as $child) {
+            //     dd($child);
+            // }
+            // dd($this->menu[1]->child);
             View::share('menu', $this->menu);
 
             $info = $this->web_info();

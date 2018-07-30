@@ -16,7 +16,7 @@
                     @if($loop->index != 0)
                         <i class="fas fa-angle-right"></i>
                     @endif
-                    <a href="{{ asset('') }}">
+                    <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">
                         {{$group->title}}
                     </a>
                 @endforeach
@@ -61,6 +61,30 @@
                             </div>
                         </div>
                     </div> --}}
+
+                    <div class="mainDetailLeftInvolve">
+                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
+                        <div class="mainDetailLeftInvolveMain">
+                            @foreach($articel_related as $art_related)
+                                <div class="mainDetailLeftInvolveItem">
+                                    <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
+                                        <div class="mainDetailLeftInvolveItemImg">
+                                            <img src="{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
+                                        </div>
+                                        <div class="mainDetailLeftInvolveItemContent">
+                                            {{$art_related->title}}
+                                        </div>
+                                        <div class="mainDetailLeftInvolveItemTime">
+                                            <i class="far fa-clock"></i>
+                                            {{$art_related->release_time}}
+                                        </div>
+                                    </a>
+
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
                     <div class="mainDetailLeftComment">
                         <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ý kiến của bạn' : 'Your opinion'}}</h4>
                         <div class="mainDetailLeftCommentMain">
@@ -94,30 +118,6 @@
                             </form>
                         </div>
                     </div>
-                    <div class="mainDetailLeftInvolve">
-                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
-                        <div class="mainDetailLeftInvolveMain">
-                            @foreach($articel_related as $art_related)
-                                <div class="mainDetailLeftInvolveItem">
-                                    <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
-                                        <div class="mainDetailLeftInvolveItemImg">
-                                            <img src="{{ file_exists(resource_path($art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
-                                        </div>
-                                        <div class="mainDetailLeftInvolveItemContent">
-                                            {{$art_related->title}}
-                                        </div>
-                                        <div class="mainDetailLeftInvolveItemTime">
-                                            <i class="far fa-clock"></i>
-                                            {{$art_related->release_time}}
-                                        </div>
-                                    </a>
-
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
-
 
                 </div>
                 <div class="mainDetailRight">

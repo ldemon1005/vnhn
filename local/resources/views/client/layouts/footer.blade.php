@@ -1,7 +1,26 @@
 <div id="footer">
     <section id="footer-top">
+        <div class="menu_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="menu_footer_left">
+                        <ul>
+                            <li class="lang respon768"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
+                            <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
+
+                            <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7: 0964.32.83.83</a></li>
+                            <li class="lang respon768"><a href="{{ asset('') }}">Đặt mua Tạp chí</a></li>
+                            <li class="lang"><a href="{{ asset('') }}">Liên hệ quảng cáo</a></li>
+                        </ul>
+                    </div>
+                    <div class="menu_footer_right">
+                        [Trở về dầu trang]
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
-            <div class="row menu-footer">
+            {{-- <div class="row menu-footer">
                 <ul class="menu-footer-top">
                     <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
                     <li class="lang respon768"><a href="{{ asset('') }}">Đặt làm trang chủ</a></li>
@@ -9,7 +28,7 @@
                     <li class="lang respon768"><a href="{{ asset('') }}">Đường dây nóng: 0964.32.83.83</a></li>
                     <li class="lang respon768"><a href="{{ asset('') }}">Email: info@vietnamhoinhap.com</a></li>
                 </ul>
-            </div>
+            </div> --}}
 
             <div class="row footer-bottom">
                 <div class="footer-left">
@@ -17,18 +36,19 @@
                         <a href="#"><img src="{{asset('/local/resources/uploads/images/logo-vnhn.png')}}"></a>
                     </div>
                     <div class="title">
-                        <p>- {{$web_info->summary_1}}</p>
-                        <p>- {{$web_info->summary_2}}</p>
+                        <div>- Viện Chính sách, Pháp luật và Quản lý</div>
+                        <div>- Liên hiệp các Hội Khoa học và Kỹ thuật Việt Nam</div>
                     </div>
                 </div>
 
                 <div class="footer-mid">
                     <p class="title">Việt Nam Hội Nhập</p>
-                    <p class="license">{{$web_info->license}}</p>
-                    <p class="info-footer"><span>Tổng biên tập : {{$web_info->editor_in_chief}}</span></p>
-                    <p class="info-footer"><span>Trưởng ban Điện tử : {{$web_info->e_editor}}</span></p>
-                    <p class="info-footer"><span>Tòa soạn trị sự:</span>{{$web_info->address}}</p>
-                    <p><span>Điện thoại : {{$web_info->phone}}  Email: </span>{{$web_info->email}}</p>
+                    <p class="info-footer">Giấy phép số 153/GP- Cục PTTHTTĐT - Bộ thông tin và truyền thông cấp ngày 17/05/2017</p>
+                    <p class="info-footer"><span>Tổng biên tập : ĐOÀN MẠNH PHƯƠNG</span></p>
+                    <p class="info-footer"><span>Phó tổng biên tập : TRẦN VĂN ÁNH</span></p>
+                    <p class="info-footer"><span>Ủy viên HĐBT: ĐOÀN CÔNG CHUNG</span></p>
+                    <p class="info-footer"><span>Tòa soạn trị sự:</span>Tầng 8 Cung Tri thức thành phố, số 1 Tôn Thất Thuyết, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội</p>
+                    <p><span>Điện thoại :</span> 0247.301.6366 * 0283.636.9773  * <span> Email: </span>info@vietnamhoinhap.com</p>
                 </div>
 
                 <div class="footer-right">
@@ -40,10 +60,10 @@
 
                     <div class="logo-social">
                         <div class="google-play">
-                            <a href="{{$web_info->link_googleplay}}"><img src="{{asset('/local/resources/uploads/images/google-play.png')}}"></a>
+                            <a href="#"><img src="{{asset('/local/resources/uploads/images/google-play.png')}}"></a>
                         </div>
                         <div class="appstrore">
-                            <a href="{{$web_info->link_appstore}}"><img src="{{asset('/local/resources/uploads/images/appstore.png')}}"></a>
+                            <a href="#"><img src="{{asset('/local/resources/uploads/images/appstore.png')}}"></a>
                         </div>
                     </div>
                 </div>
