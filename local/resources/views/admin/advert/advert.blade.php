@@ -58,7 +58,14 @@
 	                  </td>
 	                  <td>{{$item->ad_view}}</td>
 	                  <td>{{date_format($item->created_at, 'd/m/Y')}}</td>
-	                  <td>{{$item->ad_status}}</td>
+	                  <td>
+                      @if ($item->ad_status == 1)
+                        <button type="button" class="btn btn-block btn-outline-success btn-sm btnOff">Bật</button>
+                      @else
+                        <button type="button" class="btn btn-block btn-outline-danger btn-sm btnOn">Tắt</button>
+                      @endif
+                      <div class="id_hidden" style="display: none;">{{$item->ad_id}}</div> 
+                    </td>
 	                  <td>
 	                  	<a href="{{ asset('admin/advert/edit/'.$item->ad_id) }}" class="btn btn-primary btn-sm">Sửa</a>
                       <a href="{{ asset('admin/advert/delete/'.$item->ad_id) }}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="btn btn-danger btn-sm"> Xóa</a>
@@ -97,7 +104,8 @@
 <!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.js"></script>
-<script type="text/javascript" src="js/account.js"></script>
+<script type="text/javascript" src="js/advert_top.js"></script>
+
 <script>
   $(function () {
     $("#example1").DataTable();

@@ -10,15 +10,24 @@ use App\Http\Requests\AccountEditRequest;
 use App\Models\Account;
 
 use File;
-
+use Auth;
+use DB;
 class AccountController extends Controller
 {
     public function getList(){
-    	$data['items'] = Account::all();
+    	$data['items'] = Account::where('level', '>=', Auth::user()->level)->get();
     	return view('admin.account.account', $data);
     }
     public function getAdd(){
-    	return view('admin.account.account_add');
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
+        $root = [
+            'id' => 0,
+            'title' => 'root'
+        ];
+        $result[] = (object)$root;
+        $this->recusiveGroup($list_group, 0, "", $result);
+        $data['list_group'] = $result;
+    	return view('admin.account.account_form',$data);
     }
     public function postAdd(AccountAddRequest $request){
     	$acc = new Account;
@@ -29,6 +38,7 @@ class AccountController extends Controller
     	$acc->password = bcrypt($request->password);
     	$acc->level = $request->level;
     	$acc->status = 1;
+        $acc->group_id = implode(",", $request->group_id);
     	$image = $request->file('img');
         if ($request->hasFile('img')) {
             $acc->img = saveImage([$image], 100, 'avatar');
@@ -39,7 +49,16 @@ class AccountController extends Controller
     }
     public function getEdit($id){
     	$data['item'] = Account::find($id);
-    	return view('admin.account.account_edit', $data);
+        $data['group_id'] = explode(',', $data['item']->group_id);
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
+        $root = [
+            'id' => 0,
+            'title' => 'root'
+        ];
+        $result[] = (object)$root;
+        $this->recusiveGroup($list_group, 0, "", $result);
+        $data['list_group'] = $result;
+    	return view('admin.account.account_form', $data);
     }
     public function postEdit(AccountEditRequest $request, $id){
     	$acc = Account::find($id);
@@ -51,8 +70,9 @@ class AccountController extends Controller
     		$acc->password = bcrypt($request->password);
     	}
     	$acc->level = $request->level;
-    	$acc->status = 1;
+        $acc->group_id = implode(",", $request->group_id);
     	$image = $request->file('img');
+
         if ($request->hasFile('img')) {
             $acc->img = saveImage([$image], 100, 'avatar');
         }

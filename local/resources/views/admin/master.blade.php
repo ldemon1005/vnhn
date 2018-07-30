@@ -28,6 +28,9 @@
   @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
+<div class="currentUrl" style="display: none;">
+  {{ asset('') }}
+</div>
 <div class="errorAlert">
   @include('errors.note')
 </div>
@@ -71,6 +74,7 @@
 <script src="plugins/bootstrap/js/bootstrap.js"></script>
 
 <script src="js/custom.js"></script>
+<script src="dist/js/adminlte.js"></script>
 
 
 <!-- OPTIONAL SCRIPTS -->
