@@ -4,5 +4,5 @@ $(document).ready(function(){
 });
 function goLogin(){
 	localStorage.removeItem('username');
-	return false;
+	return true;
 }

@@ -15,18 +15,32 @@ use DB;
 class AccountController extends Controller
 {
     public function getList(){
-    	$data['items'] = Account::where('level', '>=', Auth::user()->level)->get();
+        if (Auth::user()->level == 1) {
+            $data['items'] = Account::where('level', '>=', Auth::user()->level)->get();
+        }
+        else{
+            $data['items'] = Account::where('level', '>=', Auth::user()->level)->where('site', Auth::user()->site)->get();
+        }
     	return view('admin.account.account', $data);
     }
     public function getAdd(){
-        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
-        $root = [
-            'id' => 0,
-            'title' => 'root'
-        ];
-        $result[] = (object)$root;
-        $this->recusiveGroup($list_group, 0, "", $result);
-        $data['list_group'] = $result;
+        $group_id = Auth::user()->group_id;
+        $group_id = explode(',', $group_id);
+        
+        if (in_array(0 ,$group_id)) {
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
+            $root = [
+                'id' => 0,
+                'title' => 'root'
+            ];
+            $result[] = (object)$root;
+            $this->recusiveGroup($list_group, 0, "", $result);
+            $data['list_group'] = $result;
+        }
+        else{
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->where('id', $group_id)->get()->toArray();
+            $data['list_group'] = $list_group;
+        }
     	return view('admin.account.account_form',$data);
     }
     public function postAdd(AccountAddRequest $request){
@@ -38,7 +52,17 @@ class AccountController extends Controller
     	$acc->password = bcrypt($request->password);
     	$acc->level = $request->level;
     	$acc->status = 1;
-        $acc->group_id = implode(",", $request->group_id);
+        if ($request->group_id != null) {
+            $acc->group_id = implode(",", $request->group_id);
+        }
+        
+        // site : các bên khác nhau
+        if (Auth::user()->level == 1) {
+            $acc->site = $request->site;
+        }
+        else{
+            $acc->site = Auth::user()->site;
+        }
     	$image = $request->file('img');
         if ($request->hasFile('img')) {
             $acc->img = saveImage([$image], 100, 'avatar');
@@ -49,15 +73,24 @@ class AccountController extends Controller
     }
     public function getEdit($id){
     	$data['item'] = Account::find($id);
-        $data['group_id'] = explode(',', $data['item']->group_id);
-        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
-        $root = [
-            'id' => 0,
-            'title' => 'root'
-        ];
-        $result[] = (object)$root;
-        $this->recusiveGroup($list_group, 0, "", $result);
-        $data['list_group'] = $result;
+        $group_id = Auth::user()->group_id;
+        $group_id = explode(',', $group_id);
+        
+        if (in_array(0 ,$group_id)) {
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
+            $root = [
+                'id' => 0,
+                'title' => 'root'
+            ];
+            $result[] = (object)$root;
+            $this->recusiveGroup($list_group, 0, "", $result);
+            $data['list_group'] = $result;
+        }
+        else{
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->where('id', $group_id)->get()->toArray();
+            $data['list_group'] = $list_group;
+        }
+        $data['group_id'] = $group_id;
     	return view('admin.account.account_form', $data);
     }
     public function postEdit(AccountEditRequest $request, $id){
@@ -70,7 +103,17 @@ class AccountController extends Controller
     		$acc->password = bcrypt($request->password);
     	}
     	$acc->level = $request->level;
-        $acc->group_id = implode(",", $request->group_id);
+        if ($request->group_id != null) {
+            $acc->group_id = implode(",", $request->group_id);
+        }
+        // site : các bên khác nhau
+        if (Auth::user()->level == 1) {
+            $acc->site = $request->site;
+        }
+        else{
+            $acc->site = Auth::user()->site;
+        }
+
     	$image = $request->file('img');
 
         if ($request->hasFile('img')) {
