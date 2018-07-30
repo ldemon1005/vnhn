@@ -504,3 +504,18 @@ ul.mainDetailRightList li a{
 	}
 
 }
+
+.mainDetailLeftInvolveItem a{
+	text-decoration: none;
+	color: #000000;
+}
+
+.mainDetailLeftInvolveItemImg .avatar{
+	background-position: center;
+	background-size: cover;
+}
+.mainDetailLeftInvolveItemImg .avatar:after{
+	content: "";
+	display: block;
+	padding-top: 56%;
+}

@@ -8,9 +8,9 @@
                     </div>
                     <div class="top-header-menu">
                         <ul class="menu-left">
-                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 25px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
+                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 25px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
+                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="#"><p><i class="fas fa-phone"></i>{{$web_info->hotline}}</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>

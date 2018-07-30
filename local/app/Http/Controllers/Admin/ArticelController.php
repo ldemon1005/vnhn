@@ -341,7 +341,7 @@ class ArticelController extends Controller
 
     public function update_order_articel(Request $request){
         $data = $request->get('articel');
-        if($data['groupid'] == null){
+        if($data['groupid'] == 0){
             unset($data['groupid']);
             foreach ($data as $key => $val){
                 DB::table($this->db->news)->where('id',$key)->update(['order_main' => $val]);
