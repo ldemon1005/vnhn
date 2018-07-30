@@ -116,7 +116,14 @@
                       <img src="{{ asset('local/storage/app/advert/resized-'.$item->ad_img) }}"  style="max-width: 300px;">
                       
                     </td>
-                    <td>{{$item->ad_status}}</td>
+                    <td>
+                      @if ($item->ad_status == 1)
+                        <button type="button" class="btn btn-block btn-outline-success btn-sm btnOff">Bật</button>
+                      @else
+                        <button type="button" class="btn btn-block btn-outline-danger btn-sm btnOn">Tắt</button>
+                      @endif
+                      <div class="id_hidden" style="display: none;">{{$item->ad_id}}</div>
+                    </td>
                     <td>
                       <a href="{{ asset('admin/advert/top_add/'.Request::segment(4).'/'.$item->ad_id) }}" class="btn btn-primary btn-sm">Chọn</a>
                       
@@ -156,8 +163,8 @@
 <!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap4.js"></script>
-{{-- <script type="text/javascript" src="js/advert_top.js"></script>
- --}}
+<script type="text/javascript" src="js/advert_top.js"></script>
+
 <script>
   $(function () {
     $("#example1").DataTable();
@@ -168,13 +175,14 @@
       // var url  = window.location.hostname;
       // alert(url);
       // url = url.replace('login', 'lockscreen?username='+username);
-      window.location.href = {{ asset('admin/advert/top') }} +'/'+ this.value;
+      window.location.href = '{{ asset('admin/advert/top') }}' +'/'+ this.value;
     })
     // $('option').click(function(){
     //   alert('ok');
     //   var gr_id = $(this).attr('value');
     //   window.location.href = 'http://localhost/vnhn/admin/advert/top/'+gr_id;
     // });
+    
   });
 </script>
 

@@ -8,6 +8,7 @@ use App\Models\Advert;
 use App\Models\AdvertTop;
 use App\Models\Groupvn;
 use File;
+use Illuminate\Support\Facades\Input;
 
 class AdvertController extends Controller
 {
@@ -145,7 +146,27 @@ class AdvertController extends Controller
     public function deleteTopAdvert($id){
         $adt = AdvertTop::find($id);
         $adt->delete();
-        
         return back();
+    }
+    public function getOn(){
+
+        $id = Input::get('id');
+        
+        $ad = Advert::find($id);
+        $ad->ad_status = 1;
+        $ad->save();
+        return response($id, 200);
+
+        
+    }
+    public function getOff(){
+        $id = Input::get('id');
+        
+        $ad = Advert::find($id);
+        $ad->ad_status = 0;
+        $ad->save();
+        return response('Success', 200);
+
+        
     }
 }

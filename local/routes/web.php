@@ -111,6 +111,9 @@ Route::group(['namespace' => 'Admin'], function (){
 			Route::get('top/{id}', 'AdvertController@getGroup');
 			Route::get('top_add/{id}/{ad_id}', 'AdvertController@addTopAdvert');
 			Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
+
+            Route::post('on', 'AdvertController@getOn');
+            Route::post('off', 'AdvertController@getOff');
 		});
 
 		Route::group(['prefix' => 'website_info'],function(){
