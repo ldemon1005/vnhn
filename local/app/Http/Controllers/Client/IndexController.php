@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Model\Group_vn;
+use App\Models\AdvertTop;
 use App\Model\News;
 use App\Models\Video_vn;
 use Illuminate\Http\Request;
@@ -23,8 +24,6 @@ class IndexController extends Controller
         $list_video_new = $this->get_video_new();
 
         $magazine_new = $this->get_magazine_new();
-
-
         /*
          * group thứ nhất
          */
@@ -44,6 +43,8 @@ class IndexController extends Controller
 
         $articel_times_2 = $this->get_articel_item(1);
 
+        $advert = $this->get_advert(1);
+        // dd($advert[0][0]);
         $data = [
 //            'menu' => $menu,
             'list_articel_new' => $list_articel_new,
@@ -59,12 +60,16 @@ class IndexController extends Controller
             'menu_child_item_2' => $articel_times_2['menu_child'],
             'list_articel_item_2' => $articel_times_2['list_articel'],
 
-            'list_group' => $groups
+            'list_group' => $groups,
+            'list_ad' => $advert
         ];
+
 
         return view('client.index.index',$data);
     }
-
+    public function home(){
+        return redirect('');
+    }
     public function time(){
     	return view('client.index.time');
     }
@@ -151,7 +156,14 @@ class IndexController extends Controller
         return $groups;
     }
 
-
+    public function get_advert($id){
+        $ads = AdvertTop::where('adt_gr_id', $id)->get();
+        $ad = array();
+        for ($i=1; $i < 7; $i++) { 
+            $ad[] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
+        }
+        return $ad;
+    }
 
 
 }

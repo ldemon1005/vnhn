@@ -42,7 +42,7 @@
                             @endfor
                         </div>
                         <div class="row quangcao-2">
-                            <a href="#"><img src="{{asset('/local/resources/uploads/images/quang-cao-2.png')}}"></a>
+                            <a href="#"><img src="{{asset('local/storage/app/advert/'.$list_ad[0][0]->advert->ad_img)}}"></a>
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                         </section> --}}
 
                         <div class="item-quangcao">
-                            <a><img src="{{asset('/local/resources/uploads/images/quang-cao-3.png')}}"></a>
+                            <a><img src="{{asset('local/storage/app/advert/'.$list_ad[1][0]->advert->ad_img)}}"></a>
                         </div>
                         <section class="new-right-2">
                             <div class="category">
