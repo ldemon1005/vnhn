@@ -39,7 +39,31 @@
                         @endif
 
                         <div class="card-header">
-                            <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới danh mục</h3></a>
+                            <div class="row form-group">
+                                <div class="col-md-4">
+                                    <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới danh mục</h3></a>
+                                </div>
+                                <div class="col-md-6">
+                                    <form action="{{route('admin_group')}}" method="get">
+                                        <div class="row form-group">
+                                            <div class="col-md-9">
+                                                <select class="select2" data-placeholder="Chọn danh mục"
+                                                        name="groupid"
+                                                        style="width: 100%;">
+                                                    @foreach($groups as $articel_item)
+                                                        <option value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <button style="height: 90%" type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

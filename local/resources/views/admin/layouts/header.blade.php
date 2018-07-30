@@ -28,10 +28,10 @@
 <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item d-none d-sm-inline-block">
-            <a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 25px;" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a>
-        </li>
-        <li style="padding-left: 15px" class="nav-item d-none d-sm-inline-block">
-            <a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 25px;" src="{{asset('/local/resources/uploads/images/en.png')}}"></a>
+            <select id="lang" class="form-control" onchange="change_lang()">
+                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'selected' : ''}} value="vn">Tiếng Việt</option>
+                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'en' ? 'selected' : ''}} value="en">Tiếng Anh</option>
+            </select>
         </li>
         <!-- Messages Dropdown Menu -->
 {{--        <li class="nav-item dropdown">

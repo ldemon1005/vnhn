@@ -78,7 +78,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th style="width: 20%"></th>
+                                    <th style="width: 20%">Tiêu đề bài viết</th>
                                     <th style="width: 20%;">Đường dẫn</th>
                                     <th>Ngày tạo--Ngày update</th>
                                     <th>Avatar</th>

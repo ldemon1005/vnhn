@@ -24,6 +24,7 @@ class IndexController extends Controller
 
         $magazine_new = $this->get_magazine_new();
 
+
         /*
          * group thứ nhất
          */
@@ -92,7 +93,7 @@ class IndexController extends Controller
         return $magazine;
     }
     public function get_articel_item($position){
-        $menu_time = DB::table($this->db->group)->where('home_index',1)->orderBy('order')->take(2)->get()->chunk(1);
+        $menu_time = DB::table($this->db->group)->where('home_index',1)->where('type','!=',1)->orderBy('order')->take(2)->get()->chunk(1);
 
         $menu_time = $menu_time[$position][$position];
 
@@ -141,7 +142,7 @@ class IndexController extends Controller
     }
 
     public function get_articel_group(){
-        $groups = Group_vn::where('home_index',1)->orderBy('order')->take(10)->get()->slice(2,8);
+        $groups = Group_vn::where('home_index',1)->where('status',1)->where('type','!=',1)->orderBy('order')->take(10)->get()->slice(2,8);
 
         foreach ($groups as $group){
             $group->articel = $group->belongsToMany(News::class,$this->db->group_news,'group_vn_id','news_vn_id')->orderByDesc('id')->take(5)->get();
@@ -149,5 +150,8 @@ class IndexController extends Controller
         $groups = $groups->chunk(4);
         return $groups;
     }
+
+
+
 
 }

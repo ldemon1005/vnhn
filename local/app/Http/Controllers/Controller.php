@@ -23,8 +23,12 @@ class Controller extends BaseController
         // Fetch the Site Settings object
         $this->middleware(function ($request, $next) {
             $this->db = (object)$this->get_db();
+
             $this->menu = $this->get_menu_top();
             View::share('menu', $this->menu);
+
+            $info = $this->web_info();
+            View::share('web_info',$info);
             return $next($request);
         });
     }
@@ -73,7 +77,7 @@ class Controller extends BaseController
                 'new_news' => 'new_news_vn',
                 'news' => 'news_vn',
                 'video' => 'video_vn',
-                'web_info' => 'webinfo_vn',
+                'web_info' => 'web_info_vn',
                 'magazine' => 'magazine_vn'
             ];
         }else{
@@ -87,9 +91,17 @@ class Controller extends BaseController
                 'new_news' => 'new_news_en',
                 'news' => 'news_en',
                 'video' => 'video_vn',
-                'web_info' => 'webinfo_en',
+                'web_info' => 'web_info_en',
                 'magazine' => 'magazine_vn'
             ];
         }
+    }
+
+
+    function web_info(){
+        $info = DB::table($this->db->web_info)->first();
+        $info = (object)json_decode($info->info,true);
+
+        return $info;
     }
 }

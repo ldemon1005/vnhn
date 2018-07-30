@@ -93,3 +93,14 @@ function change_status(video_id,status_video) {
         $('#status_video').removeClass('disabled');
     });
 }
+
+function change_lang() {
+    $.ajax({
+        url: '/set_lang/' + $('#lang').val(),
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+    }).done(function (data, status) {
+        if (data.status == 1) location.reload();
+    })
+}

@@ -11,14 +11,26 @@ use Mockery\Exception;
 
 class GroupController extends Controller
 {
-    public function getList(){
-        $list_group = DB::table('group_vn')->orderByDesc('id')->paginate(15);
+    public function getList(Request $request){
+
+        $parentid = $request->get('groupid');
+
+        $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+        $this->recusiveGroup($list_group,0,"",$result);
+
+        if($parentid){
+            $list_group = DB::table($this->db->group)->where('parentid',$parentid)->orderByDesc('id')->paginate(15);
+        }else {
+            $list_group = DB::table($this->db->group)->orderByDesc('id')->paginate(15);
+        }
+
 
         foreach ($list_group as $value){
             $value->created_at = date('d/m/Y h:m');
         }
         $data = [
-            'list_group' => $list_group
+            'list_group' => $list_group,
+            'groups' => $result
         ];
         return view("admin.group.index",$data);
     }
@@ -33,7 +45,7 @@ class GroupController extends Controller
     }
 
     public function form_group($id){
-        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'root'
@@ -56,7 +68,7 @@ class GroupController extends Controller
 
             $group = (object)$group;
         }else {
-            $group = DB::table('group_vn')->find($id);
+            $group = DB::table($this->db->group)->find($id);
         }
 
         $data = [
@@ -98,7 +110,7 @@ class GroupController extends Controller
     }
 
     function delete_group($id){
-        if(DB::table('group_vn')->delete($id)){
+        if(DB::table($this->db->group)->delete($id)){
             return redirect()->route('admin_group')->with('status','Xóa thành công');
         }
         return redirect()->route('admin_group')->with('error','Xóa không thành công');
@@ -106,7 +118,7 @@ class GroupController extends Controller
 
     function form_sort_group($parent_id = 0){
         if($parent_id == 0){
-            $list_group = DB::table('group_vn')->where('parentid','00')->orderBy('order')->get();
+            $list_group = DB::table($this->db->group)->where('parentid','00')->orderBy('order')->get();
 
             $data = [
                 'list_group' => $list_group
@@ -114,8 +126,8 @@ class GroupController extends Controller
 
             return view('admin.group.sort_group',$data);
         }else {
-            $list_group = DB::table('group_vn')->where('parentid',$parent_id)->orderBy('order')->get();
-            $group_parent = DB::table('group_vn')->find($parent_id);
+            $list_group = DB::table($this->db->group)->where('parentid',$parent_id)->orderBy('order')->get();
+            $group_parent = DB::table($this->db->group)->find($parent_id);
             $data = [
                 'list_group' => $list_group,
                 'group_parent' => $group_parent
@@ -133,7 +145,7 @@ class GroupController extends Controller
         $check = 1;
         foreach ($data as $key => $item){
             isset($data['parentid']) ? $order = $data['parentid'].$item : $order = $item;
-            DB::table('group_vn')->where('id',$key)->update(['order' => $order]);
+            DB::table($this->db->group)->where('id',$key)->update(['order' => $order]);
         }
         if($check == 1){
             return redirect()->route('form_sort_group', '00' )->with('status','Sắp xếp thành công');

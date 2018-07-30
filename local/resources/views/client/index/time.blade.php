@@ -31,7 +31,7 @@
                             <div class="new-item-time">
                                 <a href="{{ route('get_detail_articel',$list_articel_hot[0]->slug.'---n-'.$list_articel_hot[0]->id) }}">
                                     <div class="avatar">
-                                        <img src="{{ file_exists(asset('/local/resources'.$list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}">
+                                        <img src="{{ file_exists(resource_path($list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}">
                                     </div>
                                     <h3 class="title">{{$list_articel_hot[0]->title}}</h3>
                                     <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
@@ -60,7 +60,7 @@
                                     <div class="item-bottom">
                                         <a href="{{ route('get_detail_articel',$list_articel_hot[$i]->slug.'---n-'.$list_articel_hot[$i]->id) }}">
                                             <div class="avatar">
-                                                <img src="{{ file_exists(asset('/local/resources'.$list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[$i]->fimage }}">
+                                                <img src="{{ file_exists(resource_path($list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[$i]->fimage }}">
                                             </div>
                                             <div class="content">
                                                 <h3 class="title">{{$list_articel_hot[$i]->title}}</h3>
@@ -107,7 +107,7 @@
                                                     <p class="caption">{{substr($articel->summary,0,220)}} {{strlen($articel->summary) >220 ? '...':''}}</p>
                                                 </div>
                                                 <div class="avatar">
-                                                    <a href="#"><img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
+                                                    <a href="#"><img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
                                                 </div>
                                             </a>
                                         </div>
@@ -119,7 +119,7 @@
                                 @if(count($group_articel) == 0)
                                     <section class="time-subscribe-top">
                                         <div class="title-parent">
-                                            <p>Danh mục con ...</p>
+                                            <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục con ...' : 'Category child ...'}}</p>
                                         </div>
                                     </section>
                                 @endif
@@ -136,7 +136,7 @@
                                                             <h3 class="title">{!! cut_string_name($articel->title,60) !!}</h3>
                                                             @if($loop->index == 0)
                                                                 <div class="avatar">
-                                                                    <a href="#"><img src="{{ file_exists(asset('/local/resources'.$articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
+                                                                    <a href="#"><img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
                                                                 </div>
                                                             @endif
                                                             <p class="date-time">{{$articel->release_time}}</p>

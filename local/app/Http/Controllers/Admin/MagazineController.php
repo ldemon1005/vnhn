@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class MagazineController extends Controller
 {
     public function index(){
-        $list_magazine = DB::table('magazine_vn')->paginate(10);
+        $list_magazine = DB::table($this->db->magazine)->paginate(10);
         foreach ($list_magazine as $val){
             $val->created_at = date('d/m/Y H:m',$val->created_at);
             $val->slide_show = json_decode($val->slide_show,true);
@@ -22,7 +22,7 @@ class MagazineController extends Controller
     }
 
     public function form_magazine($id){
-        $list_group = DB::table('group_vn')->where('status', 1)->where('parentid','00')->get()->toArray();
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('parentid','00')->get()->toArray();
 
         if($id == 0){
             $data = [
@@ -34,7 +34,7 @@ class MagazineController extends Controller
             ];
             $magazine = (object)$data;
         }else{
-            $magazine = DB::table('magazine_vn')->find($id);
+            $magazine = DB::table($this->db->magazine)->find($id);
             $magazine->slide_show = json_decode($magazine->slide_show,true);
         }
 

@@ -61,30 +61,6 @@
                             </div>
                         </div>
                     </div> --}}
-
-                    <div class="mainDetailLeftInvolve">
-                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
-                        <div class="mainDetailLeftInvolveMain">
-                            @foreach($articel_related as $art_related)
-                                <div class="mainDetailLeftInvolveItem">
-                                    <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
-                                        <div class="mainDetailLeftInvolveItemImg">
-                                            <img src="{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
-                                        </div>
-                                        <div class="mainDetailLeftInvolveItemContent">
-                                            {{$art_related->title}}
-                                        </div>
-                                        <div class="mainDetailLeftInvolveItemTime">
-                                            <i class="far fa-clock"></i>
-                                            {{$art_related->release_time}}
-                                        </div>
-                                    </a>
-
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
                     <div class="mainDetailLeftComment">
                         <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ý kiến của bạn' : 'Your opinion'}}</h4>
                         <div class="mainDetailLeftCommentMain">
@@ -118,6 +94,30 @@
                             </form>
                         </div>
                     </div>
+                    <div class="mainDetailLeftInvolve">
+                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
+                        <div class="mainDetailLeftInvolveMain">
+                            @foreach($articel_related as $art_related)
+                                <div class="mainDetailLeftInvolveItem">
+                                    <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
+                                        <div class="mainDetailLeftInvolveItemImg">
+                                            <img src="{{ file_exists(resource_path($art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
+                                        </div>
+                                        <div class="mainDetailLeftInvolveItemContent">
+                                            {{$art_related->title}}
+                                        </div>
+                                        <div class="mainDetailLeftInvolveItemTime">
+                                            <i class="far fa-clock"></i>
+                                            {{$art_related->release_time}}
+                                        </div>
+                                    </a>
+
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+
 
                 </div>
                 <div class="mainDetailRight">
@@ -161,12 +161,12 @@
                             @foreach($list_video_new as $video)
 
                                 @if($loop->index == 0)
-                                    @if(file_exists(asset('/local/resources'.$video->url_video)))
+                                    @if(file_exists(resource_path($video->url_video)))
                                         <video height="auto" width="100%">
                                             <source src="{{ asset('/local/resources'.$video->url_video) }}">
                                         </video>
                                     @else
-                                        <iframe width="100%" height="auto" src="{{ (file_exists(asset('/local/resources'.$video->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$video->url_video) ? : '') ? : $video->url_video }}">
+                                        <iframe width="100%" height="auto" src="{{ (file_exists(resource_path($video->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$video->url_video) ? : '') ? : $video->url_video }}">
                                         </iframe>
                                     @endif
                                 @endif

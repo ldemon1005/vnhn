@@ -116,7 +116,6 @@ Route::group(['namespace' => 'Admin'], function (){
 		Route::group(['prefix' => 'website_info'],function(){
 		    Route::get('/','WebsiteInfoController@index')->name('website_info');
             Route::post('/add_info','WebsiteInfoController@add_info')->name('add_info');
-            Route::get('/get_detail/{id}','WebsiteInfoController@get_detail')->name('get_detail');
             Route::post('/update_info','WebsiteInfoController@update_info')->name('update_info');
             Route::get('/delete_info/{id}','WebsiteInfoController@delete_info')->name('delete_info');
         });

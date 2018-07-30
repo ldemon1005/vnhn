@@ -25,14 +25,14 @@ class ArticelController extends Controller
         $status = isset($paramater['status']) ? $paramater['status'] : [];
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
 
-        $list_articel = DB::table('news_vn')->orderByDesc('id');
+        $list_articel = DB::table($this->db->news)->orderByDesc('id');
 
         if(count($status)){
             $list_articel = $list_articel->whereIn('status',$status);
         }
 
         if(count($group_id)){
-            $list_articel_ids = DB::table('group_news_vn')->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
+            $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
             $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
 
             $list_articel =  $list_articel->whereIn('id',$list_articel_ids);
@@ -51,7 +51,7 @@ class ArticelController extends Controller
         /*
          *  lấy danh sách danh mục
          */
-        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'root'
@@ -73,8 +73,10 @@ class ArticelController extends Controller
         /*
          *  lấy danh sách danh mục
          */
-        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
+
+        $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         $this->recusiveGroup($list_group,0,"",$result);
+
         if($id == 0){
             $data = [
                 'id' => 0,
@@ -99,9 +101,9 @@ class ArticelController extends Controller
             ];
             $articel = (object)$data;
         }else{
-            $articel = DB::table('news_vn')->find($id);
+            $articel = DB::table($this->db->news)->find($id);
             $articel->groupid = explode(',',$articel->groupid);
-            $content = DB::table('logfile_vn')->where('LogId',$articel->id)->first();
+            $content = DB::table($this->db->logfile)->where('LogId',$articel->id)->first();
             $articel->content = $content ? $content->noidung : '';
             $date = $articel->release_time;
             $articel->release_time = (object)[
@@ -154,7 +156,7 @@ class ArticelController extends Controller
                 }
             }
             if(count($data_group_news)){
-                if(!DB::table('group_news_vn')->insert($data_group_news)) $check = 0;
+                if(!DB::table($this->db->group_news)->insert($data_group_news)) $check = 0;
             }
             $articel->content = $content;
             if(!$this->add_log($articel,$status))$check = 0;
@@ -195,7 +197,7 @@ class ArticelController extends Controller
                 }
 
                 if(count($data_group_news)){
-                    if(!DB::table('group_news_vn')->insert($data_group_news)){$check = 0;}
+                    if(!DB::table($this->db->group_news)->insert($data_group_news)){$check = 0;}
                 }
 
                 $articel->content = $content;
@@ -221,9 +223,9 @@ class ArticelController extends Controller
         DB::beginTransaction();
         $check = 1;
 
-        if(DB::table('logfile_vn')->where('LogId',$id)->delete() <= 0) $check = 0;
+        if(DB::table($this->db->logfile)->where('LogId',$id)->delete() <= 0) $check = 0;
 
-        if(DB::table('group_news_vn')->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}
+        if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}
 
         if(!$articel->delete()) $check = 0;
 
@@ -254,7 +256,7 @@ class ArticelController extends Controller
     }
 
     public function history_articel($id){
-        $log = DB::table('logfile_vn')->where('LogId',$id)->paginate(8);
+        $log = DB::table($this->db->logfile)->where('LogId',$id)->paginate(8);
         foreach ($log as $item){
             $item->created_at = date('d/m/Y H:m',$item->created_at);
             $user = DB::table('accounts')->find($item->userId);
@@ -271,7 +273,7 @@ class ArticelController extends Controller
     }
 
     function view_log($id){
-        $log = DB::table('logfile_vn')->find($id);
+        $log = DB::table($this->db->logfile)->find($id);
         $data = [
             'log' => $log
         ];
@@ -284,7 +286,7 @@ class ArticelController extends Controller
         /*
  *  lấy danh sách danh mục
  */
-        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'Trang chủ'
@@ -292,7 +294,7 @@ class ArticelController extends Controller
         $result[] = (object)$root;
         $this->recusiveGroup($list_group, 0, "", $result);
 
-        $arrticel_hot = DB::table('news_vn')->where('hot_main',1)->orderBy('order_main')->paginate(20);
+        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->orderBy('order_main')->paginate(20);
 
         $data = [
             'list_articel' => $arrticel_hot,
@@ -310,7 +312,7 @@ class ArticelController extends Controller
         /*
  *  lấy danh sách danh mục
  */
-        $list_group = DB::table('group_vn')->where('status', 1)->where('type','!=',1)->get()->toArray();
+        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
             'title' => 'Trang chủ'
@@ -319,13 +321,13 @@ class ArticelController extends Controller
         $this->recusiveGroup($list_group, 0, "", $result);
 
         if($group_id == 0){
-            $arrticel_hot = DB::table('news_vn')->where('hot_main',1)->orderBy('order_main')->get();
+            $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->orderBy('order_main')->get();
         }else {
-            $articel_hot_ids = DB::table('group_news_vn')->where('group_vn_id',$group_id)->where('hot',1)->get(['news_vn_id'])->toJson();
+            $articel_hot_ids = DB::table($this->db->group_news)->where('group_vn_id',$group_id)->where('hot',1)->get(['news_vn_id'])->toJson();
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
-            $arrticel_hot = DB::table('news_vn')->whereIn('id',$articel_hot_ids)->orderBy('hot_item')->get();
+            $arrticel_hot = DB::table($this->db->news)->whereIn('id',$articel_hot_ids)->orderBy('hot_item')->get();
         }
 
         $data = [
@@ -342,12 +344,12 @@ class ArticelController extends Controller
         if($data['groupid'] == null){
             unset($data['groupid']);
             foreach ($data as $key => $val){
-                DB::table('news_vn')->where('id',$key)->update(['order_main' => $val]);
+                DB::table($this->db->news)->where('id',$key)->update(['order_main' => $val]);
             }
         }else {
             unset($data['groupid']);
             foreach ($data as $key => $val){
-                DB::table('news_vn')->where('id',$key)->update(['order_item' => $val]);
+                DB::table($this->db->news)->where('id',$key)->update(['order_item' => $val]);
             }
         }
         return redirect()->route('sort_hot_articel' )->with('status','Sắp xếp thành công');
@@ -355,11 +357,11 @@ class ArticelController extends Controller
 
     public function delete_articel_hot($groupid,$id){
         if($groupid == 0){
-            if(DB::table('news_vn')->where('id',$id)->update(['hot_main' => 0])){
+            if(DB::table($this->db->news)->where('id',$id)->update(['hot_main' => 0])){
                 return redirect()->route('sort_hot_articel' )->with('status','Xóa thành công');
             }else return redirect()->route('sort_hot_articel' )->with('error','Xóa không thành công');
         }else {
-            if(DB::table('news_vn')->where('id',$id)->update(['hot_item' => 0])){
+            if(DB::table($this->db->news)->where('id',$id)->update(['hot_item' => 0])){
                 return redirect()->route('sort_hot_articel' )->with('status','Xóa thành công');
             }else return redirect()->route('sort_hot_articel' )->with('error','Xóa không thành công');
         }

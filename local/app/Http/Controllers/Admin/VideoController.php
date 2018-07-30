@@ -23,7 +23,7 @@ class VideoController extends Controller
         $status = isset($paramater['status']) ? $paramater['status'] : [];
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
 
-        $list_video = DB::table('video_vn')->orderByDesc('id');
+        $list_video = DB::table($this->db->video)->orderByDesc('id');
 
         if(count($status)){
             $list_video = $list_video->whereIn('status',$status);
