@@ -82,7 +82,8 @@
                                     <th style="width: 20%;">Đường dẫn</th>
                                     <th>Ngày tạo--Ngày update</th>
                                     <th>Avatar</th>
-                                    <th style="width: 10%">Trạng thái</th>
+                                    <th>Trạng thái</th>
+                                    <th style="min-width: 50px">Duyệt bài</th>
                                     <th>Thao tác</th>
                                 </tr>
                                 </thead>
@@ -99,21 +100,17 @@
                                                 <img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}">
                                             </div>
                                         </td>
+                                        <td>{{get_status($articel->status)}}</td>
                                         <td>
                                             {{--<button class="btn btn-block btn-sm {{ $articel->status == 2 ? 'btn-danger' : 'btn-success' }}">{{ $articel->status ? 'Không hoạt động' : 'Hoạt động' }}</button>--}}
                                             <!-- Example single danger button -->
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Trạng thái
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Separated link</a>
-                                                </div>
-                                            </div>
+                                            <select style="width: 100%" class="form-control" onchange="chang_status_articel('{{$articel->id}}',this)">
+                                                <option {{$articel->status == 1 ? 'selected' : ''}} value="1">Đăng</option>
+                                                <option {{$articel->status == 0 ? 'selected' : ''}} value="0">Tắt</option>
+                                                <option {{$articel->status == 3 ? 'selected' : ''}} value="3">Duyệt lần 1</option>
+                                                <option {{$articel->status == 2 ? 'selected' : ''}} value="2">Duyệt lần 2</option>
+                                                <option {{$articel->status == 4 ? 'selected' : ''}} value="4">Trả lại</option>
+                                            </select>
                                         </td>
                                         <td>
                                             <div class="row form-group">

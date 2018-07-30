@@ -51,13 +51,16 @@ class ArticelController extends Controller
         /*
          *  lấy danh sách danh mục
          */
-        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
-        $root = [
-            'id' => 0,
-            'title' => 'root'
-        ];
-        $result[] = (object)$root;
-        $this->recusiveGroup($list_group, 0, "", $result);
+
+        $user = Auth::user();
+        $group_ids = explode(',',$user->group_id);
+        if($user->group_id == '*'){
+            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+        }else {
+            $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->get()->toArray();
+        }
+        if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
+        else $result = [];
 
         $data = [
             'list_group' => $result,
@@ -74,8 +77,15 @@ class ArticelController extends Controller
          *  lấy danh sách danh mục
          */
 
-        $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-        $this->recusiveGroup($list_group,0,"",$result);
+        $user = Auth::user();
+        $group_ids = explode(',',$user->group_id);
+        if($user->group_id == '*'){
+            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+        }else {
+            $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->get()->toArray();
+        }
+        if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
+        else $result = [];
 
         if($id == 0){
             $data = [
@@ -122,8 +132,11 @@ class ArticelController extends Controller
     public function action_articel(Request $request){
         $data = $request->get('articel');
         $data['release_time'] = strtotime($data['release_time']['day'].' '.$data['release_time']['h']);
-        $status = "Đăng mới";
 
+        $status = $this->get_status()['status'];
+        $status_str = $this->get_status()['status_str'];
+
+        $data['status'] = $status;
         $group_id = $data['groupid'];
 
         $content = $data['content'];
@@ -159,7 +172,7 @@ class ArticelController extends Controller
                 if(!DB::table($this->db->group_news)->insert($data_group_news)) $check = 0;
             }
             $articel->content = $content;
-            if(!$this->add_log($articel,$status))$check = 0;
+            if(!$this->add_log($articel,$status,"Tạo mới,".$status_str))$check = 0;
 
             if($check == 1){
                 DB::commit();
@@ -201,7 +214,7 @@ class ArticelController extends Controller
                 }
 
                 $articel->content = $content;
-                if(!$this->add_log($articel,$status)) $check = 0;
+                if(!$this->add_log($articel,$status,'Chỉnh sửa'.$status_str)) $check = 0;
                 if($check == 1){
                     DB::commit();
                     return redirect()->route('admin_articel')->with('status','Cập nhật thành công');
@@ -239,7 +252,7 @@ class ArticelController extends Controller
 
     }
 
-    public function add_log($articel,$status){
+    public function add_log($articel,$status,$status_str){
         $user_login = Auth::user();
         $log_data = [
             'LogId' => $articel->id,
@@ -247,7 +260,9 @@ class ArticelController extends Controller
             'created_at' => time(),
             'noidung' => $articel->content,
             'groupid' => $articel->groupid,
-            'title' => $articel->title
+            'title' => $articel->title,
+            'TrangthaiID' => $status,
+            'GhiChu' => $status_str
         ];
 
         if(LogFile_vn::create($log_data)){
@@ -364,6 +379,44 @@ class ArticelController extends Controller
             if(DB::table($this->db->news)->where('id',$id)->update(['hot_item' => 0])){
                 return redirect()->route('sort_hot_articel' )->with('status','Xóa thành công');
             }else return redirect()->route('sort_hot_articel' )->with('error','Xóa không thành công');
+        }
+    }
+
+    function get_status(){
+        $user = Auth::user();
+        $status = 4;
+        $status_str = 'Gửi bài biên tập';
+        switch ($user->level){
+            case 1: $status = 1;$status_str = "đăng ngay";break;
+            case 2: $status = 1;$status_str = "đăng ngay"; break;
+            case 3: $status = 2;$status_str = "chờ duyệt lần 2"; break;
+            case 4: $status = 3;$status_str = "chờ duyệt lần 1"; break;
+        }
+        return [
+            'status' => $status,
+            'status_str' => $status_str
+        ];
+    }
+
+    function update_status($id,Request $request){
+        $str = "";
+        $status = $request->get('status');
+        switch ($status){
+            case 1 : $str = "Đăng bài";break;
+            case 0 : $str = "Tắt bài";break;
+            case 4 : $str = "Trả lại";break;
+            case 3 : $str = "Duyệt lần 1";break;
+            case 2 : $str = "Duyệt lần 2";break;
+        }
+        $articel = News::find($id);
+        if($articel->update(['status' => $status]) && $this->add_log($articel,$status,$str)){
+            return json_encode([
+                'status' => 1
+            ]);
+        }else{
+            return json_encode([
+                'status' => 0
+            ]);
         }
     }
 }

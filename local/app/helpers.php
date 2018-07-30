@@ -26,6 +26,18 @@
 	    return $text;
 	}
 
+	function get_status($status){
+	    $str = '';
+        switch ($status){
+            case 0 : $str = "Tắt";break;
+            case 1 : $str = "Đang đăng";break;
+            case 2 : $str = "Chờ duyệt lần 2";break;
+            case 3 : $str = "Chờ duyệt lần 1";break;
+            case 4 : $str = "Trả lại";break;
+        }
+        return $str;
+    }
+
 
 	/**
      * Save all images in request and resized copies of them.

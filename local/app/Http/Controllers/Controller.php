@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -25,11 +26,12 @@ class Controller extends BaseController
             $this->db = (object)$this->get_db();
 
             $this->menu = $this->get_menu_top();
-            // foreach ($this->menu[1]->child as $child) {
-            //     dd($child);
-            // }
-            // dd($this->menu[1]->child);
             View::share('menu', $this->menu);
+
+            if(Auth::user()){
+                $level = Auth::user()->level;
+                View::share('level', $level);
+            }
 
             $info = $this->web_info();
             View::share('web_info',$info);
@@ -105,7 +107,6 @@ class Controller extends BaseController
     function web_info(){
         $info = DB::table($this->db->web_info)->first();
         $info = (object)json_decode($info->info,true);
-
         return $info;
     }
 }

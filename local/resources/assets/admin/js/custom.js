@@ -104,3 +104,14 @@ function change_lang() {
         if (data.status == 1) location.reload();
     })
 }
+
+function chang_status_articel(articel_id,atr) {
+    $.ajax({
+        url: '/articel/update_status/' + articel_id + '?status=' + atr.value,
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+    }).done(function (data, status) {
+        if (data.status == 1) location.reload();
+    })
+}
