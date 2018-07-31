@@ -1,4 +1,5 @@
 <div id="footer">
+
     <section id="footer-top">
         <div class="menu_footer">
             <div class="container">
@@ -70,4 +71,7 @@
             </div>
         </div>
     </section>
+    <a id="back-to-top"><i class="fas fa-angle-double-up"></i>
+
+</a>
 </div>
