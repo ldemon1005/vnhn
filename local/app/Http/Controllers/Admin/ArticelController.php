@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class ArticelController extends Controller
@@ -401,6 +402,7 @@ class ArticelController extends Controller
     function update_status($id,Request $request){
         $str = "";
         $status = $request->get('status');
+
         switch ($status){
             case 1 : $str = "Đăng bài";break;
             case 0 : $str = "Tắt bài";break;
@@ -410,10 +412,12 @@ class ArticelController extends Controller
         }
         $articel = News::find($id);
         if($articel->update(['status' => $status]) && $this->add_log($articel,$status,$str)){
+            Session::put(['success' => 'Cập nhật thành công']);
             return json_encode([
                 'status' => 1
             ]);
         }else{
+            Session::put(['error' => 'Cập nhật không thành công']);
             return json_encode([
                 'status' => 0
             ]);

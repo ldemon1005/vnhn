@@ -107,11 +107,28 @@ function change_lang() {
 
 function chang_status_articel(articel_id,atr) {
     $.ajax({
-        url: '/articel/update_status/' + articel_id + '?status=' + atr.value,
+        url: '/admin/articel/update_status/' + articel_id + '?status=' + atr.value,
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {
+        $('.errorAlert').css('bottom','100px');
+        setTimeout(function(){
+            $('.errorAlert').css('bottom', '-200px');
+        }, 3000);
+        setTimeout(function(){
+            $('.errorAlert').fadeOut();
+        }, 3900);
+        location.reload();
     }).done(function (data, status) {
-        if (data.status == 1) location.reload();
+        $('.errorAlert').css('bottom','100px');
+        setTimeout(function(){
+            $('.errorAlert').css('bottom', '-200px');
+        }, 3000);
+        setTimeout(function(){
+            $('.errorAlert').fadeOut();
+        }, 3900);
+        if (data.status == 1){
+            location.reload();
+        }
     })
 }
