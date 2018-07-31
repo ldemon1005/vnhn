@@ -177,15 +177,17 @@
     function level_format($level){
     	switch ($level) {
     		case 1:
-    			return 'Admin';
+    			return 'SuperAdmin';
     			break;
     		case 2:
-    			return 'Biên tập viên';
+    			return 'Tổng biên tập';
     			break;
     		case 3:
-    			return 'Phóng viên';
+    			return 'Giám đốc chuyên mục';
     			break;
-    		
+    		case 4:
+    			return 'Biên tập viên';
+    			break;
     		default:
     			return 'Lỗi';
     			break;

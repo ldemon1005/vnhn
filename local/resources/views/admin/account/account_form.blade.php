@@ -68,7 +68,7 @@
 	                	<label for="exampleInputFile">Chức vụ</label>
 	                	<select class="form-control select2" style="width: 100%;" name="level">
                         @if (Auth::user()->level < 4)
-                          <option value="3" @if (isset($item) && $item->level == 4) selected="selected" @endif >Biên tập viên</option>
+                          <option value="4" @if (isset($item) && $item->level == 4) selected="selected" @endif >Biên tập viên</option>
                         @endif
                         @if (Auth::user()->level < 3)
                           <option value="3" @if (isset($item) && $item->level == 3) selected="selected" @endif >Giám độc chuyên mục</option>
@@ -82,15 +82,28 @@
 		                    
 		                </select>
 	                </div>
+                  {{-- {{ isset($group_id)? '1' : '0' }} --}}
                   <div class="form-group">
                       <label for="exampleInputPassword1">Quyền truy cập</label>
                       <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="group_id[]" style="width: 100%;">
-                      
-                      @foreach($list_group as $group)
-                          <option {{in_array($group->id,$group_id) ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
-                      @endforeach
-                  </select>
+                          @foreach($list_group as $group)
+
+                            <option {{isset($group_id) && in_array($group->id,$group_id) ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
+                          @endforeach
+                    </select>
                   </div>
+                  @if (Auth::user()->level == 1)
+                    <div class="form-group">
+                        <label for="exampleInputFile">Công ty</label>
+                        <div>
+                          <select class="form-control" data-placeholder="Chọn công ty" name="site" style="width: 100%;">
+                            <option {{isset($item) && $item->site == 1 ? 'selected' : ''}} value="1">Cgroup</option>
+                            <option {{isset($item) && $item->site == 2 ? 'selected' : ''}} value="2">Việt Nam Hội Nhập</option>
+                          </select>
+                        </div>
+                    </div>
+                  @endif
+                    
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

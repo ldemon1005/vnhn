@@ -36,7 +36,7 @@
                     <a href="{{ asset('') }}"><img src="{{asset('local/resources/uploads/images/logo-vnhn.png')}}"></a>
                 </div>
                 <div class="quangcao-1">
-                    <a href="{{ asset('') }}"><img src="{{asset('local/resources/uploads/images/quang-cao-1.png')}}"></a>
+                    <a href="{{ asset('') }}"><img src="{{asset('local/storage/app/advert/'.$list_ad[0][0]->advert->ad_img)}}"></a>
                 </div>
             </div>
         </div>

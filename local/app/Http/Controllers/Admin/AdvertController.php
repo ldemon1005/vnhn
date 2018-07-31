@@ -125,20 +125,25 @@ class AdvertController extends Controller
 
     public function getTop(){
         $gr_id = Groupvn::first()->id;
-        return redirect('admin/advert/top/'.$gr_id);
+        return redirect('admin/advert/top/'.$gr_id.'/1');
         
     }
 
-    public function getGroup($id){
-        $data['item_tops'] = AdvertTop::where('adt_gr_id', $id)->get();
+    public function getGroup($id, $lo_id){
+        $data['item_tops'] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $lo_id)->get();
         $data['items'] = Advert::orderBy('created_at', 'desc')->get();
         $data['group']  = Groupvn::all();
         return view('admin.advert.advert_top', $data);
     }
-    public function addTopAdvert($id, $ad_id){
+    public function addTopAdvert($id, $lo_id, $ad_id){
         $adt = new AdvertTop;
+        //id danh mục
         $adt->adt_gr_id = $id;
+        //id quảng cáo
         $adt->adt_ad_id = $ad_id;
+        //id_vị trí
+        $adt->adt_location = $lo_id;
+        //lưu 
         $adt->save();
         
         return back();

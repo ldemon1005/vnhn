@@ -32,7 +32,7 @@
               </p>
             </a>
           </li>
-          @if (Auth::user()->level < 3)
+          @if (Auth::user()->level < 4)
             <li class="nav-item has-treeview">
               <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'account') active @endif"">
                 <i class="fas fa-users-cog nav-icon"></i>
@@ -83,29 +83,32 @@
               
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-ellipsis-h"></i>
-              <p>
-                Danh mục
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('form_sort_group','00')}}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Sắp xếp</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('admin_group')}}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Danh sách mục</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if (Auth::user()->level < 3)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-ellipsis-h"></i>
+                <p>
+                  Danh mục
+                  <i class="fa fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('form_sort_group','00')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Sắp xếp</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin_group')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Danh sách mục</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
+            
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
@@ -115,93 +118,121 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('admin_articel')}}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon text-warning"></i>
-                  <p>Danh sách bài viết</p>
-                </a>
-              </li>
+              @if (Auth::user()->level < 4)
+                <li class="nav-item">
+                  <a href="{{route('admin_articel')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon text-warning"></i>
+                    <p>Danh sách bài viết</p>
+                  </a>
+                </li>
 
+                <li class="nav-item">
+                  <a href="{{route('sort_hot_articel')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Danh sách bài viết hot</p>
+                  </a>
+                </li>
+              @endif
+              
               <li class="nav-item">
-                <a href="{{route('sort_hot_articel')}}" class="nav-link">
+                <a href="{{route('form_articel',0)}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Danh sách bài viết hot</p>
+                  <p>Viết bài</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-video"></i>
-              <p>
-                Video
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('admin_video')}}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Danh sách video</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-paper-plane"></i>
-              <p>
-                Quảng cáo
-                <i class="fa fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ asset('admin/advert/add') }}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Thêm mới</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ asset('admin/advert') }}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Quản trị</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ asset('admin/advert/top') }}" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Sắp xếp</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="{{ asset('admin/comment') }}" class="nav-link">
-              <i class="nav-icon fas fa-comments"></i>
-              <p>
-                Quản trị bình luận
-              </p>
-            </a>
-          </li>
+          @if (Auth::user()->site == 1)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-video"></i>
+                <p>
+                  Video
+                  <i class="fa fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                @if (Auth::user()->level < 4)
+                  <li class="nav-item">
+                    <a href="{{route('admin_video')}}" class="nav-link">
+                      <i class="fa fa-circle-o nav-icon"></i>
+                      <p>Danh sách video</p>
+                    </a>
+                  </li>
+                @endif
+                <li class="nav-item">
+                  <a href="{{route('admin_video')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Thêm video</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
+          
+          @if (Auth::user()->site == 1 && Auth::user()->level < 4)
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-paper-plane"></i>
+                <p>
+                  Quảng cáo
+                  <i class="fa fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ asset('admin/advert/add') }}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Thêm mới</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ asset('admin/advert') }}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Quản trị</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ asset('admin/advert/top') }}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Sắp xếp</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
+          
+          @if (Auth::user()->level < 4)
+            <li class="nav-item has-treeview">
+              <a href="{{ asset('admin/comment') }}" class="nav-link">
+                <i class="nav-icon fas fa-comments"></i>
+                <p>
+                  Quản trị bình luận
+                </p>
+              </a>
+            </li>
 
-          <li class="nav-item has-treeview">
-            <a href="{{ asset('admin/magazine') }}" class="nav-link">
-              <i class="nav-icon fas fa-book-open"></i>
-              <p>
-                Quản lý magazine
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item has-treeview">
-            <a href="{{ asset('admin/website_info') }}" class="nav-link">
-              <i class="nav-icon fas fa-info-circle"></i>
-              <p>
-                Thông tin website
-              </p>
-            </a>
-          </li>
+            <li class="nav-item has-treeview">
+              <a href="{{ asset('admin/magazine') }}" class="nav-link">
+                <i class="nav-icon fas fa-book-open"></i>
+                <p>
+                  Quản lý magazine
+                </p>
+              </a>
+            </li>
+          @endif 
+          
+          @if (Auth::user()->level<3)
+            <li class="nav-item has-treeview">
+              <a href="{{ asset('admin/website_info') }}" class="nav-link">
+                <i class="nav-icon fas fa-info-circle"></i>
+                <p>
+                  Thông tin website
+                </p>
+              </a>
+            </li>
+          @endif
+            
 
           <li class="nav-item has-treeview">
             <a href="{{ asset('logout') }}" class="nav-link">

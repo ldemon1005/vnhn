@@ -109,8 +109,8 @@ Route::group(['namespace' => 'Admin'], function (){
 			Route::get('delete/{id}','AdvertController@destroy');
 
 			Route::get('top', 'AdvertController@getTop');
-			Route::get('top/{id}', 'AdvertController@getGroup');
-			Route::get('top_add/{id}/{ad_id}', 'AdvertController@addTopAdvert');
+			Route::get('top/{id}/{lo_id}', 'AdvertController@getGroup');
+			Route::get('top_add/{id}/{lo_id}/{ad_id}', 'AdvertController@addTopAdvert');
 			Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
 
             Route::post('on', 'AdvertController@getOn');
@@ -131,6 +131,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/delete_magazine/{id}','MagazineController@delete_magazine')->name('delete_magazine');
         });
 
+
         Route::group(['prefix'=>'comment'],function(){
             Route::get('/','CommentController@index')->name('admin_comment');
             Route::get('/update_comment/{id}','CommentController@update_status')->name('update_comment');
@@ -139,3 +140,5 @@ Route::group(['namespace' => 'Admin'], function (){
 });
 
 Route::post('/upload_image',['as' => 'upload_image','uses' => 'ClientController@upload_image']);
+
+Route::get('{slug}', 'Client\IndexController@home');

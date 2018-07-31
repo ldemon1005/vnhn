@@ -32,14 +32,20 @@
               <form method="get" action="">
                 <div class="row">
                   <div class="col-6">
-                    <select class="form-control">
+                    <select class="form-control group">
                       @foreach ($group as $item)
                         <option value="{{$item->id}}" {{Request::segment(4) == $item->id ? 'selected' : '' }}>{{$item->title}}</option>
                       @endforeach
                     </select>
                   </div>
+                  <div class="col-6">
+                    <select class="form-control location">
+                      @for ($i = 1; $i < 7; $i++)
+                        <option value="{{$i}}" {{Request::segment(5) == $i ? 'selected' : '' }}>Vị trí {{$i}}</option>
+                      @endfor
+                    </select>
+                  </div>
                 </div>
-                    
               </form>
             </div>
             <!-- /.card-header -->
@@ -64,9 +70,7 @@
                       
                     </td>
                     <td>
-                     
                       <a href="{{ asset('admin/advert/top_delete/'.$item->adt_id) }}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="btn btn-danger btn-sm"> Xóa</a>
-                      
                     </td>
                   </tr>
                   @endforeach
@@ -125,7 +129,7 @@
                       <div class="id_hidden" style="display: none;">{{$item->ad_id}}</div>
                     </td>
                     <td>
-                      <a href="{{ asset('admin/advert/top_add/'.Request::segment(4).'/'.$item->ad_id) }}" class="btn btn-primary btn-sm">Chọn</a>
+                      <a href="{{ asset('admin/advert/top_add/'.Request::segment(4).'/'.Request::segment(5).'/'.$item->ad_id) }}" class="btn btn-primary btn-sm">Chọn</a>
                       
                       
                     </td>
@@ -171,17 +175,12 @@
 
   });
   $(document).ready(function(){
-    $('select').on('change', function() {
-      // var url  = window.location.hostname;
-      // alert(url);
-      // url = url.replace('login', 'lockscreen?username='+username);
-      window.location.href = '{{ asset('admin/advert/top') }}' +'/'+ this.value;
-    })
-    // $('option').click(function(){
-    //   alert('ok');
-    //   var gr_id = $(this).attr('value');
-    //   window.location.href = 'http://localhost/vnhn/admin/advert/top/'+gr_id;
-    // });
+    $('select.group').on('change', function() {
+      window.location.href = '{{ asset('admin/advert/top') }}' +'/'+ this.value +'/'+ {{Request::segment(5)}};
+    });
+    $('select.location').on('change', function() {
+      window.location.href = '{{ asset('admin/advert/top') }}' +'/'+ {{Request::segment(4)}} +'/'+ this.value ; 
+    });
     
   });
 </script>
