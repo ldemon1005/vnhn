@@ -125,11 +125,13 @@
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <label class="col-sm-3 text-primary">
-                                            <input value="1" type="radio" name="group[status]" {{ $group->status != 2 ? 'checked' : '' }}>
+                                            <input value="1" type="radio" name="group[status]" {{ $group->status != 0
+                                             ? 'checked' : '' }}>
                                             Hoạt động
                                         </label>
                                         <label class="col-sm-3 text-primary">
-                                            <input value="2" type="radio" name="group[status]" {{ $group->status == 2 ? 'checked' : '' }}>
+                                            <input value="0" type="radio" name="group[status]" {{ $group->status == 0
+                                             ? 'checked' : '' }}>
                                             Không hoạt động
                                         </label>
                                     </div>

@@ -129,7 +129,6 @@ class GroupController extends Controller
             $data = [
                 'list_group' => $list_group
             ];
-
             return view('admin.group.sort_group',$data);
         }else {
             $list_group = DB::table($this->db->group)->where('parentid',$parent_id)->orderBy('order')->get();

@@ -30,6 +30,9 @@ a:hover {
 .articel-new .new-right{
 	width: 300px;
 }
+.new-right .item-quangcao{
+	min-height: 200px;
+}
 
 .articel-new .new-left a.new-item{
 	width: 65%;
@@ -524,7 +527,7 @@ a:hover {
 
 .quangcao-4 {
 	margin-top: 30px;
-	height: auto;
+	min-height: 130px;
 	overflow: hidden;
 }
 .carousel-inner img {
@@ -548,6 +551,17 @@ a:hover {
 	
 }
 
+
+.quangcao_right{
+
+}
+.quangcao_right a {
+	display: block;
+	margin-bottom: 5px;
+}
+.quangcao_right a img{
+	width: 100%;
+}
 
 @media only screen and (max-width: 1200px) {
     .articel-new .new-left{

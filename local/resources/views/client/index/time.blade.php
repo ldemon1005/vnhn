@@ -30,16 +30,18 @@
                 <div class="row">
                     <div class="new-left-time">
                         <div class="new-left-time-top">
-                            <div class="new-item-time">
-                                <a href="{{ route('get_detail_articel',$list_articel_hot[0]->slug.'---n-'.$list_articel_hot[0]->id) }}">
-                                    <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}') no-repeat center /cover;">
-                                        
-                                    </div>
-                                    <h3 class="title mt-2">{{$list_articel_hot[0]->title}}</h3>
-                                    <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
-                                    <p class="caption">{{$list_articel_hot[0]->summary}}</p>
-                                </a>
-                            </div>
+                            @if(count($list_articel_hot))
+                                <div class="new-item-time">
+                                    <a href="{{ route('get_detail_articel',$list_articel_hot[0]->slug.'---n-'.$list_articel_hot[0]->id) }}">
+                                        <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}') no-repeat center /cover;">
+                                        </div>
+                                        <h3 class="title mt-2">{{$list_articel_hot[0]->title}}</h3>
+                                        <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
+                                        <p class="caption">{{$list_articel_hot[0]->summary}}</p>
+                                    </a>
+                                </div>
+                            @endif
+
                             <div class="new-list-right-time">
                                 <div class="caption">
                                     <h3>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đọc nhiều' : 'Top view'}}</h3>
@@ -75,12 +77,18 @@
                     </div>
                     <div class="new-right-time">
                         <div class="quangcao-1">
-                            <a href="#"><img src="{{asset('/local/resources/uploads/time-images/quangcao-1.png')}}"></a>
+                            @if (count($list_ad[2]) > 0)
+                                @for ($i = 0; $i < count($list_ad[2]); $i++)
+                                    <a href="{{ $list_ad[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[2][$i]->advert->ad_img)}}"></a>
+                                @endfor
+                            @else
+                                @for ($i = 0; $i < count($ad_home[7]); $i++)
+                                    <a href="{{ $ad_home[7][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
+                                @endfor
+                            @endif
                         </div>
 
-                        <div class="quangcao-2">
-                            <a href="#"><img src="{{asset('/local/resources/uploads/time-images/quangcao-2.png')}}"></a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -115,13 +123,6 @@
                                 </div>
                             </div>
                             <div class="time-subscribe">
-                                @if(count($group_articel) == 0)
-                                    <section class="time-subscribe-top">
-                                        <div class="title-parent">
-                                            <p>Danh mục con ...</p>
-                                        </div>
-                                    </section>
-                                @endif
                                 @foreach($group_articel as $item)
                                     <section class="time-subscribe-top">
                                         <div class="title-parent">
@@ -152,7 +153,15 @@
                         </div>
                         <div class="section2-left-bottom">
                             <div class="quangcao-7">
-                                <a href="#"><img src="{{asset('/local/resources/uploads/time-images/quangcao-4.png')}}"></a>
+                                @if (count($list_ad[4]) > 0)
+                                    @for ($i = 0; $i < count($list_ad[4]); $i++)
+                                        <a href="{{ $list_ad[4][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[4][$i]->advert->ad_img)}}"></a>
+                                    @endfor
+                                @else
+                                    @for ($i = 0; $i < count($ad_home[1]); $i++)
+                                        <a href="{{ $ad_home[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}"></a>
+                                    @endfor
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -162,7 +171,15 @@
                         </div>
                         <div class="row">
                             <div class="quangcao-6">
-                                <a href="#"><img src="{{asset('/local/resources/uploads/time-images/quangcao-3.png')}}"></a>
+                                @if (count($list_ad[3]) > 0)
+                                    @for ($i = 0; $i < count($list_ad[3]); $i++)
+                                        <a href="{{ $list_ad[3][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
+                                    @endfor
+                                @else
+                                    @for ($i = 0; $i < count($ad_home[7]); $i++)
+                                        <a href="{{ $ad_home[7][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
+                                    @endfor
+                                @endif
                             </div>
                         </div>
                     </div>
