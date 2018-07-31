@@ -88,7 +88,7 @@
                       <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="group_id[]" style="width: 100%;">
                           @foreach($list_group as $group)
 
-                            <option {{isset($group_id) && in_array($group->id,$group_id) ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
+                            <option {{isset($gr_acc) && in_array($group->id,$gr_acc) ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
                           @endforeach
                     </select>
                   </div>

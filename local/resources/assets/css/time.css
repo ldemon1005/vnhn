@@ -5,39 +5,39 @@
     position: relative;
 }
 .section1 .menu-time ul {
-    align-items: left;
-    max-height: 40px;
-    line-height: 40px;
+    display: flex;
+    align-items: center;
     padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #333;
     width: 100%;
-    transition: 1s;
 }
 
 .section1 .menu-time ul li {
-    display: inline-block;
-    font-weight: 300;
-    font-size: 16px;
-    margin-left: auto;
+    margin: 0 15px;
+    padding: 8px 0;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 12px;
+    line-height: 21px;
+    font-weight: 600;
+    position: relative;
 }
 
 .section1 .menu-time ul li a{
-    text-decoration: none;
-    display: inline-block;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 14px;
-    padding-right: 10px;
-    color: #000000;
-    font-weight: bold;
-    text-align: left;
-    text-transform: uppercase;
 }
-.section1 .menu-time ul li:first-child a{
-    font-size: 16px;
+.section1 .menu-time ul li:first-child {
+    font-size: 14px;
+    margin-left: 0px;
 }
 
-.section1 .menu-time .active{
-    z-index: 1000;
-    border-bottom: 5px solid #d71a21;
+.section1 .menu-time .active:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: -2px;
+    left: 0;
+    border-bottom: 3px solid #d71a21;
 }
 
 .btnShowListMenu{
@@ -58,7 +58,7 @@
 
 .new-right-time{
     width: 300px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .new-left-time-top{
     display: flex;
@@ -70,7 +70,6 @@
 .new-left-time .new-item-time{
     flex: 1;
     margin-right: 30px;
-    margin-top: 32px;
 }
 
 .new-left-time .new-item-time .avatar{
@@ -87,15 +86,18 @@
     width: 100%;
 }
 
-.new-left-time .new-item-time .title h3{
-    font-size: 24px;
+.new-left-time .new-item-time .title{
+    font-size: 30px;
     font-weight: bold;
-    font-family: "Times New Roman";
+    line-height: 1;
+    font-family: 'Markazi Text', serif;
+}
+
+.new-left-time .new-item-time a:hover .title{
+    color: #d71a21;
 }
 
 .new-left-time .new-item-time .caption{
-    font-size: 14px;
-    font-family: "Times New Roman";
 }
 
 .new-left-time .new-list-right-time{
@@ -124,7 +126,8 @@
 }
 
 .new-list-right-time .item-top-view h3{
-    font-family: "Times New Roman";
+     line-height: 1;
+    font-family: 'Markazi Text', serif;
     font-size: 20px;
     font-weight: bold;
     line-height: 20px;
@@ -132,7 +135,7 @@
 }
 .item-bottom{
     flex: 1;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 
@@ -156,7 +159,7 @@
 }
 
 .new-list-bottom-time .item-bottom .content{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .new-list-bottom-time .item-bottom .avatar{
@@ -174,8 +177,9 @@
 }
 
 .new-list-bottom-time .item-bottom .title {
-    font-size: 14px;
-    font-family: "Times New Roman";
+    font-size: 18px;
+     line-height: 1;
+    font-family: 'Markazi Text', serif;
     font-weight: bold;
 }
 
@@ -206,21 +210,24 @@ hr{
 }
 
 .section2 .title-parent{
-    height: 40px;
     background-color: #d71a21;
     line-height: 40px;
     display: inline-block;
     padding: 0 10px;
 }
-.section2 .title-parent p{
+.section2 .title-parent h2{
     font-size: 24px;
     font-weight: bold;
-    font-family: "Times New Roman";
+    line-height: 1;
+    font-family: 'Markazi Text', serif;
     color: #ffffff;
     text-align: center;
+    margin: 0;
+    line-height: 40px;
+    height: 40px;
 }
 .list-section2-left-top .item{
-    border-top: 2px solid #999999;
+    border-bottom: 2px solid #999999;
 }
 .list-section2-left-top .item a{
     height: auto;
@@ -229,7 +236,7 @@ hr{
     padding: 9px 0;
 }
 .list-section2-left-top .item:last-child{
-
+    border-bottom: 0;
 }
 .list-section2-left-top .item .content{
     width: 265px;
@@ -237,15 +244,12 @@ hr{
 }
 
 .list-section2-left-top .item .content h3{
-    font-family: "Times New Roman";
+     line-height: 1;
+    font-family: 'Markazi Text', serif;
     font-weight: bold;
     font-size: 24px;
 }
 
-.list-section2-left-top .item .content p{
-    font-family: "Times New Roman";
-    font-size: 14px;
-}
 
 .list-section2-left-top .item .avatar {
     flex: 1;
@@ -264,7 +268,7 @@ hr{
 
 .subscribe-top .content{
     margin: 15px;
-    padding-top: 15px;
+    padding: 15px 0;
 }
 
 .subscribe-top .avatar {
@@ -277,13 +281,15 @@ hr{
 
 .subscribe-top .title {
     font-size: 20px;
-    font-family: "Times New Roman";
+     line-height: 1;
+    font-family: 'Markazi Text', serif;
     font-weight: bold;
 }
 
 .subscribe-top .caption {
     font-size: 14px;
-    font-family: "Times New Roman";
+     line-height: 1;
+    font-family: 'Markazi Text', serif;
 }
 
 .time-subscribe >section {
@@ -317,9 +323,6 @@ hr{
 
 .section2-right .quangcao-6{
     margin: 0 10px;
-    margin-top: 20px;
-    position: absolute;
-    bottom: 0;
 }
 
 .section2-right .quangcao-6 img{
@@ -343,7 +346,8 @@ hr{
 .section3 .item-bottom .title{
     font-size: 20px;
     font-weight: bold;
-    font-family: "Times New Roman";
+     line-height: 1;
+    font-family: 'Markazi Text', serif;
 }
 
 .section3 .item-bottom .content{

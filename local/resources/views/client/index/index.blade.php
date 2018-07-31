@@ -1,7 +1,7 @@
 @extends('client.master')
 @section('main')
     <div id="main">
-        <section class="section1">
+        <section class="section1 mt-4">
             <div class="container">
                 <div class="row articel-new">
                     <div class="new-left">
@@ -10,7 +10,7 @@
                                 <a href="{{ route('get_detail_articel',$list_articel_new[0]->slug.'---n-'.$list_articel_new[0]->id) }}" class="new-item">
                                     <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}') no-repeat center /cover;">
                                     </div>
-                                    <h3 class="title">{{$list_articel_new[0]->title}}</h3>
+                                    <h3 class="title mt-2">{{$list_articel_new[0]->title}}</h3>
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_new[0]->release_time}}</p>
                                     <p class="caption">{{$list_articel_new[0]->summary}}</p>
                                 </a>
@@ -28,13 +28,13 @@
                             </div>
 
                         </div>
-                        <div class="row new-list-bottom">
+                        <div class="row new-list-bottom mb-3">
                             @for (  $i = 6;   $i < 10;    $i++)
                                 <div class="col-md-3">
                                     <a href="{{ route('get_detail_articel',$list_articel_new[$i]->slug.'---n-'.$list_articel_new[$i]->id) }}" class="article">
-                                        <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_new[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}');">
+                                        <div class="avatar" style="background-image: url('{{ file_exists(resource_path($list_articel_new[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}');">
                                         </div>
-                                        <h3 class="title">{{$list_articel_new[$i]->title}}</h3>
+                                        <h3 class="title mt-2">{{$list_articel_new[$i]->title}}</h3>
                                         <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
                                     </a>
                                         
@@ -42,7 +42,7 @@
                             @endfor
                         </div>
                         <div class="row quangcao-2">
-                            <a href="#"><img src="{{asset('local/storage/app/advert/'.$list_ad[0][0]->advert->ad_img)}}"></a>
+                            <a href="#"><img src="{{asset('/local/resources/uploads/images/quang-cao-2.png')}}"></a>
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                         </section> --}}
 
                         <div class="item-quangcao">
-                            <a><img src="{{asset('local/storage/app/advert/'.$list_ad[1][0]->advert->ad_img)}}"></a>
+                            <a><img src="{{asset('/local/resources/uploads/images/quang-cao-3.png')}}"></a>
                         </div>
                         <section class="new-right-2">
                             <div class="category">
@@ -91,8 +91,8 @@
                             <div class="list-video">
                                 <ul>
                                     <li>
-                                        <a style="cursor: pointer;text-decoration: none;color: #000000">
-                                            <i class="fas fa-caret-right"></i>
+                                        <a>
+                                            <i class="fas fa-caret-right mr-2"></i>
                                             {{$list_video_new[0]->title}}
                                         </a>
                                     </li>
@@ -113,14 +113,13 @@
 
                 <div class="row category-1">
                     <div class="category-1-left">
-                        <div class="row menu">
+                        <div class="menu">
                             <div class="menu-parent">
-                                <a href="{{ route('get_articel_by_group',$menu_parent_item->slug.'---n-'.$menu_parent_item->id) }}">
-                                    <h3>{{cut_string_name($menu_parent_item->title,30)}}</h3>
-                                </a>
-                            </div>
-                            <div class="btnShowMenuChild">
-                                <i class="fas fa-ellipsis-h"></i>
+                                <h3>
+                                    <a href="{{ route('get_articel_by_group',$menu_parent_item->slug.'---n-'.$menu_parent_item->id) }}">
+                                        {{cut_string_name($menu_parent_item->title,30)}}
+                                    </a>
+                                </h3>
                             </div>
                             <div class="menu-child">
                                 <ul class="child">
@@ -129,6 +128,9 @@
                                     @endfor
                                 </ul>
                             </div>
+                            <div class="btnShowMenuChild">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
                         </div>
                         <div class="row content">
                             <div class="item-category">
@@ -136,7 +138,7 @@
                                     <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_item[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_item[0]->fimage }}') no-repeat center 100% /cover;">
                                         {{-- <img src="{{ file_exists(asset('/local/resources'.$list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}"> --}}
                                     </div>
-                                    <h3 class="title">{{$list_articel_item[0]->title}}</h3>
+                                    <h3 class="title mt-2">{{$list_articel_item[0]->title}}</h3>
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
                                     <p class="caption">{!! $list_articel_item[0]->summary !!}</p>
                                 </a>
@@ -195,11 +197,10 @@
                         @foreach($group_list as $group)
                             <div class="col-md-3 item-category">
                                 <div class="title-articel">
-                                    <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">
-                                        <h3>{{cut_string_name($group->title,32)}}</h3>
-                                    </a>
+                                    <h3>
+                                        <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">{{cut_string_name($group->title,32)}}</a>
+                                    </h3>
                                 </div>
-                                <hr/>
                                 @foreach($group->articel as $articel)
                                     <div class="item">
                                         <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
@@ -226,18 +227,15 @@
             <div class="container">
                 <div class="row articel-bottom">
                     <div class="articel-bottom-left">
-                        <div class="row quangcao-2">
+                        <div class="row quangcao-2 mb-4">
                             <a href="#"><img src="{{asset('/local/resources/uploads/images/quang-cao-2.png')}}"></a>
                         </div>
 
-                        <div class="row menu">
-                            <div class="menu-parent">
-                                <a href="{{ route('get_articel_by_group',$menu_parent_item_2->slug.'---n-'.$menu_parent_item_2->id) }}">
-                                    <h3>{{cut_string_name($menu_parent_item_2->title,30)}}</h3>
-                                </a>
-                            </div>
-                            <div class="btnShowMenuChild">
-                                <i class="fas fa-ellipsis-h"></i>
+                        <div class="menu">
+                            <div class="menu-parent">                                
+                                <h3>
+                                    <a href="{{ route('get_articel_by_group',$menu_parent_item_2->slug.'---n-'.$menu_parent_item_2->id) }}">{{cut_string_name($menu_parent_item_2->title,30)}}</a>
+                                </h3>
                             </div>
                             <div class="menu-child">
                                 <ul class="child">
@@ -246,12 +244,15 @@
                                     @endfor
                                 </ul>
                             </div>
+                            <div class="btnShowMenuChild">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
                         </div>
 
                         <div class="row articel-bottom-left-item">
                             @foreach($list_articel_item_2 as $articel)
                                 
-                                <div class="col-md-6">
+                                <div class="col-md-6 mb-3">
                                     <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
                                         <div class="avatar" style="background: url('{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}') no-repeat center /cover;">
                                         </div>

@@ -15,13 +15,13 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Thêm mới bài viết</h1>
+                <h1>{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}Bài viết</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
-                  <li class="breadcrumb-item"><a href="{{ asset('admin/group') }}">Bài viết</a></li>
-                  <li class="breadcrumb-item active">Thêm mới</li>
+                  <li class="breadcrumb-item"><a href="{{ asset('admin/articel') }}">Bài viết</a></li>
+                  <li class="breadcrumb-item active">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</li>
                 </ol>
               </div>
             </div>
@@ -34,7 +34,7 @@
               <div class="col-md-12 col-sm-12">
                 <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Thêm mới</h3>
+                        <h3 class="card-title">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</h3>
                     </div>
                     <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post">
                         {{csrf_field()}}

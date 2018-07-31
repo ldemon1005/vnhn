@@ -1,3 +1,17 @@
+body {
+	font-family: 'Open sans', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #000;
+}
+a {
+	color: #000;
+	text-decoration: none !important;
+}
+a:hover {
+	color: #d71a21;
+}
+
 .articel-new{
 	margin-bottom: 35px;
 }
@@ -23,7 +37,6 @@
 	width: 65%;
     margin-right: 30px;
     display: block;
-    color: #000;
     text-decoration: none;
     
 }
@@ -46,20 +59,25 @@
 }
 
 .articel-new .new-left .new-item .title{
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: Bold;
-	font-family: "Times New Roman";
+	line-height: 1;
+	font-family: 'Markazi Text', serif;
 }
 
 .articel-new .new-left .new-item .caption{
 	font-size: 14px;
-	font-family: "Times New Roman";
+	line-height: 1.5;
+}
+.articel-new .new-left .new-item:hover .caption {
+	color: #000;
 }
 
 .articel-new .new-left .new-list-right .title{
-	font-size: 15px;
-	font-family: "Times New Roman";
+	font-size: 18px;
+	font-family: 'Markazi Text', serif;
 	font-weight: Bold;
+	line-height: 1;
 }
 
 .articel-new .new-left a.new-list-right-item{
@@ -68,7 +86,6 @@
 	padding-bottom: 10px;
 	display: block;
 	text-decoration: none;
-	color: #000;
 }
 
 .articel-new .new-list-bottom {
@@ -87,9 +104,12 @@
 }
 
 .articel-new .new-list-bottom .title{
-	font-size: 15px;
-	font-family: "Times New Roman";
+	font-size: 18px;
+	line-height: 1;
+	font-family: 'Markazi Text', serif;
 	font-weight: Bold;
+    max-height: 63px;
+    overflow: hidden;
 }
 
 .articel-new .new-right .category{
@@ -99,8 +119,9 @@
 
 .articel-new .new-right .category h3{
 	color: #d71a21;
-	font-size: 16px;
-	font-family: "Times New Roman";
+	font-size: 24px;
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
 	font-weight: Bold;
 }
 
@@ -136,6 +157,16 @@
 	text-align: left;
 	padding: 10px 0;
 }
+.list-video ul li a {
+	font-weight: Bold;
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
+	font-size: 18px;
+	cursor: pointer;
+}
+.list-video ul li a:hover {
+	color: #d71a21 !important;
+}
 .list-video ul li:last-child{
 	border-bottom: 0;
 }
@@ -162,7 +193,6 @@
 
 .category-1 .category-1-left{
 	width: 745px;
-	height: 790px;
 	margin-right: 30px;
 }
 
@@ -172,28 +202,27 @@
 }
 
 .menu {
-    margin-top: 20px;
-    margin-left: 0;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
     border-bottom: 3px solid #000;
-    margin-bottom: 36px;
-    margin-right: 0;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .menu-parent{
-	width: auto;
-	height: 42px;
 	background-color: #d71a21;
-	text-align: center;
 }
 
 .menu-parent h3 {
-	color: #ffffff;
-    line-height: 43px;
     margin-bottom: 0px;
-    font-family: "Times New Roman";
+    font-family: 'Markazi Text', serif;
     font-weight: bold;
-	padding: 0 10px;
+	padding: 0 20px;
+	line-height: 40px;
+}
+.menu-parent h3 a {
+	color: #FFF;
 }
 .btnShowMenuChild{
 	position: absolute;
@@ -206,38 +235,30 @@
 .menu-child{
 	flex: 1;
 	text-align: left;
-	line-height: 42px;
+	line-height: 40px;
 	display: block;
+	margin-left: 10px;
 }
 .menu-child ul.child{
 	margin-bottom: 0;
 }
 
-.menu a{
-	text-decoration: none;
-	color: #000000;
-}
 .child {
 	padding: 0;
 }
 
 .child li {
-	line-height: 14px;
 	display: inline-block;
 	border-left: 1px solid #8d8d8d;
 	padding: 0 10px;
 	margin: 0;
-	font-family: "Times New Roman";
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
+	font-size: 18px;
 }
 
 .menu-child ul > :first-child {
 	border-left: 0px;
-}
-
-.child li a{
-	font-size: 15px;
-	color: #000000;
-	text-decoration: none;
 }
 
 .category-1 .content{
@@ -260,30 +281,20 @@
 }
 
 .item-category .title {
-	font-size: 24px;
+	font-size: 30px;
 	font-weight: Bold;
-	font-family: "Times New Roman";
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
 }
 
-.item-category a{
-	text-decoration: none;
-	color: #000;
-}
 
 .item-category .title-articel a{
 	text-decoration: none;
 	color: #ffffff;
 }
-a{
-	text-decoration: none;
-	color: #000000;
-}
 
-
-
-.item-category .caption {
-	font-size: 14px;
-	font-family: "Times New Roman";
+.item-category a:hover .caption {
+	color: #000;
 }
 
 .category-1-left .list-right-item {
@@ -295,14 +306,19 @@ a{
 }
 
 .category-1-left .list-right-item .title{
-	font-size: 18px;
+	margin: 10px 0;
+	font-size: 20px;
 	font-weight: Bold;
-	font-family: "Times New Roman";
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
 }
 
 .category-1-left .list-right-item .caption{
-	font-size: 14px;
-	font-family: "Times New Roman";
+	max-height: 125px;
+	overflow: hidden;
+}
+.category-1-left .list-right-item a:hover .caption {
+	color: #000;
 }
 
 .category-1 .category-1-right .title{
@@ -310,9 +326,10 @@ a{
 }
 
 .category-1 .category-1-right .title h3{
-	font-size: 14px;
+	font-size: 24px;
 	font-weight: Bold;
-	font-family: "Times New Roman";
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
 }
 
 .category-1 .category-1-right a.item-top-view{
@@ -320,7 +337,6 @@ a{
 	display: flex;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #bfbfbf;
-	color: #000;
 	text-decoration: none;
 }
 
@@ -330,7 +346,8 @@ a{
     color: #999999;
     font-size: 39px;
     font-weight: bold;
-    font-family: "Times New Roman";
+    font-family: 'Markazi Text', serif;
+	line-height: 1;
 
 }
 
@@ -348,10 +365,10 @@ a{
 }
 
 .category-1 .category-1-right .item-top-view .caption h3{
-	font-family: "Times New Roman";
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
 	font-weight: bold;
-	font-size: 14px;
-	line-height: 20px;
+    font-size: 18px;
 }
 
 .category-1 .category-1-right .item-top-view .avatar{
@@ -382,22 +399,32 @@ a{
 .category >div{
 	margin: 0 -30px;
 }
+.category .item-category {
+	border-right: 1px solid #ddd;
+}
 
 .category .title-articel{
-	height: 42px;
-	padding: 0px 15px 0;
+	padding-bottom: 3px;
+	border-bottom: 3px solid #000;
+	margin-bottom: 10px;
+}
+.category .title-articel h3 {
+	padding: 0px 20px;
+	margin: 0;
+	line-height: 40px;
+	font-family: 'Markazi Text', serif;
+	font-weight: bold;
+	font-size: 24px;
 	background-color: #d71a21;
-	text-align: left;
 	color: #ffffff;
-	padding-top: 6px;
-	margin: 20px 15px 0;
-	margin-bottom: -15px;
-	overflow: hidden;
 }
 
 .category .item{
-	padding: 20px 15px 0;
-	border-left: 1px solid #999999;
+	padding: 10px 0;
+	border-bottom: 1px dashed #ddd;
+}
+.category .item:last-child {
+	border: 0;
 }
 
 .category .item a{
@@ -405,9 +432,11 @@ a{
 }
 
 .category .item h3{
-	font-size: 16px;
-	font-family: "Times New Roman";
-	color: #000000;
+	font-size: 18px;
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
+	font-weight: bold;
+	margin-bottom: 0;
 }
 
 .category .item .avatar {
@@ -431,42 +460,8 @@ a{
 }
 
 
-.item-category{
-	padding-left: 0px;
-	padding-right: 0px;
-}
-
-.item-category .title-articel h3 {
-	font-size: 18px;
-	line-height: 30px;
-	color: #fff;
-}
-
-.item-category .title {
-	border-bottom: 1px dashed #bfbfbf;
-}
-
-.item-category .title:last-of-type {
-	border-bottom: 0px dashed #bfbfbf;
-	color: #d71a21;
-}
-
-.item-category hr {
-	padding: 0px 15px 0;
-	border-top: 4px solid #000000;
-	margin: 20px 15px 0;
-}
-
-
-
-
-a.article{
-	color: #000;
-	text-decoration: none;
-}
-
 .section2{
-	margin: 48px auto; 
+	margin: 30px auto ; 
 }
 
 .articel-bottom-left{
@@ -477,10 +472,6 @@ a.article{
 
 .articel-bottom-right{
 	width: 300px;
-}
-.articel-bottom-left-item a{
-	text-decoration: none;
-	color: #000;
 }
 .articel-bottom-left-item .avatar {
 	width: auto;
@@ -504,17 +495,33 @@ a.article{
 	overflow: hidden;
 	margin-bottom: 20px;
 }
+.quangcao-group .category h3 {
+	border-bottom: 3px solid #000;
+	color: #d71a21;
+    font-size: 24px;
+    font-family: 'Markazi Text', serif;
+    line-height: 1;
+    font-weight: Bold;
+}
+.quangcao-group .new-right-1 .title h3{
+	background-color: #f5f5f5;
+	padding: 15px;
+	font-size: 14px;
+	font-weight: bold;
+    margin-bottom: 20px;
+}
+
 
 .articel-bottom-left-item  h3{
 	margin-top: 10px;
-	font-size: 18px;
-	font-family: "Times New Roman";
+	font-size: 24px;
+	font-family: 'Markazi Text', serif;
+	line-height: 1;
 	font-weight: bold;
 }
 
-.articel-bottom-left-item  .caption{
-	font-size: 14px;
-	font-family: "Times New Roman";
+.articel-bottom-left-item  a:hover .caption{
+	color: #000;
 }
 
 .quangcao-4 {
@@ -533,10 +540,6 @@ a.article{
 	color: #999999;
 }
 
-.list-right-item a{
-	text-decoration: none;
-	color: #000000;
-}
 .list-right-item a .avatar{
 	display: block;
 }
@@ -763,7 +766,8 @@ a.article{
 	}
 	.category-1-left .list-right-item .caption {
 	    font-size: 14px;
-	    font-family: "Times New Roman";
+	    font-family: 'Markazi Text', serif;
+	line-height: 1;
 	    display: none;
 	}
 }
