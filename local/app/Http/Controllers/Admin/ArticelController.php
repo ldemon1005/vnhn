@@ -114,7 +114,7 @@ class ArticelController extends Controller
         }else{
             $articel = DB::table($this->db->news)->find($id);
             $articel->groupid = explode(',',$articel->groupid);
-            $content = DB::table($this->db->logfile)->where('LogId',$articel->id)->first();
+            $content = DB::table($this->db->logfile)->orderByDesc('id')->where('LogId',$articel->id)->first();
             $articel->content = $content ? $content->noidung : '';
             $date = $articel->release_time;
             $articel->release_time = (object)[

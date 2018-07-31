@@ -83,7 +83,9 @@
                                     <th>Ngày tạo--Ngày update</th>
                                     <th>Avatar</th>
                                     <th>Trạng thái</th>
-                                    <th style="min-width: 50px">Duyệt bài</th>
+                                    @if($level < 3)
+                                        <th style="min-width: 50px">Duyệt bài</th>
+                                    @endif
                                     <th>Thao tác</th>
                                 </tr>
                                 </thead>
@@ -101,17 +103,33 @@
                                             </div>
                                         </td>
                                         <td>{{get_status($articel->status)}}</td>
-                                        <td>
-                                            {{--<button class="btn btn-block btn-sm {{ $articel->status == 2 ? 'btn-danger' : 'btn-success' }}">{{ $articel->status ? 'Không hoạt động' : 'Hoạt động' }}</button>--}}
-                                            <!-- Example single danger button -->
-                                            <select style="width: 100%" class="form-control" onchange="chang_status_articel('{{$articel->id}}',this)">
-                                                <option {{$articel->status == 1 ? 'selected' : ''}} value="1">Đăng</option>
-                                                <option {{$articel->status == 0 ? 'selected' : ''}} value="0">Tắt</option>
-                                                <option {{$articel->status == 3 ? 'selected' : ''}} value="3">Duyệt lần 1</option>
-                                                <option {{$articel->status == 2 ? 'selected' : ''}} value="2">Duyệt lần 2</option>
-                                                <option {{$articel->status == 4 ? 'selected' : ''}} value="4">Trả lại</option>
-                                            </select>
-                                        </td>
+                                        @if($level < 3)
+                                            <td>
+                                                <select style="width: 100%" class="form-control"
+                                                        onchange="chang_status_articel('{{$articel->id}}',this)">
+                                                    @if($level <= 2)
+                                                        <option {{$articel->status == 1 ? 'selected' : ''}} value="1">
+                                                            Đăng
+                                                        </option>
+                                                        <option {{$articel->status == 0 ? 'selected' : ''}} value="0">
+                                                            Tắt
+                                                        </option>
+                                                    @endif
+
+                                                    @if($level <= 3)
+                                                        <option {{$articel->status == 3 ? 'selected' : ''}} value="3">
+                                                            Duyệt lần 1
+                                                        </option>
+                                                        <option {{$articel->status == 2 ? 'selected' : ''}} value="2">
+                                                            Duyệt lần 2
+                                                        </option>
+                                                        <option {{$articel->status == 4 ? 'selected' : ''}} value="4">
+                                                            Trả lại
+                                                        </option>
+                                                    @endif
+                                                </select>
+                                            </td>
+                                        @endif
                                         <td>
                                             <div class="row form-group">
                                                 <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>

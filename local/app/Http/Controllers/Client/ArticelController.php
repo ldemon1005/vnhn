@@ -18,7 +18,7 @@ class ArticelController extends Controller
 
         $articel->update(['view' => $articel->view + 1]);
 
-        $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->first();
+        $content = DB::table($this->db->logfile)->orderByDesc('id')->where('LogId',$slug[1])->whereNotNull('noidung')->first();
 
         $group_id = explode(',',$articel->groupid)[0];
 

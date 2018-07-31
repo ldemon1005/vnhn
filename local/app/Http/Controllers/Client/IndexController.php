@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Session;
 
 class IndexController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         /*
          *  phần new
          */
@@ -30,7 +31,6 @@ class IndexController extends Controller
 
         $articel_times_1 = $this->get_articel_item(0);
 
-
         /*
          *  danh sách bào viết theo danh mục
          */
@@ -44,7 +44,6 @@ class IndexController extends Controller
         $articel_times_2 = $this->get_articel_item(1);
 
         $advert = $this->get_advert(1);
-        // dd($advert[0][0]);
         $data = [
 //            'menu' => $menu,
             'list_articel_new' => $list_articel_new,
@@ -65,77 +64,86 @@ class IndexController extends Controller
         ];
 
 
-        return view('client.index.index',$data);
-    }
-    public function home(){
-        return redirect('');
-    }
-    public function time(){
-    	return view('client.index.time');
+        return view('client.index.index', $data);
     }
 
-    public function get_new_articel(){
-        $list_articel_new = DB::table($this->db->news)->where('hot_main',1)->where('release_time','<=',time()+86400)->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
-        foreach ($list_articel_new as $item){
-            if(time() - $item->release_time > 86400) {
-                $item->release_time = date('d/m/Y H:m',$item->release_time);
-            }else {
+    public function home()
+    {
+        return redirect('');
+    }
+
+    public function time()
+    {
+        return view('client.index.time');
+    }
+
+    public function get_new_articel()
+    {
+        $list_articel_new = DB::table($this->db->news)->where('hot_main', 1)->where('release_time', '<=', time() + 43200)->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
+        foreach ($list_articel_new as $item) {
+            if (time() - $item->release_time > 86400) {
+                $item->release_time = date('d/m/Y H:m', $item->release_time);
+            } else {
                 $time = time() - $item->release_time;
-                $item->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+                $item->release_time = round($time / 3600, 0, PHP_ROUND_HALF_DOWN) . ' giờ trước';
             }
         }
         return $list_articel_new;
     }
 
-    public function get_video_new(){
-        $list_video_new = DB::table($this->db->video)->where('release_time','<=',time())->take(5)->get();
+    public function get_video_new()
+    {
+        $list_video_new = DB::table($this->db->video)->where('release_time', '<=', time())->take(5)->get();
         return $list_video_new;
     }
 
-    public function get_magazine_new(){
-        $magazine = DB::table($this->db->magazine)->where('status',1)->orderByDesc('id')->first();
+    public function get_magazine_new()
+    {
+        $magazine = DB::table($this->db->magazine)->where('status', 1)->orderByDesc('id')->first();
         $magazine->slide_show = json_decode($magazine->slide_show);
         return $magazine;
     }
-    public function get_articel_item($position){
-        $menu_time = DB::table($this->db->group)->where('home_index',1)->where('type','!=',1)->orderBy('order')->take(2)->get()->chunk(1);
+
+    public function get_articel_item($position)
+    {
+        $menu_time = DB::table($this->db->group)->where('home_index', 1)->where('type', '!=', 1)->orderBy('order')->take(2)->get()->chunk(1);
 
         $menu_time = $menu_time[$position][$position];
 
-        $menu_child = DB::table($this->db->group)->where('parentid',$menu_time->id)->get();
+        $menu_child = DB::table($this->db->group)->where('parentid', $menu_time->id)->get();
 
         $list_group_ids[] = $menu_time->id;
 
-        foreach ($menu_child as $menu){
+        foreach ($menu_child as $menu) {
             $list_group_ids[] = $menu->id;
         }
 
-        $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$list_group_ids)->get(['news_vn_id'])->toJson();
-        $list_articel_ids = array_column(json_decode($list_articel_ids,true),'news_vn_id');
+        $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id', $list_group_ids)->get(['news_vn_id'])->toJson();
+        $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
 
-        if($position == 0){
-            $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(3)->get();
-        }else {
-            $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('hot_item',1)->orderBy('order_item')->take(4)->get();
+        if ($position == 0) {
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->orderBy('order_item')->take(3)->get();
+        } else {
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->orderBy('order_item')->take(4)->get();
         }
 
-        foreach ($list_articel as $item){
-            if(time() - $item->release_time > 86400) {
-                $item->release_time = date('d/m/Y H:m',$item->release_time);
-            }else {
+        foreach ($list_articel as $item) {
+            if (time() - $item->release_time > 86400) {
+                $item->release_time = date('d/m/Y H:m', $item->release_time);
+            } else {
                 $time = time() - $item->release_time;
-                $item->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+                $item->release_time = round($time / 3600, 0, PHP_ROUND_HALF_DOWN) . ' giờ trước';
             }
         }
 
-        $list_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->orderByDesc('view')->take(5)->get();
+        $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->orderByDesc('view')->take(5)->get();
 
-        foreach ($list_top_view as $item){
-            if(time() - $item->release_time > 86400) {
-                $item->release_time = date('d/m/Y H:m',$item->release_time);
-            }else {
+        foreach ($list_top_view as $item) {
+            if (time() - $item->release_time > 86400) {
+                $item->release_time = date('d/m/Y H:m', $item->release_time);
+            } else {
                 $time = time() - $item->release_time;
-                $item->release_time = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+                $item->release_time = round($time / 3600, 0, PHP_ROUND_HALF_DOWN) . ' giờ trước';
             }
         }
         return [
@@ -146,24 +154,24 @@ class IndexController extends Controller
         ];
     }
 
-    public function get_articel_group(){
-        $groups = Group_vn::where('home_index',1)->where('status',1)->where('type','!=',1)->orderBy('order')->take(10)->get()->slice(2,8);
+    public function get_articel_group()
+    {
+        $groups = Group_vn::where('home_index', 1)->where('status', 1)->where('type', '!=', 1)->orderBy('order')->take(10)->get()->slice(2, 8);
 
-        foreach ($groups as $group){
-            $group->articel = $group->belongsToMany(News::class,$this->db->group_news,'group_vn_id','news_vn_id')->orderByDesc('id')->take(5)->get();
+        foreach ($groups as $group) {
+            $group->articel = $group->belongsToMany(News::class, $this->db->group_news, 'group_vn_id', 'news_vn_id')->orderByDesc('id')->take(5)->get();
         }
         $groups = $groups->chunk(4);
         return $groups;
     }
 
-    public function get_advert($id){
+    public function get_advert($id)
+    {
         $ads = AdvertTop::where('adt_gr_id', $id)->get();
         $ad = array();
-        for ($i=1; $i < 7; $i++) { 
+        for ($i = 1; $i < 7; $i++) {
             $ad[] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
         }
         return $ad;
     }
-
-
 }
