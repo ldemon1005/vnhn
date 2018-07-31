@@ -50,8 +50,12 @@
                                                 <select class="select2" data-placeholder="Chọn danh mục"
                                                         name="groupid"
                                                         style="width: 100%;">
+                                                    <option value="null">Chọn danh mục</option>
                                                     @foreach($groups as $articel_item)
-                                                        <option value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
+                                                        <option {{$parentid == $articel_item->id ? 'selected' : ''}}
+                                                                value="{{
+                                                        $articel_item->id }}">{{
+                                                        $articel_item->title }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

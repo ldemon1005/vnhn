@@ -97,7 +97,7 @@
                     <div class="mainDetailLeftInvolve">
                         <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
                         <div class="mainDetailLeftInvolveMain">
-                            @foreach($articel_related as $art_related)
+                            @foreach($articel_related_3 as $art_related)
                                 <div class="mainDetailLeftInvolveItem">
                                     <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
                                         <div class="mainDetailLeftInvolveItemImg">
@@ -118,22 +118,12 @@
                             @endforeach
                         </div>
                         <ul class="news-older">
-                            <li>
-                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
-                            </li>
-                            <li>
-                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
-                            </li>
-                            <li>
-                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
-                            </li>
-                            <li>
-                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
-                            </li>
-                            <li>
-                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
-                            </li>
-                        <ul>
+                            @foreach($articel_related_5 as $art_related)
+                                <li>
+                                    <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">{{$art_related->title}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
 
                 </div>

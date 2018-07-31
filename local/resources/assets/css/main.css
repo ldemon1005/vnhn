@@ -57,10 +57,8 @@ a:hover {
 }
 
 .articel-new .new-left .new-item .title{
-	font-size: 30px;
 	font-weight: Bold;
-	line-height: 1;
-	font-family: 'Markazi Text', serif;
+	font-family: 'Merriweather', serif;
 }
 
 .articel-new .new-left .new-item:hover .caption {
@@ -68,10 +66,10 @@ a:hover {
 }
 
 .articel-new .new-left .new-list-right .title{
-	font-size: 18px;
-	font-family: 'Markazi Text', serif;
+	font-size: 14px;
+	font-family: 'Merriweather', serif;
+	line-height: 1.4;
 	font-weight: Bold;
-	line-height: 1;
 }
 
 .articel-new .new-left a.new-list-right-item{
@@ -98,11 +96,11 @@ a:hover {
 }
 
 .articel-new .new-list-bottom .title{
-	font-size: 18px;
-	line-height: 1;
-	font-family: 'Markazi Text', serif;
+	font-size: 14px;
+	font-family: 'Merriweather', serif;
+	line-height: 1.4;
 	font-weight: Bold;
-    max-height: 63px;
+    max-height: 58px;
     overflow: hidden;
 }
 
@@ -113,9 +111,9 @@ a:hover {
 
 .articel-new .new-right .category h3{
 	color: #d71a21;
-	font-size: 24px;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
+	font-size: 18px;
+	font-family: 'Merriweather', serif;
+	line-height: 1.4;
 	font-weight: Bold;
 }
 
@@ -153,9 +151,9 @@ a:hover {
 }
 .list-video ul li a {
 	font-weight: Bold;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
-	font-size: 18px;
+	font-family: 'Merriweather', serif;
+	line-height: 1.4;
+	font-size: 14px;
 	cursor: pointer;
 }
 .list-video ul li a:hover {
@@ -210,8 +208,9 @@ a:hover {
 
 .menu-parent h3 {
     margin-bottom: 0px;
-    font-family: 'Markazi Text', serif;
+    font-family: 'Merriweather', serif;
     font-weight: bold;
+    font-size: 18px;
 	padding: 0 20px;
 	line-height: 40px;
 }
@@ -246,9 +245,9 @@ a:hover {
 	border-left: 1px solid #8d8d8d;
 	padding: 0 10px;
 	margin: 0;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
-	font-size: 18px;
+	font-family: 'Merriweather', serif;
+	font-size: 12px;
+	line-height: 1.4;
 }
 
 .menu-child ul > :first-child {
@@ -275,10 +274,10 @@ a:hover {
 }
 
 .item-category .title {
-	font-size: 30px;
 	font-weight: Bold;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
+	font-family: 'Merriweather', serif;
+    font-size: 1.3rem;
+    line-height: 1.4;
 }
 
 
@@ -301,10 +300,10 @@ a:hover {
 
 .category-1-left .list-right-item .title{
 	margin: 10px 0;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: Bold;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
+	font-family: 'Merriweather', serif;
+	line-height: 1.4;
 }
 
 .category-1-left .list-right-item .caption{
@@ -320,10 +319,10 @@ a:hover {
 }
 
 .category-1 .category-1-right .title h3{
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: Bold;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
+	font-family: 'Merriweather', serif;
+	line-height: 1.4;
 }
 
 .category-1 .category-1-right a.item-top-view{
@@ -338,10 +337,9 @@ a:hover {
 	width: 48px;
     line-height: 40px;
     color: #999999;
-    font-size: 39px;
+    font-size: 32px;
     font-weight: bold;
-    font-family: 'Markazi Text', serif;
-	line-height: 1;
+    font-family: 'Merriweather', serif;
 
 }
 
@@ -359,10 +357,10 @@ a:hover {
 }
 
 .category-1 .category-1-right .item-top-view .caption h3{
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
+	font-family: 'Merriweather', serif;
 	font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 .category-1 .category-1-right .item-top-view .avatar{
@@ -409,11 +407,14 @@ a:hover {
 	padding: 0px 20px;
 	margin: 0;
 	line-height: 40px;
-	font-family: 'Markazi Text', serif;
+	font-family: 'Merriweather', serif;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 18px;
 	background-color: #d71a21;
 	color: #ffffff;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .category .item{
@@ -429,9 +430,9 @@ a:hover {
 }
 
 .category .item h3{
-	font-size: 18px;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
+	font-size: 14px;
+	font-family: 'Merriweather', serif;
+    line-height: 1.4;
 	font-weight: bold;
 	margin-bottom: 0;
 }
@@ -495,9 +496,9 @@ a:hover {
 .quangcao-group .category h3 {
 	border-bottom: 3px solid #000;
 	color: #d71a21;
-    font-size: 24px;
-    font-family: 'Markazi Text', serif;
-    line-height: 1;
+    font-size: 18px;
+    font-family: 'Merriweather', serif;
+    line-height: 1.4;
     font-weight: Bold;
 }
 .quangcao-group .new-right-1 .title h3{
@@ -511,9 +512,9 @@ a:hover {
 
 .articel-bottom-left-item  h3{
 	margin-top: 10px;
-	font-size: 24px;
-	font-family: 'Markazi Text', serif;
-	line-height: 1;
+	font-size: 18px;
+    line-height: 1.4;
+	font-family: 'Merriweather', serif;
 	font-weight: bold;
 }
 
@@ -633,10 +634,14 @@ a:hover {
 	}
 	.articel-new .new-left a.new-item {
 	    width: auto;
-	    margin-right: 0;
+	    margin-right: 0;    
+	    margin-bottom: 15px;
+    	border-bottom: 1px dashed #bfbfbf;
 	}
 	.articel-new .new-left a.new-item h3 {
 	    color: #d71a20;
+	    font-size: 1.5rem;
+	    line-height: 1.4;
 	}
 	.articel-new .new-right {
 	    display: none;
@@ -651,9 +656,6 @@ a:hover {
 	/*.category-1 .category-1-left{
 		margin-right: 0;
 	}*/
-	.category-1 .category-1-right .item-top-view .caption h3 {
-		font-size: 20px;
-	}
 	.category-1 .category-1-right .item-top-view .avatar {
 		display: none;
 	}

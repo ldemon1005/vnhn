@@ -101,7 +101,7 @@ class IndexController extends Controller
 
     public function get_magazine_new()
     {
-        $magazine = DB::table($this->db->magazine)->where('status', 1)->orderByDesc('id')->first();
+        $magazine = DB::table($this->db->magazine)->orderByDesc('id')->first();
         $magazine->slide_show = json_decode($magazine->slide_show);
         return $magazine;
     }

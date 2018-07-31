@@ -20,7 +20,9 @@ class ArticelController extends Controller
 
         $articel->update(['view' => $articel->view + 1]);
 
-        $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->whereNotNull('noidung')->orderByDesc('id')->first();
+        $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->whereNotNull('noidung')->where('noidung','!=','')
+            ->orderByDesc
+        ('id')->first();
 
         $group_id = explode(',',$articel->groupid)[0];
 
@@ -34,11 +36,15 @@ class ArticelController extends Controller
 
         $list_group = DB::table($this->db->group)->whereIn('id',$result)->get();
 
-        $articel_related = DB::table($this->db->news)->whereIn('groupid',$group_related)->orderBy('order_item')->orderByDesc('release_time')->take(3)->get();
+        $articel_related = DB::table($this->db->news)->whereIn('groupid',$group_related)->orderBy('order_item')
+            ->orderByDesc('release_time')->take(8)->get();
 
         foreach ($articel_related as $item){
             $this->get_time($item);
         }
+
+        $articel_related_3 = $articel_related->slice(0,3);
+        $articel_related_5 = $articel_related->slice(3,5);
 
         $articel->content = $content ? $content->noidung : '';
 
@@ -98,7 +104,8 @@ class ArticelController extends Controller
         $data = [
             'list_group' => $list_group,
             'articel' => $articel,
-            'articel_related' => $articel_related,
+            'articel_related_3' => $articel_related_3,
+            'articel_related_5' => $articel_related_5,
 
 
             'articel_top_view' => $articel_top_view,
@@ -118,7 +125,7 @@ class ArticelController extends Controller
     }
 
     public function get_magazine_new(){
-        $magazine = DB::table($this->db->magazine)->where('status',1)->orderByDesc('id')->first();
+        $magazine = DB::table($this->db->magazine)->orderByDesc('id')->first();
         $magazine->slide_show = json_decode($magazine->slide_show);
         return $magazine;
     }

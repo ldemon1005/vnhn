@@ -148,7 +148,7 @@
                                 @for($i = 1;$i < count($list_articel_item);$i++)
                                     <div class="list-right-item">
                                         <a href="{{ route('get_detail_articel',$list_articel_item[$i]->slug.'---n-'.$list_articel_item[$i]->id) }}">
-                                            <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_item[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[$i]->fimage }}') no-repeat center /cover;">
+                                            <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_item[$i]->fimage)) ? asset('/local/resources'.$list_articel_item[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_item[$i]->fimage }}') no-repeat center /cover;">
                                             </div>
                                             <h3 class="title">{{$list_articel_item[$i]->title}}</h3>
                                             <p class="date-time">{{$list_articel_item[$i]->release_time}}</p>

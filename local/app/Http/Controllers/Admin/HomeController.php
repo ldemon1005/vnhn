@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function getHome(){
+//        dd(date('d/m/Y H:m',time()));
         return view('admin.index.home');
     }
 }

@@ -14,16 +14,16 @@ class GroupController extends Controller
     public function getList(Request $request){
 
         $parentid = $request->get('groupid');
-
+//        dd($parentid);
         $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         $root = [
-            'id' => 0,
+            'id' => '00',
             'title' => 'root'
         ];
         $result[] = (object)$root;
         $this->recusiveGroup($list_group,0,"",$result);
 
-        if($parentid){
+        if($parentid != null){
             $list_group = DB::table($this->db->group)->where('parentid',$parentid)->orderByDesc('id')->paginate(15);
         }else {
             $list_group = DB::table($this->db->group)->orderByDesc('id')->paginate(15);
@@ -34,8 +34,9 @@ class GroupController extends Controller
             $value->created_at = date('d/m/Y h:m');
         }
         $data = [
-            'list_group' => $list_group,
-            'groups' => $result
+            'list_group' => $list_group->appends(['groupid' => $parentid]),
+            'groups' => $result,
+            'parentid' => $parentid
         ];
         return view("admin.group.index",$data);
     }
