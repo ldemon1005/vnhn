@@ -44,6 +44,7 @@ class IndexController extends Controller
         $articel_times_2 = $this->get_articel_item(1);
 
         $advert = $this->get_advert(1);
+        $advert_home = $this->get_advert_home();
         $data = [
 //            'menu' => $menu,
             'list_articel_new' => $list_articel_new,
@@ -60,7 +61,8 @@ class IndexController extends Controller
             'list_articel_item_2' => $articel_times_2['list_articel'],
 
             'list_group' => $groups,
-            'list_ad' => $advert
+            'list_ad' => $advert,
+            'ad_home' => $advert_home
         ];
 
 
@@ -168,9 +170,18 @@ class IndexController extends Controller
     public function get_advert($id)
     {
         $ads = AdvertTop::where('adt_gr_id', $id)->get();
+        
         $ad = array();
         for ($i = 1; $i < 7; $i++) {
-            $ad[] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
+            $ad[$i] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
+        }
+        return $ad;
+    }
+    public function get_advert_home(){
+        $ads = AdvertTop::where('adt_gr_id', 1)->get();
+        $ad = array();
+        for ($i = 1; $i < 7; $i++) {
+            $ad[$i] = AdvertTop::where('adt_gr_id', 1)->where('adt_location', $i)->get();
         }
         return $ad;
     }

@@ -1,7 +1,5 @@
 body {
-	font-family: 'Open sans', sans-serif;
-	font-size: 14px;
-	font-weight: 400;
+	font: normal 13px/20px 'Open sans', sans-serif;
 	color: #000;
 }
 a {
@@ -65,10 +63,6 @@ a:hover {
 	font-family: 'Markazi Text', serif;
 }
 
-.articel-new .new-left .new-item .caption{
-	font-size: 14px;
-	line-height: 1.5;
-}
 .articel-new .new-left .new-item:hover .caption {
 	color: #000;
 }
@@ -226,7 +220,7 @@ a:hover {
 }
 .btnShowMenuChild{
 	position: absolute;
-    padding: 7px 15px 7px 20px;
+    padding: 14px;
     top: 0;
     right: 0;
     color: #fff;
@@ -402,6 +396,9 @@ a:hover {
 .category .item-category {
 	border-right: 1px solid #ddd;
 }
+.category .item-category:nth-child(n+4) {
+	border: 0;
+}
 
 .category .title-articel{
 	padding-bottom: 3px;
@@ -570,7 +567,7 @@ a:hover {
 	    margin-bottom: 10px;
 	}
 	.list-right-item a .avatar{
-		width: 22vw;
+		width: 25vw;
 	    float: left;
 	    margin-right: 20px;
 	}
@@ -654,7 +651,12 @@ a:hover {
 	/*.category-1 .category-1-left{
 		margin-right: 0;
 	}*/
-
+	.category-1 .category-1-right .item-top-view .caption h3 {
+		font-size: 20px;
+	}
+	.category-1 .category-1-right .item-top-view .avatar {
+		display: none;
+	}
 
 
 	.menu-parent {
@@ -664,14 +666,6 @@ a:hover {
 	    text-align: left;
 	}
 	.menu-parent h3 {
-	    color: #ffffff;
-	    line-height: 30px;
-	    margin-bottom: 0px;
-	    font-family: 'Open Sans', sans-serif;
-	    font-weight: bold;
-	    padding: 0 10px;
-	    font-size: 12px;
-	    text-transform: uppercase;
 	}
 	.menu {
 	    padding-bottom: 0; 
@@ -702,17 +696,17 @@ a:hover {
 	    
 	}
 	.child li a {
-	    font-size: 14px;
 	    color: #000000;
 	    text-decoration: none;
 	    display: block;
 	    padding: 10px 30px;
 	    font-weight: 600;
-	    font-family: 'Open Sans', sans-serif;
 	    border-bottom: 1px solid #E5E5E5;
 	}
 
-
+	.category .item-category {
+		margin-bottom: 20px;
+	}
 	.item-category hr {
 		display: none;
 	}
@@ -727,15 +721,6 @@ a:hover {
 	    
 	}
 	.item-category .title-articel h3 {
-	    color: #ffffff;
-	    line-height: 30px;
-	    height: 30px;
-	    margin-bottom: 0px;
-	    font-family: 'Open Sans', sans-serif;
-	    font-weight: bold;
-	    padding: 0 10px;
-	    font-size: 12px;
-	    text-transform: uppercase;
 	}
 	.category .item .avatar {
 	    height: auto;
@@ -763,12 +748,6 @@ a:hover {
 	#main{
 		width: 90vw;
    		margin: auto;
-	}
-	.category-1-left .list-right-item .caption {
-	    font-size: 14px;
-	    font-family: 'Markazi Text', serif;
-	line-height: 1;
-	    display: none;
 	}
 }
 

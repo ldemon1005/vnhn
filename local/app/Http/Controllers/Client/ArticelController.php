@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Client;
 
 use App\Model\News;
 use App\Models\Comment_vn;
+use App\Models\AdvertTop;
+use App\Models\Advert;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -84,6 +86,9 @@ class ArticelController extends Controller
 
         $magazine_new = $this->get_magazine_new();
 
+        
+        // advert
+        $advert = $this->get_advert($slug[1]);
         /*
          * video new
          */
@@ -166,4 +171,6 @@ class ArticelController extends Controller
         }
         return $ip;
     }
+
+    
 }

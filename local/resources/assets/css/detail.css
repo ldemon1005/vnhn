@@ -32,13 +32,17 @@
     flex: 1;
 }
 .mainDetailLeft h1{
-	font-family: "Times New Roman";
-	font-weight: 600;
+    line-height: 1.2;
+    font-family: 'Merriweather', serif;
+	font-weight: 700;
 }
 .mainDetailLeftTime{
 	color: #a3a3a3;
 	font-size: 13px;
-	border-bottom: 1px doted #dfdfdf;
+	border-top: 1px dashed #eee;
+	border-bottom: 1px dashed #eee;
+	padding: 5px 0;
+	margin-bottom: 20px;
 }
 
 
@@ -47,15 +51,14 @@
 }
 
 .mainDetailRightFollow{
-
 }
 .mainDetailRightTitle{
-	font-family: "Times New Roman";
+    font-family: 'Merriweather', serif;
     text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
     height: 40px;
-    line-height: 50px;
+    line-height: 40px;
     border-bottom: 3px solid #000;
     margin-bottom: 15px;
 }
@@ -65,17 +68,20 @@ ul.mainDetailRightList{
 }
 ul.mainDetailRightList li{
 	list-style: none;
+	padding: 10px 0;
+	border-bottom: 1px dotted #ccc;
 }
-ul.mainDetailRightList li:first-child a{
-	padding-top: 0;
+ul.mainDetailRightList li:last-child {
+	border: 0;
 }
 ul.mainDetailRightList li a{
-	font-family: "Times New Roman";
-	display: block;
-	padding: 5px 0;
-	color: #000;
-	text-decoration: none;
-	font-weight: 600;
+	line-height: 1.4;
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+	font-weight: 700;
+}
+ul.mainDetailRightList li a:hover {
+	color: #d71a21 !important;
 }
 .mainDetailRightJournal{
 
@@ -143,12 +149,8 @@ ul.mainDetailRightList li a{
 	color: #d61920;
 }
 
-.mainDetailRightAdvert{
-	margin-top: 20px;
-
-}
 .mainDetailRightAdvert img{
-	margin-top: 10px;
+	margin-bottom: 20px;
 	width: 100%;
 }
 .mainDetailLeftBanner{
@@ -211,55 +213,69 @@ ul.mainDetailRightList li a{
 }
 
 
-
+.mainDetailLeftContent {
+	font-family: 'Merriweather', serif;
+	font-size: 14px;
+	line-height: 1.6;
+	color: #333;
+}
 
 .mainDetailLeftInvolve{
 
 }
 .mainDetailLeftTitle{
-	font-family: "Times New Roman";
+    font-family: 'Merriweather', serif;
     text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 700;
     height: 40px;
-    line-height: 50px;
-    border-bottom: 3px solid #d61920;
+    line-height: 40px;
+    border-bottom: 3px solid #d71a21;
     margin-bottom: 15px;
 }
 .mainDetailLeftInvolveMain{
 	display: flex;
+	margin-top: 20px;
+	margin-left: -15px;
+	margin-right: -15px;
 }
 .mainDetailLeftInvolveItem{
-	/*flex: 1;*/
 	display: inline-block;
-	width: 235px;
-	padding: auto;
-	margin-left: auto;
-}
-.mainDetailLeftInvolveItem:first-child{
-	margin-left: 0;
+	width: 33.33%;
+	padding: 0 15px;
 }
 .mainDetailLeftInvolveItemImg{
-	margin-bottom: 10px;
-	overflow: hidden;
+	margin-bottom: 20px;
+	background-size: cover;
+	background-position: center;
 }
-/*.mainDetailLeftInvolveItemImg img{
-	height: 100%;
-}*/
-.mainDetailLeftInvolveItemImg:after{
-	content: "";
-	display: block;
-	padding-top: 56%;
-}
-.mainDetailLeftInvolveItemContent{
-	font-family: "Times New Roman";
-    font-size: 16px;
-    font-weight: 600;
+
+.mainDetailLeftInvolveItem .title{
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    font-weight: 700;
 }
 .mainDetailLeftInvolveItemTime{
 	display: none;
 	color: #666666;
 }
+
+.news-older {
+	color: #d71a21;
+	padding-left: 20px;
+    border-top: 1px dashed #ddd;
+}
+.news-older li {
+	padding: 15px 0 0 0px;
+}
+.news-older a {
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
 
 .mainDetailLeftComment{
 
@@ -315,8 +331,9 @@ ul.mainDetailRightList li a{
 	width: 186px;
 	background: #d61920;
 	color: #fff;
-	font-family: "Times New Roman";
-    font-size: 16px;
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     border: 0;
@@ -330,12 +347,6 @@ ul.mainDetailRightList li a{
 	.quangcao-1{
 		display: none;
 	}
-
-	.mainDetailLeftInvolveItem{
-		width: 196px;
-	}
-
-
 }
 @media only screen and (max-width: 992px) {
 	#header{
@@ -363,17 +374,14 @@ ul.mainDetailRightList li a{
 		line-height: 60px;
 	}
 
-
-	.mainDetailLeftInvolveItem{
-		width: 142px;
-	}
 	.mainDetailLeftInvolveItemImg {
 	    height: auto;
 	}
 }
 @media only screen and (max-width: 768px) {
     .section1{
-		width: 540px;
+		width: auto;
+		margin: 0 20px;
 	}
 	.detailMain{
 		display: block;
@@ -402,19 +410,6 @@ ul.mainDetailRightList li a{
 	.mainDetailLeftRecommend{
 		display: none;
 	}
-	.mainDetailLeftTitle {
-	    font-family: 'Open Sans', sans-serif;
-	    text-transform: uppercase;
-	    font-size: 12px;
-	    font-weight: 600;
-	    height: 34px;
-	    line-height: 36px;
-	    background: #d61920;
-	    margin-bottom: 15px;
-	    color: #fff;
-	    padding: 0 12px;
-	}
-
 	.mainDetailLeftInvolveMain{
 		display: block;
 	}
@@ -425,11 +420,11 @@ ul.mainDetailRightList li a{
 		margin-bottom: 30px;
 
 	}
-	.mainDetailLeftInvolveItemImg{
+	.mainDetailLeftInvolveItemImg .avatar{
 		float: left;
-		margin-right: 20px;
+		margin-right: 10px;
 		margin-bottom: 0;
-		width: 30vw;
+		width: 20vw;
 		height: auto;
 	}
 	.mainDetailLeftInvolveItemTime{
@@ -486,11 +481,10 @@ ul.mainDetailRightList li a{
 
 	
 	.mainDetailLeft h1 {
-	    font-family: "Times New Roman";
-	    font-weight: 600;
-	    font-size: 24px;
-	    line-height: 28px;
-	    margin-top: 10px;
+	    line-height: 1.4;
+	    font-family: 'Merriweather', serif;
+	    font-weight: 700;
+	    font-size: 2rem;
 	}
 
 	.mainDetailLeftCommentMainName_Email{
