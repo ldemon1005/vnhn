@@ -8,13 +8,13 @@
                             <li class="lang respon768"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
                             <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
 
-                            <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7: 0964.32.83.83</a></li>
+                            <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7: 0888.790.111</a></li>
                             <li class="lang respon768"><a href="{{ asset('') }}">Đặt mua Tạp chí</a></li>
                             <li class="lang"><a href="{{ asset('') }}">Liên hệ quảng cáo</a></li>
                         </ul>
                     </div>
                     <div class="menu_footer_right">
-                        [Trở về dầu trang]
+                        [Trở về đầu trang]
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <p class="info-footer"><span>Phó tổng biên tập : TRẦN VĂN ÁNH</span></p>
                     <p class="info-footer"><span>Ủy viên HĐBT: ĐOÀN CÔNG CHUNG</span></p>
                     <p class="info-footer"><span>Tòa soạn trị sự:</span>Tầng 8 Cung Tri thức thành phố, số 1 Tôn Thất Thuyết, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội</p>
-                    <p><span>Điện thoại :</span> 0247.301.6366 * 0283.636.9773  * <span> Email: </span>info@vietnamhoinhap.com</p>
+                    <p><span>Điện thoại :</span> 0247.301.6366 * 0283.636.9773  * <span> Email: </span>info@vietnamhoinhap.vn</p>
                 </div>
 
                 <div class="footer-right">

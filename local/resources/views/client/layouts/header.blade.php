@@ -40,6 +40,10 @@
                         @for ($i = 0; $i < count($list_ad[1]); $i++)
                             <a href="{{ $list_ad[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[1][$i]->advert->ad_img)}}"></a>
                         @endfor
+                    @else
+                        @for ($i = 0; $i < count($ad_home[1]); $i++)
+                            <a href="{{ $ad_home[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}"></a>
+                        @endfor
                     @endif
                     
                 </div>

@@ -165,11 +165,6 @@
 #header-menu .menu-header>li>ul{
 	display: none;
 	padding: 0;
-    height: 205px;
-    overflow-y: scroll;
-}
-#header-menu .menu-header>li>ul::-webkit-scrollbar{
-	width: 0px;
 }
 
 #header-menu .menu-header>li>ul>li>a{
@@ -299,6 +294,7 @@ ul.dropdown_child li a{
     font-weight: 600;
     float: right;
     padding: 10px;
+    cursor: pointer;
  }
 .menu-footer {
 	height: 45px;

@@ -40,7 +40,7 @@
                   </div>
                   <div class="col-6">
                     <select class="form-control location">
-                      @for ($i = 1; $i < 8; $i++)
+                      @for ($i = 1; $i < (Request::segment(4) == 1 ? 8 : 5); $i++)
                         <option value="{{$i}}" {{Request::segment(5) == $i ? 'selected' : '' }}>Vị trí {{$i}}</option>
                       @endfor
                     </select>
