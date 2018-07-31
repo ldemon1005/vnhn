@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Client\IndexController\get_advert;
 
 class GroupController extends Controller{
+    
     function get_articel_by_group($slug){
         $slug = explode('---n-',$slug);
 
