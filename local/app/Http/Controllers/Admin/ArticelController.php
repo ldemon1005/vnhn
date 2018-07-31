@@ -138,6 +138,7 @@ class ArticelController extends Controller
         $status_str = $this->get_status()['status_str'];
 
         $data['status'] = $status;
+//        dd($data);
         $group_id = $data['groupid'];
 
         $content = $data['content'];

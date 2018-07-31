@@ -23,6 +23,8 @@ class Controller extends BaseController
     {
         // Fetch the Site Settings object
         $this->middleware(function ($request, $next) {
+//            Session::forget('vnhn_start');
+//            dd(Session::all());
             $this->db = (object)$this->get_db();
 
             $this->menu = $this->get_menu_top();
@@ -51,7 +53,7 @@ class Controller extends BaseController
     }
 
     public function get_menu_top(){
-        $menu = DB::table($this->db->group)->where('status',1)->where('parentid','00')->orderBy('order')->get();
+        $menu = DB::table($this->db->group)->where('status',1)->where('parentid',0)->orderBy('order')->get();
         foreach ($menu as $val){
             $val->child = DB::table($this->db->group)->where('parentid',$val->id)->get();
         }

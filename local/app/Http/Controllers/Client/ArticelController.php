@@ -28,11 +28,17 @@ class ArticelController extends Controller
 
         $groups = DB::table($this->db->group)->where('status',1)->get();
 
+        $result = [];
+        $group_related = [];
+
         $this->recusive_menu_parent($groups,$group_id,$result,$group_related);
 
-        $result = array_unique($result);
+        if(count($result)){
+            $result = array_unique($result);
 
-        $group_related = array_unique($group_related);
+            $group_related = array_unique($group_related);
+        }
+
 
         $list_group = DB::table($this->db->group)->whereIn('id',$result)->get();
 

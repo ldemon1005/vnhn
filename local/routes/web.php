@@ -11,8 +11,11 @@ use \Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::group(['middleware' => 'Start'],function(){
+//
+//});
 
-Route::group(['namespace' => 'Client'],function (){
+Route::group(['namespace' => 'Client','middleware' => 'Start'],function (){
     Route::get('/','IndexController@index')->name('home');
     Route::group(['prefix'=>'articel'],function(){
         Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
@@ -22,9 +25,11 @@ Route::group(['namespace' => 'Client'],function (){
     Route::group(['prefix' => 'group'],function(){
         Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
     });
-
     Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
 });
+
+
+Route::get('/vnhn_start','ClientController@vnhn_start')->name('vnhn_start');
 
 Route::get('/set_lang/{lang}','ClientController@set_lang')->name('set_lang');
 

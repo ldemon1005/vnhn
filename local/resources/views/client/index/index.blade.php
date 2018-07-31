@@ -42,11 +42,9 @@
                             @endfor
                         </div>
                         <div class="row quangcao-2 item-quangcao" >
-                            @if (count($list_ad[3]) > 0)
-                                @for ($i = 0; $i < count($list_ad[3]); $i++)
-                                    <a href="{{ $list_ad[3][$i]->advert->ad_link }}"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
-                                @endfor
-                            @endif
+                            <a href="{{ asset('') }}">
+                                <img src="images/728x90.png">
+                            </a>
                         </div>
                     </div>
 
@@ -81,11 +79,9 @@
                         </section> --}}
 
                         <div class="item-quangcao">
-                             @if (count($list_ad[2]) > 0)
-                                @for ($i = 0; $i < count($list_ad[2]); $i++)
-                                    <a href="{{ $list_ad[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/resized-'.$list_ad[2][$i]->advert->ad_img)}}"></a>
-                                @endfor
-                            @endif
+                            <a href="{{ asset('') }}">
+                                <img src="images/300x250.png">
+                            </a>
                         </div>
                         <section class="new-right-2">
                             <div class="category">
@@ -141,16 +137,18 @@
                             </div>
                         </div>
                         <div class="row content">
-                            <div class="item-category">
-                                <a href="{{ route('get_detail_articel',$list_articel_item[0]->slug.'---n-'.$list_articel_item[0]->id) }}">
-                                    <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_item[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_item[0]->fimage }}') no-repeat center 100% /cover;">
-                                        {{-- <img src="{{ file_exists(asset('/local/resources'.$list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}"> --}}
-                                    </div>
-                                    <h3 class="title mt-2">{{$list_articel_item[0]->title}}</h3>
-                                    <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
-                                    <p class="caption">{!! $list_articel_item[0]->summary !!}</p>
-                                </a>
-                            </div>
+                            @if(count($list_articel_item))
+                                <div class="item-category">
+                                    <a href="{{ route('get_detail_articel',$list_articel_item[0]->slug.'---n-'.$list_articel_item[0]->id) }}">
+                                        <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_item[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_item[0]->fimage }}') no-repeat center 100% /cover;">
+                                            {{-- <img src="{{ file_exists(asset('/local/resources'.$list_articel_item[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_new[0]->fimage }}"> --}}
+                                        </div>
+                                        <h3 class="title mt-2">{{$list_articel_item[0]->title}}</h3>
+                                        <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
+                                        <p class="caption">{!! $list_articel_item[0]->summary !!}</p>
+                                    </a>
+                                </div>
+                            @endif
 
                             <div class="list-right">
                                 @for($i = 1;$i < count($list_articel_item);$i++)
@@ -186,21 +184,19 @@
                         </section>
                         
                         <div class="quangcao-3 item-quangcao">
-                             @if (count($list_ad[4]) > 0)
-                                @for ($i = 0; $i < count($list_ad[4]); $i++)
-                                    <a href="{{$list_ad[4][$i]->advert->ad_link }}"><img src="{{asset('local/storage/app/advert/resized-'.$list_ad[4][$i]->advert->ad_img)}}"></a>
-                                @endfor
-                            @endif
+                            <a href="{{ asset('') }}">
+                                <img src="images/300x250.png">
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <div class="row quangcao-4 item-quangcao">
-                    @if (count($list_ad[5]) > 0)
-                        @for ($i = 0; $i < count($list_ad[5]); $i++)
-                            <a href="{{ $list_ad[5][$i]->advert->ad_link }}"><img src="{{asset('local/storage/app/advert/'.$list_ad[5][$i]->advert->ad_img)}}"></a>
-                        @endfor
-                    @endif
+                    <div class="quangcao-3 item-quangcao">
+                        <a href="{{ asset('') }}">
+                            <img src="images/1140x125.png">
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -244,11 +240,9 @@
                 <div class="row articel-bottom">
                     <div class="articel-bottom-left">
                         <div class="row quangcao-2 mb-4 item-quangcao">
-                            @if (count($list_ad[6]) > 0)
-                                @for ($i = 0; $i < count($list_ad[6]); $i++)
-                                    <a href="{{$list_ad[6][$i]->advert->ad_link }}"><img src="{{asset('local/storage/app/advert/'.$list_ad[6][$i]->advert->ad_img)}}"></a>
-                                @endfor
-                            @endif
+                            <a href="{{ asset('') }}">
+                                <img src="images/728x90.png">
+                            </a>
                         </div>
 
                         <div class="menu">
@@ -317,11 +311,10 @@
                             </section>
                             
                             <div class="quangcao_right">
-                                @if (count($list_ad[7]) > 0)
-                                    @for ($i = 0; $i < count($list_ad[7]); $i++)
-                                        <a href="{{ $list_ad[7][$i]->advert->ad_link }}"><img src="{{asset('local/storage/app/advert/'.$list_ad[7][$i]->advert->ad_img)}}"></a>
-                                    @endfor
-                                @endif
+                                <a href="{{ asset('') }}">
+                                    <img src="images/300x250.png">
+                                </a>
+                                
                             </div>
                             
                         </div>

@@ -31,11 +31,13 @@ class IndexController extends Controller
 
         $articel_times_1 = $this->get_articel_item(0);
 
+
         /*
          *  danh sách bào viết theo danh mục
          */
 
         $groups = $this->get_articel_group();
+
 
         /*
          *  group thứ 2

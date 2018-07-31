@@ -57,4 +57,11 @@ class ClientController extends Controller
             'status' => 1
         ]);
     }
+
+    function vnhn_start(Request $request){
+        $start = $request->get('start');
+        Session::put('vnhn_start',$start);
+
+        return redirect()->route('home');
+    }
 }

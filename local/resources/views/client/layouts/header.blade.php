@@ -36,15 +36,10 @@
                     <a href="{{ asset('') }}"><img src="{{asset('local/resources/uploads/images/logo-vnhn.png')}}"></a>
                 </div>
                 <div class="quangcao-1 item-quangcao">
-                    @if (count($list_ad[1]) > 0)
-                        @for ($i = 0; $i < count($list_ad[1]); $i++)
-                            <a href="{{ $list_ad[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[1][$i]->advert->ad_img)}}"></a>
-                        @endfor
-                    @else
-                        @for ($i = 0; $i < count($ad_home[1]); $i++)
-                            <a href="{{ $ad_home[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}"></a>
-                        @endfor
-                    @endif
+                    <a href="{{ asset('') }}">
+                        <img src="images/810x100.png">
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -60,7 +55,7 @@
                     <?php $count=0?>
                     @foreach ($menu as $item)
                         @if($item->id == 19)
-                            <li><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></li>
+                            <li><a href="javascrip:;">{{$item->title}}</a></li>
                         @else
                             <li class="@if ( $count > 5 ) menu_head_hide @endif">
                                 <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
