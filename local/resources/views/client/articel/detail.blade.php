@@ -11,7 +11,7 @@
 @section('main')
     <div id="main">
         <section class="section1">
-            <div class="detailTitle">
+            <div class="detailTitle my-2">
                 @foreach($list_group as $group)
                     @if($loop->index != 0)
                         <i class="fas fa-angle-right"></i>
@@ -23,7 +23,7 @@
             </div>
             <div class="detailMain">
                 <div class="mainDetailLeft">
-                    <h1>{{$articel->title}}</h1>
+                    <h1 class="mt-2">{{$articel->title}}</h1>
                     <div class="mainDetailLeftTime">
                         <i class="far fa-clock"></i>
                         {{$articel->day_in_week_str}}, {{$articel->release_time}} (GMT+7)
@@ -88,7 +88,7 @@
                                 <input name="comment[groupid]" value="{{$articel->groupid}}" class="d-none">
                                 <input name="comment[slug]" value="{{$articel->slug}}" class="d-none">
                                 <div class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"></div>
-                                <div class="form-group" style="margin-top: 10px">
+                                <div class="form-group mt-3">
                                     <button id="submit-comment" type="button" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Gửi bình luận' : 'submit comment'}}</button>
                                 </div>
                             </form>
@@ -101,45 +101,112 @@
                                 <div class="mainDetailLeftInvolveItem">
                                     <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
                                         <div class="mainDetailLeftInvolveItemImg">
-                                            <img src="{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">
+
+                                            <div class="avatar mb-2" style="background-image: url('{{ file_exists(resource_path($art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}');">
+                                            </div>
+                                            <h3 class="title">{{$art_related->title}}</h3>
+
+                                            {{--<img src="{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}">--}}
                                         </div>
-                                        <div class="mainDetailLeftInvolveItemContent">
-                                            {{$art_related->title}}
-                                        </div>
-                                        <div class="mainDetailLeftInvolveItemTime">
-                                            <i class="far fa-clock"></i>
-                                            {{$art_related->release_time}}
-                                        </div>
+
+                                        {{--<div class="mainDetailLeftInvolveItemContent">--}}
+                                            {{----}}
+                                        {{--</div>--}}
                                     </a>
 
                                 </div>
                             @endforeach
-
                         </div>
+                        <ul class="news-older">
+                            <li>
+                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
+                            </li>
+                            <li>
+                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
+                            </li>
+                            <li>
+                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
+                            </li>
+                            <li>
+                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
+                            </li>
+                            <li>
+                                <a href="#">Cuộc đời 'Nữ hoàng bầu trời' của không quân Anh trong Thế chiến II</a>
+                            </li>
+                        <ul>
                     </div>
 
                 </div>
-                <div class="mainDetailLeftInvolve">
-                    <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
-                    <div class="mainDetailLeftInvolveMain">
-                        @foreach($articel_related as $art_related)
-                            <div class="mainDetailLeftInvolveItem">
-                                <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
-                                    <div class="mainDetailLeftInvolveItemImg" style="background: url('{{ file_exists(asset('/local/resources'.$art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}') no-repeat center /cover;">
-                                    </div>
-                                    <div class="mainDetailLeftInvolveItemContent">
-                                        {{$art_related->title}}
-                                    </div>
-                                    <div class="mainDetailLeftInvolveItemTime">
-                                        <i class="far fa-clock"></i>
-                                        {{$art_related->release_time}}
-                                    </div>
+                <div class="mainDetailRight">
+                    <div class="mainDetailRightFollow mb-2">
+                        <h4 class="mainDetailRightTitle red mb-0">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
+                        <ul class="mainDetailRightList">
+                            @foreach($articel_top_view as $articel)
+                                <li>
+                                    <i class="fas fa-caret-right mr-1"></i>
+                                    <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">{{$articel->title}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="mainDetailRightJournal mb-3">
+                        <h4 class="mainDetailRightTitle red">
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tạp trí thường kì' : 'Regular magazine'}}
+                        </h4>
+                        <div class="slide">
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    @foreach($magazine_new->slide_show as $slide_show)
+                                        <div class="carousel-item {{$loop->index == 0 ? 'active' : ''}}">
+                                            <img class="d-block w-100" src="{{asset('/local/resources'.$slide_show)}}" alt="Second slide">
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
                                 </a>
-
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
-                        @endforeach
+                        </div>
+                    </div>
+                    <div class="mainDetailRightVideo mb-3">
+                        <h4 class="mainDetailRightTitle red">
+                            VNHN Video
+                        </h4>
+                        <ul class="mainDetailRightList">
+                            @foreach($list_video_new as $video)
+
+                                @if($loop->index == 0)
+                                    @if(file_exists(resource_path($video->url_video)))
+                                        <video height="auto" width="100%">
+                                            <source src="{{ asset('/local/resources'.$video->url_video) }}">
+                                        </video>
+                                    @else
+                                        <iframe width="100%" height="auto" src="{{ (file_exists(resource_path($video->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$video->url_video) ? : '') ? : $video->url_video }}">
+                                        </iframe>
+                                    @endif
+                                @endif
+                                <li>
+                                    <i class="fas fa-caret-right mr-1"></i>
+                                    <a style="cursor: pointer" onclick="open_video('{{route('open_video',$video->id)}}')">{{$video->title}}</a>
+                                </li>
+
+                            @endforeach
+                        </ul>
+                            
+                    </div>
+                    <div class="mainDetailRightAdvert">
+                        <img src="images/Banner (300x250).png">
+                        <img src="images/Banner (300x250).png">
+                        <img src="images/Banner (300x250).png">
 
                     </div>
+                        
+
                 </div>
 
             </div>

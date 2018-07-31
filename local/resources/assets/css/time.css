@@ -388,25 +388,31 @@ hr{
 @media only screen and (max-width: 768px) {
     .btnShowListMenu{
         display: block;
+        top: 20px;
     }
     .section1 .menu-time ul{
         display: block;
         background: #d71a21;
         margin-bottom: 0;
         overflow: hidden;
+        margin-top: 20px;
     }
     .section1 .menu-time ul li{
         display: block;
+        border-bottom: 1px solid #FFF3;
+        margin: 0;
+        text-transform: none;
     }
     .section1 .menu-time ul li a{
-        font-size: 12px;
+        font-size: 13px;
         color: #fff;
         padding: 0 15px;
     }
     .section1 .menu-time ul li:first-child a{
-        font-size: 12px;
-        display: block;
-
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1;
+        font-family: 'Markazi Text', serif;
     }
     hr{
         display: none;

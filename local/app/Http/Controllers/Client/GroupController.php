@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Client;
 
 use App\Model\Group_vn;
+use App\Models\AdvertTop;
+use App\Models\Advert;
 use function GuzzleHttp\Psr7\str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Client\IndexController\get_advert;
 
 class GroupController extends Controller{
     function get_articel_by_group($slug){
@@ -70,7 +73,10 @@ class GroupController extends Controller{
         foreach ($group_articel as $item){
             $item->articel = $item->get_news_take_4();
         }
+        
+        $advert = app('App\Http\Controllers\Client\IndexController')->get_advert($slug[1]);
 
+        $advert_home = app('App\Http\Controllers\Client\IndexController')->get_advert_home();
         $data = [
             'group_menu_id' => $slug[1],
             'group_menu_cate' => $group_menu,
@@ -79,7 +85,10 @@ class GroupController extends Controller{
             'articel_top_view' => $articel_top_view,
 
             'list_articel' => $list_articel,
-            'group_articel' => $group_articel
+            'group_articel' => $group_articel,
+
+            'list_ad' => $advert,
+            'ad_home' => $advert_home
         ];
 
         return view('client.index.time',$data);
@@ -121,4 +130,5 @@ class GroupController extends Controller{
         }
         return $group_menu;
     }
+    
 }
