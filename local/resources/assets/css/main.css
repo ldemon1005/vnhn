@@ -185,7 +185,9 @@ a:hover {
 	height: 100px;
 	overflow: hidden;
 }
-
+.quangcao_right a img{
+	width: 100%;
+}
 .category-1 .category-1-left{
 	width: 745px;
 	margin-right: 30px;

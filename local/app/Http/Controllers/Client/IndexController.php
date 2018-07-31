@@ -101,7 +101,7 @@ class IndexController extends Controller
 
     public function get_magazine_new()
     {
-        $magazine = DB::table($this->db->magazine)->orderByDesc('id')->first();
+        $magazine = DB::table($this->db->magazine)->where('status', 1)->orderByDesc('id')->first();
         $magazine->slide_show = json_decode($magazine->slide_show);
         return $magazine;
     }
@@ -172,7 +172,7 @@ class IndexController extends Controller
         $ads = AdvertTop::where('adt_gr_id', $id)->get();
         
         $ad = array();
-        for ($i = 1; $i < 8; $i++) {
+        for ($i = 1; $i < 7; $i++) {
             $ad[$i] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
         }
         return $ad;
@@ -180,7 +180,7 @@ class IndexController extends Controller
     public function get_advert_home(){
         $ads = AdvertTop::where('adt_gr_id', 1)->get();
         $ad = array();
-        for ($i = 1; $i < 8; $i++) {
+        for ($i = 1; $i < 7; $i++) {
             $ad[$i] = AdvertTop::where('adt_gr_id', 1)->where('adt_location', $i)->get();
         }
         return $ad;

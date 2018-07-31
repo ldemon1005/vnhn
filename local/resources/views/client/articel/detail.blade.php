@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="mainDetailLeftBanner">
-                        <img src="images/Banner trung tâm 1 (728x90).png">
+                        <img src="images/728x90.png">
                     </div>
                     {{-- <div class="mainDetailLeftRecommend">
                         <div class="mainDetailLeftRecommendItem left">

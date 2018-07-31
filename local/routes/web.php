@@ -22,7 +22,7 @@ Route::group(['namespace' => 'Client'],function (){
     Route::group(['prefix' => 'group'],function(){
         Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
     });
-
+    Route::post('start', 'IndexController@start');
     Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
 });
 
