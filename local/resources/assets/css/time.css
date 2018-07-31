@@ -87,10 +87,10 @@
 }
 
 .new-left-time .new-item-time .title{
-    font-size: 30px;
     font-weight: bold;
-    line-height: 1;
-    font-family: 'Markazi Text', serif;
+    font-family: 'Merriweather', serif;
+    line-height: 1.4;
+    font-size: 1.5rem;
 }
 
 .new-left-time .new-item-time a:hover .title{
@@ -114,6 +114,9 @@
     margin: 10px;
     border-bottom: 1px solid #999999;
 }
+.new-list-right-time .item-top-view a:hover h3, .item-bottom a:hover h3, .list-section2-left-top .item  a:hover h3, .subscribe-top .content a:hover h3 {
+    color: #d71a21;
+}
 .new-list-right-time .item-top-view:last-child{
     border-bottom: 0;
 }
@@ -126,11 +129,10 @@
 }
 
 .new-list-right-time .item-top-view h3{
-     line-height: 1;
-    font-family: 'Markazi Text', serif;
-    font-size: 20px;
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
     font-weight: bold;
-    line-height: 20px;
+    line-height: 1.4;
 
 }
 .item-bottom{
@@ -177,9 +179,9 @@
 }
 
 .new-list-bottom-time .item-bottom .title {
-    font-size: 18px;
-     line-height: 1;
-    font-family: 'Markazi Text', serif;
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
     font-weight: bold;
 }
 
@@ -216,10 +218,10 @@ hr{
     padding: 0 10px;
 }
 .section2 .title-parent h2{
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
-    line-height: 1;
-    font-family: 'Markazi Text', serif;
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
     color: #ffffff;
     text-align: center;
     margin: 0;
@@ -244,10 +246,10 @@ hr{
 }
 
 .list-section2-left-top .item .content h3{
-     line-height: 1;
-    font-family: 'Markazi Text', serif;
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 
@@ -270,6 +272,13 @@ hr{
     margin: 15px;
     padding: 15px 0;
 }
+.subscribe-top .content .item-top {
+    margin-bottom: 15px;
+    border-bottom: 1px dotted #ccc;
+}
+.subscribe-top .content .item-top:last-child {
+    border: 0;
+}
 
 .subscribe-top .avatar {
     margin-bottom: 10px;
@@ -280,16 +289,10 @@ hr{
 }
 
 .subscribe-top .title {
-    font-size: 20px;
-     line-height: 1;
-    font-family: 'Markazi Text', serif;
-    font-weight: bold;
-}
-
-.subscribe-top .caption {
     font-size: 14px;
-     line-height: 1;
-    font-family: 'Markazi Text', serif;
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
 }
 
 .time-subscribe >section {
@@ -344,10 +347,10 @@ hr{
 }
 
 .section3 .item-bottom .title{
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
-     line-height: 1;
-    font-family: 'Markazi Text', serif;
+    line-height: 1.4;
+    font-family: 'Merriweather', serif;
 }
 
 .section3 .item-bottom .content{
@@ -409,10 +412,10 @@ hr{
         padding: 0 15px;
     }
     .section1 .menu-time ul li:first-child a{
-        font-size: 24px;
+        font-size: 14px;
         font-weight: bold;
-        line-height: 1;
-        font-family: 'Markazi Text', serif;
+        line-height: 1.4;
+        font-family: 'Merriweather', serif;
     }
     hr{
         display: none;
