@@ -75,15 +75,9 @@
                     </div>
                     <div class="new-right-time">
                         <div class="quangcao-1">
-                            @if (count($list_ad[2]) > 0)
-                                @for ($i = 0; $i < count($list_ad[2]); $i++)
-                                    <a href="{{ $list_ad[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[2][$i]->advert->ad_img)}}"></a>
-                                @endfor
-                            @else
-                                @for ($i = 0; $i < count($ad_home[7]); $i++)
-                                    <a href="{{ $ad_home[7][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
-                                @endfor
-                            @endif
+                            <a href="{{ asset('') }}">
+                                    <img src="images/300x250.png">
+                                </a>
                         </div>
 
                         
@@ -158,15 +152,9 @@
                         </div>
                         <div class="section2-left-bottom">
                             <div class="quangcao-7">
-                                @if (count($list_ad[4]) > 0)
-                                    @for ($i = 0; $i < count($list_ad[4]); $i++)
-                                        <a href="{{ $list_ad[4][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[4][$i]->advert->ad_img)}}"></a>
-                                    @endfor
-                                @else
-                                    @for ($i = 0; $i < count($ad_home[1]); $i++)
-                                        <a href="{{ $ad_home[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}"></a>
-                                    @endfor
-                                @endif
+                                <a href="{{ asset('') }}">
+                                    <img src="images/1140x125.png">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -176,15 +164,9 @@
                         </div>
                         <div class="row">
                             <div class="quangcao-6">
-                                @if (count($list_ad[3]) > 0)
-                                    @for ($i = 0; $i < count($list_ad[3]); $i++)
-                                        <a href="{{ $list_ad[3][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
-                                    @endfor
-                                @else
-                                    @for ($i = 0; $i < count($ad_home[7]); $i++)
-                                        <a href="{{ $ad_home[7][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
-                                    @endfor
-                                @endif
+                                <a href="{{ asset('') }}">
+                                    <img src="images/300x250.png">
+                                </a>
                             </div>
                         </div>
                     </div>

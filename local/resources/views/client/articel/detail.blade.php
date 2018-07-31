@@ -200,7 +200,7 @@
                             
                     </div>
                     <div class="mainDetailRightAdvert">
-                        @if (count($list_ad[2]) > 0)
+                        {{-- @if (count($list_ad[2]) > 0)
                             @for ($i = 0; $i < count($list_ad[2]); $i++)
                                 <a href="{{ $list_ad[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[1][$i]->advert->ad_img)}}"></a>
                             @endfor
@@ -208,7 +208,10 @@
                             @for ($i = 0; $i < count($ad_home[7]); $i++)
                                 <a href="{{ $ad_home[7][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
                             @endfor
-                        @endif
+                        @endif --}}
+                        <a href="{{ asset('') }}">
+                            <img src="images/300x250.png">
+                        </a>
                     </div>
                         
 
