@@ -102,9 +102,9 @@
                                         <div class="item">
                                             <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
                                                 <div class="content">
-                                                    <h3 class="title">{!! cut_string_name($articel->title,50) !!}</h3>
+                                                    <h3 class="title">{!! cut_string($articel->title,100) !!}</h3>
                                                     <p class="date-time">{{date('d/m/Y H:m',$articel->release_time)}}</p>
-                                                    <p class="caption">{{substr($articel->summary,0,220)}} {{strlen($articel->summary) >220 ? '...':''}}</p>
+                                                    <p class="caption">{{cut_string($articel->summary,220)}}</p>
                                                 </div>
                                                 <div class="avatar" style="background: url('{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}') no-repeat center /cover;">
                                                 </div>
@@ -133,7 +133,8 @@
                                                 @foreach($item->articel as $articel)
                                                     <div class="item-top">
                                                         <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}">
-                                                            <h3 class="title">{!! cut_string_name($articel->title,60) !!}</h3>
+                                                            <h3 class="title">{!! cut_string($articel->title,100)
+                                                            !!}</h3>
                                                             @if($loop->index == 0)
                                                                 <div class="avatar">
                                                                     <a href="#"><img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>

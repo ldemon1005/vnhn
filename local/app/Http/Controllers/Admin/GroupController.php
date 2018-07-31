@@ -16,6 +16,11 @@ class GroupController extends Controller
         $parentid = $request->get('groupid');
 
         $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+        $root = [
+            'id' => 0,
+            'title' => 'root'
+        ];
+        $result[] = (object)$root;
         $this->recusiveGroup($list_group,0,"",$result);
 
         if($parentid){

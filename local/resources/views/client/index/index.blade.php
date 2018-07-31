@@ -117,7 +117,7 @@
                             <div class="menu-parent">
                                 <h3>
                                     <a href="{{ route('get_articel_by_group',$menu_parent_item->slug.'---n-'.$menu_parent_item->id) }}">
-                                        {{cut_string_name($menu_parent_item->title,30)}}
+                                        {{cut_string($menu_parent_item->title,30)}}
                                     </a>
                                 </h3>
                             </div>
@@ -198,7 +198,7 @@
                             <div class="col-md-3 item-category">
                                 <div class="title-articel">
                                     <h3>
-                                        <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">{{cut_string_name($group->title,32)}}</a>
+                                        <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">{{cut_string($group->title,32)}}</a>
                                     </h3>
                                 </div>
                                 @foreach($group->articel as $articel)
@@ -234,7 +234,7 @@
                         <div class="menu">
                             <div class="menu-parent">                                
                                 <h3>
-                                    <a href="{{ route('get_articel_by_group',$menu_parent_item_2->slug.'---n-'.$menu_parent_item_2->id) }}">{{cut_string_name($menu_parent_item_2->title,30)}}</a>
+                                    <a href="{{ route('get_articel_by_group',$menu_parent_item_2->slug.'---n-'.$menu_parent_item_2->id) }}">{{cut_string($menu_parent_item_2->title,30)}}</a>
                                 </h3>
                             </div>
                             <div class="menu-child">
