@@ -83,12 +83,13 @@ class ArticelController extends Controller
         /*
          * magazine
          */
-
         $magazine_new = $this->get_magazine_new();
 
         
         // advert
-        $advert = $this->get_advert($slug[1]);
+        $advert = app('App\Http\Controllers\Client\IndexController')->get_advert($group_id);
+
+        $advert_home = app('App\Http\Controllers\Client\IndexController')->get_advert_home();
         /*
          * video new
          */
@@ -103,7 +104,8 @@ class ArticelController extends Controller
             'articel_top_view' => $articel_top_view,
             'magazine_new' => $magazine_new,
             'list_video_new' => $list_video_new,
-
+            'list_ad'=> $advert,
+            'ad_home' => $advert_home
         ];
 
         return view('client.articel.detail',$data);
