@@ -42,7 +42,7 @@ class WebsiteInfoController extends Controller
             $info->info = json_encode($data);
             $info->updated_at = time();
             if($info->update()){
-                return redirect()->route('website_info')->with('status','Cập nhật thành công');
+                return redirect()->route('website_info')->with('success','Cập nhật thành công');
             }else {
                 return redirect()->route('website_info')->with('error','Có lỗi xảy ra khi cập nhật');
             }
@@ -55,7 +55,7 @@ class WebsiteInfoController extends Controller
             return redirect()->route('website_info')->with('error','Có lỗi xảy ra khi xóa');
         }else {
             if($info->delete()){
-                return redirect()->route('website_info')->with('status','Xóa thành công');
+                return redirect()->route('website_info')->with('success','Xóa thành công');
             }else {
                 return redirect()->route('website_info')->with('error','Có lỗi xảy ra khi xóa');
             }

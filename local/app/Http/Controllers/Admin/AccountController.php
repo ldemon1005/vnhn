@@ -38,9 +38,10 @@ class AccountController extends Controller
             $data['list_group'] = $result;
         }
         else{
-            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->where('id', $group_id)->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->whereIn('id', $group_id)->get()->toArray();
             $data['list_group'] = $list_group;
         }
+
     	return view('admin.account.account_form',$data);
     }
     public function postAdd(AccountAddRequest $request){
@@ -76,6 +77,8 @@ class AccountController extends Controller
         $group_id = Auth::user()->group_id;
         $group_id = explode(',', $group_id);
         
+        $data['gr_acc'] = Account::find($id)->group_id;
+        $data['gr_acc'] = explode(',', $data['gr_acc']);
         if (in_array(0 ,$group_id)) {
             $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
             $root = [
@@ -87,7 +90,7 @@ class AccountController extends Controller
             $data['list_group'] = $result;
         }
         else{
-            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->where('id', $group_id)->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->whereIn('id', $group_id)->get()->toArray();
             $data['list_group'] = $list_group;
         }
         $data['group_id'] = $group_id;

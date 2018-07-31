@@ -26,7 +26,6 @@
 
                     </div>
                 </div>
-                <hr style="margin: -13px -15px;border-bottom: 2px solid #000000;"/>
 
                 <div class="row">
                     <div class="new-left-time">
@@ -36,7 +35,7 @@
                                     <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}') no-repeat center /cover;">
                                         
                                     </div>
-                                    <h3 class="title">{{$list_articel_hot[0]->title}}</h3>
+                                    <h3 class="title mt-2">{{$list_articel_hot[0]->title}}</h3>
                                     <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
                                     <p class="caption">{{$list_articel_hot[0]->summary}}</p>
                                 </a>
@@ -74,7 +73,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="new-right-time">
                         <div class="quangcao-1">
                             <a href="#"><img src="{{asset('/local/resources/uploads/time-images/quangcao-1.png')}}"></a>
@@ -95,7 +93,7 @@
                         <div class="row section2-left-top">
                             <div class="time-hot">
                                 <div class="title-parent">
-                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List articel'}}</p>
+                                    <h2>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List articel'}}</h2>
                                 </div>
                                 <hr style="border-top: 2px solid #000000"/>
 
@@ -127,8 +125,9 @@
                                 @foreach($group_articel as $item)
                                     <section class="time-subscribe-top">
                                         <div class="title-parent">
-                                            <p>{{$item->title}}</p>
+                                            <h2>{{$item->title}}</h2>
                                         </div>
+                                        <hr style="border-top: 2px solid #000000"/>
                                         <div class="subscribe-top">
                                             <div class="content">
                                                 @foreach($item->articel as $articel)
