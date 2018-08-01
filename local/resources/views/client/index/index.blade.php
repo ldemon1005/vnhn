@@ -363,7 +363,7 @@
                         <div class="quangcao-group">
                             <section class="new-right-1">
                                 <div class="category">
-                                    <h3>{{\Illuminate\Support\Facades\Config::get('') == 'vn' ? 'Tạp chí thường kỳ' : 'Regular magazine'}}</h3>
+                                    <h3>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tạp chí thường kỳ' : 'Regular magazine'}}</h3>
                                 </div>
                                 <div class="slide">
 
