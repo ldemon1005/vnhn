@@ -12,18 +12,43 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
 
 class ArticelController extends Controller
 {
     public function get_list(Request $request)
     {
+        $group_ids = Auth::user()->group_id;
+        $group_ids = explode(',', $group_ids);
+        if (in_array(0 ,$group_ids)) {
+            $group_ids = [];
+        }
         /*
          *  lấy danh sách bài viết
          */
+
+        switch (Auth::user()->level) {
+            case 1:
+                $status = [];
+                break;
+            case 2:
+                $status = [1,2];
+                break;
+            case 3:
+                $status = [2,3];
+                break;
+            case 4:
+                $status = [3,4];
+                break;
+
+            default:
+                # code...
+                break;
+        }
         $paramater = $request->get('articel');
 
-        $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : [];
-        $status = isset($paramater['status']) ? $paramater['status'] : [];
+        $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $group_ids;
+        $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
 
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
@@ -55,7 +80,7 @@ class ArticelController extends Controller
 
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '*'){
+        if($user->group_id == '0'){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->get()->toArray();
@@ -73,7 +98,7 @@ class ArticelController extends Controller
     }
 
 
-    public function form_articel($id,Request $request){
+    public function form_articel($id){
         /*
          *  lấy danh sách danh mục
          */
@@ -154,7 +179,7 @@ class ArticelController extends Controller
 
         // Start transaction
         DB::beginTransaction();
-        $check = 0;
+        $check = 1;
 
         if($data['id'] == 0){ //Tạo mới bài viết
             $data['created_at'] = time();
@@ -427,4 +452,44 @@ class ArticelController extends Controller
             ]);
         }
     }
+
+
+    public function getOn(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 1;
+        $news->save();
+        return response($id, 200);
+    }
+    public function getOff(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 0;
+        $news->save();
+        return response('ok', 200);
+    }
+
+    public function get2(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 2;
+        $news->save();
+        return response('ok', 200);
+    }
+    public function get3(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 3;
+        $news->save();
+        return response('ok', 200);
+    }
+    public function get4(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 4;
+        $news->save();
+        return response('ok', 200);
+    }
+
+
 }

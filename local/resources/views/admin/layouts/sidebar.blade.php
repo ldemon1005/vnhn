@@ -32,7 +32,7 @@
               </p>
             </a>
           </li>
-          @if (Auth::user()->level < 4)
+          @if (Auth::user()->level < 4 && Auth::user()->site == 1)
             <li class="nav-item has-treeview">
               <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'account') active @endif"">
                 <i class="fas fa-users-cog nav-icon"></i>
@@ -83,7 +83,7 @@
               
             </ul>
           </li>
-          @if (Auth::user()->level < 3)
+          @if (Auth::user()->level < 3 && Auth::user()->site == 1)
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-ellipsis-h"></i>
@@ -93,12 +93,15 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{route('form_sort_group','00')}}" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon"></i>
-                    <p>Sắp xếp</p>
-                  </a>
-                </li>
+                @if (Auth::user()->site == 1)
+                  <li class="nav-item">
+                    <a href="{{route('form_sort_group','00')}}" class="nav-link">
+                      <i class="fa fa-circle-o nav-icon"></i>
+                      <p>Sắp xếp</p>
+                    </a>
+                  </li>
+                @endif
+                
                 <li class="nav-item">
                   <a href="{{route('admin_group')}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
@@ -118,14 +121,14 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              @if (Auth::user()->level < 4)
+              
                 <li class="nav-item">
                   <a href="{{route('admin_articel')}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon text-warning"></i>
                     <p>Danh sách bài viết</p>
                   </a>
                 </li>
-
+              @if (Auth::user()->level < 3 && Auth::user()->site == 1) 
                 <li class="nav-item">
                   <a href="{{route('sort_hot_articel')}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
@@ -142,7 +145,7 @@
               </li>
             </ul>
           </li>
-          @if (Auth::user()->site == 1)
+          @if (Auth::user()->site == 1 )
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-video"></i>
@@ -202,7 +205,7 @@
             </li>
           @endif
           
-          @if (Auth::user()->level < 4)
+          @if (Auth::user()->level < 4 && Auth::user()->site == 1)
             <li class="nav-item has-treeview">
               <a href="{{ asset('admin/comment') }}" class="nav-link">
                 <i class="nav-icon fas fa-comments"></i>
@@ -222,7 +225,7 @@
             </li>
           @endif 
           
-          @if (Auth::user()->level<3)
+          @if (Auth::user()->level<3 && Auth::user()->site == 1)
             <li class="nav-item has-treeview">
               <a href="{{ asset('admin/website_info') }}" class="nav-link">
                 <i class="nav-icon fas fa-info-circle"></i>

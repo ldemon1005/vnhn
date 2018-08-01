@@ -68,13 +68,13 @@
 	                	<label for="exampleInputFile">Chức vụ</label>
 	                	<select class="form-control select2" style="width: 100%;" name="level">
                         @if (Auth::user()->level < 4)
-                          <option value="4" @if (isset($item) && $item->level == 4) selected="selected" @endif >Biên tập viên</option>
+                          <option value="4" @if (isset($item) && $item->level == 4) selected="selected" @endif >Phóng viên</option>
                         @endif
                         @if (Auth::user()->level < 3)
-                          <option value="3" @if (isset($item) && $item->level == 3) selected="selected" @endif >Giám độc chuyên mục</option>
+                          <option value="3" @if (isset($item) && $item->level == 3) selected="selected" @endif >Biên tập viên</option>
                         @endif
 		                    @if (Auth::user()->level <= 2)
-                          <option value="2" @if (isset($item) && $item->level == 2) selected="selected" @endif >Tổng biên tập</option>
+                          <option value="2" @if (isset($item) && $item->level == 2) selected="selected" @endif >Phó tổng biên tập</option>
                         @endif
 		                    @if (Auth::user()->level == 1)
                           <option value="1" @if (isset($item) && $item->level == 1) selected="selected" @endif >Super Admin</option>
