@@ -36,9 +36,32 @@
                     <a href="{{ asset('') }}"><img src="{{asset('local/resources/uploads/images/logo-vnhn.png')}}"></a>
                 </div>
                 <div class="quangcao-1 item-quangcao">
-                    <a href="{{ asset('') }}">
-                        <img src="images/810x100.png">
-                    </a>
+                    <?php $count_ad = 0?>
+                    @if (count($list_ad[1]) > 0)
+                        @for ($i = 0; $i < count($list_ad[1]); $i++)
+                            @if ($list_ad[1][$i]->advert->ad_status == 1)
+                                <a href="{{ $list_ad[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[1][$i]->advert->ad_img)}}"></a>
+                                <?php $count_ad++ ?>
+                            @endif
+                        @endfor
+                    @endif
+                    @if (count($ad_home[1])>0)
+                        @for ($i = 0; $i < count($ad_home[1]); $i++)
+                            @if ($ad_home[1][$i]->advert->ad_status == 1)
+                                <a href="{{ $ad_home[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}"></a>
+                                <?php $count_ad++ ?>
+                            @endif
+                        @endfor
+                    @endif
+                    @if ($count_ad == 0)
+                        <a href="{{ asset('') }}">
+                            <img src="images/810x100.png">
+                        </a>
+                        
+                    @endif
+                        
+                    
+                    
                     
                 </div>
             </div>

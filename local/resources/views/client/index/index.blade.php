@@ -42,9 +42,25 @@
                             @endfor
                         </div>
                         <div class="row quangcao-2 item-quangcao" >
-                            <a href="{{ asset('') }}">
+                            <?php $count_ad = 0?>
+                            @if (count($list_ad[3]) > 0)
+                                @for ($i = 0; $i < count($list_ad[3]); $i++)
+                                    @if ($list_ad[3][$i]->advert->ad_status == 1)
+                                        <a href="{{ $list_ad[3][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
+                                        <?php $count_ad++ ?>
+                                    @endif
+                                @endfor
+                            @endif
+                           
+                            @if ($count_ad == 0)
+                                <a href="{{ asset('') }}">
+                                    <img src="images/728x90.png">
+                                </a>
+                                
+                            @endif
+                            {{-- <a href="{{ asset('') }}">
                                 <img src="images/728x90.png">
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
 
@@ -79,9 +95,25 @@
                         </section> --}}
 
                         <div class="item-quangcao">
-                            <a href="{{ asset('') }}">
+                             <?php $count_ad = 0?>
+                            @if (count($list_ad[2]) > 0)
+                                @for ($i = 0; $i < count($list_ad[2]); $i++)
+                                    @if ($list_ad[2][$i]->advert->ad_status == 1)
+                                        <a href="{{ $list_ad[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[2][$i]->advert->ad_img)}}"></a>
+                                        <?php $count_ad++ ?>
+                                    @endif
+                                @endfor
+                            @endif
+                           
+                            @if ($count_ad == 0)
+                                <a href="{{ asset('') }}">
+                                    <img src="images/300x250.png">
+                                </a>
+                                
+                            @endif
+                            {{-- <a href="{{ asset('') }}">
                                 <img src="images/300x250.png">
-                            </a>
+                            </a> --}}
                         </div>
                         <section class="new-right-2">
                             <div class="category">
@@ -184,18 +216,50 @@
                         </section>
                         
                         <div class="quangcao-3 item-quangcao">
-                            <a href="{{ asset('') }}">
+                             <?php $count_ad = 0?>
+                            @if (count($list_ad[4]) > 0)
+                                @for ($i = 0; $i < count($list_ad[4]); $i++)
+                                    @if ($list_ad[4][$i]->advert->ad_status == 1)
+                                        <a href="{{ $list_ad[4][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[4][$i]->advert->ad_img)}}"></a>
+                                        <?php $count_ad++ ?>
+                                    @endif
+                                @endfor
+                            @endif
+                           
+                            @if ($count_ad == 0)
+                                <a href="{{ asset('') }}">
+                                    <img src="images/300x250.png">
+                                </a>
+                                
+                            @endif
+                            {{-- <a href="{{ asset('') }}">
                                 <img src="images/300x250.png">
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
 
                 <div class="row quangcao-4 item-quangcao">
                     <div class="quangcao-3 item-quangcao">
-                        <a href="{{ asset('') }}">
+                        <?php $count_ad = 0?>
+                        @if (count($list_ad[5]) > 0)
+                            @for ($i = 0; $i < count($list_ad[5]); $i++)
+                                @if ($list_ad[5][$i]->advert->ad_status == 1)
+                                    <a href="{{ $list_ad[5][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[5][$i]->advert->ad_img)}}"></a>
+                                    <?php $count_ad++ ?>
+                                @endif
+                            @endfor
+                        @endif
+                       
+                        @if ($count_ad == 0)
+                            <a href="{{ asset('') }}">
+                                <img src="images/1140x125.png">
+                            </a>
+                            
+                        @endif
+                        {{-- <a href="{{ asset('') }}">
                             <img src="images/1140x125.png">
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>
@@ -240,9 +304,25 @@
                 <div class="row articel-bottom">
                     <div class="articel-bottom-left">
                         <div class="row quangcao-2 mb-4 item-quangcao">
-                            <a href="{{ asset('') }}">
+                            <?php $count_ad = 0?>
+                            @if (count($list_ad[6]) > 0)
+                                @for ($i = 0; $i < count($list_ad[6]); $i++)
+                                    @if ($list_ad[6][$i]->advert->ad_status == 1)
+                                        <a href="{{ $list_ad[6][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[6][$i]->advert->ad_img)}}"></a>
+                                        <?php $count_ad++ ?>
+                                    @endif
+                                @endfor
+                            @endif
+                           
+                            @if ($count_ad == 0)
+                                <a href="{{ asset('') }}">
+                                    <img src="images/728x90.png">
+                                </a>
+                                
+                            @endif
+                            {{-- <a href="{{ asset('') }}">
                                 <img src="images/728x90.png">
-                            </a>
+                            </a> --}}
                         </div>
 
                         <div class="menu">
@@ -311,9 +391,25 @@
                             </section>
                             
                             <div class="quangcao_right">
-                                <a href="{{ asset('') }}">
+                                <?php $count_ad = 0?>
+                                @if (count($list_ad[7]) > 0)
+                                    @for ($i = 0; $i < count($list_ad[7]); $i++)
+                                        @if ($list_ad[7][$i]->advert->ad_status == 1)
+                                            <a href="{{ $list_ad[7][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[7][$i]->advert->ad_img)}}"></a>
+                                            <?php $count_ad++ ?>
+                                        @endif
+                                    @endfor
+                                @endif
+                               
+                                @if ($count_ad == 0)
+                                    <a href="{{ asset('') }}">
+                                        <img src="images/300x250.png">
+                                    </a>
+                                    
+                                @endif
+                               {{--  <a href="{{ asset('') }}">
                                     <img src="images/300x250.png">
-                                </a>
+                                </a> --}}
                                 
                             </div>
                             
