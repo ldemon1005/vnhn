@@ -12,18 +12,43 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
 
 class ArticelController extends Controller
 {
     public function get_list(Request $request)
-    {
+    {   
+        $group_ids = Auth::user()->group_id;
+        $group_ids = explode(',', $group_ids);
+        if (in_array(0 ,$group_ids)) {
+            $group_ids = [];
+        }
         /*
          *  lấy danh sách bài viết
          */
+
+        switch (Auth::user()->level) {
+            case 1:
+                $status = [];
+                break;
+            case 2:
+                $status = [1,2];
+                break;
+            case 3:
+                $status = [2,3];
+                break;
+            case 4:
+                $status = [3,4];
+                break;
+            
+            default:
+                # code...
+                break;
+        }
         $paramater = $request->get('articel');
 
-        $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : [];
-        $status = isset($paramater['status']) ? $paramater['status'] : [];
+        $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $group_ids;
+        $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
 
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
@@ -55,7 +80,7 @@ class ArticelController extends Controller
 
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '*'){
+        if($user->group_id == '0'){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->get()->toArray();
@@ -171,19 +196,21 @@ class ArticelController extends Controller
                 }
             }
             if(count($data_group_news)){
-                if(!DB::table($this->db->group_news)->insert($data_group_news)) $check = 0;
+                if(!DB::table($this->db->group_news)->insert($data_group_news)){dd('1'); $check = 0;} 
             }
             $articel->content = $content;
-            if(!$this->add_log($articel,$status,"Tạo mới,".$status_str))$check = 0;
+            if(!$this->add_log($articel,$status,"Tạo mới,".$status_str)){dd('2'); $check = 0;} ;
 
-            if($check == 1){
+            if($check == 0){
                 DB::commit();
                 return redirect()->route('admin_articel')->with('status','Tạo mới thành công');
             }else {
                 DB::rollBack();
                 $data['content'] = $content;
                 $date = $data['release_time'];
+                // dd($data['release_time']);
                 $data['release_time']['day'] = date('d/m/Y',$date);
+
                 $data['release_time']['h'] = date('h:i A',$date);
                 $data['groupid'] = $group_id;
                 return redirect()->route('form_articel',0)->with('error','Cập nhật không thành công')->with('data',((object)$data));
@@ -237,7 +264,7 @@ class ArticelController extends Controller
         $articel = News::find($id);
         DB::beginTransaction();
         $check = 1;
-
+           dd(DB::table($this->db->logfile)->where('LogId',$id)->get()); 
         if(DB::table($this->db->logfile)->where('LogId',$id)->delete() <= 0) $check = 0;
 
         if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}
@@ -424,4 +451,44 @@ class ArticelController extends Controller
             ]);
         }
     }
+
+
+    public function getOn(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 1;
+        $news->save();
+        return response($id, 200);
+    }
+    public function getOff(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 0;
+        $news->save();
+        return response('ok', 200);
+    }
+    
+    public function get2(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 2;
+        $news->save();
+        return response('ok', 200);
+    }
+    public function get3(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 3;
+        $news->save();
+        return response('ok', 200);
+    }
+    public function get4(){
+        $id = Input::get('id');
+        $news = News::find($id);
+        $news->status = 4;
+        $news->save();
+        return response('ok', 200);
+    }
+
+
 }

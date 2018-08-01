@@ -180,13 +180,13 @@
     			return 'SuperAdmin';
     			break;
     		case 2:
-    			return 'Tổng biên tập';
+    			return 'Phó tổng biên tập';
     			break;
     		case 3:
-    			return 'Giám đốc chuyên mục';
+    			return 'Biên tập viên';
     			break;
     		case 4:
-    			return 'Biên tập viên';
+    			return 'Phóng viên';
     			break;
     		default:
     			return 'Lỗi';

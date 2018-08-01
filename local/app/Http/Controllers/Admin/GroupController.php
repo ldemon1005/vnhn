@@ -8,27 +8,54 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Mockery\Exception;
+use Auth;
+use Illuminate\Support\Facades\Input;
 
 class GroupController extends Controller
 {
     public function getList(Request $request){
+        $group_id = Auth::user()->group_id;
+        $group_id = explode(',', $group_id);
 
         $parentid = $request->get('groupid');
-//        dd($parentid);
-        $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-        $root = [
-            'id' => '00',
-            'title' => 'root'
-        ];
-        $result[] = (object)$root;
-        $this->recusiveGroup($list_group,0,"",$result);
 
-        if($parentid != null){
-            $list_group = DB::table($this->db->group)->where('parentid',$parentid)->orderByDesc('id')->paginate(15);
-        }else {
-            $list_group = DB::table($this->db->group)->orderByDesc('id')->paginate(15);
+
+        if (in_array(0 ,$group_id)) {
+            $list_group = DB::table($this->db->group)->where('parentid', '0')->get()->toArray();
+            $root = [
+                'id' => 0,
+                'title' => 'root'
+            ];
+            $result[] = (object)$root;
+            $this->recusiveGroup($list_group, 0, "", $result);
+            // $data['list_group'] = $result;
+
+            if($parentid != null){
+                $list_group = DB::table($this->db->group)->where('parentid',$parentid)->orderByDesc('id')->paginate(15);
+            }else {
+                $list_group = DB::table($this->db->group)->orderByDesc('id')->paginate(15);
+            }
+            
         }
+        else{
+            $list_group = DB::table($this->db->group)->where('parentid', '0')->whereIn('id', $group_id)->get()->toArray();
+            $result = $list_group;
 
+            if($parentid != null){
+                $list_group = DB::table($this->db->group)->where('parentid', '0')->where('parentid',$parentid)->orderByDesc('id')->paginate(15);
+            }else {
+                $list_group = DB::table($this->db->group)->where('parentid', '0')->whereIn('id', $group_id)->orderByDesc('id')->paginate(15);
+            }
+        }
+        
+        //dd($parentid);
+        // $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+        // $root = [
+        //     'id' => 0,
+        //     'title' => 'root'
+        // ];
+        // $result[] = (object)$root;
+        // $this->recusiveGroup($list_group,0,"",$result);
 
         foreach ($list_group as $value){
             $value->created_at = date('d/m/Y h:m');
@@ -51,37 +78,43 @@ class GroupController extends Controller
     }
 
     public function form_group($id){
-        $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
-        $root = [
-            'id' => 0,
-            'title' => 'root'
-        ];
-        $result[] = (object)$root;
-        $this->recusiveGroup($list_group,0,"",$result);
-
-        if($id == 0){
-            $group = [
+        if (Auth::check() && Auth::user()->site == 1) {
+           $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
+            $root = [
                 'id' => 0,
-                'title' => '',
-                'avatar' => '',
-                'slug' => '',
-                'summary' => '',
-                'parentid' => '0',
-                'keywords' => '',
-                'titlemeta' => '',
-                'status' => 1
+                'title' => 'root'
             ];
+            $result[] = (object)$root;
+            $this->recusiveGroup($list_group,0,"",$result);
 
-            $group = (object)$group;
-        }else {
-            $group = DB::table($this->db->group)->find($id);
+            if($id == 0){
+                $group = [
+                    'id' => 0,
+                    'title' => '',
+                    'avatar' => '',
+                    'slug' => '',
+                    'summary' => '',
+                    'parentid' => '0',
+                    'keywords' => '',
+                    'titlemeta' => '',
+                    'status' => 1
+                ];
+
+                $group = (object)$group;
+            }else {
+                $group = DB::table($this->db->group)->find($id);
+            }
+
+            $data = [
+                'list_group' => $result,
+                'group' => $group
+            ];
+            return view('admin.group.form_group',$data);
         }
-
-        $data = [
-            'list_group' => $result,
-            'group' => $group
-        ];
-        return view('admin.group.form_group',$data);
+        else{
+            return redirect('admin/group');
+        }
+            
     }
 
     public function action_group(Request $request){
@@ -157,5 +190,20 @@ class GroupController extends Controller
         }else {
             return redirect()->route('form_sort_group', '00')->with('error','Sắp xếp không thành công');
         }
+    }
+
+    public function getOn(){
+        $id = Input::get('id');
+        $gr = Group_vn::find($id);
+        $gr->status = 1;
+        $gr->save();
+        return response($id, 200);
+    }
+    public function getOff(){
+        $id = Input::get('id');
+        $gr = Group_vn::find($id);
+        $gr->status = 0;
+        $gr->save();
+        return response('ok', 200);
     }
 }

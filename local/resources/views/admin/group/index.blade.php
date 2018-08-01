@@ -41,7 +41,10 @@
                         <div class="card-header">
                             <div class="row form-group">
                                 <div class="col-md-4">
-                                    <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới danh mục</h3></a>
+                                    @if (Auth::user()->site == 1)
+                                        <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới danh mục</h3></a>
+                                    @endif
+                                    
                                 </div>
                                 <div class="col-md-6">
                                     <form action="{{route('admin_group')}}" method="get">
@@ -78,7 +81,6 @@
                                     <th>Mô tả danh mục</th>
                                     <th>Đường dẫn</th>
                                     <th>Ngày tạo</th>
-                                    <th>Avatar</th>
                                     <th>Trạng thái</th>
                                     <th>Thao tác</th>
                                 </tr>
@@ -90,9 +92,10 @@
                                         <td>{{$group->summary}}</td>
                                         <td>{{$group->slug}}</td>
                                         <td>{{$group->created_at}}</td>
-                                        <td><img style="height: 50px" src="{{asset('/local/resources'.$group->avatar)}}"></td>
+                                        
                                         <td>
-                                            <button class="btn btn-block btn-sm {{ $group->status == 2 ? 'btn-danger' : 'btn-success' }}">{{ $group->status ? 'Không hoạt động' : 'Hoạt động' }}</button>
+                                            <button class="btn btn-block btn-sm {{ $group->status == 0 ? 'btn-danger btnOn' : 'btn-success btnOff' }}">{{ $group->status ? ' Hoạt động' : 'Không hoạt động' }}</button>
+                                            <div class="id_group" style="display: none;">{{$group->id}}</div>
                                         </td>
                                         <td>
                                             <div class="row form-group">
@@ -124,4 +127,5 @@
 
 
 @section('script')
+<script type="text/javascript" src="js/group.js"></script>
 @stop
