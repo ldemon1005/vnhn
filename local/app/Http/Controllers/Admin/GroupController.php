@@ -66,7 +66,7 @@ class GroupController extends Controller
                 'avatar' => '',
                 'slug' => '',
                 'summary' => '',
-                'parentid' => '00',
+                'parentid' => '0',
                 'keywords' => '',
                 'titlemeta' => '',
                 'status' => 1

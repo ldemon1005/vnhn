@@ -223,6 +223,7 @@
     <script>
         $(function () {
             CKEDITOR.replace( 'editor1', {
+                height: '400px',
                 filebrowserBrowseUrl: 'plugins/ckfinder/ckfinder.html',
                 filebrowserImageBrowseUrl: 'plugins/ckfinder/ckfinder.html?type=Images',
                 filebrowserFlashBrowseUrl: 'plugins/ckfinder/ckfinder.html?type=Flash',

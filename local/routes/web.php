@@ -15,7 +15,9 @@ use \Illuminate\Support\Facades\Route;
 //
 //});
 
-Route::group(['namespace' => 'Client','middleware' => 'Start'],function (){
+
+//,'middleware' => 'Start'
+Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index')->name('home');
     Route::group(['prefix'=>'articel'],function(){
         Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
