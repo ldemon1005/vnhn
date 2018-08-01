@@ -201,13 +201,14 @@ class ArticelController extends Controller
             $articel->content = $content;
             if(!$this->add_log($articel,$status,"Tạo mới,".$status_str)){dd('2'); $check = 0;} ;
 
-            if($check == 0){
+            if($check == 1){
                 DB::commit();
                 return redirect()->route('admin_articel')->with('status','Tạo mới thành công');
             }else {
                 DB::rollBack();
                 $data['content'] = $content;
                 $date = $data['release_time'];
+                $data['release_time'] = [];
                 // dd($data['release_time']);
                 $data['release_time']['day'] = date('d/m/Y',$date);
 
