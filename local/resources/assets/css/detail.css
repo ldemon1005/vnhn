@@ -343,6 +343,19 @@ ul.mainDetailRightList li a:hover {
     cursor: pointer;
 }
 
+.mainDetailLeftInfo {
+	display: flex;
+	float: right;
+}
+
+.mainDetailLeftInfo p{
+	display: flex;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: italic;
+	color: #999999;
+}
+
 @media only screen and (max-width: 1200px) {
     .section1{
 		width: 960px;

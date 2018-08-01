@@ -66,7 +66,6 @@
                                     <input type="text" name="articel[description_meta]" value="{{$articel->description_meta}}" class="form-control" placeholder="Description meta">
                                 </div>
                             </div>
-
                             <div class="row form-group">
                                 <label class="col-sm-2">Ngày phát hành</label>
                                 <div class="col-sm-8">

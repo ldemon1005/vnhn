@@ -73,7 +73,7 @@ class ArticelController extends Controller
     }
 
 
-    public function form_articel($id){
+    public function form_articel($id,Request $request){
         /*
          *  lấy danh sách danh mục
          */
@@ -104,7 +104,7 @@ class ArticelController extends Controller
                 'loaiview' => 0,
                 'content' => '',
                 'release_time' => (object)[
-                    'day' => date('d/m/Y',time()),
+                    'day' => date('Y-m-d',time()),
                     'h' => date('h:i A',time())
                 ],
                 'hot_main' => 0,
@@ -122,6 +122,7 @@ class ArticelController extends Controller
                 'h' => date('h:i A',$date)
             ];
         }
+
         $data = [
             'articel' => $articel,
             'list_group' => $result
@@ -153,7 +154,7 @@ class ArticelController extends Controller
 
         // Start transaction
         DB::beginTransaction();
-        $check = 1;
+        $check = 0;
 
         if($data['id'] == 0){ //Tạo mới bài viết
             $data['created_at'] = time();
@@ -183,10 +184,11 @@ class ArticelController extends Controller
                 DB::rollBack();
                 $data['content'] = $content;
                 $date = $data['release_time'];
-                $data['release_time']['day'] = date('d/m/Y',$date);
+                unset($data['release_time']);
+                $data['release_time']['day'] = date('Y-m-d',$date);
                 $data['release_time']['h'] = date('h:i A',$date);
                 $data['groupid'] = $group_id;
-                return redirect()->route('form_articel',0)->with('error','Cập nhật không thành công')->with('data',((object)$data));
+                return redirect()->route('form_articel',0)->with('error','Tạo mới không thành công')->with('articel',((object)$data));
             }
         }else { //Cập nhật bài viết
             $articel = News::find($data['id']);
@@ -224,10 +226,11 @@ class ArticelController extends Controller
                     DB::rollBack();
                     $data['content'] = $content;
                     $date = $data['release_time'];
-                    $data['release_time']['day'] = date('d/m/Y',$date);
+                    unset($data['release_time']);
+                    $data['release_time']['day'] = date('Y-m-d',$date);
                     $data['release_time']['h'] = date('h:i A',$date);
                     $data['groupid'] = $group_id;
-                    return redirect()->route('form_articel',$articel->id)->with('error','Cập nhật không thành công')->with('data',$data);
+                    return redirect()->route('form_articel',$articel->id)->with('error','Cập nhật không thành công')->with('articel',$data);
                 }
             }
         }

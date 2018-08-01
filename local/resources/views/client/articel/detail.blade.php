@@ -32,6 +32,16 @@
                         {!! $articel->content !!}
                     </div>
 
+                    <div class="mainDetailLeftInfo">
+                        <div class="fb-like" data-href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}"
+                             data-action="like" data-size="small" data-layout="button_count"
+                             data-share="true"></div>
+                        <p style="margin-left: 15px">{!! $articel->tacgia !!}</p>
+                        <span>&nbsp;/&nbsp;</span>
+                        <p>{!! $articel->nguontin !!}</p>
+                    </div>
+
+
                     <div class="mainDetailLeftBanner">
                         <?php $count_ad = 0?>
                         @if (count($list_ad[4]) > 0)
@@ -54,13 +64,7 @@
                             <a href="{{ asset('') }}">
                                 <img src="images/728x90.png">
                             </a>
-                            
                         @endif
-
-
-                       
-                        
-                        
                     </div>
                     {{-- <div class="mainDetailLeftRecommend">
                         <div class="mainDetailLeftRecommendItem left">
