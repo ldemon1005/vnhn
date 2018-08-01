@@ -36,7 +36,11 @@ Route::get('/vnhn_start','ClientController@vnhn_start')->name('vnhn_start');
 Route::get('/set_lang/{lang}','ClientController@set_lang')->name('set_lang');
 
 Route::get('login', 'Admin\LoginController@getLogin')->middleware('CheckLogout');
-Route::post('login', 'Admin\LoginController@postLogin');
+// Route::post('login', 'Admin\LoginController@postLogin');
+
+Route::post('login', [ 'as' => 'login', 'uses' => 'Admin\LoginController@postLogin']);
+
+
 
 Route::get('logout', 'Admin\LoginController@getLogout');
 Route::get('lockscreen', 'Admin\LoginController@getLockScreen');
