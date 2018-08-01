@@ -28,7 +28,7 @@ class AccountController extends Controller
         $group_id = explode(',', $group_id);
         
         if (in_array(0 ,$group_id)) {
-            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '0')->get()->toArray();
             $root = [
                 'id' => 0,
                 'title' => 'root'
@@ -36,11 +36,13 @@ class AccountController extends Controller
             $result[] = (object)$root;
             $this->recusiveGroup($list_group, 0, "", $result);
             $data['list_group'] = $result;
+
         }
         else{
-            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->whereIn('id', $group_id)->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '0')->whereIn('id', $group_id)->get()->toArray();
             $data['list_group'] = $list_group;
         }
+        // dd($data['list_group']);
 
     	return view('admin.account.account_form',$data);
     }
@@ -48,7 +50,10 @@ class AccountController extends Controller
     	$acc = new Account;
     	$acc->username = $request->username;
     	$acc->fullname = $request->fullname;
-    	$acc->email = $request->email;
+        if ($request->email != null) {
+            $acc->email = $request->email;
+        }
+    	
     	$acc->phone = $request->phone;
     	$acc->password = bcrypt($request->password);
     	$acc->level = $request->level;
@@ -80,7 +85,7 @@ class AccountController extends Controller
         $data['gr_acc'] = Account::find($id)->group_id;
         $data['gr_acc'] = explode(',', $data['gr_acc']);
         if (in_array(0 ,$group_id)) {
-            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '0')->get()->toArray();
             $root = [
                 'id' => 0,
                 'title' => 'root'
@@ -90,7 +95,7 @@ class AccountController extends Controller
             $data['list_group'] = $result;
         }
         else{
-            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '00')->whereIn('id', $group_id)->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '0')->whereIn('id', $group_id)->get()->toArray();
             $data['list_group'] = $list_group;
         }
         $data['group_id'] = $group_id;
