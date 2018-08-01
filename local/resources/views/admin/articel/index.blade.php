@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Home</a></li>
                             <li class="breadcrumb-item active">Danh sách bài viết</li>
                         </ol>
                     </div>
@@ -78,8 +78,9 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th style="width: 20%">Tiêu đề bài viết</th>
-                                    <th style="width: 20%;">Đường dẫn</th>
+                                    <th>Tiêu đề bài viết</th>
+                                    <th>Tác giả</th>
+                                    <th>Chuyên mục</th>
                                     <th>Ngày tạo--Ngày update</th>
                                     <th>Avatar</th>
                                     <th>Trạng thái</th>
@@ -91,7 +92,24 @@
                                 @foreach($list_articel as $articel)
                                     <tr>
                                         <td>{{$articel->title}}</td>
-                                        <td>{{$articel->slug}}</td>
+                                        <td>{{isset($articel->username)? $articel->username->username : 'Không còn'}}</td>
+                                        <td>
+                                            <?php $count = 0?>
+                                            @foreach($list_group as $articel_item)
+                                                @if (in_array($articel_item->id,explode(' ',$articel->groupid)))
+                                                    <button class="btn btn-outline-default btn-sm">
+                                                        {{ $articel_item->title }}
+                                                    </button>
+                                                    <?php $count++?>
+                                                @endif
+                                            @endforeach
+                                            @if ($count == 0)
+                                                <button class="btn btn-outline-default btn-sm">
+                                                    Lỗi
+                                                </button>
+                                            @endif
+                                            
+                                        </td>
                                         <td>
                                             {{$articel->created_at}}--{{$articel->updated_at}}
                                         </td>
@@ -233,7 +251,7 @@
                                                 <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
 
                                                     
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status != 0) style="display: none" @endif ><i
+                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status != 0 && $articel->status != 4 ) style="display: none" @endif ><i
                                                             class="fa fa-trash"></i></a>
                                                 <a style="cursor: pointer" onclick="historyArticel({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
                                             </div>

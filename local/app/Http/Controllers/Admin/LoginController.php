@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Models\Account;
-
+use Session;
 
 class LoginController extends Controller
 {
@@ -26,6 +26,7 @@ class LoginController extends Controller
     }
     public function getLogout(){
         Auth::logout();
+        Session::flush();
         return back();
     }
     public function getLockScreen(Request $request){

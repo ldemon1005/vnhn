@@ -12,7 +12,7 @@
                                     </div>
                                     <h3 class="title mt-2">{{$list_articel_new[0]->title}}</h3>
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_new[0]->release_time}}</p>
-                                    <p class="caption">{{$list_articel_new[0]->summary}}</p>
+                                    <p class="caption">{{ cut_string($list_articel_new[0]->summary, 300)}}</p>
                                 </a>
                                 <div class="new-list-right">
                                     @for (  $i = 1;   $i < 6;    $i++)

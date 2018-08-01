@@ -14,7 +14,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
               <li class="breadcrumb-item active">Quảng cáo</li>
             </ol>
           </div>

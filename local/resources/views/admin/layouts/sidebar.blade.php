@@ -85,7 +85,7 @@
           </li>
           @if (Auth::user()->level < 3 && Auth::user()->site == 1)
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a href="{{ asset('admin') }}" class="nav-link">
                 <i class="nav-icon fas fa-ellipsis-h"></i>
                 <p>
                   Danh mục
@@ -113,7 +113,7 @@
           @endif
             
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="{{ asset('admin') }}" class="nav-link">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 Quản trị tin
@@ -124,7 +124,7 @@
               
                 <li class="nav-item">
                   <a href="{{route('admin_articel')}}" class="nav-link">
-                    <i class="fa fa-circle-o nav-icon text-warning"></i>
+                    <i class="fa fa-circle-o nav-icon"></i>
                     <p>Danh sách bài viết</p>
                   </a>
                 </li>
@@ -147,7 +147,7 @@
           </li>
           @if (Auth::user()->site == 1 )
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a href="{{ asset('admin') }}" class="nav-link">
                 <i class="nav-icon fas fa-video"></i>
                 <p>
                   Video
@@ -175,7 +175,7 @@
           
           @if (Auth::user()->site == 1 && Auth::user()->level < 4)
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
+              <a href="{{ asset('admin') }}" class="nav-link">
                 <i class="nav-icon fas fa-paper-plane"></i>
                 <p>
                   Quảng cáo
