@@ -63,8 +63,9 @@
                                 <select class="form-control select2" multiple="multiple"
                                 data-placeholder="Lọc theo trạng thái" name="video[status][]"
                                 style="width: 100%;">
+                                <option value="2">Chờ duyệt</option>
                                 <option value="1">Đã duyệt</option>
-                                <option value="0">Chưa duyệt</option>
+                                <option value="0">Gỡ xuống</option>
                             </select>
                         </div>
                         <div class="col-md-2 float-right">
@@ -97,14 +98,79 @@
                                 {{-- {{ isset($video->avatar) && file_exists(resource_path($video->avatar)) && $video->avatar ? asset('local/resource'.$video->avatar) : '../images/default-image.png' }} --}}
                             </td>
                             <td id="status_video">
-                                <button onclick="change_status({{$video->id}},{{$video->status}})" id="status_video" class="btn btn-block btn-sm {{ $video->status == 0 ? 'btn-danger' : 'btn-success' }}">{{ $video->status == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</button>
+                                {{-- <button onclick="change_status({{$video->id}},{{$video->status}})" id="status_video" class="btn btn-block btn-sm {{ $video->status == 0 ? 'btn-danger' : 'btn-success' }}">{{ $video->status == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</button> --}}
+                                @switch(Auth::user()->level)
+                                    @case(1)
+                                         @switch($video->status)
+                                            @case(0)
+                                                <button class="btn btn-block btn-sm btn-default btnStatus" status='1'>Dừng</button>
+                                                @break
+                                            @case(1)
+                                                <button class="btn btn-block btn-sm btn-default btnStatus" status='0'>Đang chạy</button>
+                                                @break
+                                            @case(2)
+                                                <button class="btn btn-block btn-sm btn-success btnStatus" status='1'>Duyệt</button>
+                                                @break
+                                            @default
+                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                @break
+                                        @endswitch
+                                        @break
+                                    @case(2) 
+                                        @switch($video->status)
+                                            @case(0)
+                                                <button class="btn btn-block btn-sm btn-default btnStatus" status="1">Dừng</button>
+                                                @break
+                                            @case(1)
+                                                <button class="btn btn-block btn-sm btn-default btnStatus" status="0">Đang chạy</button>
+                                                @break
+                                            @case(2)
+                                                <button class="btn btn-block btn-sm btn-success btnStatus" status="1">Duyệt</button>
+                                                <button class="btn btn-block btn-sm btn-info btnStatus" status="3">Trả lại</button>
+                                                @break
+                                            @default
+                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                @break
+                                        @endswitch
+                                        @break
+                                    @case(3)
+                                        @switch($video->status)
+                                            @case(2)
+                                                <button class="btn btn-block btn-sm btn-default">Chờ Duyệt</button>
+                                                @break
+                                            @case(3)
+                                                <button class="btn btn-block btn-sm btn-info btnStatus" status="2">Gửi lại</button>
+                                                @break
+                                            @default
+                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                @break
+                                        @endswitch
+                                        @break
+                                     @case(4)
+                                        @switch($video->status)
+                                            @case(2)
+                                                <button class="btn btn-block btn-sm btn-default">Chờ Duyệt</button>
+                                                @break
+                                            @case(3)
+                                                <button class="btn btn-block btn-sm btn-info btnStatus" status="2">Gửi lại</button>
+                                                @break
+                                            @default
+                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                @break
+                                        @endswitch
+                                        @break
+                                    @default
+                                        <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                        @break
+                                @endswitch
+                                <div class="id_group" style="display: none;">{{$video->id}}</div>
                             </td>
                             <td>
                                 <div class="row form-group text-center">
                                     <a href="{{route('form_video',$video->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
-                                    <a data-toggle="tooltip" title="Xóa" onclick="return confirm('Bạn có chắc chắn xóa? Một số dữ liệu sẽ không thể khôi phục!')" href="{{route('delete_video',$video->id)}}" class="col-sm-4 text-danger"><i
+                                    <a data-toggle="tooltip" title="Xóa" onclick="return confirm('Bạn có chắc chắn xóa? Một số dữ liệu sẽ không thể khôi phục!')" href="{{route('delete_video',$video->id)}}" class="col-sm-4 text-danger" @if ($video->status != 0 ) style="display: none" @endif><i
                                         class="fa fa-trash"></i></a>
-                                        <a style="cursor: pointer" onclick="historyVideo({{$video->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
+                                    <a style="cursor: pointer" onclick="historyVideo({{$video->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -140,4 +206,5 @@
 @section('script')
 <!-- Select2 -->
 <script src="plugins/select2/select2.full.min.js"></script>
+<script type="text/javascript" src="js/video.js"></script>
 @stop

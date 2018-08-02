@@ -122,6 +122,8 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::get('/delete_video/{id}','VideoController@delete_video')->name('delete_video');
                 Route::get('/history_video/{id}','VideoController@history_video')->name('history_video');
                 Route::get('/update_status/{id}','VideoController@update_status')->name('update_status');
+
+                Route::post('status', 'VideoController@action_status');
             });
             Route::group(['prefix' => 'advert'], function(){
                 Route::get('/', 'AdvertController@index');

@@ -27,7 +27,7 @@
   <link rel="stylesheet" type="text/css" href="css/master.css">
   @yield('css')
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
 <div class="currentUrl" style="display: none;">
   {{ asset('') }}
 </div>

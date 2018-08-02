@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
+
 
 class VideoController extends Controller
 {
@@ -17,6 +19,25 @@ class VideoController extends Controller
         /*
          *  lấy danh sách bài viết
          */
+
+        switch (Auth::user()->level) {
+            case 1:
+                $status = [];
+                break;
+            case 2:
+                $status = [0,1,2];
+                break;
+            case 3:
+                $status = [2,3];
+                break;
+            case 4:
+                $status = [2,3];
+                break;
+
+            default:
+                # code...
+                break;
+        }
         $paramater = $request->get('video');
 
         $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : [];
@@ -32,7 +53,9 @@ class VideoController extends Controller
         if($key_search){
             $list_video = $list_video->where('title','like',"%$key_search%")->orWhere('summary','like',"%$key_search%");
         }
-
+        if (Auth::user()->level == 4 || Auth::user()->level == 3) {
+            $list_video =  $list_video->where('userId', Auth::user()->id);
+        }
         $list_video = $list_video->paginate(15);
         foreach ($list_video as $val) {
             $val->created_at = date('d/m/Y H:m', $val->created_at);
@@ -49,7 +72,7 @@ class VideoController extends Controller
             'list_video' => $list_video,
             'articel' => $paramater
         ];
-
+        // dd($data);
         return view('admin.videos.index', $data);
     }
 
@@ -120,7 +143,12 @@ class VideoController extends Controller
 
         $data['description'] = substr(trim($data['description']),0,160);
         $data['seo_title'] = substr(trim($data['seo_title']),0,70);
-
+        if (Auth::user()->level == 1 || Auth::user()->level == 2) {
+            $data['status'] = 1;
+        }
+        else{
+            $data['status'] = 2;
+        }
         if($data['id'] == 0){//Tạo mới video
             $data['created_at'] = time();
             $user_login = Auth::user();
@@ -261,5 +289,15 @@ class VideoController extends Controller
         }
     }
 
+
+    public function action_status(){
+        // return response('success', 200);
+        $id = Input::get('id');
+        $status = Input::get('status');
+        $video = Video_vn::find($id);
+        $video->status = $status;
+        $video->save();
+        return response('success', 200);
+    }
 
 }

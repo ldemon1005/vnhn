@@ -100,8 +100,7 @@
                                         <td>
                                             <div class="row form-group">
                                                 <a href="{{route('form_group',$group->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-6 text-primary"><i class="fa fa-wrench"></i></a>
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_group',$group->id)}}" class="col-sm-6 text-danger"><i
-                                                            class="fa fa-trash"></i></a>
+                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_group',$group->id)}}" class="col-sm-6 text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa')" @if ($group->status != 0 ) style="display: none" @endif><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>
