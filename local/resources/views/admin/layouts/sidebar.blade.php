@@ -162,6 +162,12 @@
                       <p>Danh sách video</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="{{route('form_video',0)}}" class="nav-link">
+                      <i class="fa fa-circle-o nav-icon"></i>
+                      <p>Danh mục video</p>
+                    </a>
+                  </li>
                 @endif
                 <li class="nav-item">
                   <a href="{{route('form_video',0)}}" class="nav-link">

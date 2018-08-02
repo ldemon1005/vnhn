@@ -115,6 +115,10 @@ Route::group(['namespace' => 'Admin'], function (){
 
 
 
+            Route::group(['prefix' => 'group_video'], function(){
+                Route::get('/','GroupVideoController@index')->name('admin_video_group');
+            });
+
             Route::group(['prefix' => 'video'], function(){
                 Route::get('/','VideoController@get_list')->name('admin_video');
                 Route::get('/form_video/{id}','VideoController@form_video')->name('form_video');
@@ -123,6 +127,7 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::get('/history_video/{id}','VideoController@history_video')->name('history_video');
                 Route::get('/update_status/{id}','VideoController@update_status')->name('update_status');
             });
+
             Route::group(['prefix' => 'advert'], function(){
                 Route::get('/', 'AdvertController@index');
 

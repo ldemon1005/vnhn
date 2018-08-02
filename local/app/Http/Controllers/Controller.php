@@ -79,21 +79,21 @@ class Controller extends BaseController
                 'group_news' => 'group_news_vn',
                 'group' => 'group_vn',
                 'group_video' => 'group_video_vn',
-                'menu_video' => 'menu_video_vn',
+                'menu_video' => 'menu_video',
                 'logfile' => 'logfile_vn',
                 'menu_top' => 'menu_top_vn',
                 'new_news' => 'new_news_vn',
                 'news' => 'news_vn',
                 'video' => 'video_vn',
                 'web_info' => 'web_info_vn',
-                'magazine' => 'magazine_vn'
+                'magazine' => 'magazine_vn',
             ];
         }else{
             return [
                 'group_news' => 'group_news_en',
                 'group' => 'group_en',
                 'group_video' => 'group_video_en',
-                'menu_video' => 'menu_video_en',
+                'menu_video' => 'menu_video',
                 'logfile' => 'logfile_en',
                 'menu_top' => 'menu_top_en',
                 'new_news' => 'new_news_en',
