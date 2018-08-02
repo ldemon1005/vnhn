@@ -1,12 +1,12 @@
 /* UPLOAD ẢNH */
 function uploadImage(input, image) {
     if (image != undefined) {
-        var valid = check_image(image);
-        if (!valid) {
-            snackbar(2, get_check_message());
-            input.value = '';
-            return;
-        }
+        // var valid = check_image(image);
+        // if (!valid) {
+        //     snackbar(2, get_check_message());
+        //     input.value = '';
+        //     return;
+        // }
         var formData = new FormData();
         formData.append('file', image);
 

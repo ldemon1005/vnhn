@@ -7,6 +7,7 @@ use App\Model\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,8 @@ class HomeController extends Controller
 //        ];
 //
 //        dd(json_encode($array));
+
+
 
         return view('admin.index.home');
     }

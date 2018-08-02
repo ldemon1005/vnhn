@@ -69,6 +69,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {{--{{dd($list_comment)}}--}}
                                 @foreach($list_comment as $comment)
                                     <tr>
                                         <td>{{$comment->news->title}}</td>

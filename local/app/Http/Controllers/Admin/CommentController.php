@@ -23,6 +23,8 @@ class CommentController extends Controller
             $comment->created_at = date('d/m/Y H:m',$comment->created_at);
             $comment->news = DB::table('news_vn')->find($comment->idnew);
         }
+
+
         $data = [
             'list_comment' => $list_comment
         ];

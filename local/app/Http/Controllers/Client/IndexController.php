@@ -126,7 +126,7 @@ class IndexController extends Controller
         $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
 
         if ($position == 0) {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->orderBy('order_item')->take(3)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->orderBy('order_item')->take(5)->get();
         } else {
             $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->orderBy('order_item')->take(4)->get();
         }
