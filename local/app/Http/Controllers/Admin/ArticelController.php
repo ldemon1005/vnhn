@@ -76,6 +76,9 @@ class ArticelController extends Controller
             });
             // dd($list_articel->get());
         }
+        if (Auth::user()->level == 4) {
+            $list_articel =  $list_articel->where('userid', Auth::user()->id);
+        }
 
         $list_articel = $list_articel->paginate(15);
         foreach ($list_articel as $val) {

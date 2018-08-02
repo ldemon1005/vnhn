@@ -16,9 +16,12 @@ class CheckVNHN
      */
     public function handle($request, Closure $next)
     {
-
+        if ($request->id == 0) {
+            return $next($request);
+        }
         $news = News::find($request->id);
         $group_id = explode(',', $news->groupid);
+
         $group_id_auth = explode(',', Auth::user()->group_id);
         if (in_array(0, $group_id_auth)) {
             return $next($request);
