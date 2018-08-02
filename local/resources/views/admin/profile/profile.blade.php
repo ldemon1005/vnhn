@@ -29,7 +29,7 @@
             <div class="card-body box-profile">
               <div class="text-center">
                 <img class="profile-user-img img-fluid img-circle"
-                     src="{{ asset('local/storage/app/avatar/'.$item->img) }}"
+                     src="{{ isset($item->img) && file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/'.$item->img) : '../images/images.png' }}"
                      alt="User profile picture">
               </div>
 
@@ -87,7 +87,7 @@
                     
                     <div>
                       <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
-                      <img style="cursor: pointer;" id="avatar" class="cssInput thumbnail" height="300px" src="{{ asset('local/storage/app/avatar/'.$item->img) }}">
+                      <img style="cursor: pointer;" id="avatar" class="cssInput thumbnail imageForm" src="{{ isset($item->img) && file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/'.$item->img) : '../images/images.png' }}">
                     </div>
                     
                 </div>

@@ -16,10 +16,10 @@ class AccountController extends Controller
 {
     public function getList(){
         if (Auth::user()->level == 1) {
-            $data['items'] = Account::where('level', '>=', Auth::user()->level)->get();
+            $data['items'] = Account::where('level', '>=', Auth::user()->level)->orderBy('id', 'desc')->get();
         }
         else{
-            $data['items'] = Account::where('level', '>=', Auth::user()->level)->where('site', Auth::user()->site)->get();
+            $data['items'] = Account::where('level', '>=', Auth::user()->level)->orderBy('id', 'desc')->where('site', Auth::user()->site)->get();
         }
     	return view('admin.account.account', $data);
     }
@@ -49,17 +49,17 @@ class AccountController extends Controller
     public function postAdd(AccountAddRequest $request){
     	$acc = new Account;
     	$acc->username = $request->username;
-    	$acc->fullname = $request->fullname;
-        if ($request->email != null) {
-            $acc->email = $request->email;
-        }
-    	
-    	$acc->phone = $request->phone;
-    	$acc->password = bcrypt($request->password);
-    	$acc->level = $request->level;
+    	$request->fullname != null ? $acc->fullname = $request->fullname : $acc->fullname = 'Chưa có';
+        $request->email != null ? $acc->email = $request->email : $acc->email = 'email@email.com';
+        $request->phone != null ? $acc->phone = $request->phone : $acc->phone = '19001001';
+        $request->password != null ? $acc->password = bcrypt($request->password) : $acc->password = bcrypt('9876543210');
+    	$request->level != null ? $acc->level = $request->level : $acc->level = 4;
     	$acc->status = 1;
         if ($request->group_id != null) {
             $acc->group_id = implode(",", $request->group_id);
+        }
+        else{
+            $acc->group_id = null;
         }
         
         // site : các bên khác nhau
@@ -99,20 +99,23 @@ class AccountController extends Controller
             $data['list_group'] = $list_group;
         }
         $data['group_id'] = $group_id;
+        
     	return view('admin.account.account_form', $data);
     }
     public function postEdit(AccountEditRequest $request, $id){
     	$acc = Account::find($id);
     	$acc->username = $request->username;
-    	$acc->fullname = $request->fullname;
-    	$acc->email = $request->email;
-    	$acc->phone = $request->phone;
-    	if ($request->password != null) {
-    		$acc->password = bcrypt($request->password);
-    	}
-    	$acc->level = $request->level;
+    	$acc->username = $request->username;
+        $request->fullname != null ? $acc->fullname = $request->fullname : $acc->fullname = 'Chưa có';
+        $request->email != null ? $acc->email = $request->email : $acc->email = 'email@email.com';
+        $request->phone != null ? $acc->phone = $request->phone : $acc->phone = '19001001';
+        $request->password != null ? $acc->password = bcrypt($request->password) : $acc->password;
+        $request->level != null ? $acc->level = $request->level : $acc->level = 4;
         if ($request->group_id != null) {
             $acc->group_id = implode(",", $request->group_id);
+        }
+        else{
+            $acc->group_id = null;
         }
         // site : các bên khác nhau
         if (Auth::user()->level == 1) {

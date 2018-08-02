@@ -183,6 +183,7 @@
     padding: 0 10px;
     cursor: pointer;
     margin-right: -15px;
+    
 }
 #header-menu .menu-header>li.dropdown>a{
 	cursor: pointer;
@@ -618,10 +619,12 @@ ul.dropdown_child li a{
 		flex: 1;
 	}
 
-	.footer-right{
+	#footer .footer-right{
+		margin-left: 0;
 		width: 185px;
 	    height: auto;
 	    margin: auto;
+
 	    text-align: center;
 	}
 	.footer-bottom{

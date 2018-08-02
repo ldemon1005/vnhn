@@ -38,7 +38,7 @@
           <div class="container-fluid">
             <div class="row">
               <!-- left column -->
-              <div class="col-md-8 col-sm-12">
+              <div class="col-md-12 col-sm-12">
                 <div class="card card-info">
                     <div class="card-header">
                         <h3 class="card-title">{{isset($magazine) && $magazine->id != 0? 'Thay đổi' : 'Thêm mới'}}</h3>

@@ -1,4 +1,5 @@
 /* UPLOAD ẢNH */
+var url = $('.currentUrl').text();
 function uploadImage(input, image) {
     if (image != undefined) {
         // var valid = check_image(image);
@@ -11,7 +12,7 @@ function uploadImage(input, image) {
         formData.append('file', image);
 
         $.ajax({
-            url: '/upload_image',
+            url: url+'/upload_image',
             method: 'post',
             cache: false,
             contentType: false,

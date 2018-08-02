@@ -12,7 +12,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('local/storage/app/avatar/resized-'.Auth::user()->img) }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ file_exists(storage_path('app/avatar/'.Auth::user()->img)) && Auth::user()->img ? asset('local/storage/app/avatar/resized-'.Auth::user()->img) : '../images/images.png' }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="{{ asset('admin') }}" class="d-block">{{Auth::user()->fullname}}</a>
@@ -164,7 +164,7 @@
                   </li>
                 @endif
                 <li class="nav-item">
-                  <a href="{{route('admin_video')}}" class="nav-link">
+                  <a href="{{route('form_video',0)}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Thêm video</p>
                   </a>

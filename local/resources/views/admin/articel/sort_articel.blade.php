@@ -36,7 +36,7 @@
       <div class="container-fluid">
         <div class="row">
           <!-- left column -->
-			<section class="col-md-8 connectedSortable">
+			<section class="col-md-12 connectedSortable">
 				<!-- TO DO List -->
 				<div class="card">
 					<div class="card-header">

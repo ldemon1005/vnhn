@@ -125,7 +125,7 @@
                                         </div>
                                     </div>
                                     <div class="img-avatar {{ $articel->fimage == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
-                                        <img id="blog_avatar" style="width: 100%" src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}" alt="">
+                                        <img id="blog_avatar" style="width: 100%" src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}" alt="">
                                         <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
                                            onclick="removeImage()"></i>
                                     </div>

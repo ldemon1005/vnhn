@@ -32,14 +32,11 @@
           <div class="container-fluid">
             <div class="row">
               <!-- left column -->
-              <div class="col-md-9 col-sm-12">
+              <div class="col-md-12 col-sm-12">
                 <div class="card card-danger">
                     <div class="card-header">
                         <h3 class="card-title">Thêm mới</h3>
                     </div>
-        {{-- <div class="box-header with-border">
-            <h3 class="box-title">Thêm mới Danh mục </h3>
-        </div> --}}
                     @if (session('error'))
                         <div class="alert alert-error">
                             <p>{{ session('error') }}</p>
@@ -141,7 +138,6 @@
                                 <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $group->id ? 'Cập nhật' : 'Tạo mới' }}</button>
                             </div>
                         </div>
-                            
                     </form>
                 </div>
               </div>
