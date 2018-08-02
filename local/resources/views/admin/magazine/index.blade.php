@@ -40,8 +40,8 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Tiêu đề</th>
-                                    <th>Đường dẫn</th>
+                                    <th class="titleTable">Tiêu đề</th>
+                                    <th class="hideResponsive768">Đường dẫn</th>
                                     <th>Ngày tạo</th>
                                     <th>Trạng thái</th>
                                     <th>Thao tác</th>
@@ -51,7 +51,7 @@
                                 @foreach($list_magazine as $magazine)
                                     <tr>
                                         <td>{{$magazine->title}}</td>
-                                        <td>{{$magazine->slug}}</td>
+                                        <td class="hideResponsive768">{{$magazine->slug}}</td>
                                         <td>
                                             {{$magazine->created_at}}
                                         </td>

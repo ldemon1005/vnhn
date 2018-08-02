@@ -53,7 +53,7 @@
 	                  	{{$item->ad_name}}
 	                  </td>
 	                  <td>
-                      <img src="{{ asset('local/storage/app/advert/resized-'.$item->ad_img) }}"  style="max-width: 300px;">
+                      <img src="{{ isset($item->ad_img) && file_exists(storage_path('app/advert/resized-'.$item->ad_img)) && $item->ad_img ? asset('local/storage/app/advert/resized-'.$item->ad_img) : '../images/default-image.png' }}"  style="max-width: 300px;">
 	                  	
 	                  </td>
 	                  <td>{{$item->ad_view}}</td>

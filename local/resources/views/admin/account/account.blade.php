@@ -38,10 +38,10 @@
               <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Hình ảnh</th>
+                  <th class="hideResponsive768">Hình ảnh</th>
                   <th>Tên đăng nhập</th>
-                  <th>Họ tên</th>
-                  <th>Email</th>
+                  <th class="hideResponsive768">Họ tên</th>
+                  <th class="hideResponsive768">Email</th>
                   <th>Chức vụ</th>
                   <th>Tùy chọn</th>
                 </tr>
@@ -49,14 +49,15 @@
                 <tbody>
                 	@foreach ($items as $item)
                 	<tr>
-	                  <td>
-	                  	<img src="{{ asset('local/storage/app/avatar/resized-'.$item->img) }}" class="imgTable">
+	                  <td class="hideResponsive768">
+	                  	<img src="{{ file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/resized-'.$item->img) : '../images/images.png' }}" class="imgTable">
+
 	                  </td>
 	                  <td>
 	                  	{{$item->username}}
 	                  </td>
-	                  <td>{{$item->fullname}}</td>
-	                  <td>{{$item->email}}</td>
+	                  <td class="hideResponsive768">{{$item->fullname}}</td>
+	                  <td class="hideResponsive768">{{$item->email}}</td>
 	                  <td>{{level_format($item->level)}}</td>
 	                  <td>
 	                  	<a href="{{ asset('admin/account/edit/'.$item->id) }}" class="btn btn-primary">Sửa</a>

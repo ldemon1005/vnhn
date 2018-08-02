@@ -21,10 +21,10 @@ $(document).ready(function(){
 	});
 
 	var count1 = 2;
-	$('#header-menu .menu-header>li.dropdown').click(function(){
-		$(this).find('ul').slideToggle();
-		count1 % 2 ? $(this).find('.btn_dropdown_menu_head').css('transform',' rotate(0deg)') :  $(this).find('.btn_dropdown_menu_head').css('transform',' rotate(180deg)');
-		count1++;
+	$('.btn_dropdown_menu_head').click(function(){
+		$(this).prev().slideToggle();
+		// count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
+		// count1++;
 	});
 	
 	$(window).resize(function(){

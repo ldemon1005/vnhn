@@ -78,10 +78,10 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>Tiêu đề bài viết</th>
+                                    <th class="titleTable">Tiêu đề bài viết</th>
                                     <th>Tác giả</th>
                                     <th>Chuyên mục</th>
-                                    <th>Ngày tạo--Ngày update</th>
+                                    <th class="hideResponsive768">Ngày tạo--Ngày update</th>
                                     <th>Avatar</th>
                                     <th>Trạng thái</th>
                                     <th style="min-width: 50px">Duyệt bài</th>
@@ -110,12 +110,13 @@
                                             @endif
                                             
                                         </td>
-                                        <td>
+                                        <td class="hideResponsive768">
                                             {{$articel->created_at}}--{{$articel->updated_at}}
                                         </td>
                                         <td>
                                             <div class="avatar">
-                                                <img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}">
+                                                <img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}">
+                                                
                                             </div>
                                         </td>
                                         <td>

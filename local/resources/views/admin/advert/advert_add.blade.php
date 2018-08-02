@@ -62,7 +62,7 @@
 	                    <label for="exampleInputFile">Hình ảnh</label>
 						<div class="">
 							<input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
-		                    <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail" max-height="300px" max-width="300px" src="{{isset($item) ? asset('local/storage/app/advert/'.$item->ad_img) : '....' }}">
+		                    <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail imageForm" src="{{ isset($item->ad_img) && file_exists(storage_path('app/advert/resized-'.$item->ad_img)) && $item->ad_img ? asset('local/storage/app/advert/resized-'.$item->ad_img) : '../images/default-image.png' }}">
 						</div>
 	                </div>
                 </div>

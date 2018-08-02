@@ -12,7 +12,7 @@
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>{{$web_info->hotline}}</p></a></li>
+                            <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="{{ asset('') }}"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>

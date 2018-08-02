@@ -47,8 +47,17 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
+    {   
+        dd($exception);
+        // return parent::render($request, $exception);
+        if ($this->isHttpException($e))
+        {
+            return $this->renderHttpException($e);
+        }
+        else
+        {
+            return parent::render($request, $e);
+        }
     }
     // protected function unauthenticated($request, AuthenticationException $exception)
     // {

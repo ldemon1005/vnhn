@@ -694,14 +694,17 @@ a:hover {
 	.menu-child {
 	    flex: 1;
 	    text-align: left;
-	    /* line-height: 42px; */
-	    box-shadow: 1px 1px 4px #0002;
+	    line-height: 42px;
+	    box-shadow: 4px 4px 4px #0000;
 	    position: absolute;
 	    width: 100%;
 	    background: #fff;
-	    top: 30px;
+	    top: 40px;
+	    left: -10px;
 	    z-index: 1;
+	    height: auto;
 	    display: none;
+	    border: 1px solid #E5E5E5;
 	}
 	.child li {
 	    line-height: 12px;
@@ -715,7 +718,7 @@ a:hover {
 	    color: #000000;
 	    text-decoration: none;
 	    display: block;
-	    padding: 10px 30px;
+	    padding: 10px 20px;
 	    font-weight: 600;
 	    border-bottom: 1px solid #E5E5E5;
 	}
@@ -734,6 +737,7 @@ a:hover {
 	    color: #ffffff;
 	    
 	    margin-bottom: 0;
+	    border-bottom: 0;
 	    
 	}
 	.item-category .title-articel h3 {
