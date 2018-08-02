@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0aa48535-cd21-4e2c-b573-da2bc625d095" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vnhn.iml" afterPath="$PROJECT_DIR$/.idea/vnhn.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/HomeController.php" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/resources/assets/css/detail.css" afterPath="$PROJECT_DIR$/local/resources/assets/css/detail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/resources/views/admin/articel/form_articel.blade.php" afterPath="$PROJECT_DIR$/local/resources/views/admin/articel/form_articel.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php" afterPath="$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/resources/views/client/layouts/footer.blade.php" afterPath="$PROJECT_DIR$/local/resources/views/client/layouts/footer.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" afterPath="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local/resources/views/client/master.blade.php" afterPath="$PROJECT_DIR$/local/resources/views/client/master.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,67 +25,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ArticelController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArticelController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="112" column="37" lean-forward="true" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
-              <folding>
-                <element signature="e#409#2478#0#PHP" expanded="false" />
-                <element signature="e#466#515#0#PHP" expanded="false" />
-                <element signature="e#888#987#0#PHP" expanded="false" />
-                <element signature="e#997#1347#0#PHP" expanded="false" />
-                <element signature="e#1357#1508#0#PHP" expanded="false" />
-                <element signature="e#1571#1750#0#PHP" expanded="false" />
-                <element signature="e#1760#1809#0#PHP" expanded="false" />
-                <element signature="e#1900#2165#0#PHP" expanded="false" />
-                <element signature="e#2030#2165#0#PHP" expanded="false" />
-                <element signature="e#2290#2419#0#PHP" expanded="false" />
-                <element signature="e#8666#9327#0#PHP" expanded="false" />
-                <element signature="e#9043#9320#0#PHP" expanded="false" />
-                <element signature="e#9183#9320#0#PHP" expanded="false" />
-                <element signature="e#9333#9875#0#PHP" expanded="false" />
-                <element signature="e#9444#9771#0#PHP" expanded="false" />
-                <element signature="e#9782#9869#0#PHP" expanded="false" />
-                <element signature="e#9881#10425#0#PHP" expanded="false" />
-                <element signature="e#10006#10206#0#PHP" expanded="false" />
-                <element signature="e#10224#10270#0#PHP" expanded="false" />
-                <element signature="e#10363#10418#0#PHP" expanded="false" />
-                <element signature="e#10375#10417#1#PHP" expanded="false" />
-                <element signature="e#10431#10631#0#PHP" expanded="false" />
-                <element signature="e#10528#10565#0#PHP" expanded="false" />
-                <element signature="e#10637#11326#0#PHP" expanded="false" />
-                <element signature="e#10686#10719#0#PHP" expanded="false" />
-                <element signature="e#10847#10916#0#PHP" expanded="false" />
-                <element signature="e#11140#11261#0#PHP" expanded="false" />
-                <element signature="e#11332#12504#0#PHP" expanded="false" />
-                <element signature="e#11449#11482#0#PHP" expanded="false" />
-                <element signature="e#11610#11679#0#PHP" expanded="false" />
-                <element signature="e#11784#12292#0#PHP" expanded="false" />
-                <element signature="e#11920#12292#0#PHP" expanded="false" />
-                <element signature="e#12310#12439#0#PHP" expanded="false" />
-                <element signature="e#12510#13146#0#PHP" expanded="false" />
-                <element signature="e#12616#13048#0#PHP" expanded="false" />
-                <element signature="e#12692#12832#0#PHP" expanded="false" />
-                <element signature="e#12842#13048#0#PHP" expanded="false" />
-                <element signature="e#12898#13038#0#PHP" expanded="false" />
-                <element signature="e#13152#13834#0#PHP" expanded="false" />
-                <element signature="e#13210#13828#0#PHP" expanded="false" />
-                <element signature="e#13241#13515#0#PHP" expanded="false" />
-                <element signature="e#13525#13828#0#PHP" expanded="false" />
-                <element signature="e#13544#13818#0#PHP" expanded="false" />
-                <element signature="e#13840#14378#0#PHP" expanded="false" />
-                <element signature="e#13964#14271#0#PHP" expanded="false" />
-                <element signature="e#14287#14371#0#PHP" expanded="false" />
-                <element signature="e#14384#15213#0#PHP" expanded="false" />
-                <element signature="e#14501#14762#0#PHP" expanded="false" />
-                <element signature="e#14807#15207#0#PHP" expanded="false" />
-                <element signature="e#14976#15034#0#PHP" expanded="false" />
-                <element signature="e#14988#15033#1#PHP" expanded="false" />
-                <element signature="e#15045#15207#0#PHP" expanded="false" />
-                <element signature="e#15138#15196#0#PHP" expanded="false" />
-                <element signature="e#15150#15195#1#PHP" expanded="false" />
-              </folding>
+            <state relative-caret-position="220">
+              <caret line="136" column="21" lean-forward="true" selection-start-line="136" selection-start-column="21" selection-end-line="136" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sidebar.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local/resources/views/admin/layouts/sidebar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="74">
+              <caret line="161" column="44" lean-forward="true" selection-start-line="161" selection-start-column="44" selection-end-line="161" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,8 +48,8 @@
       <file leaf-file-name="form_articel.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/resources/views/admin/articel/form_articel.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="68" column="56" lean-forward="true" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
+            <state relative-caret-position="1156">
+              <caret line="68" column="34" lean-forward="false" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -233,9 +181,6 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/local/node_modules" />
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -339,7 +284,7 @@
               <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="articel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="layouts" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
@@ -392,7 +337,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="D:/cgroup/AdminLTE-3.0.0-alpha.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
@@ -474,26 +419,25 @@
       <workItem from="1532950565268" duration="98000" />
       <workItem from="1532999718580" duration="19465000" />
       <workItem from="1533086729293" duration="17519000" />
+      <workItem from="1533177551831" duration="354000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326139000" />
+    <option name="totallyTimeSpent" value="326493000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22314675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22617246" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3453355" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35188216" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.027823241" sideWeight="0.49394855" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42553192" sideWeight="0.49394855" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -501,6 +445,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="85" y="112" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35188216" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -585,7 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -604,13 +548,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/local/.env" />
     <entry file="file://$PROJECT_DIR$/local/resources/assets/css/time.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -625,18 +563,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/resources/views/admin/layouts/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="179" column="20" lean-forward="true" selection-start-line="179" selection-start-column="20" selection-end-line="179" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="43" column="34" lean-forward="true" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -649,20 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
           <caret line="42" column="59" lean-forward="true" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
-          <folding>
-            <element signature="e#4334#4510#0#PHP" expanded="false" />
-            <element signature="e#4516#4962#0#PHP" expanded="false" />
-            <element signature="e#4609#4956#0#PHP" expanded="false" />
-            <element signature="e#4732#4946#0#PHP" expanded="false" />
-            <element signature="e#4969#5595#0#PHP" expanded="false" />
-            <element signature="e#5294#5589#0#PHP" expanded="false" />
-            <element signature="e#5452#5589#0#PHP" expanded="false" />
-            <element signature="e#5602#5996#0#PHP" expanded="false" />
-            <element signature="e#5636#5970#0#PHP" expanded="false" />
-            <element signature="e#5768#5912#0#PHP" expanded="false" />
-            <element signature="e#5912#5970#0#PHP" expanded="false" />
-            <marker date="1533032015194" expanded="false" signature="6002:6004" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -703,10 +619,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
           <caret line="42" column="42" lean-forward="false" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
-          <folding>
-            <marker date="1533095931222" expanded="true" signature="7904:7997" ph="..." />
-            <marker date="1533095931222" expanded="true" signature="14544:14578" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,7 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="48" column="64" lean-forward="false" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,7 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2074">
           <caret line="122" column="36" lean-forward="false" selection-start-line="122" selection-start-column="36" selection-end-line="122" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,7 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1807">
           <caret line="749" column="13" lean-forward="false" selection-start-line="749" selection-start-column="13" selection-end-line="749" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -746,9 +655,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -756,7 +662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-824">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -764,7 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="62" lean-forward="false" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -772,19 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
-          <folding>
-            <element signature="e#1873#1936#0#PHP" expanded="false" />
-            <element signature="e#1942#2018#0#PHP" expanded="false" />
-            <element signature="e#2024#2673#0#PHP" expanded="false" />
-            <element signature="e#2264#2633#0#PHP" expanded="false" />
-            <element signature="e#2315#2623#0#PHP" expanded="false" />
-            <element signature="e#2451#2623#0#PHP" expanded="false" />
-            <element signature="e#2679#2862#0#PHP" expanded="false" />
-            <element signature="e#2868#3088#0#PHP" expanded="false" />
-            <element signature="e#3490#3575#0#PHP" expanded="false" />
-            <element signature="e#5455#5647#0#PHP" expanded="false" />
-            <marker date="1533035222072" expanded="true" signature="354:981" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,10 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="149" column="18" lean-forward="true" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
-          <folding>
-            <marker date="1533029837208" expanded="true" signature="7125:7208" ph="..." />
-            <marker date="1533029837208" expanded="true" signature="7490:7573" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,7 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="453" column="10" lean-forward="true" selection-start-line="453" selection-start-column="10" selection-end-line="453" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,10 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="99" column="23" lean-forward="true" selection-start-line="99" selection-start-column="23" selection-end-line="99" selection-end-column="23" />
-          <folding>
-            <marker date="1533028723869" expanded="true" signature="2731:2806" ph="..." />
-            <marker date="1533028723869" expanded="true" signature="2812:2890" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -862,11 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="35" column="81" lean-forward="false" selection-start-line="35" selection-start-column="81" selection-end-line="35" selection-end-column="81" />
-          <folding>
-            <element signature="e#1581#1606#0#HTML" expanded="false" />
-            <element signature="e#1666#1672#0#HTML" expanded="false" />
-            <element signature="e#1673#1679#0#HTML" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -882,7 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
           <caret line="173" column="47" lean-forward="false" selection-start-line="173" selection-start-column="45" selection-end-line="173" selection-end-column="140" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -890,7 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
           <caret line="343" column="1" lean-forward="true" selection-start-line="343" selection-start-column="1" selection-end-line="343" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-375">
           <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="56" lean-forward="false" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,78 +811,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="31" column="57" lean-forward="false" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local/resources/views/admin/articel/form_articel.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="68" column="56" lean-forward="true" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
+        <state relative-caret-position="1156">
+          <caret line="68" column="34" lean-forward="false" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="112" column="37" lean-forward="true" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
-          <folding>
-            <element signature="e#409#2478#0#PHP" expanded="false" />
-            <element signature="e#466#515#0#PHP" expanded="false" />
-            <element signature="e#888#987#0#PHP" expanded="false" />
-            <element signature="e#997#1347#0#PHP" expanded="false" />
-            <element signature="e#1357#1508#0#PHP" expanded="false" />
-            <element signature="e#1571#1750#0#PHP" expanded="false" />
-            <element signature="e#1760#1809#0#PHP" expanded="false" />
-            <element signature="e#1900#2165#0#PHP" expanded="false" />
-            <element signature="e#2030#2165#0#PHP" expanded="false" />
-            <element signature="e#2290#2419#0#PHP" expanded="false" />
-            <element signature="e#8666#9327#0#PHP" expanded="false" />
-            <element signature="e#9043#9320#0#PHP" expanded="false" />
-            <element signature="e#9183#9320#0#PHP" expanded="false" />
-            <element signature="e#9333#9875#0#PHP" expanded="false" />
-            <element signature="e#9444#9771#0#PHP" expanded="false" />
-            <element signature="e#9782#9869#0#PHP" expanded="false" />
-            <element signature="e#9881#10425#0#PHP" expanded="false" />
-            <element signature="e#10006#10206#0#PHP" expanded="false" />
-            <element signature="e#10224#10270#0#PHP" expanded="false" />
-            <element signature="e#10363#10418#0#PHP" expanded="false" />
-            <element signature="e#10375#10417#1#PHP" expanded="false" />
-            <element signature="e#10431#10631#0#PHP" expanded="false" />
-            <element signature="e#10528#10565#0#PHP" expanded="false" />
-            <element signature="e#10637#11326#0#PHP" expanded="false" />
-            <element signature="e#10686#10719#0#PHP" expanded="false" />
-            <element signature="e#10847#10916#0#PHP" expanded="false" />
-            <element signature="e#11140#11261#0#PHP" expanded="false" />
-            <element signature="e#11332#12504#0#PHP" expanded="false" />
-            <element signature="e#11449#11482#0#PHP" expanded="false" />
-            <element signature="e#11610#11679#0#PHP" expanded="false" />
-            <element signature="e#11784#12292#0#PHP" expanded="false" />
-            <element signature="e#11920#12292#0#PHP" expanded="false" />
-            <element signature="e#12310#12439#0#PHP" expanded="false" />
-            <element signature="e#12510#13146#0#PHP" expanded="false" />
-            <element signature="e#12616#13048#0#PHP" expanded="false" />
-            <element signature="e#12692#12832#0#PHP" expanded="false" />
-            <element signature="e#12842#13048#0#PHP" expanded="false" />
-            <element signature="e#12898#13038#0#PHP" expanded="false" />
-            <element signature="e#13152#13834#0#PHP" expanded="false" />
-            <element signature="e#13210#13828#0#PHP" expanded="false" />
-            <element signature="e#13241#13515#0#PHP" expanded="false" />
-            <element signature="e#13525#13828#0#PHP" expanded="false" />
-            <element signature="e#13544#13818#0#PHP" expanded="false" />
-            <element signature="e#13840#14378#0#PHP" expanded="false" />
-            <element signature="e#13964#14271#0#PHP" expanded="false" />
-            <element signature="e#14287#14371#0#PHP" expanded="false" />
-            <element signature="e#14384#15213#0#PHP" expanded="false" />
-            <element signature="e#14501#14762#0#PHP" expanded="false" />
-            <element signature="e#14807#15207#0#PHP" expanded="false" />
-            <element signature="e#14976#15034#0#PHP" expanded="false" />
-            <element signature="e#14988#15033#1#PHP" expanded="false" />
-            <element signature="e#15045#15207#0#PHP" expanded="false" />
-            <element signature="e#15138#15196#0#PHP" expanded="false" />
-            <element signature="e#15150#15195#1#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="220">
+          <caret line="136" column="21" lean-forward="true" selection-start-line="136" selection-start-column="21" selection-end-line="136" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/admin/layouts/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="161" column="44" lean-forward="true" selection-start-line="161" selection-start-column="44" selection-end-line="161" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
