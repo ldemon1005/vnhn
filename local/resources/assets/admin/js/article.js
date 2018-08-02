@@ -62,6 +62,7 @@ $(document).ready(function(){
     var btnThis = $(this);
     var id = $(this).next().next().text();
     var btnPrev = btnThis.parent().prev().find('button');
+    var btnNext = btnThis.next();
 
     $.ajax({
       method: 'POST',
@@ -74,6 +75,8 @@ $(document).ready(function(){
         btnThis.attr('class', 'btn btn-block btn-sm btn-default');
         btnThis.text('Đang chạy');
 
+        btnNext.css('display', 'none');
+        
         btnPrev.attr('class', 'btn btn-block btn-sm btn-success btnOff');
         btnPrev.text('Hoạt động');
 

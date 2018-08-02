@@ -164,7 +164,7 @@
                   </li>
                 @endif
                 <li class="nav-item">
-                  <a href="{{route('admin_video')}}" class="nav-link">
+                  <a href="{{route('form_video',0)}}" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Thêm video</p>
                   </a>
