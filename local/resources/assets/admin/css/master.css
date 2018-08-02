@@ -16,3 +16,9 @@
 .avatar img{
 	width: 100%;
 }
+
+.error {
+	color: red;
+	font-weight: normal;
+	font-style: italic;
+}

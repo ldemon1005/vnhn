@@ -47,9 +47,10 @@
                             </div>
 
                             <div class="row form-group">
-                                <label class="col-sm-2">Tiêu đề bài viết</label>
+                                <label class="col-sm-2">Tiêu đề bài viết <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="articel[title]" value="{{$articel->title}}" class="form-control" placeholder="Tiêu đề bài viết">
+                                    <input type="text" name="articel[title]" required value="{{$articel->title}}"
+                                           class="form-control" placeholder="Tiêu đề bài viết">
                                 </div>
                             </div>
 
@@ -67,15 +68,17 @@
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label class="col-sm-2">Ngày phát hành</label>
+                                <label class="col-sm-2">Ngày phát hành <span class="text-danger">*</span></label>
                                 <div class="col-sm-8">
-                                    <input type="date" name="articel[release_time][day]" value="{{$articel->release_time->day}}" min="1000-01-01"
+                                    <input type="date" name="articel[release_time][day]" required
+                                           value="{{$articel->release_time->day}}" min="1000-01-01"
                                            max="3000-12-31" class="form-control">
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="bootstrap-timepicker">
                                         <div class="input-group">
-                                            <input type="text" name="articel[release_time][h]" value="{{$articel->release_time->h}}" class="form-control timepicker">
+                                            <input type="text" name="articel[release_time][h]"
+                                                   value="{{$articel->release_time->h}}" class="form-control timepicker">
 
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
@@ -87,9 +90,9 @@
                             </div>
 
                             <div class="row form-group">
-                                <label class="col-sm-2">Danh mục tin</label>
+                                <label class="col-sm-2">Danh mục tin <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
-                                    <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="articel[groupid][]"
+                                    <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="articel[groupid][]" required
                                             style="width: 100%;">
                                         @foreach($list_group as $articel_item)
                                             <option {{in_array($articel_item->id,$articel->groupid) ? 'selected' : ''}} value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
@@ -237,7 +240,39 @@
                 radioClass   : 'iradio_minimal-blue'
             })
         });
+    </script>
 
-
+    <script>
+        $("#create_articel").validate({
+            ignore: [],
+            rules: {
+                'articel[title]': {
+                    required: true
+                },
+                'articel[release_time][day]': {
+                    required: true
+                },
+                'articel[release_time][h]': {
+                    required: true
+                },
+                'articel[groupid][]': {
+                    required: true
+                }
+            },
+            messages: {
+                'articel[title]': {
+                    required: 'Vui lòng nhập tên danh mục'
+                },
+                'articel[release_time][day]': {
+                    required: 'Thiếu ngày phát hành'
+                },
+                'articel[release_time][h]': {
+                    required: 'Thiếu giờ phát hành'
+                },
+                'articel[groupid][]': {
+                    required: 'Thiếu nhóm tin tức'
+                }
+            }
+        });
     </script>
 @stop

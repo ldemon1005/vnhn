@@ -60,6 +60,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <script src="js/uploadImage.js"></script>
+<script src="js/jquery.validate.min.js"></script>
 
 <!-- bootstrap time picker -->
 <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>

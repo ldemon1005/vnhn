@@ -73,7 +73,7 @@ class ArticelController extends Controller
             $val->created_at = date('d/m/Y H:m', $val->created_at);
             $val->updated_at = date('d/m/Y H:m', $val->updated_at);
         }
-
+        
         /*
          *  lấy danh sách danh mục
          */

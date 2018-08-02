@@ -47,6 +47,7 @@
 
                         <div class="row form-group">
                             <label class="col-sm-2">
+                                <span class="text-danger">*</span>
                                 Tiêu đề video
                             </label>
                             <div class="col-sm-10">
@@ -70,7 +71,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <label class="col-sm-2">Tải lên video</label>
+                            <label class="col-sm-2">Tải lên video <span class="text-danger">*</span></label>
                             <div class="col-sm-10">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -83,7 +84,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <label class="col-sm-2">Ngày phát hành</label>
+                            <label class="col-sm-2">Ngày phát hành <span class="text-danger">*</span></label>
                             <div class="col-sm-8">
                                 <input type="date" name="video[release_time][day]" value="{{$video->release_time->day}}" min="1000-01-01"
                                        max="3000-12-31" class="form-control">
@@ -123,7 +124,7 @@
                         </div>
 
                         <div class="row form-group">
-                            <label class="col-sm-2">Danh mục tin</label>
+                            <label class="col-sm-2">Danh mục video <span class="text-danger">*</span></label>
                             <div class="col-sm-10">
                                 <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="video[groupid][]"
                                         style="width: 100%;">
@@ -243,5 +244,45 @@
                 $('#upload_video').addClass('d-none')
             }
         }
+    </script>
+
+    <script>
+        $("#create_video").validate({
+            ignore: [],
+            rules: {
+                'video[title]': {
+                    required: true
+                },
+                'video[url_video]': {
+                    required: true
+                },
+                'video[release_time][day]': {
+                    required: true
+                },
+                'video[release_time][h]': {
+                    required: true
+                },
+                'video[groupid][]': {
+                    required: true
+                }
+            },
+            messages: {
+                'video[title]': {
+                    required: 'Vui lòng nhập tên danh mục'
+                },
+                'video[url_video]': {
+                    required: 'Thiếu đường dẫn video'
+                },
+                'video[release_time][day]': {
+                    required: 'Thiếu ngày phát hành'
+                },
+                'video[release_time][h]': {
+                    required: 'Thiếu giờ phát hàng'
+                },
+                'video[groupid][]': {
+                    required: 'Thiếu danh mục video'
+                }
+            }
+        });
     </script>
 @stop

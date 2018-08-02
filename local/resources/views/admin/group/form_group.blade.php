@@ -62,13 +62,13 @@
                             </div>
 
                             <div class="row form-group">
-                                <label class="col-sm-2">Tên danh mục</label>
+                                <label class="col-sm-2">Tên danh mục <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
                                     <input type="text" name="group[title]" value="{{$group->title}}" class="form-control" placeholder="Tên danh mục">
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label class="col-sm-2">Danh mục cha</label>
+                                <label class="col-sm-2">Danh mục cha <span class="text-danger">*</span></label>
                                 <div class="col-sm-10">
                                     <select class="form-control select2" data-placeholder="Chọn danh mục cha" name="group[parentid]"
                                             style="width: 100%;">
@@ -155,4 +155,26 @@
 @section('script')
     <!-- Select2 -->
     <script src="plugins/select2/select2.full.min.js"></script>
+
+    <script>
+        $("#create_group").validate({
+            ignore: [],
+            rules: {
+                'group[title]': {
+                    required: true
+                },
+                'group[parentid]': {
+                    required: true
+                }
+            },
+            messages: {
+                'group[title]': {
+                    required: 'Vui lòng nhập tên danh mục'
+                },
+                'group[parentid]': {
+                    required: 'Vui lòng chọn danh mục cha'
+                }
+            }
+        });
+    </script>
 @stop
