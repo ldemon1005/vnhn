@@ -58,7 +58,7 @@ Route::group(['namespace' => 'Admin'], function (){
 
         Route::group(['prefix' => 'articel'], function(){
             Route::get('/','ArticelController@get_list')->name('admin_articel');
-            Route::get('/form_articel/{id}','ArticelController@form_articel')->name('form_articel');
+            Route::get('/form_articel/{id}','ArticelController@form_articel')->name('form_articel')->middleware('CheckVNHN');
             Route::post('/action_articel','ArticelController@action_articel')->name('action_articel');
             Route::get('/delete_articel/{id}','ArticelController@delete_articel')->name('delete_articel');
             Route::get('/history_articel/{id}','ArticelController@history_articel')->name('history_articel');

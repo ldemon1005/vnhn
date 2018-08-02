@@ -6,6 +6,7 @@ use App\Model\Group_vn;
 use App\Model\GroupNews_vn;
 use App\Model\LogFile_vn;
 use App\Model\News;
+use App\Models\Account;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -46,11 +47,12 @@ class ArticelController extends Controller
                 break;
         }
         $paramater = $request->get('articel');
-
+        // dd($paramater['group_id']);
+        // dd($group_ids);
         $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $group_ids;
         $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
-
+        // $group_id = [1455];
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
 
         if(count($status)){
@@ -58,14 +60,24 @@ class ArticelController extends Controller
         }
 
         if(count($group_id)){
+            // dd($group_id);
             $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
             $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
 
             $list_articel =  $list_articel->whereIn('id',$list_articel_ids);
+            // dd($list_articel->get());
+
         }
 
         if($key_search){
-            $list_articel = $list_articel->where('title','like',"%$key_search%")->orWhere('summary','like',"%$key_search%");
+            $list_articel = $list_articel->where(function ($query) use ($key_search){
+                $query->where('title','like',"%$key_search%")
+                      ->orWhere('summary', 'like', "%$key_search%");
+            });
+            // dd($list_articel->get());
+        }
+        if (Auth::user()->level == 4) {
+            $list_articel =  $list_articel->where('userid', Auth::user()->id);
         }
 
         $list_articel = $list_articel->paginate(15);
@@ -93,7 +105,16 @@ class ArticelController extends Controller
             'list_articel' => $list_articel,
             'articel' => $paramater
         ];
-
+        for ($i=0; $i < count($data['list_articel']); $i++) { 
+            $data['list_articel'][$i]->username = Account::find($data['list_articel'][$i]->userid);
+        }
+        // foreach ($data['list_articel'] as $articel) {
+        //     $ar = News::find($articel->id);
+        //     $ar->groupid = 1455;
+        //     $ar->save();
+        // }
+        
+        // dd($data['list_articel']);
         return view('admin.articel.index', $data);
     }
 
@@ -105,7 +126,7 @@ class ArticelController extends Controller
 
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '*'){
+        if($user->group_id == '0'){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->get()->toArray();
@@ -160,9 +181,27 @@ class ArticelController extends Controller
         $data = $request->get('articel');
         $data['release_time'] = strtotime($data['release_time']['day'].' '.$data['release_time']['h']);
 
-        $status = $this->get_status()['status'];
-        $status_str = $this->get_status()['status_str'];
+        // $status = $this->get_status()['status'];
 
+        
+        $status_str = $this->get_status()['status_str'];
+        switch (Auth::user()->level) {
+            case 1:
+                $status = 1;
+                break;
+            case 2:
+                $status = 1;
+                break;
+            case 3:
+                $status = 2;
+                break;
+            case 4:
+                $status = 3;
+                break;
+            default:
+                $status = 0;
+                break;
+        }
         $data['status'] = $status;
 //        dd($data);
         $group_id = $data['groupid'];

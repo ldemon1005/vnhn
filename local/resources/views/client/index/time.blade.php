@@ -38,7 +38,7 @@
                                         </div>
                                         <h3 class="title mt-2">{{$list_articel_hot[0]->title}}</h3>
                                         <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
-                                        <p class="caption">{{$list_articel_hot[0]->summary}}</p>
+                                        <p class="caption">{{cut_string($list_articel_hot[0]->summary, 300)}}</p>
                                     </a>
                                     @endif
                                 </div>
