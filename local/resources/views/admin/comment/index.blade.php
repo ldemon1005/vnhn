@@ -85,7 +85,7 @@
                                         </td>
                                         <td>
                                             <div class="row form-group">
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$comment->id)}}" class="col-sm-4 text-danger"><i
+                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_comment',$comment->id)}}" class="col-sm-4 text-danger"><i
                                                             class="fa fa-trash"></i></a>
                                                 <a style="cursor: pointer" onclick="open_comment('{{$comment->content}}')" title="Xem bình luận" class="col-sm-4 text-dark"><i class="far fa-eye"></i></a>
                                             </div>

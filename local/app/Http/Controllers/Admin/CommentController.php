@@ -49,4 +49,12 @@ class CommentController extends Controller
             'data' => $comment->status
         ]);
     }
+
+    function delete_comment($id){
+        if(DB::table($this->db->comment)->delete($id)){
+            return redirect()->route('admin_comment')->with('success','Xóa thành công');
+        }else {
+            return redirect()->route('admin_comment')->with('error','Xóa không thành công');
+        }
+    }
 }

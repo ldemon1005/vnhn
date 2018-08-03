@@ -183,6 +183,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::group(['prefix'=>'comment'],function(){
                 Route::get('/','CommentController@index')->name('admin_comment');
                 Route::get('/update_comment/{id}','CommentController@update_status')->name('update_comment');
+                Route::get('/delete_comment/{id}','CommentController@delete_comment')->name('delete_comment');
             });
         });
     		

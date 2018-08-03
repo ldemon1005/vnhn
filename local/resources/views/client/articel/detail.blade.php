@@ -111,9 +111,12 @@
                                         <div class="comment-content">
                                             {{$comment->content}}
                                         </div>
-                                        <div class="load-comment">
-                                            <button class="btn btn-default" onclick="load_comment()">Xem thêm</button>
-                                        </div>
+                                        @if($loop->index == 2)
+                                            <div class="load-comment">
+                                                <button class="btn btn-default" onclick="load_comment()">Xem thêm</button>
+                                            </div>
+                                        @endif
+
                                     </div>
                                 @endforeach
                             </div>
@@ -359,6 +362,7 @@
 
 
         $('#submit-comment').click(function () {
+            $('#comment_art').addClass('disabled');
             var recaptcha = $("#g-recaptcha-response").val();
             if (recaptcha != '') {
                 $('#comment_art').submit();
