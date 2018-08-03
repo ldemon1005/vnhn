@@ -36,7 +36,7 @@
                 @if (Auth::user()->level < 4 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin/') }}"
-                           class="nav-link @if (Request::segment(2) == 'account') active @endif"">
+                           class="nav-link @if (Request::segment(2) == 'account') active @endif">
                         <i class="fas fa-users-cog nav-icon"></i>
                         <p>
                             Quản lí tài khoản
@@ -87,7 +87,7 @@
                 </li>
                 @if (Auth::user()->level < 3 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin') }}" class="nav-link">
+                        <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'group') active @endif" >
                             <i class="nav-icon fas fa-ellipsis-h"></i>
                             <p>
                                 Danh mục
@@ -115,7 +115,7 @@
                 @endif
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ asset('admin') }}" class="nav-link">
+                    <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'articel') active @endif">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
                             Quản trị tin
@@ -149,7 +149,7 @@
                 </li>
                 @if (Auth::user()->site == 1 )
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin') }}" class="nav-link">
+                        <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'video' || Request::segment(2) == 'group_video') active @endif">
                             <i class="nav-icon fas fa-video"></i>
                             <p>
                                 Video
@@ -181,7 +181,7 @@
 
                 @if (Auth::user()->site == 1 && Auth::user()->level < 4)
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin') }}" class="nav-link">
+                        <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
                             <i class="nav-icon fas fa-paper-plane"></i>
                             <p>
                                 Quảng cáo
@@ -213,7 +213,7 @@
 
                 @if (Auth::user()->level < 4 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin/comment') }}" class="nav-link">
+                        <a href="{{ asset('admin/comment') }}" class="nav-link @if (Request::segment(2) == 'comment') active @endif">
                             <i class="nav-icon fas fa-comments"></i>
                             <p>
                                 Quản trị bình luận
@@ -222,7 +222,7 @@
                     </li>
 
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin/magazine') }}" class="nav-link">
+                        <a href="{{ asset('admin/magazine') }}" class="nav-link  @if (Request::segment(2) == 'magazine') active @endif">
                             <i class="nav-icon fas fa-book-open"></i>
                             <p>
                                 Quản lý magazine
@@ -233,7 +233,7 @@
 
                 @if (Auth::user()->level<3 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin/website_info') }}" class="nav-link">
+                        <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
                             <i class="nav-icon fas fa-info-circle"></i>
                             <p>
                                 Thông tin website

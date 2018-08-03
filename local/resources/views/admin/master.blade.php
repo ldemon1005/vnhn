@@ -28,9 +28,7 @@
   @yield('css')
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
-  <div class="currentUrl" style="display: none;">
-    {{ asset('') }}
-  </div>
+  <div class="currentUrl" style="display: none;">{{ asset('') }}</div>
   <div class="errorAlert">
     @include('errors.note')
   </div>
