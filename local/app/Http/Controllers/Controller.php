@@ -87,6 +87,7 @@ class Controller extends BaseController
                 'video' => 'video_vn',
                 'web_info' => 'web_info_vn',
                 'magazine' => 'magazine_vn',
+                'comment' => 'comment_vn',
             ];
         }else{
             return [
@@ -100,7 +101,8 @@ class Controller extends BaseController
                 'news' => 'news_en',
                 'video' => 'video_vn',
                 'web_info' => 'web_info_en',
-                'magazine' => 'magazine_vn'
+                'magazine' => 'magazine_vn',
+                'comment' => 'comment_vn',
             ];
         }
     }

@@ -27,16 +27,18 @@
                     <div class="mainDetailLeftTime">
                         <i class="far fa-clock"></i>
                         {{$articel->day_in_week_str}}, {{$articel->release_time}} (GMT+7)
+                        <div class="float-right">
+                            <div class="fb-like" data-href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}"
+                                 data-action="like" data-size="small" data-layout="button_count"
+                                 data-share="true"></div>
+                        </div>
                     </div>
                     <div class="mainDetailLeftContent">
                         {!! $articel->content !!}
                     </div>
 
-                    <div class="mainDetailLeftInfo">
-                        <div class="fb-like" data-href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}"
-                             data-action="like" data-size="small" data-layout="button_count"
-                             data-share="true"></div>
-                        <p style="margin-left: 15px">{!! $articel->tacgia !!}</p>
+                    <div class="mainDetailLeftInfo mb-4">
+                        <p>{!! $articel->tacgia !!}</p>
                         <span>&nbsp;/&nbsp;</span>
                         <p>{!! $articel->nguontin !!}</p>
                     </div>
@@ -47,7 +49,7 @@
                         @if (count($list_ad[4]) > 0)
                             @for ($i = 0; $i < count($list_ad[4]); $i++)
                                 @if ($list_ad[4][$i]->advert->ad_status == 1)
-                                    <a href="{{ $list_ad[4][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[4][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[4][$i]->advert->ad_img)}}"></a>
+                                    <a href="{{ $list_ad[4][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[4][$i]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
                             @endfor
@@ -55,7 +57,7 @@
                         @if (count($ad_home[6])>0)
                             @for ($i = 0; $i < count($ad_home[6]); $i++)
                                 @if ($ad_home[6][$i]->advert->ad_status == 1 && $count_ad == 0)
-                                    <a href="{{ $ad_home[6][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[6][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[6][$i]->advert->ad_img)}}"></a>
+                                    <a href="{{ $ad_home[6][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[6][$i]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
                             @endfor
@@ -92,6 +94,47 @@
                             </div>
                         </div>
                     </div> --}}
+
+                    <div class="mainDetailLeftComment">
+                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') ==
+                        'vn' ? 'Bình luận' : 'Comment'}}</h4>
+
+                        @if($list_comment->count())
+                            <div id="bigger-3" class="list_comment {{$list_comment->count() <= 3 ? 'd-none' : ''}}">
+                                @foreach($list_comment->chunk(3)[0] as $comment)
+                                    <div class="comment">
+                                        <div class="info">
+                                            <span class="name">{{$comment->fullname}}</span>
+                                            <span style="margin: 0 5px">-</span>
+                                            <span class="time">{{$comment->created_at}}</span>
+                                        </div>
+                                        <div class="comment-content">
+                                            {{$comment->content}}
+                                        </div>
+                                        <div class="load-comment">
+                                            <button class="btn btn-default" onclick="load_comment()">Xem thêm</button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div id="less-3" class="list_comment {{$list_comment->count() > 3 ? 'd-none' : ''}}">
+                                @foreach($list_comment as $comment)
+                                    <div class="comment">
+                                        <div class="info">
+                                            <span class="name">{{$comment->fullname}}</span>
+                                            <span style="margin: 0 5px">-</span>
+                                            <span class="time">{{$comment->created_at}}</span>
+                                        </div>
+                                        <div class="comment-content">
+                                            {{$comment->content}}
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+
                     <div class="mainDetailLeftComment">
                         <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ý kiến của bạn' : 'Your opinion'}}</h4>
                         <div class="mainDetailLeftCommentMain">
@@ -141,7 +184,7 @@
                                         </div>
 
                                         {{--<div class="mainDetailLeftInvolveItemContent">--}}
-                                            {{----}}
+                                        {{----}}
                                         {{--</div>--}}
                                     </a>
 
@@ -218,14 +261,14 @@
 
                             @endforeach
                         </ul>
-                            
+
                     </div>
                     <div class="mainDetailRightAdvert">
                         <?php $count_ad = 0?>
                         @if (count($list_ad[3]) > 0)
                             @for ($i = 0; $i < count($list_ad[3]); $i++)
                                 @if ($list_ad[3][$i]->advert->ad_status == 3)
-                                    <a href="{{ $list_ad[3][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[3][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
+                                    <a href="{{ $list_ad[3][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
                             @endfor
@@ -233,7 +276,7 @@
                         @if (count($ad_home[2])>0)
                             @for ($i = 0; $i < count($ad_home[2]); $i++)
                                 @if ($ad_home[2][$i]->advert->ad_status == 2 && $count_ad == 0)
-                                    <a href="{{ $ad_home[2][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[2][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[2][$i]->advert->ad_img)}}"></a>
+                                    <a href="{{ $ad_home[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[2][$i]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
                             @endfor
@@ -242,11 +285,11 @@
                             <a href="{{ asset('') }}">
                                 <img src="images/300x250.png">
                             </a>
-                            
+
                         @endif
-                            
+
                     </div>
-                        
+
 
                 </div>
 
@@ -321,5 +364,10 @@
                 $('#comment_art').submit();
             }
         })
+
+        function load_comment() {
+            $('#bigger-3').addClass('d-none');
+            $('#less-3').removeClass('d-none');
+        }
     </script>
 @stop

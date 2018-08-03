@@ -106,6 +106,18 @@ class ArticelController extends Controller
          * video new
          */
 
+        $list_comment = DB::table($this->db->comment)->where('idnew',$articel->id)->where('status',1)->get();
+
+        if ($list_comment->count()){
+            foreach ($list_comment as $comment){
+                if(time() - $comment->created_at > 86400) {
+                    $comment->created_at = date('H:m, d/m/Y ',$comment->created_at);
+                }else {
+                    $time = time() - $comment->created_at;
+                    $comment->created_at = round($time/3600,0,PHP_ROUND_HALF_DOWN).' giờ trước';
+                }
+            }
+        }
         $list_video_new = $this->get_video_new();
         $data = [
             'list_group' => $list_group,
@@ -118,7 +130,10 @@ class ArticelController extends Controller
             'magazine_new' => $magazine_new,
             'list_video_new' => $list_video_new,
             'list_ad'=> $advert,
-            'ad_home' => $advert_home
+            'ad_home' => $advert_home,
+
+
+            'list_comment' => $list_comment
         ];
 
         return view('client.articel.detail',$data);
