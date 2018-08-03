@@ -191,9 +191,10 @@
 .dropdown_child {
     position: absolute;
     top: 102%;
-    right: -15px;
+    right: -18px;
     white-space: nowrap;
     z-index: 1;
+    border-right: 2px solid #fff;
 }
 .dropdown_child li{
 	list-style: none;
