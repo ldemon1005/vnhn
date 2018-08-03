@@ -91,6 +91,7 @@ class GroupController extends Controller{
             'list_ad' => $advert,
             'ad_home' => $advert_home
         ];
+        // dd($data);
 
         return view('client.index.time',$data);
     }

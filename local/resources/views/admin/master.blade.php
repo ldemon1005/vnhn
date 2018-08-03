@@ -28,63 +28,63 @@
   @yield('css')
 </head>
 <body class="hold-transition sidebar-mini sidebar-collapse">
-<div class="currentUrl" style="display: none;">
-  {{ asset('') }}
-</div>
-<div class="errorAlert">
-  @include('errors.note')
-</div>
-<div class="wrapper">
+  <div class="currentUrl" style="display: none;">
+    {{ asset('') }}
+  </div>
+  <div class="errorAlert">
+    @include('errors.note')
+  </div>
+  <div class="wrapper">
 
-  @include('admin.layouts.header')
-  <!-- Navbar -->
-  
-  @include('admin.layouts.sidebar')
-  @yield('main')
+    @include('admin.layouts.header')
+    <!-- Navbar -->
+    
+    @include('admin.layouts.sidebar')
+    @yield('main')
 
-  <!-- /.control-sidebar -->
+    <!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  @include('admin.layouts.footer')
-</div>
-<!-- ./wrapper -->
+    <!-- Main Footer -->
+    @include('admin.layouts.footer')
+  </div>
+  <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
-<script src="js/uploadImage.js"></script>
-<script src="js/jquery.validate.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.js"></script>
+  <script src="js/uploadImage.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
 
-<!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+  <!-- bootstrap time picker -->
+  <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
-<!-- Select2 -->
-<script src="plugins/select2/select2.full.min.js"></script>
+  <!-- Select2 -->
+  <script src="plugins/select2/select2.full.min.js"></script>
 
-{{--<script src="dist/js/pages/dashboard.js"></script>--}}
+  {{--<script src="dist/js/pages/dashboard.js"></script>--}}
 
-<script src="dist/js/adminlte.js"></script>
+  <script src="dist/js/adminlte.js"></script>
 
-<script src="plugins/bootstrap/js/bootstrap.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.js"></script>
 
-<script src="js/custom.js"></script>
-<script src="dist/js/adminlte.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="dist/js/adminlte.js"></script>
 
 
-<!-- OPTIONAL SCRIPTS -->
+  <!-- OPTIONAL SCRIPTS -->
 
-<script type="text/javascript">
+  <script type="text/javascript">
     $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
     });
 
     $(function () {
@@ -92,20 +92,20 @@
         $('.select2').select2();
 
         $('.timepicker').timepicker({
-            showInputs: false
+          showInputs: false
         })
-    });
+      });
 
-</script>
-@yield('script')
+    </script>
+    @yield('script')
 
-<script type="text/javascript">
-  function changeImg(input){
-    var inputFile = $(this);
+    <script type="text/javascript">
+      function changeImg(input){
+        var inputFile = $(this);
 
-    console.log($(input).next());
+        console.log($(input).next());
         //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
-      if(input.files && input.files[0]){
+        if(input.files && input.files[0]){
           var reader = new FileReader();
           //Sự kiện file đã được load vào website
           reader.onload = function(e){
@@ -113,11 +113,11 @@
               // $('#avatar').attr('src',e.target.result);
               $(input).next().attr('src',e.target.result);
 
+            }
+            reader.readAsDataURL(input.files[0]);
           }
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-  $(document).ready(function() {
+        }
+        $(document).ready(function() {
     // $('#avatar').click(function(){
     //     $(this).prev().click();
     // });
@@ -134,6 +134,6 @@
     localStorage.setItem('username', '{{Auth::user()->username}}');
   });
 
-  </script>
+</script>
 </body>
 </html>

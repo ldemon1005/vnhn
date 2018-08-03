@@ -40,15 +40,17 @@
                     @if (count($list_ad[1]) > 0)
                         @for ($i = 0; $i < count($list_ad[1]); $i++)
                             @if ($list_ad[1][$i]->advert->ad_status == 1)
-                                <a href="{{ $list_ad[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[1][$i]->advert->ad_img)}}"></a>
+                                <a href="{{ $list_ad[1][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[1][$i]->advert->ad_id}}')" target="_blank" ><img src="{{asset('local/storage/app/advert/'.$list_ad[1][$i]->advert->ad_img)}}"></a>
                                 <?php $count_ad++ ?>
                             @endif
                         @endfor
                     @endif
-                    @if (count($ad_home[1])>0)
+                    @if (count($ad_home[1]) > 0)
                         @for ($i = 0; $i < count($ad_home[1]); $i++)
                             @if ($ad_home[1][$i]->advert->ad_status == 1)
-                                <a href="{{ $ad_home[1][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}"></a>
+                                <a href="{{ $ad_home[1][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[1][$i]->advert->ad_id}}')" target="_blank" >
+                                    <img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}">
+                                </a>
                                 <?php $count_ad++ ?>
                             @endif
                         @endfor
@@ -106,7 +108,7 @@
                         <a>Chuyên mục khác</a>
                         <?php $count1 = 0?>
                         <ul class="dropdown_child">
-                            @for($i = 6; $i<$menu->count(); $i++)
+                            @for($i = 6; $i < $menu->count(); $i++)
                                 <li><a href="{{ route('get_articel_by_group',$menu[$i]->slug.'---n-'.$menu[$i]->id) }}">{{$menu[$i]->title}}</a></li>
                             @endfor
                         </ul>

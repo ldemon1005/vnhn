@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <title>Việt Nam hội nhập | @yield('title')</title>
     <link rel="shortcut icon" href="http://vietnamhoinhap.vn/images/favicon.ico" />
@@ -18,12 +20,13 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     @yield('css')
-<!-- Styles -->
+    <!-- Styles -->
 </head>
 <body>
-@include('client.layouts.header')
-@yield('main')
-@include('client.layouts.footer')
+    <div class="currentUrl" style="display: none;">{{ asset('') }}</div>
+  @include('client.layouts.header')
+  @yield('main')
+  @include('client.layouts.footer')
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,12 +42,12 @@
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=761158710724257&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=761158710724257&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 </script>
 
 @yield('script')

@@ -6,10 +6,13 @@ use App\Model\Group_vn;
 use App\Models\AdvertTop;
 use App\Model\News;
 use App\Models\Video_vn;
+use App\Models\Advert;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+
 
 class IndexController extends Controller
 {
@@ -187,4 +190,23 @@ class IndexController extends Controller
         }
         return $ad;
     }
+
+
+    public function ad_view(){
+        $id = (int)Input::get('id');
+        $ad = Advert::find($id);
+        $ad->ad_view++;
+        $ad->save();
+        return response('ok', 200);
+    }
+
+    public function article_view(){
+        
+        $id = (int)Input::get('id');
+        $news = News::find($id);
+        $news->view += 1;
+        $news->save();
+        return response('ok', 200);
+    }
+    
 }
