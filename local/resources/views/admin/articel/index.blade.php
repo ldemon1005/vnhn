@@ -252,7 +252,7 @@
                                                 <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
 
                                                     
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status != 0 && $articel->status != 4 ) style="display: none" @endif ><i
+                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status != 0 && $articel->status != 4 ) style="display: none" @endif  onclick="return confirm('Bạn chắc chắn muốn xóa')"><i
                                                             class="fa fa-trash"></i></a>
                                                 <a style="cursor: pointer" onclick="historyArticel({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
                                             </div>

@@ -37,6 +37,25 @@
                                 <p>{{ session('status') }}</p>
                             </div>
                         @endif
+                            <div class="card-header">
+                                <div class="row form-group">
+                                    <div class="col-md-2">
+                                        @if (Auth::user()->site == 1)
+                                            <a style="cursor: pointer;color: #ffffff" onclick="add_menu_video(0)"
+                                               class="btn
+                                            btn-primary">
+                                                <h3 class="card-title">Thêm mới</h3></a>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-2">
+                                        @if (Auth::user()->site == 1)
+                                            <a href="{{route('form_sort')}}"
+                                               class="btn btn-primary">
+                                                <h3 class="card-title">Sắp xếp</h3></a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">
@@ -53,7 +72,7 @@
                                 @foreach($list_group as $group)
                                     <tr>
                                         <td>{{$group->title}}</td>
-                                        <td>{{$group->icon}}</td>
+                                        <td><i class="{{$group->icon}}"></i> &nbsp;&nbsp;  {{$group->icon}}</td>
                                         <td>{{$group->created_at}}</td>
                                         <td>
                                             <button class="btn btn-block btn-sm {{ $group->status == 0 ? 'btn-danger btnOn' : 'btn-success btnOff' }}">{{ $group->status ? ' Hoạt động' : 'Không hoạt động' }}</button>
@@ -61,8 +80,13 @@
                                         </td>
                                         <td>
                                             <div class="row form-group">
-                                                <a href="{{route('form_group',$group->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-6 text-primary"><i class="fa fa-wrench"></i></a>
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_group',$group->id)}}" class="col-sm-6 text-danger"><i
+                                                <a onclick="add_menu_video('{{$group->id}}')" data-toggle="tooltip"
+                                                   style="cursor: pointer"
+                                                   title="Chỉnh
+                                                sửa" class="col-sm-6
+                                                text-primary"><i class="fa fa-wrench"></i></a>
+                                                <a data-toggle="tooltip" title="Xóa"
+                                                   href="{{route('delete_menu',$group->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="col-sm-6 text-danger"><i
                                                             class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
@@ -81,6 +105,11 @@
 
         </section>
         <!-- /.content -->
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="form_menu_video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+
     </div>
 @stop
 

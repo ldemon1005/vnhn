@@ -117,6 +117,11 @@ Route::group(['namespace' => 'Admin'], function (){
 
             Route::group(['prefix' => 'group_video'], function(){
                 Route::get('/','GroupVideoController@index')->name('admin_video_group');
+                Route::get('/form_group_video/{id}','GroupVideoController@form_group_video')->name('form_group_video');
+                Route::post('/action_menu_video','GroupVideoController@action_menu_video')->name('action_menu_video');
+                Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
+                Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
+                Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
             });
 
             Route::group(['prefix' => 'video'], function(){
@@ -126,6 +131,8 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::get('/delete_video/{id}','VideoController@delete_video')->name('delete_video');
                 Route::get('/history_video/{id}','VideoController@history_video')->name('history_video');
                 Route::get('/update_status/{id}','VideoController@update_status')->name('update_status');
+
+                Route::post('status', 'VideoController@action_status');
             });
 
             Route::group(['prefix' => 'advert'], function(){

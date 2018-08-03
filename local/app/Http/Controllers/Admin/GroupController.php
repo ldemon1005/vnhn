@@ -186,7 +186,7 @@ class GroupController extends Controller
             DB::table($this->db->group)->where('id',$key)->update(['order' => $order]);
         }
         if($check == 1){
-            return redirect()->route('form_sort_group', '00' )->with('status','Sắp xếp thành công');
+            return redirect()->route('form_sort_group', '00' )->with('success','Sắp xếp thành công');
         }else {
             return redirect()->route('form_sort_group', '00')->with('error','Sắp xếp không thành công');
         }

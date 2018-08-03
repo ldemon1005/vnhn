@@ -132,3 +132,15 @@ function chang_status_articel(articel_id,atr) {
         }
     })
 }
+
+function add_menu_video(id) {
+    $.ajax({
+        url: '/admin/group_video/form_group_video/'+id,
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+    }).done(function (data, status) {
+        $('#form_menu_video').html(data.content);
+        $('#form_menu_video').modal('show');
+    });
+}
