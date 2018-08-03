@@ -28,6 +28,9 @@ Route::group(['namespace' => 'Client'],function (){
         Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
     });
     Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
+
+    Route::post('ad_view', 'IndexController@ad_view');
+    Route::post('article_view', 'IndexController@article_view');
 });
 
 

@@ -18,7 +18,7 @@ class ArticelController extends Controller
 
         $articel = News::find($slug[1]);
 
-        $articel->update(['view' => $articel->view + 1]);
+        $articel->update(['ncount' => $articel->ncount + 1]);
 
         $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->whereNotNull('noidung')->where('noidung','!=','')
             ->orderByDesc

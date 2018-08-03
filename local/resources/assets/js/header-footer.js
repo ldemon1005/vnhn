@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	$('#header_btnMenu').click(function(){
 		// $('#header-menu .menu-header').css('top', '0');
 		$('#header-menu .menu-header').children("li:first-child").html('<a>Chuyên mục</a>');
@@ -73,4 +74,68 @@ $(document).ready(function(){
 		    }, 700);
 		   });
 	}
+
+
+	// $('.new-item').mousedown(function(event) {
+ //        switch (event.which) {
+ //            case 1:
+ //                alert('Left mouse button pressed');
+ //                return true;
+                
+ //            case 2:
+                
+                
+ //                return true;
+ //            case 3:
+ //                alert('Right mouse button pressed');
+                
+ //                return true;
+ //            default:
+                
+ //               	return true;
+ //        }
+ //        return true;
+ //    });
 });
+var url = $('.currentUrl').text();
+function ad_view(ad_id){
+    var btnThis = $(this);
+   
+    $.ajax({
+      method: 'POST',
+      url: url+'ad_view',
+      data: {
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+          'id': ad_id
+      },
+      success: function () {
+      	
+       	return true;
+      },
+      error: function () {
+      	alert('Lỗi Server');
+
+        return false;
+      }
+    });
+	return false;
+}
+function article_view(news_id){
+    var btnThis = $(this);
+    $.ajax({
+      method: 'POST',
+      url: url+'article_view',
+      data: {
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+          'id': news_id
+      },
+      success: function () {
+       	return true;
+      },
+      error: function () {
+      	alert('Lỗi Server');
+        return false;
+      }
+    });
+	return false;
+}

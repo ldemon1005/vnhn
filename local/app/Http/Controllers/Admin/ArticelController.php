@@ -114,7 +114,7 @@ class ArticelController extends Controller
         //     $ar->save();
         // }
         
-        // dd($data['list_articel']);
+        dd($data['list_articel'][0]);
         return view('admin.articel.index', $data);
     }
 
