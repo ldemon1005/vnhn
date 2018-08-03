@@ -8,38 +8,42 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>Việt Nam hội nhập | @yield('title')</title>
+    <title>@yield('title')</title>
     <link rel="shortcut icon" href="http://vietnamhoinhap.vn/images/favicon.ico" />
+    <meta property="og:url"         content="{{Request::url()}}" />
 
+    <meta property="fb:app_id"      content="" />
+    <meta property="og:title"       content="@yield('fb_title')" />
+    <meta property="og:description" content="@yield('fb_description')" />
+    <meta property="og:image"       content="@yield('fb_image')" />
+    <meta property="og:image:type"  content="image/png">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:400,400i,600,600i,700,700i&amp;subset=vietnamese" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+
+    <link rel="stylesheet" type="text/css" href="css/magazine_header.css">
     @yield('css')
     <!-- Styles -->
 </head>
 <body>
     <div class="currentUrl" style="display: none;">{{ asset('') }}</div>
-  @include('client.layouts.header')
-  @yield('main')
-  @include('client.layouts.footer')
+      @include('magazine.layouts.header')
+      @yield('main')
+      @include('client.layouts.footer')
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-{{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
-<script src="js/custom.js"></script>
-<script type="text/javascript" src="js/header-footer.js"></script>
+<script type="text/javascript" src="js/magazine-header-footer.js"></script>
 
 <script src="https://apis.google.com/js/platform.js"></script>
+
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

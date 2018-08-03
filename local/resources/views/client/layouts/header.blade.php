@@ -4,7 +4,7 @@
             <div class="row ">
                 <div class="top-header">
                     <div class="e-magazine">
-                        <a href="{{ asset('') }}"><img src="{{asset('/local/resources/uploads/images/e-magazine.png')}}"></a>
+                        <a href="{{ asset('magazine') }}"><img src="{{asset('/local/resources/uploads/images/e-magazine.png')}}"></a>
                     </div>
                     <div class="top-header-menu">
                         <ul class="menu-left">

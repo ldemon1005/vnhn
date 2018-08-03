@@ -31,6 +31,13 @@ Route::group(['namespace' => 'Client'],function (){
 
     Route::post('ad_view', 'IndexController@ad_view');
     Route::post('article_view', 'IndexController@article_view');
+
+
+
+    Route::group(['prefix' => 'magazine'], function(){
+        Route::get('/', 'MagazineController@getHome');
+        // Route::get();
+    });
 });
 
 
