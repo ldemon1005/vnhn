@@ -210,7 +210,41 @@
                         </ul>
                     </li>
                 @endif
-
+                @if (Auth::user()->site == 1)
+                    <li class="nav-item has-treeview">
+                        <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'emagazine') active @endif">
+                            <i class="nav-icon fas fa-palette"></i>
+                            <p>
+                                Emagazine
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ asset('admin/emagazine/add') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Thêm mới</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ asset('admin/emagazine') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Quản trị</p>
+                                </a>
+                            </li>
+                            @if (Auth::user()->level < 3)
+                                <li class="nav-item">
+                                    <a href="{{ asset('admin/emagazine/sort') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Sắp xếp</p>
+                                    </a>
+                                </li>
+                            @endif
+                            
+                        </ul>
+                    </li>
+                @endif
+                    
                 @if (Auth::user()->level < 4 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin/comment') }}" class="nav-link @if (Request::segment(2) == 'comment') active @endif">
@@ -225,7 +259,7 @@
                         <a href="{{ asset('admin/magazine') }}" class="nav-link  @if (Request::segment(2) == 'magazine') active @endif">
                             <i class="nav-icon fas fa-book-open"></i>
                             <p>
-                                Quản lý magazine
+                                Quản lý tạp chí
                             </p>
                         </a>
                     </li>

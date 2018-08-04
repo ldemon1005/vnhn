@@ -145,6 +145,43 @@
 
 	}
 
+	function date_format_vn($time){
+		if ($time == null) {
+			return 'lỗi';
+		}
+		else{
+			$date_now = time();
+
+			
+			
+			$year = 31526000;
+			$month = 2592000;
+			$day = 86400;
+			$hour = 3600;
+			$min = 60;
+			// strtotime(date_format($time,"Y-m-d")) == strtotime(date_format($date,"Y-m-d"))
+			if ($time < $date_now-$year) {
+				return round(($date_now-$time)/$year).' năm trước';
+			}
+			else if($time < $date_now-$month){
+				return round(($date_now-$time)/$month).' tháng trước';
+			}
+			else if ($time < $date_now-$day) {
+				return round(($date_now-$time)/$day).' ngày trước';
+			}
+			else if ($time < $date_now-$hour) {
+				return round(($date_now-$time)/$hour).' giờ trước';
+			}
+			else if ($time < $date_now-$min) {
+				return round(($date_now-$time)/$min).' phút trước';
+			}
+			else{
+				return 'bây giờ';
+			}
+		}
+			
+
+	}
 
 
 	function getUrl() {
@@ -154,26 +191,7 @@
 	    return $url;
     }
 
-    function aff_profit($amount){
-    	if ($amount > 150000000) {
-    		return $amount*0.3;
-    	}
-    	if ($amount > 61000000) {
-    		return $amount*0.22;
-    	}
-    	if ($amount > 31000000) {
-    		return $amount*0.18;
-    	}
-    	if ($amount > 11000000) {
-    		return $amount*0.14;
-    	}
-    	if ($amount > 1000000) {
-    		return $amount*0.11;
-    	}
-    	else{
-    		return $amount*0.1;
-    	}
-    }
+    
     function level_format($level){
     	switch ($level) {
     		case 1:

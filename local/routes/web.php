@@ -36,7 +36,8 @@ Route::group(['namespace' => 'Client'],function (){
 
     Route::group(['prefix' => 'magazine'], function(){
         Route::get('/', 'MagazineController@getHome');
-        // Route::get();
+        Route::get('{slug}', 'MagazineController@getDetail');
+        Route::post('load_more', 'MagazineController@load_more');
     });
 });
 
@@ -109,7 +110,23 @@ Route::group(['namespace' => 'Admin'], function (){
 
             });
 
-            
+            Route::group(['prefix' => 'emagazine'], function(){
+                Route::get('/', 'EmagazineController@getList');
+
+                Route::get('add','EmagazineController@getAdd');
+                Route::post('add','EmagazineController@postAdd');
+
+                Route::get('edit/{id}','EmagazineController@getEdit');
+                Route::post('edit/{id}','EmagazineController@postEdit');
+
+                Route::get('delete/{id}','EmagazineController@getDelete');
+
+                Route::get('sort', 'EmagazineController@getSort');
+                Route::post('sort', 'EmagazineController@postSort');
+
+                Route::post('status', 'EmagazineController@action_status');
+
+            });
 
             Route::group(['prefix' => 'group'], function(){
                 Route::post('on', 'GroupController@getOn');
