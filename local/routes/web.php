@@ -36,7 +36,8 @@ Route::group(['namespace' => 'Client'],function (){
 
     Route::group(['prefix' => 'magazine'], function(){
         Route::get('/', 'MagazineController@getHome');
-        // Route::get();
+        Route::get('{slug}', 'MagazineController@getDetail');
+        Route::post('load_more', 'MagazineController@load_more');
     });
 });
 
@@ -78,6 +79,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('/update_order_articel','ArticelController@update_order_articel')->name('update_order_articel');
             Route::get('/delete_articel_hot/{groupid}/{id}','ArticelController@delete_articel_hot')->name('delete_articel_hot');
             Route::get('/update_status/{id}','ArticelController@update_status')->name('update_status');
+            Route::get('/approved', 'ArticelController@approved');
 
             Route::post('on', 'ArticelController@getOn');
             Route::post('off', 'ArticelController@getOff');
@@ -109,7 +111,23 @@ Route::group(['namespace' => 'Admin'], function (){
 
             });
 
-            
+            Route::group(['prefix' => 'emagazine'], function(){
+                Route::get('/', 'EmagazineController@getList');
+
+                Route::get('add','EmagazineController@getAdd');
+                Route::post('add','EmagazineController@postAdd');
+
+                Route::get('edit/{id}','EmagazineController@getEdit');
+                Route::post('edit/{id}','EmagazineController@postEdit');
+
+                Route::get('delete/{id}','EmagazineController@getDelete');
+
+                Route::get('sort', 'EmagazineController@getSort');
+                Route::post('sort', 'EmagazineController@postSort');
+
+                Route::post('status', 'EmagazineController@action_status');
+
+            });
 
             Route::group(['prefix' => 'group'], function(){
                 Route::post('on', 'GroupController@getOn');
@@ -132,6 +150,10 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
                 Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
                 Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
+
+                Route::post('on', 'GroupVideoController@getOn');
+                Route::post('off', 'GroupVideoController@getOff');
+
             });
 
             Route::group(['prefix' => 'video'], function(){

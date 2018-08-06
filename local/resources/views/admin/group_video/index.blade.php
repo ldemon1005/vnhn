@@ -86,7 +86,7 @@
                                                 sửa" class="col-sm-6
                                                 text-primary"><i class="fa fa-wrench"></i></a>
                                                 <a data-toggle="tooltip" title="Xóa"
-                                                   href="{{route('delete_menu',$group->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="col-sm-6 text-danger"><i
+                                                   href="{{route('delete_menu',$group->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="col-sm-6 text-danger" @if($group->status != 0) style="display: none;" @endif><i
                                                             class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
@@ -118,5 +118,5 @@
 
 
 @section('script')
-<script type="text/javascript" src="js/group.js"></script>
+<script type="text/javascript" src="js/group_video.js"></script>
 @stop

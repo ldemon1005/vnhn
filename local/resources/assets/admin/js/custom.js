@@ -27,25 +27,36 @@ function open_comment(comment) {
     $('#show_comment').modal('show');
 }
 
-function update_comment(id) {
-    $('#cm-status').addClass('disabled');
-    $.ajax({
-        url: '/admin/comment/update_comment/'+id,
-        method: 'get',
-        dataType: 'json',
-    }).fail(function (ui, status) {
-        $('#cm-status').removeClass('disabled');
-    }).done(function (data, status) {
-        if(data.data == 0){
-            var str = '<button class="btn btn-sm btn-danger" onclick="update_comment('+id+')">Chưa duyệt</button>';
-        }else {
-            var str = '<button class="btn btn-sm btn-success" onclick="update_comment('+id+')">Đã duyệt</button>'
-        }
-        $('#status_comment').html(str);
+// function update_comment(id) {
+//     var btnThis = $(this);
+//     var btnNext = btnThis.parent().next().find('.text-danger');
+//     var url = $('.currentUrl').text();
+//     alert(btnThis.attr('class'));
+//     $.ajax({    
+//         url: url+'/admin/comment/update_comment/'+id,
+//         method: 'get',
+//         dataType: 'json',
+//     }).fail(function (ui, status) {
+//         aler('Error');
+//         // $('#cm-status').removeClass('disabled');
+//     }).done(function (data, status) {
+//         if(data.data == 0){
 
-        $('#cm-status').removeClass('disabled');
-    });
-}
+//             btnThis.attr('class', 'btn btn-sm btn-danger');
+//             btnThis.text('Chưa duyệt');
+
+//             btnNext.attr('style', 'display: block');
+            
+//         }else {
+//             btnThis.attr('class', 'btn btn-sm btn-success');
+//             btnThis.text('Đã duyệt');
+
+//             btnNext.attr('style', 'display: none');
+            
+//         }
+        
+//     });
+// }
 
 function updateWebsiteInfo(id) {
     $.ajax({

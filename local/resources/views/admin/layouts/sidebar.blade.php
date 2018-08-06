@@ -12,8 +12,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ file_exists(storage_path('app/avatar/'.Auth::user()->img)) && Auth::user()->img ? asset('local/storage/app/avatar/resized-'.Auth::user()->img) : '../images/images.png' }}"
-                     class="img-circle elevation-2" alt="User Image">
+                <div class="avatarImgSidebar" style="background: url('{{ file_exists(storage_path('app/avatar/'.Auth::user()->img)) && Auth::user()->img ? asset('local/storage/app/avatar/resized-'.Auth::user()->img) : '../images/images.png' }}') no-repeat center /cover;">
+                    
+                </div>
+                
             </div>
             <div class="info">
                 <a href="{{ asset('admin') }}" class="d-block">{{Auth::user()->fullname}}</a>
@@ -130,6 +132,14 @@
                                 <p>Danh sách bài viết</p>
                             </a>
                         </li>
+                        @if (Auth::user()->level < 4)
+                        <li class="nav-item">
+                            <a href="{{asset('admin/articel/approved')}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Phê duyệt bài viết</p>
+                            </a>
+                        </li>
+                        @endif
                         @if (Auth::user()->level < 3 && Auth::user()->site == 1)
                             <li class="nav-item">
                                 <a href="{{route('sort_hot_articel')}}" class="nav-link">
@@ -210,7 +220,41 @@
                         </ul>
                     </li>
                 @endif
-
+                @if (Auth::user()->site == 1)
+                    <li class="nav-item has-treeview">
+                        <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'emagazine') active @endif">
+                            <i class="nav-icon fas fa-palette"></i>
+                            <p>
+                                Emagazine
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ asset('admin/emagazine/add') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Thêm mới</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ asset('admin/emagazine') }}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Quản trị</p>
+                                </a>
+                            </li>
+                            @if (Auth::user()->level < 3)
+                                <li class="nav-item">
+                                    <a href="{{ asset('admin/emagazine/sort') }}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Sắp xếp</p>
+                                    </a>
+                                </li>
+                            @endif
+                            
+                        </ul>
+                    </li>
+                @endif
+                    
                 @if (Auth::user()->level < 4 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin/comment') }}" class="nav-link @if (Request::segment(2) == 'comment') active @endif">
@@ -225,7 +269,7 @@
                         <a href="{{ asset('admin/magazine') }}" class="nav-link  @if (Request::segment(2) == 'magazine') active @endif">
                             <i class="nav-icon fas fa-book-open"></i>
                             <p>
-                                Quản lý magazine
+                                Quản lý tạp chí
                             </p>
                         </a>
                     </li>

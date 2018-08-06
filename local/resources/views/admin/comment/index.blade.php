@@ -80,8 +80,9 @@
                                             {{$comment->created_at}}
                                         </td>
                                         <td>{{$comment->email}}</td>
-                                        <td id="status_comment">
-                                            <button id="cm-status" class="btn btn-block btn-sm {{ $comment->status == 0 ? 'btn-danger' : 'btn-success' }}" onclick="update_comment('{{$comment->id}}')">{{ $comment->status == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</button>
+                                        <td>
+                                            <button id="cm-status" class="btn btn-block btn-sm {{ $comment->status == 0 ? 'btn-danger' : 'btn-success' }} btn_status" >{{ $comment->status == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</button>
+                                            <div class="comment_id" style="display: none;">{{$comment->id}}</div>
                                         </td>
                                         <td>
                                             <div class="row form-group">
@@ -124,4 +125,7 @@
             </div>
         </div>
     </div>
+@stop
+@section('script')
+    <script type="text/javascript" src="js/comment.js"></script>
 @stop

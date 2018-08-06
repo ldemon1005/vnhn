@@ -27,6 +27,11 @@ $(document).ready(function(){
 		// count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
 		// count1++;
 	});
+	$('.dropdown').click(function(){
+		$(this).find('.dropdown_child').slideToggle();
+		// count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
+		// count1++;
+	});
 	
 	$(window).resize(function(){
 		if ($(window).width() > 768) {

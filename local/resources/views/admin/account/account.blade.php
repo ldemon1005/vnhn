@@ -50,7 +50,10 @@
                 	@foreach ($items as $item)
                 	<tr>
 	                  <td class="hideResponsive768">
-	                  	<img src="{{ file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/resized-'.$item->img) : '../images/images.png' }}" class="imgTable">
+                      <div class="avatarImg50" style="background: url('{{ file_exists(storage_path('app/avatar/'.$item->img)) && $item->img ? asset('local/storage/app/avatar/resized-'.$item->img) : '../images/images.png' }}') no-repeat center /cover;">
+                        
+                      </div>
+	                  	
 
 	                  </td>
 	                  <td>

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
+
 
 class GroupVideoController extends Controller
 {
@@ -92,5 +94,21 @@ class GroupVideoController extends Controller
         }else{
             return redirect()->route('form_sort')->with('error','Sắp xếp không thành công');
         }
+    }
+
+
+    public function getOn(){
+        $id = Input::get('id');
+        $gr = MenuVideo::find($id);
+        $gr->status = 1;
+        $gr->save();
+        return response($id, 200);
+    }
+    public function getOff(){
+        $id = Input::get('id');
+        $gr = MenuVideo::find($id);
+        $gr->status = 0;
+        $gr->save();
+        return response('ok', 200);
     }
 }

@@ -9,94 +9,26 @@
 		
 	</div>
 
-	{{-- <section class="mainItem1">
-		<div class="listArticle1">
-			<div class="articleItem">
-				<div class="articleItemAva" style="background: url('{{ asset('local/resources/assets/images/photo1532079843170-15320798431701414490616.png') }}') no-repeat center /cover;">
-					
-				</div>
-				<div class="articleItemTitle">
-					<h2>
-						<a href="{{ asset('magazine') }}">Dù thế giới có đảo điên, người Ý vẫn chỉ có một “Pizza” - thứ pizza được nướng từ lò củi</a>
-					</h2>
-					<div class="articleItemTitleMini">
-						<span class="articleItemTime">
-							12 ngày trước
-						</span>
-						<span class="articleItemView">
-							<i class="fas fa-eye"></i>
-							868
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="listArticle2">
-			<div class="articleItem">
-				<div class="articleItemAva" style="background: url('{{ asset('local/resources/assets/images/photo1532079843170-15320798431701414490616.png') }}') no-repeat center /cover;">
-					
-				</div>
-				<div class="articleItemTitle">
-					<h2>
-						<a href="{{ asset('magazine') }}">Dù thế giới có đảo điên, người Ý vẫn chỉ có một “Pizza” - thứ pizza được nướng từ lò củi</a>
-					</h2>
-					<div class="articleItemTitleMini">
-						<span class="articleItemTime">
-							12 ngày trước
-						</span>
-						<span class="articleItemView">
-							<i class="fas fa-eye"></i>
-							868
-						</span>
-					</div>
-				</div>
-				<div class="articleItemContent">
-					Dù cho những trường phái pizza hiện đại kiểu Mỹ đã cùng những chuỗi quán ăn nhanh trở nên thắng thế, pizza kiểu Nhật tỉ mỉ, chau chuốt và hơi có nét kỳ dị lại rất được lòng dân Châu Á, nhưng những gì kinh điển vốn dĩ không thể chết.
-				</div>
-			</div>
-			<div class="articleItem">
-				<div class="articleItemAva" style="background: url('{{ asset('local/resources/assets/images/photo1532079843170-15320798431701414490616.png') }}') no-repeat center /cover;">
-					
-				</div>
-				<div class="articleItemTitle">
-					<h2>
-						<a href="{{ asset('magazine') }}">Dù thế giới có đảo điên, người Ý vẫn chỉ có một “Pizza” - thứ pizza được nướng từ lò củi</a>
-					</h2>
-					<div class="articleItemTitleMini">
-						<span class="articleItemTime">
-							12 ngày trước
-						</span>
-						<span class="articleItemView">
-							<i class="fas fa-eye"></i>
-							868
-						</span>
-					</div>
-				</div>
-				<div class="articleItemContent">
-					Dù cho những trường phái pizza hiện đại kiểu Mỹ đã cùng những chuỗi quán ăn nhanh trở nên thắng thế, pizza kiểu Nhật tỉ mỉ, chau chuốt và hơi có nét kỳ dị lại rất được lòng dân Châu Á, nhưng những gì kinh điển vốn dĩ không thể chết.
-				</div>
-			</div>
-		</div>
-	</section> --}}
+	
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="articleItem first">
-						<a href="{{ asset('magazine') }}" class="articleItemAva" style="background: url('{{ asset('local/resources/assets/images/photo1532079843170-15320798431701414490616.png') }}') no-repeat center /cover;">
+						<a href="{{ asset('magazine/'.$items[0]->e_slug) }}" class="articleItemAva" style="background: url('{{ asset('local/storage/app/emagazine/resized-'.$items[0]->e_img) }}') no-repeat center /cover;">
 							
 						</a>
 						<div class="articleItemTitle">
 							<h2>
-								<a href="{{ asset('magazine') }}">Dù thế giới có đảo điên, người Ý vẫn chỉ có một “Pizza” - thứ pizza được nướng từ lò củi</a>
+								<a href="{{ asset('magazine/'.$items[0]->e_slug) }}">{{ cut_string($items[0]->e_title, 100)}}</a>
 							</h2>
 							<div class="articleItemTitleMini">
 								<span class="articleItemTime">
-									12 ngày trước
+									{{date_format_vn($items[0]->created_at)}}
 								</span>
 								<span class="articleItemView">
 									<i class="fas fa-eye"></i>
-									868
+									{{$items[0]->e_view}}
 								</span>
 							</div>
 						</div>
@@ -104,69 +36,87 @@
 				</div>
 			</div>
 			<div class="row">
-				@for ($i = 0; $i < 2 ; $i++)
+				@for ($i = 1; $i < 3 ; $i++)
 					<div class="col-md-6 col-sm-6 col-xs-12">
 						<div class="articleItem second">
-							<a  href="{{ asset('magazine') }}" class="articleItemAva" style="background: url('{{ asset('local/resources/assets/images/photo'.$i.'.png') }}') no-repeat center /cover;">
+							<a  href="{{ asset('magazine/'.$items[$i]->e_slug) }}" class="articleItemAva" style="background: url('{{ asset('local/storage/app/emagazine/resized-'.$items[$i]->e_img) }}') no-repeat center /cover;">
 								
 							</a>
 							<div class="articleItemTitle">
 								<h2>
-									<a href="{{ asset('magazine') }}">Đại chiến nhạc Việt hay Tháng 5 rực rỡ của V-Pop: Chưa bao giờ, khán giả được ...</a>
+									<a href="{{ asset('magazine/'.$items[$i]->e_slug) }}">{{ cut_string($items[$i]->e_title, 100)}}</a>
 								</h2>
 								<div class="articleItemTitleMini">
 									<span class="articleItemTime">
-										3 tháng trước
+										{{date_format_vn($items[$i]->created_at)}}
+
 									</span>
 									<span class="articleItemView">
 										<i class="fas fa-eye"></i>
-										2k
+										{{$items[$i]->e_view}}
 									</span>
 								</div>
 							</div>
 							<div class="articleItemContent">
-								World Cup đã kết thúc, sau 1 tháng cuồng nhiệt và đầy đam mê. Những gì để lại là một dư vị ngọt ngào về sự trỗi dậy của thế hệ tài năng mới, trẻ trung, táo bạo và nhiều mơ ước.
+								{{ $items[$i]->e_summary}}
 							</div>
 						</div>
 					</div>
 				@endfor
 			</div>
-			<div class="row">
-				@for ($i = 2; $i < 14 ; $i++)
+			<div class="row contentMain">
+				@for ($i = 3; $i < count($items) ; $i++)
 					<div class="col-md-4 col-sm-6 col-xs-12 articleItemBig">
 						<div class="articleItem">
-							<a  href="{{ asset('magazine') }}" class="articleItemAva" style="background: url('{{ asset('local/resources/assets/images/photo'.$i.'.png') }}') no-repeat center /cover;">
+							<a  href="{{ asset('magazine/'.$items[$i]->e_slug) }}" class="articleItemAva" style="background: url('{{ asset('local/storage/app/emagazine/resized-'.$items[$i]->e_img) }}') no-repeat center /cover;">
 								
 							</a>
 							<div class="articleItemTitle">
 								<h2>
-									<a href="{{ asset('magazine') }}">Đại chiến nhạc Việt hay Tháng 5 rực rỡ của V-Pop: Chưa bao giờ, khán giả được ...</a>
+									<a href="{{ asset('magazine/'.$items[$i]->e_slug) }}">{{ cut_string($items[$i]->e_title, 100)}}</a>
 								</h2>
 								<div class="articleItemTitleMini">
 									<span class="articleItemTime">
-										3 tháng trước
+										{{date_format_vn($items[$i]->created_at)}}
 									</span>
 									<span class="articleItemView">
 										<i class="fas fa-eye"></i>
-										2k
+										{{$items[$i]->e_view}}
 									</span>
 								</div>
 							</div>
 							<div class="articleItemContent">
-								Không hẹn mà gặp, hàng loạt nghệ sĩ Việt tự ghi tên mình vào một trận chiến đầy sôi động với hàng triệu khán giả đang háo hức mong chờ. Chưa bao ...
+								{{ $items[$i]->e_summary}}
 							</div>
 						</div>
 					</div>
 				@endfor
 					
 			</div>
+			<div class="loadMore">
+				<img src="images/Rolling-1s-200px.gif">
+			</div>
 		</div>
 		
 		</div>
-		
+		<div class="btnLoad" style="display: none;"></div>
 			
 	</section>
 </main>
 @stop
 @section('script')
+<script type="text/javascript" src="js/emagazine.js">
+// 	$(document).ready(function(){
+// 	var footer = $('#footer').offset().top;
+// 	var count = {{ app('request')->input('count') }};
+// 	count++;
+// 	$(window).scroll(function(){
+		
+// 		var scroll = $(window).scrollTop();
+// 		if (scroll + $(window).height() > footer) {
+// 			window.location.href = '{{ asset('magazine?count=') }}'+count;
+// 		}
+// 	});
+// });
+</script>
 @stop
