@@ -13,7 +13,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>{{isset($video) && $video->id != 0? 'Thay đổi' : 'Thêm mới'}} tài khoản</h1>
+            <h1>{{isset($video) && $video->id != 0? 'Thay đổi' : 'Thêm mới'}} video</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -47,8 +47,7 @@
 
                         <div class="row form-group">
                             <label class="col-sm-2">
-                                <span class="text-danger">*</span>
-                                Tiêu đề video
+                                Tiêu đề video <span class="text-danger">*</span>
                             </label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="video[title]" value="{{$video->title}}">
@@ -103,25 +102,25 @@
                             </div>
                         </div>
 
-                        <div class="row form-group">
-                            <label class="col-sm-2">Avatar</label>
-                            <div class="col-sm-3 form-group">
-                                <div class="{{ $video->avatar == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
-                                     onclick="avatar.click()">
-                                    <div class="d-inline-block" style="margin: auto">
-                                        <img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">
-                                    </div>
-                                </div>
-                                <div class="img-avatar {{ $video->avatar == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
-                                    <img id="blog_avatar" style="width: 100%" src="{{asset("/local/resources".$video->avatar)}}" alt="">
-                                    <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
-                                       onclick="removeImage()"></i>
-                                </div>
-                                <input #avatar class="d-none" type="file" id="avatar"
-                                       onchange="uploadImage(avatar,avatar.files[0])">
-                                <input class="d-none" name="video[avatar]" value="{{$video->avatar}}" id="src_avatar" type="text">
-                            </div>
-                        </div>
+                        {{--<div class="row form-group">--}}
+                            {{--<label class="col-sm-2">Avatar</label>--}}
+                            {{--<div class="col-sm-3 form-group">--}}
+                                {{--<div class="{{ $video->avatar == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"--}}
+                                     {{--onclick="avatar.click()">--}}
+                                    {{--<div class="d-inline-block" style="margin: auto">--}}
+                                        {{--<img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="img-avatar {{ $video->avatar == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">--}}
+                                    {{--<img id="blog_avatar" style="width: 100%" src="{{asset("/local/resources".$video->avatar)}}" alt="">--}}
+                                    {{--<i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"--}}
+                                       {{--onclick="removeImage()"></i>--}}
+                                {{--</div>--}}
+                                {{--<input #avatar class="d-none" type="file" id="avatar"--}}
+                                       {{--onchange="uploadImage(avatar,avatar.files[0])">--}}
+                                {{--<input class="d-none" name="video[avatar]" value="{{$video->avatar}}" id="src_avatar" type="text">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                         <div class="row form-group">
                             <label class="col-sm-2">Danh mục video <span class="text-danger">*</span></label>
@@ -137,7 +136,7 @@
 
                         <div class="row form-group">
                             <label class="col-sm-2">
-                                Mô tả
+                                Mô tả<span class="text-danger">*</span>
                             </label>
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="video[summary]">{{$video->summary}}</textarea>
@@ -262,6 +261,9 @@
                 'video[release_time][h]': {
                     required: true
                 },
+                'video[summary]': {
+                    required: true
+                },
                 'video[groupid][]': {
                     required: true
                 }
@@ -278,6 +280,9 @@
                 },
                 'video[release_time][h]': {
                     required: 'Thiếu giờ phát hàng'
+                },
+                'video[summary]': {
+                    required: "Thiếu mô tả"
                 },
                 'video[groupid][]': {
                     required: 'Thiếu danh mục video'

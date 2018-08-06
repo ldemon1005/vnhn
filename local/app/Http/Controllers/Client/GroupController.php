@@ -63,7 +63,8 @@ class GroupController extends Controller{
          * list articel
          */
 
-        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->paginate(7);
+
+        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->paginate(7);
 
         $group_ids = array_column(json_decode($group_menu->toJson(),true),'id');
 
@@ -116,19 +117,19 @@ class GroupController extends Controller{
 
         if($group->parentid == '00'){
             $ids[] = $group->id;
-            $group_menu = DB::table($this->db->group)->where('parentid',$group_id)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->where('parentid',$group_id)->where('status',1)->take(6)->get();
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->take(6)->get();
         }else{
             $parentid = $group->parentid;
             $ids[] = $parentid;
-            $group_menu = DB::table($this->db->group)->where('parentid',$parentid)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->where('parentid',$parentid)->where('status',1)->take(6)->get();
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->take(6)->get();
         }
         return $group_menu;
     }

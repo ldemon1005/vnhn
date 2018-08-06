@@ -80,7 +80,7 @@
                             <th style="width: 30%">Tiêu đề video</th>
                             <th class="hideResponsive768">Đường dẫn</th>
                             <th class="hideResponsive768">Ngày tạo--Ngày update</th>
-                            <th>Avatar</th>
+                            {{--<th>Avatar</th>--}}
                             <th style="width: 8%">Trạng thái</th>
                             <th style="width: 10%">Thao tác</th>
                         </tr>
@@ -93,10 +93,10 @@
                             <td class="hideResponsive768">
                                 {{$video->created_at}}--{{$video->updated_at}}
                             </td>
-                            <td>
-                                <img style="height: 50px" src="{{ isset($video->avatar) && file_exists(resource_path($video->avatar)) && $video->avatar ? asset('local/resources'.$video->avatar) : '../images/default-image.png' }}">
+                            {{--<td>--}}
+                                {{--<img style="height: 50px" src="{{ isset($video->avatar) && file_exists(resource_path($video->avatar)) && $video->avatar ? asset('local/resources'.$video->avatar) : '../images/default-image.png' }}">--}}
                                 {{-- {{ isset($video->avatar) && file_exists(resource_path($video->avatar)) && $video->avatar ? asset('local/resource'.$video->avatar) : '../images/default-image.png' }} --}}
-                            </td>
+                            {{--</td>--}}
                             <td id="status_video">
                                 {{-- <button onclick="change_status({{$video->id}},{{$video->status}})" id="status_video" class="btn btn-block btn-sm {{ $video->status == 0 ? 'btn-danger' : 'btn-success' }}">{{ $video->status == 0 ? 'Chưa duyệt' : 'Đã duyệt' }}</button> --}}
                                 @switch(Auth::user()->level)

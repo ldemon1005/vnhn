@@ -40,9 +40,9 @@ class ArticelController extends Controller
         }
 
 
-        $list_group = DB::table($this->db->group)->whereIn('id',$result)->get();
+        $list_group = DB::table($this->db->group)->where('status',1)->whereIn('id',$result)->get();
 
-        $articel_related = DB::table($this->db->news)->whereIn('groupid',$group_related)->orderBy('order_item')
+        $articel_related = DB::table($this->db->news)->whereIn('groupid',$group_related)->where('status',1)->orderBy('order_item')
             ->orderByDesc('release_time')->take(8)->get();
 
         foreach ($articel_related as $item){
@@ -151,7 +151,7 @@ class ArticelController extends Controller
     }
 
     public function get_video_new(){
-        $list_video_new = DB::table($this->db->video)->where('release_time','<=',time())->take(5)->get();
+        $list_video_new = DB::table($this->db->video)->where('release_time','<=',time())->where('status',1)->take(5)->get();
         return $list_video_new;
     }
 

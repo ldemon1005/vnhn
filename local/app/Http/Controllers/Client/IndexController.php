@@ -86,7 +86,7 @@ class IndexController extends Controller
 
     public function get_new_articel()
     {
-        $list_articel_new = DB::table($this->db->news)->where('hot_main', 1)->where('release_time', '<=', time() + 43200)->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
+        $list_articel_new = DB::table($this->db->news)->where('hot_main', 1)->where('status',1)->where('release_time', '<=', time() + 43200)->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
         foreach ($list_articel_new as $item) {
             if (time() - $item->release_time > 86400) {
                 $item->release_time = date('d/m/Y H:m', $item->release_time);
@@ -100,7 +100,7 @@ class IndexController extends Controller
 
     public function get_video_new()
     {
-        $list_video_new = DB::table($this->db->video)->where('release_time', '<=', time())->take(5)->get();
+        $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->take(5)->get();
         return $list_video_new;
     }
 
@@ -113,7 +113,7 @@ class IndexController extends Controller
 
     public function get_articel_item($position)
     {
-        $menu_time = DB::table($this->db->group)->where('home_index', 1)->where('type', '!=', 1)->orderBy('order')->take(2)->get()->chunk(1);
+        $menu_time = DB::table($this->db->group)->where('home_index', 1)->where('status',1)->where('type', '!=', 1)->orderBy('order')->take(2)->get()->chunk(1);
 
         $menu_time = $menu_time[$position][$position];
 
@@ -129,9 +129,9 @@ class IndexController extends Controller
         $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
 
         if ($position == 0) {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->orderBy('order_item')->take(5)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->where('status',1)->orderBy('order_item')->take(5)->get();
         } else {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->orderBy('order_item')->take(4)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->where('status',1)->orderBy('order_item')->take(4)->get();
         }
 
         foreach ($list_articel as $item) {

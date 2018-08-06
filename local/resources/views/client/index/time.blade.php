@@ -139,6 +139,9 @@
                                         </div>
                                         {{-- <hr style="border-top: 2px solid #999999"/> --}}
                                     @endforeach
+                                    <div class="pagination float-right" style="padding-top: 15px">
+                                        {!! $list_articel->links('vendor.pagination.bootstrap-4') !!}
+                                    </div>
                                 </div>
                             </div>
                             <div class="time-subscribe">
