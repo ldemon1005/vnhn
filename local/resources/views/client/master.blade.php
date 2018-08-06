@@ -5,8 +5,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Meta facebook -->
+    @if(isset($articel_detail))
+        <meta property="og:url"           content="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" />
+        <meta property="og:type"          content="article" />
+        <meta property="og:title"         content="{{$articel_detail->title}}" />
+        <meta property="og:description"   content="{{$articel_detail->summary}}" />
+        <meta property="og:image"         content="{{asset('/local/resources'.$articel_detail->fimage)}}" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
+    @endif
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Việt Nam hội nhập | @yield('title')</title>
     <link rel="shortcut icon" href="http://vietnamhoinhap.vn/images/favicon.ico" />
@@ -20,6 +31,9 @@
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+
+
     @yield('css')
     <!-- Styles -->
 </head>
@@ -43,13 +57,12 @@
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=761158710724257&autoLogAppEvents=1';
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 @yield('script')
 </html>

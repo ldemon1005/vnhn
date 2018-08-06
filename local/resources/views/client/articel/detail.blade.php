@@ -23,24 +23,24 @@
             </div>
             <div class="detailMain">
                 <div class="mainDetailLeft">
-                    <h1 class="mt-2">{{$articel->title}}</h1>
+                    <h1 class="mt-2">{{$articel_detail->title}}</h1>
                     <div class="mainDetailLeftTime">
                         <i class="far fa-clock"></i>
-                        {{$articel->day_in_week_str}}, {{$articel->release_time}} (GMT+7)
+                        {{$articel_detail->day_in_week_str}}, {{$articel_detail->release_time}} (GMT+7)
                         <div class="float-right">
-                            <div class="fb-like" data-href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}"
+                            <div class="fb-like" data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}"
                                  data-action="like" data-size="small" data-layout="button_count"
                                  data-share="true"></div>
                         </div>
                     </div>
                     <div class="mainDetailLeftContent">
-                        {!! $articel->content !!}
+                        {!! $articel_detail->content !!}
                     </div>
 
                     <div class="mainDetailLeftInfo mb-4">
-                        <p>{!! $articel->tacgia !!}</p>
+                        <p>{!! $articel_detail->tacgia !!}</p>
                         <span>&nbsp;/&nbsp;</span>
-                        <p>{!! $articel->nguontin !!}</p>
+                        <p>{!! $articel_detail->nguontin !!}</p>
                     </div>
 
 
@@ -161,9 +161,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input name="comment[idnew]" value="{{$articel->id}}" class="d-none">
-                                <input name="comment[groupid]" value="{{$articel->groupid}}" class="d-none">
-                                <input name="comment[slug]" value="{{$articel->slug}}" class="d-none">
+                                <input name="comment[idnew]" value="{{$articel_detail->id}}" class="d-none">
+                                <input name="comment[groupid]" value="{{$articel_detail->groupid}}" class="d-none">
+                                <input name="comment[slug]" value="{{$articel_detail->slug}}" class="d-none">
                                 <div class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"></div>
                                 <div class="form-group mt-3">
                                     <button id="submit-comment" type="button" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Gửi bình luận' : 'submit comment'}}</button>

@@ -121,7 +121,7 @@ class ArticelController extends Controller
         $list_video_new = $this->get_video_new();
         $data = [
             'list_group' => $list_group,
-            'articel' => $articel,
+            'articel_detail' => $articel,
             'articel_related_3' => $articel_related_3,
             'articel_related_5' => $articel_related_5,
 
