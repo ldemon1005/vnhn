@@ -60,10 +60,10 @@ $(document).ready(function(){
 
   $(document).on('click', '.btn1', function(event) {
     var btnThis = $(this);
-    var id = $(this).next().next().text();
+    var id = $(this).siblings(".id_group").text();
     var btnPrev = btnThis.parent().prev().find('button');
     var btnNext = btnThis.next();
-
+    console.log(id);
     $.ajax({
       method: 'POST',
       url: url+'admin/articel/on',
@@ -88,7 +88,7 @@ $(document).ready(function(){
   });
   $(document).on('click', '.btn2', function(event) {
     var btnThis = $(this);
-    var id = $(this).next().next().text();
+    var id = $(this).siblings(".id_group").text();
     var btnNext = btnThis.next();
 
     $.ajax({
@@ -136,7 +136,7 @@ $(document).ready(function(){
     var btnPrev2 = btnThis.parent().prev().find('button');
     $.ajax({
       method: 'POST',
-      url: url+'admin/articel/status3',
+      url: url+'admin/articel/status4',
       data: {
           '_token': $('meta[name="csrf-token"]').attr('content'),
           'id': id

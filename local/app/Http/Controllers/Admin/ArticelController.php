@@ -19,11 +19,35 @@ class ArticelController extends Controller
 {
     public function get_list(Request $request)
     {
-        $group_ids = Auth::user()->group_id;
-        $group_ids = explode(',', $group_ids);
+        
+        /*
+         *  lấy danh sách danh mục
+         */
+        $user = Auth::user();
+        $group_ids = explode(',',$user->group_id);
+        if($user->group_id == '0'){
+            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+        }else {
+            $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
+                $query->whereIn('id',$group_ids)
+                      ->orWhereIn('parentid',$group_ids);
+            })->get()->toArray();
+        }
+        if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
+        else $result = [];
+        
+
         if (in_array(0 ,$group_ids)) {
             $group_ids = [];
         }
+        else{
+            
+            foreach ($list_group as $group) {
+                $group_ids[] = (int)$group->id;
+            }
+            
+        }
+
         /*
          *  lấy danh sách bài viết
          */
@@ -33,13 +57,13 @@ class ArticelController extends Controller
                 $status = [];
                 break;
             case 2:
-                $status = [1,2];
+                $status = [0,1];
                 break;
             case 3:
-                $status = [2,3];
+                $status = [0,2];
                 break;
             case 4:
-                $status = [3,4];
+                $status = [0,3,4];
                 break;
 
             default:
@@ -69,12 +93,10 @@ class ArticelController extends Controller
 
 
         if(count($group_id)){
-            // dd($group_id);
             $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
             $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
 
             $list_articel =  $list_articel->whereIn('id',$list_articel_ids);
-            // dd($list_articel->get());
 
         }
 
@@ -85,12 +107,12 @@ class ArticelController extends Controller
             });
             // dd($list_articel->get());
         }
-        if (Auth::user()->level == 4) {
+        if (Auth::user()->level > 2) {
             $list_articel =  $list_articel->where('userid', Auth::user()->id);
         }
 
         $list_articel = $list_articel->paginate(15);
-
+        // dd($list_articel);
         if(isset($paramater_return['status'])){
             $list_articel->appends(['status' => $paramater_return['status']]);
         }
@@ -106,19 +128,9 @@ class ArticelController extends Controller
             $val->updated_at = date('d/m/Y H:m', $val->updated_at);
         }
         
-        /*
-         *  lấy danh sách danh mục
-         */
+        
 
-        $user = Auth::user();
-        $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
-            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-        }else {
-            $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->get()->toArray();
-        }
-        if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
-        else $result = [];
+        
 
 
         if(!$paramater){
@@ -147,6 +159,114 @@ class ArticelController extends Controller
         return view('admin.articel.index', $data);
     }
 
+    public function approved(Request $request){
+        $group_ids = Auth::user()->group_id;
+        $group_ids = explode(',', $group_ids);
+
+
+
+        $user = Auth::user();
+        $group_ids = explode(',',$user->group_id);
+        if($user->group_id == '0'){
+            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+        }else {
+            $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->orWhereIn('parentid',$group_ids)->get()->toArray();
+        }
+        // dd($list_group);
+        if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
+        else $result = [];
+        foreach ($list_group as $item) {
+            $list_group_id[] = $item->id;
+        }
+        // dd($list_group_id);
+        if (in_array(0 ,$list_group_id)) {
+            $list_group_id = [];
+        }
+        /*
+         *  lấy danh sách bài viết
+         */
+
+        switch (Auth::user()->level) {
+            case 1:
+                $status = [2,3];
+                break;
+            case 2:
+                $status = [2];
+                break;
+            case 3:
+                $status = [3];
+                break;
+            case 4:
+                $status = [0,3,4];
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        $paramater = $request->get('articel');
+        // dd($paramater['group_id']);
+        // dd($group_ids);
+        $list_group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $list_group_id;
+        $status = isset($paramater['status']) ? $paramater['status'] : $status;
+        $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
+        // $group_id = [1455];
+        $list_articel = DB::table($this->db->news)->orderByDesc('id');
+
+        if(count($status)){
+            $list_articel = $list_articel->whereIn('status',$status);
+        }
+
+        if(count($list_group_id)){
+            // dd($group_id);
+            $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$list_group_id)->get(['news_vn_id'])->toArray();
+            $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
+
+            $list_articel =  $list_articel->whereIn('id',$list_articel_ids );
+            // dd($list_articel->get());
+
+        }
+
+        if($key_search){
+            $list_articel = $list_articel->where(function ($query) use ($key_search){
+                $query->where('title','like',"%$key_search%")
+                      ->orWhere('summary', 'like', "%$key_search%");
+            });
+            // dd($list_articel->get());
+        }
+        if (Auth::user()->level == 4) {
+            $list_articel =  $list_articel->where('userid', Auth::user()->id);
+        }
+
+        $list_articel = $list_articel->paginate(15);
+        foreach ($list_articel as $val) {
+            $val->created_at = date('d/m/Y H:m', $val->created_at);
+            $val->updated_at = date('d/m/Y H:m', $val->updated_at);
+        }
+        
+        /*
+         *  lấy danh sách danh mục
+         */
+
+
+
+        $data = [
+            'list_group' => $result,
+            'list_articel' => $list_articel,
+            'articel' => $paramater
+        ];
+        for ($i=0; $i < count($data['list_articel']); $i++) { 
+            $data['list_articel'][$i]->username = Account::find($data['list_articel'][$i]->userid);
+        }
+        // foreach ($data['list_articel'] as $articel) {
+        //     $ar = News::find($articel->id);
+        //     $ar->groupid = 1455;
+        //     $ar->save();
+        // }
+        
+        // dd($data['list_articel'][0]);
+        return view('admin.articel.index', $data);
+    }
 
     public function form_articel($id){
         /*
@@ -158,11 +278,14 @@ class ArticelController extends Controller
         if($user->group_id == '0'){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
-            $list_group = DB::table($this->db->group)->where('status', 1)->whereIn('id',$group_ids)->get()->toArray();
+            $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
+                $query->whereIn('id',$group_ids)
+                      ->orWhereIn('parentid',$group_ids);
+            })->get()->toArray();
         }
         if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
         else $result = [];
-
+        // dd($result);
         if($id == 0){
             $data = [
                 'id' => 0,
@@ -232,7 +355,6 @@ class ArticelController extends Controller
                 break;
         }
         $data['status'] = $status;
-//        dd($data);
         $group_id = $data['groupid'];
 
         $content = $data['content'];
@@ -253,6 +375,7 @@ class ArticelController extends Controller
             $data['created_at'] = time();
             $articel = News::create($data);
             if(!$articel->id) $check = 0;
+
             $data_group_news = [];
 
             if(count($group_id)){
@@ -266,10 +389,10 @@ class ArticelController extends Controller
             }
             if(count($data_group_news)){
                 if(!DB::table($this->db->group_news)->insert($data_group_news)) $check = 0;
+
             }
             $articel->content = $content;
-            if(!$this->add_log($articel,$status,"Tạo mới,".$status_str))$check = 0;
-
+            if(!$this->add_log($articel,$status,"Tạo mới,".$status_str)) $check = 0;
             if($check == 1){
                 DB::commit();
                 return redirect()->route('admin_articel')->with('status','Tạo mới thành công');
@@ -538,9 +661,12 @@ class ArticelController extends Controller
     }
 
     public function get2(){
+
         $id = Input::get('id');
         $news = News::find($id);
+
         $news->status = 2;
+
         $news->save();
         return response('ok', 200);
     }
@@ -549,14 +675,14 @@ class ArticelController extends Controller
         $news = News::find($id);
         $news->status = 3;
         $news->save();
-        return response('ok', 200);
+        return response(3, 200);
     }
     public function get4(){
         $id = Input::get('id');
         $news = News::find($id);
         $news->status = 4;
         $news->save();
-        return response('ok', 200);
+        return response(4, 200);
     }
 
 

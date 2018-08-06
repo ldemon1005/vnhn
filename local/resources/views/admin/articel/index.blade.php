@@ -161,8 +161,14 @@
                                                             <button class="btn btn-block btn-sm btn-default">Đang chạy</button>
                                                             @break
                                                         @case(2)
+
                                                             <button class="btn btn-block btn-sm btn-success btn1">Duyệt</button>
+                                                            @if(isset($articel->username) && $articel->username->level == 3))
+
+                                                            <button class="btn btn-block btn-sm btn-info btn3">Trả lại</button>
+                                                            @else
                                                             <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
+                                                            @endif
                                                             @break
 
                                                         @default
@@ -172,6 +178,9 @@
                                                     @break
                                                 @case(3)
                                                     @switch($articel->status)
+                                                        @case(0)
+                                                            <button class="btn btn-block btn-sm btn-default">Dừng</button>
+                                                            @break
                                                         @case(2)
                                                             <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
                                                             @break
@@ -179,6 +188,7 @@
                                                             <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
                                                             <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
                                                             @break
+
                                                         @default
                                                             <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
                                                             @break

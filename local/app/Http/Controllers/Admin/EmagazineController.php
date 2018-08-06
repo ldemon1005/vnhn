@@ -44,12 +44,15 @@ class EmagazineController extends Controller
 	        }
 	        //Lưu file giao diện
 	        $file_detail = $request->file('e_detail');
-	        if ($request->hasFile('e_detail')) {
+	        if ($request->hasFile('e_detail') && $file_detail->getClientOriginalExtension() == 'html') {
 	           	$filename_save = 'file_'.date("Y-m-d").'_'.round(microtime(true));
 	            $filename = $filename_save.'.'.$file_detail->getClientOriginalExtension();
 				
 	        	$file_detail->storeAs('file_emagazine',$filename);
 	        	$data->e_detail = $filename;
+	        }
+	        else{
+	        	return back()->withInput(Input::all())->with('error' ,'Tệp không đúng định dạng');
 	        }
 	        $data->e_view = 0;
 	        // dd(Auth::user()->id);
@@ -65,7 +68,7 @@ class EmagazineController extends Controller
 	        $data->save();
 		}
 		catch (\Exception $e) {
-		    return back()->with('Lỗi không thêm được bài');
+		    return back()->with('error', 'Lỗi không thêm được bài');
 		}
     	return redirect('admin/emagazine')->with('success', 'Thêm thành công');;
     }
