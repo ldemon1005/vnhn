@@ -12,8 +12,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ file_exists(storage_path('app/avatar/'.Auth::user()->img)) && Auth::user()->img ? asset('local/storage/app/avatar/resized-'.Auth::user()->img) : '../images/images.png' }}"
-                     class="img-circle elevation-2" alt="User Image">
+                <div class="avatarImgSidebar" style="background: url('{{ file_exists(storage_path('app/avatar/'.Auth::user()->img)) && Auth::user()->img ? asset('local/storage/app/avatar/resized-'.Auth::user()->img) : '../images/images.png' }}') no-repeat center /cover;">
+                    
+                </div>
+                
             </div>
             <div class="info">
                 <a href="{{ asset('admin') }}" class="d-block">{{Auth::user()->fullname}}</a>
@@ -130,6 +132,14 @@
                                 <p>Danh sách bài viết</p>
                             </a>
                         </li>
+                        @if (Auth::user()->level < 4)
+                        <li class="nav-item">
+                            <a href="{{asset('admin/articel/approved')}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Phê duyệt bài viết</p>
+                            </a>
+                        </li>
+                        @endif
                         @if (Auth::user()->level < 3 && Auth::user()->site == 1)
                             <li class="nav-item">
                                 <a href="{{route('sort_hot_articel')}}" class="nav-link">

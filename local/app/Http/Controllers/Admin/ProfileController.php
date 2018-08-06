@@ -16,7 +16,7 @@ class ProfileController extends Controller
     }
     public function postDetail(ProfileEditRequest $request){
     	$acc = Account::find(Auth::user()->id);
-    	$acc->username = $request->username;
+    	// $acc->username = $request->username;
     	$acc->fullname = $request->fullname;
     	$acc->email = $request->email;
     	$acc->phone = $request->phone;

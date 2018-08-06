@@ -79,6 +79,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('/update_order_articel','ArticelController@update_order_articel')->name('update_order_articel');
             Route::get('/delete_articel_hot/{groupid}/{id}','ArticelController@delete_articel_hot')->name('delete_articel_hot');
             Route::get('/update_status/{id}','ArticelController@update_status')->name('update_status');
+            Route::get('/approved', 'ArticelController@approved');
 
             Route::post('on', 'ArticelController@getOn');
             Route::post('off', 'ArticelController@getOff');
@@ -149,6 +150,10 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
                 Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
                 Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
+
+                Route::post('on', 'GroupVideoController@getOn');
+                Route::post('off', 'GroupVideoController@getOff');
+
             });
 
             Route::group(['prefix' => 'video'], function(){
