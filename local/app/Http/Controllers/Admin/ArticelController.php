@@ -46,9 +46,16 @@ class ArticelController extends Controller
                 # code...
                 break;
         }
-        $paramater = $request->get('articel');
-        // dd($paramater['group_id']);
-        // dd($group_ids);
+        $paramater = $request->all();
+
+        if (isset($paramater['articel'])){
+            $paramater = $paramater['articel'];
+        }
+
+        $paramater_return = $paramater;
+
+
+
         $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $group_ids;
         $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
@@ -58,6 +65,8 @@ class ArticelController extends Controller
         if(count($status)){
             $list_articel = $list_articel->whereIn('status',$status);
         }
+
+
 
         if(count($group_id)){
             // dd($group_id);
@@ -81,6 +90,17 @@ class ArticelController extends Controller
         }
 
         $list_articel = $list_articel->paginate(15);
+
+        if(isset($paramater_return['status'])){
+            $list_articel->appends(['status' => $paramater_return['status']]);
+        }
+        if(isset($paramater_return['group_id'])){
+            $list_articel->appends(['group_id' => $paramater_return['group_id']]);
+        }
+        if(isset($paramater_return['key_search'])){
+            $list_articel->appends(['key_search' => $paramater_return['key_search']]);
+        }
+
         foreach ($list_articel as $val) {
             $val->created_at = date('d/m/Y H:m', $val->created_at);
             $val->updated_at = date('d/m/Y H:m', $val->updated_at);
@@ -100,10 +120,19 @@ class ArticelController extends Controller
         if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
         else $result = [];
 
+
+        if(!$paramater){
+            $paramater = [
+                'key_search' => '',
+                'group_id' => [],
+                'status' => []
+            ];
+        }
+
         $data = [
             'list_group' => $result,
             'list_articel' => $list_articel,
-            'articel' => $paramater
+            'paramater' => $paramater,
         ];
         for ($i=0; $i < count($data['list_articel']); $i++) { 
             $data['list_articel'][$i]->username = Account::find($data['list_articel'][$i]->userid);

@@ -39,7 +39,9 @@
 
                     <div class="mainDetailLeftInfo mb-4">
                         <p>{!! $articel_detail->tacgia !!}</p>
-                        <span>&nbsp;/&nbsp;</span>
+                        @if($articel_detail->tacgia != '' && $articel_detail->nguontin != '')
+                            <span>&nbsp;/&nbsp;</span>
+                        @endif
                         <p>{!! $articel_detail->nguontin !!}</p>
                     </div>
 

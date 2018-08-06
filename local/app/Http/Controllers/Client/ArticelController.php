@@ -125,7 +125,6 @@ class ArticelController extends Controller
             'articel_related_3' => $articel_related_3,
             'articel_related_5' => $articel_related_5,
 
-
             'articel_top_view' => $articel_top_view,
             'magazine_new' => $magazine_new,
             'list_video_new' => $list_video_new,
