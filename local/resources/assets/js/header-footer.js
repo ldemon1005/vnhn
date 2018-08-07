@@ -81,26 +81,21 @@ $(document).ready(function(){
 	}
 
 
-	// $('.new-item').mousedown(function(event) {
- //        switch (event.which) {
- //            case 1:
- //                alert('Left mouse button pressed');
- //                return true;
-                
- //            case 2:
-                
-                
- //                return true;
- //            case 3:
- //                alert('Right mouse button pressed');
-                
- //                return true;
- //            default:
-                
- //               	return true;
- //        }
- //        return true;
- //    });
+	$('.btnShowSearch').click(function(){
+		
+	});
+	$(document).on('click', ".btnShowSearch", function(){
+        $('.formSearchHide').show();
+		$('.formSearchHide').css('width', '392px');
+    });
+    $(document).on('focusout', ".inputFormSearch", function(){
+        $('.formSearchHide').css('width', '0px');
+         $('.formSearchHide').hide();
+        setTimeout(function(){
+           
+        }, 500)
+        
+    });
 });
 var url = $('.currentUrl').text();
 

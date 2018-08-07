@@ -10,25 +10,25 @@
                         <a href="{{ asset('') }}"><img src="{{asset('/local/resources/uploads/images/e-magazine.png')}}"></a>
                     </div>
                     <div class="top-header-menu">
-                        {{--<ul class="menu-left">--}}
-                            {{--<li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>--}}
-                            {{--<li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>--}}
-                            {{--<li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>--}}
-                            {{--<li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>--}}
-                            {{--<li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>--}}
-                            {{--<li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>--}}
-                            {{--<li class="header-lang"><a href="{{ asset('') }}"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>--}}
-                            {{--<li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>--}}
-                            {{--<li class="list-icon">--}}
-                                {{--<a href="{{$web_info->facebook}}"><i class="fab fa-facebook-f"></i></a>--}}
-                                {{--<a href="{{$web_info->youtobe}}"><i class="fab fa-youtube"></i></a>--}}
-                                {{--<a href="{{ asset('') }}"><i class="fas fa-envelope"></i></a>--}}
-                                {{--<a href="{{ asset('') }}"><i class="fas fa-search" style="color: #303840"></i></a>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                        <div style="width: 300px;">
+                        <ul class="menu-left">
+                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
+                            <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
+                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
+                            <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
+                            <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>
+                            <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
+                            <li class="header-lang"><a href="{{ asset('') }}"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>
+                            <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
+                            <li class="list-icon">
+                                <a href="{{$web_info->facebook}}"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{$web_info->youtobe}}"><i class="fab fa-youtube"></i></a>
+                                <a href="{{ asset('') }}"><i class="fas fa-envelope"></i></a>
+                                <a href="{{ asset('') }}"><i class="fas fa-search btnShowSearch" style="color: #303840"></i></a>
+                            </li>
+                        </ul>
+                        <div class="formSearchHide" >
                             <form id="search_video" action="" method="get">
-                                <input name="key" type="text" class="form-control" placeholder="Từ khóa tìm kiếm ...">
+                                <input name="key" type="text" class="form-control inputFormSearch" placeholder="Từ khóa tìm kiếm ...">
                                 <a onclick="search_video()" style="cursor: pointer"><i
                                             class="fas fa-search" style="color: #303840"></i></a>
                             </form>

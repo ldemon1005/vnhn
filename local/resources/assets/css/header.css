@@ -58,6 +58,27 @@
 	flex: 1;
 	text-align: right;
 	line-height: 46px;
+	position: relative;
+}
+.formSearchHide{
+	width: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 0.5s;
+    display: none;
+}
+.inputFormSearch{
+	margin: 6px 0;
+	padding: .25rem .75rem;
+}
+.formSearchHide form a{
+	cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    line-height: 45px;
 }
 
 
