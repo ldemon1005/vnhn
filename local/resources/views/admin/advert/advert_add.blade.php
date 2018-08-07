@@ -42,22 +42,22 @@
 	                    <label for="exampleInputEmail1">Liên kết đến</label>
 	                    <input type="text" class="form-control" placeholder="https://" name="link" value="{{isset($item) ? $item->ad_link : ''}}">
 	                </div>
-	                <div class="form-group">
+	                {{-- <div class="form-group">
 	                    <label for="exampleInputEmail1">Thời gian hiển thị</label>
 	                    <input type="text" class="form-control" placeholder="1000" name="time" value="{{isset($item) ? $item->ad_time : ''}}"> 
-	                </div>
+	                </div> --}}
 	                <div class="form-group">
 	                    <label for="exampleInputPassword1">Nội dung tóm tắt</label>
 	                    <textarea class="form-control" name="content" rows="5">{{isset($item) ? $item->ad_content : ''}}</textarea>
 	                </div>
-	                <div class="form-group">
+	                {{-- <div class="form-group">
 	                    <label for="exampleInputPassword1">Chiều rộng</label>
 	                    <input type="text" class="form-control" name="width" placeholder="100% or 320px" value="{{isset($item) ? $item->ad_width : ''}}">
 	                </div>
 	                <div class="form-group">
 	                    <label for="exampleInputPassword1">Chiều cao</label>
 	                    <input type="text" class="form-control" name="height" placeholder="100% or 200px" value="{{isset($item) ? $item->ad_height : ''}}">
-	                </div>
+	                </div> --}}
 	                <div class="form-group">
 	                    <label for="exampleInputFile">Hình ảnh</label>
 						<div class="">

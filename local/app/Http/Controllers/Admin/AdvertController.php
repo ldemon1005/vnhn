@@ -44,10 +44,10 @@ class AdvertController extends Controller
         $ad = new Advert;
         $ad->ad_name = $request->name;
         $ad->ad_link = $request->link;
-        $ad->ad_time = $request->time;
+        // $ad->ad_time = $request->time;
         $ad->ad_content = $request->content;
-        $ad->ad_width = $request->width;
-        $ad->ad_height = $request->height;
+        // $ad->ad_width = $request->width;
+        // $ad->ad_height = $request->height;
         $ad->ad_status = 1;
         $image = $request->file('img');
         if ($request->hasFile('img')) {
@@ -91,10 +91,10 @@ class AdvertController extends Controller
         $ad = Advert::find($id);
         $ad->ad_name = $request->name;
         $ad->ad_link = $request->link;
-        $ad->ad_time = $request->time;
+        // $ad->ad_time = $request->time;
         $ad->ad_content = $request->content;
-        $ad->ad_width = $request->width;
-        $ad->ad_height = $request->height;
+        // $ad->ad_width = $request->width;
+        // $ad->ad_height = $request->height;
         $ad->ad_status = 1;
         $image = $request->file('img');
         if ($request->hasFile('img')) {

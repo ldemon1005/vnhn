@@ -52,7 +52,7 @@
 	                    <input type="text" class="form-control" placeholder="Từ khóa CEO" name="e_keyword_meta" value="{{isset($item)? $item->e_keyword_meta : ''}}">
 	                </div>
 	                <div class="form-group">
-	                    <label for="exampleInputPassword1">Chi tiết</label>
+	                    <label for="exampleInputPassword1">Chi tiết(.html)</label>
 	                    <input type="file" class="form-control" name="e_detail">
 	                </div>
 	                <div class="form-group">
