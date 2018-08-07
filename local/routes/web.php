@@ -19,12 +19,12 @@ use \Illuminate\Support\Facades\Route;
 //,'middleware' => 'Start'
 Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index')->name('home');
-    Route::group(['prefix'=>'articel'],function(){
+    Route::group(['prefix'=>'article'],function(){
         Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
         Route::post('action_comment','ArticelController@action_comment')->name('action_comment');
     });
 
-    Route::group(['prefix' => 'group'],function(){
+    Route::group(['prefix' => 'danhmuc'],function(){
         Route::get('/{slug}','GroupController@get_articel_by_group')->name('get_articel_by_group');
     });
     Route::get('/open_video/{id}','VideosController@open_video')->name('open_video');
@@ -106,6 +106,37 @@ Route::group(['namespace' => 'Admin'], function (){
 
             Route::post('status', 'VideoController@action_status');
         });
+        Route::group(['prefix' => 'group_video'], function(){
+            Route::get('/','GroupVideoController@index')->name('admin_video_group');
+            Route::get('/form_group_video/{id}','GroupVideoController@form_group_video')->name('form_group_video');
+            Route::post('/action_menu_video','GroupVideoController@action_menu_video')->name('action_menu_video');
+            Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
+            Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
+            Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
+
+            Route::post('on', 'GroupVideoController@getOn');
+            Route::post('off', 'GroupVideoController@getOff');
+
+        });
+
+        Route::group(['prefix' => 'magazine'], function(){
+            Route::get('/', 'MagazineNewController@getList');
+
+            Route::get('add','MagazineNewController@getAdd');
+            Route::post('add','MagazineNewController@postAdd');
+
+            Route::get('edit/{id}','MagazineNewController@getEdit');
+            Route::post('edit/{id}','MagazineNewController@postEdit');
+
+            Route::get('delete/{id}','MagazineNewController@getDelete');
+
+            Route::get('sort', 'MagazineNewController@getSort');
+            Route::post('sort', 'MagazineNewController@postSort');
+
+            Route::post('status', 'MagazineNewController@action_status');
+
+        });
+
         Route::group(['middleware' => 'CheckSite'], function(){
             Route::group(['prefix' => 'account'], function(){
                 Route::get('/', 'AccountController@getList');
@@ -150,21 +181,6 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/group/form_sort_group/{id}',['as' => 'form_sort_group','uses' => 'GroupController@form_sort_group']);
             Route::post('/group/update_order',['as' => 'update_order','uses' => 'GroupController@update_order']);
 
-
-
-            Route::group(['prefix' => 'group_video'], function(){
-                Route::get('/','GroupVideoController@index')->name('admin_video_group');
-                Route::get('/form_group_video/{id}','GroupVideoController@form_group_video')->name('form_group_video');
-                Route::post('/action_menu_video','GroupVideoController@action_menu_video')->name('action_menu_video');
-                Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
-                Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
-                Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
-
-                Route::post('on', 'GroupVideoController@getOn');
-                Route::post('off', 'GroupVideoController@getOff');
-
-            });
-
             
 
             Route::group(['prefix' => 'advert'], function(){
@@ -202,23 +218,7 @@ Route::group(['namespace' => 'Admin'], function (){
 
 
             // });
-            Route::group(['prefix' => 'magazine'], function(){
-                Route::get('/', 'MagazineNewController@getList');
-
-                Route::get('add','MagazineNewController@getAdd');
-                Route::post('add','MagazineNewController@postAdd');
-
-                Route::get('edit/{id}','MagazineNewController@getEdit');
-                Route::post('edit/{id}','MagazineNewController@postEdit');
-
-                Route::get('delete/{id}','MagazineNewController@getDelete');
-
-                Route::get('sort', 'MagazineNewController@getSort');
-                Route::post('sort', 'MagazineNewController@postSort');
-
-                Route::post('status', 'MagazineNewController@action_status');
-
-            });
+            
 
 
             Route::group(['prefix'=>'comment'],function(){

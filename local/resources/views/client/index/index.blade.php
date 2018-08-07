@@ -1,8 +1,8 @@
 @extends('client.master')
-@section('title', 'Tin nhanh Việt Nam')
+@section('title', 'Tin nhanh Việt Nam Hội Nhập')
 @section('fb_title', 'Tin nhanh Việt Nam Hội Nhập - Cập nhật xu hướng')
-@section('fb_des', 'Tạp chí vnhh là trang thông tin tạp chí đối ngoại,......')
-@section('fb_image', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
+@section('fb_des', 'Tạp chí VNHN là trang thông tin tạp chí đối ngoại,......')
+@section('fb_img', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
 
 @section('main')
     <div id="main">
@@ -181,8 +181,7 @@
                                 <ul>
                                     <li>
                                         <a>
-                                            <i class="fas fa-caret-right mr-2"></i>
-                                            {{$list_video_new[0]->title}}
+                                            <i class="fas fa-caret-right mr-1"></i>{{$list_video_new[0]->title}}
                                         </a>
                                     </li>
 

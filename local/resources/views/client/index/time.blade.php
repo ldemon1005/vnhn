@@ -1,8 +1,8 @@
 @extends('client.master')
-@section('title', 'Tin nhanh Việt Nam')
+@section('title', 'Tin nhanh Việt Nam Hội Nhập')
 @section('fb_title', 'Tin nhanh Việt Nam Hội Nhập - Cập nhật xu hướng')
-@section('fb_des', 'Tạp chí vnhh là trang thông tin tạp chí đối ngoại,......')
-@section('fb_image', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
+@section('fb_des', 'Tạp chí VNHN là trang thông tin tạp chí đối ngoại,......')
+@section('fb_img', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
 @section('css')
     <style>
         a{
@@ -124,7 +124,7 @@
                         <div class="row section2-left-top">
                             <div class="time-hot">
                                 <div class="title-parent">
-                                    <h2>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List articel'}}</h2>
+                                    <h2>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List article'}}</h2>
                                 </div>
                                 <hr style="border-top: 2px solid #000000"/>
 

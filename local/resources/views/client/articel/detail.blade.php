@@ -1,6 +1,6 @@
 @extends('client.master')
 @section('title', $articel_detail->title)
-@section('fb_title', $articel_detail->title)
+@section('fb_title', cut_string($articel_detail->title, 70))
 @section('fb_des', $articel_detail->summary)
 @section('fb_img', asset('/local/resources'.$articel_detail->fimage))
 

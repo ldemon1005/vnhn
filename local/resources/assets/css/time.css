@@ -39,7 +39,7 @@
     width: 100%;
     bottom: -2px;
     left: 0;
-    border-bottom: 3px solid #d71a21;
+    border-bottom: 4px solid #d71a21;
 }
 
 .btnShowListMenu{
@@ -422,6 +422,8 @@ hr{
         margin-bottom: 0;
         overflow: hidden;
         margin-top: 20px;
+        max-height: 40px;
+        border-bottom: none;
     }
     .section1 .menu-time ul li{
         display: block;
