@@ -6,9 +6,11 @@ use App\Models\Magazine;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Models\MagazineNew;
 
 class MagazineController extends Controller
 {
+
     public function index(){
         $list_magazine = DB::table($this->db->magazine)->paginate(10);
         foreach ($list_magazine as $val){

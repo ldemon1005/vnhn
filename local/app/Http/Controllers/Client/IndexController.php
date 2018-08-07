@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-
+use App\Models\MagazineNew;
 
 class IndexController extends Controller
 {
@@ -27,7 +27,9 @@ class IndexController extends Controller
 
         $list_video_new = $this->get_video_new();
 
-        $magazine_new = $this->get_magazine_new();
+        // $magazine_new = $this->get_magazine_new();
+        $magazine_new = MagazineNew::where('m_status', 1)->orderBy('m_hot', 'asc')->get();
+
         /*
          * group thứ nhất
          */

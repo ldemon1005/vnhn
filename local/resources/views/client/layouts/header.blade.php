@@ -41,22 +41,18 @@
                 <div class="quangcao-1 item-quangcao">
                     <?php $count_ad = 0?>
                     @if (count($list_ad[1]) > 0)
-                        @for ($i = 0; $i < count($list_ad[1]); $i++)
-                            @if ($list_ad[1][$i]->advert->ad_status == 1)
-                                <a href="{{ $list_ad[1][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[1][$i]->advert->ad_id}}')" target="_blank" ><img src="{{asset('local/storage/app/advert/'.$list_ad[1][$i]->advert->ad_img)}}"></a>
+                            @if ($list_ad[1][0]->advert->ad_status == 1)
+                                <a href="{{ $list_ad[1][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[1][0]->advert->ad_id}}')" target="_blank" ><img src="{{asset('local/storage/app/advert/'.$list_ad[1][0]->advert->ad_img)}}"></a>
                                 <?php $count_ad++ ?>
                             @endif
-                        @endfor
                     @endif
-                    @if (count($ad_home[1]) > 0)
-                        @for ($i = 0; $i < count($ad_home[1]); $i++)
-                            @if ($ad_home[1][$i]->advert->ad_status == 1)
-                                <a href="{{ $ad_home[1][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[1][$i]->advert->ad_id}}')" target="_blank" >
-                                    <img src="{{asset('local/storage/app/advert/'.$ad_home[1][$i]->advert->ad_img)}}">
+                    @if (count($ad_home[1]) > 0 && $count_ad == 0)
+                            @if ($ad_home[1][0]->advert->ad_status == 1)
+                                <a href="{{ $ad_home[1][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[1][0]->advert->ad_id}}')" target="_blank" >
+                                    <img src="{{asset('local/storage/app/advert/'.$ad_home[1][0]->advert->ad_img)}}">
                                 </a>
                                 <?php $count_ad++ ?>
                             @endif
-                        @endfor
                     @endif
                     @if ($count_ad == 0)
                         <a href="{{ asset('') }}">
