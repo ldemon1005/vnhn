@@ -21,7 +21,7 @@ class WebsiteInfoController extends Controller
         $website_info->user_updated = DB::table('accounts')->find($website_info->user_id);
 
         $data = [
-            'website_info' => $website_info
+            'website_info' => $website_info,
         ];
         return view('admin.website_info.index',$data);
     }

@@ -11,7 +11,6 @@ function set_lang(lang) {
         dataType: 'json',
     }).fail(function (ui, status) {
     }).done(function (data, status) {
-        console.log(1,data)
-        if (data.status == 1) window.location="/";;
+        if (data.status == 1) window.location="/";
     })
 }

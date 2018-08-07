@@ -105,7 +105,7 @@
                     @endforeach
                     
                     <li class="dropdown">
-                        <a>Chuyên mục khác</a>
+                        <a>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chuyên mục khác' : 'Category orther'}}</a>
                         <?php $count1 = 0?>
                         <ul class="dropdown_child">
                             @for($i = 6; $i < $menu->count(); $i++)

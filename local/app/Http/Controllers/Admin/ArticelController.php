@@ -415,7 +415,7 @@ class ArticelController extends Controller
 
                 if(!$articel->update($data)){$check = 0;}
 
-                if(DB::table('group_news_vn')->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}
+                if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}
 
                 $data_group_news = [];
 
@@ -437,7 +437,7 @@ class ArticelController extends Controller
                 if(!$this->add_log($articel,$status,'Chỉnh sửa'.$status_str)) $check = 0;
                 if($check == 1){
                     DB::commit();
-                    return redirect()->route('admin_articel')->with('status','Cập nhật thành công');
+                    return redirect()->route('admin_articel')->with('success','Cập nhật thành công');
                 }else {
                     DB::rollBack();
                     $data['content'] = $content;
@@ -530,7 +530,7 @@ class ArticelController extends Controller
         $result[] = (object)$root;
         $this->recusiveGroup($list_group, 0, "", $result);
 
-        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->orderBy('order_main')->paginate(20);
+        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->orderBy('order_main')->paginate(20);
 
         $data = [
             'list_articel' => $arrticel_hot,

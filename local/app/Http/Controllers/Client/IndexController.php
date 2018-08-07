@@ -18,10 +18,10 @@ class IndexController extends Controller
 {
     public function index()
     {
+
         /*
          *  phần new
          */
-//        $menu = $this->get_menu_top();
 
         $list_articel_new = $this->get_new_articel();
 
@@ -50,8 +50,9 @@ class IndexController extends Controller
 
         $advert = $this->get_advert(1);
         $advert_home = $this->get_advert_home();
+
+
         $data = [
-//            'menu' => $menu,
             'list_articel_new' => $list_articel_new,
             'list_video_new' => $list_video_new,
             'magazine_new' => $magazine_new,
@@ -70,7 +71,6 @@ class IndexController extends Controller
             'ad_home' => $advert_home
         ];
 
-
         return view('client.index.index', $data);
     }
 
@@ -86,7 +86,7 @@ class IndexController extends Controller
 
     public function get_new_articel()
     {
-        $list_articel_new = DB::table($this->db->news)->where('hot_main', 1)->where('status',1)->where('release_time', '<=', time() + 43200)->orderBy('order_main')->orderByDesc('release_time')->take(10)->get();
+        $list_articel_new = DB::table($this->db->news)->where('hot_main', 1)->where('status',1)->where('release_time', '<=', time())->orderBy('order_main')->take(10)->get();
         foreach ($list_articel_new as $item) {
             if (time() - $item->release_time > 86400) {
                 $item->release_time = date('d/m/Y H:m', $item->release_time);
