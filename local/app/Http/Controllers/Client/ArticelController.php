@@ -6,6 +6,7 @@ use App\Model\News;
 use App\Models\Comment_vn;
 use App\Models\AdvertTop;
 use App\Models\Advert;
+use App\Models\MagazineNew;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -95,7 +96,8 @@ class ArticelController extends Controller
         /*
          * magazine
          */
-        $magazine_new = $this->get_magazine_new();
+        // $magazine_new = $this->get_magazine_new();
+        $magazine_new = MagazineNew::where('m_status', 1)->orderBy('m_hot', 'asc')->get();
 
         
         // advert

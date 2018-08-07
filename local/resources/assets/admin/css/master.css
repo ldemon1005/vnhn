@@ -44,6 +44,13 @@
 	height: 2.1rem;
 	border-radius: 50%;
 }
+.magazineImg{
+	height: 60px;
+
+}
+.magazineImg img{
+	height: 100%;
+}
 @media only screen and (max-width: 768px) {
 	.hideResponsive768{
 		display: none;

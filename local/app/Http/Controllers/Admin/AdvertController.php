@@ -119,6 +119,10 @@ class AdvertController extends Controller
         $filename = $ad->ad_img;
         File::delete('libs/storage/app/advert/'.$filename);
         File::delete('libs/storage/app/advert/resized-'.$filename);
+        $ad_top = AdvertTop::where('adt_ad_id', $id)->get();
+        foreach ($ad_top as $item) {
+            $item->delete();
+        }
         $ad->delete();
         return back();
     }

@@ -349,9 +349,12 @@
 
                                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                                         <div class="carousel-inner">
-                                            @foreach($magazine_new->slide_show as $slide_show)
+                                            @foreach($magazine_new as $item)
                                                 <div class="carousel-item {{$loop->index == 0 ? 'active' : ''}}">
-                                                    <img class="d-block w-100" src="{{asset('/local/resources'.$slide_show)}}" alt="Second slide">
+                                                    <img class="d-block w-100" src="{{asset('/local/storage/app/magazine/'.$item->m_img)}}" alt="Second slide">
+                                                    <div class="title">
+                                                        <h3>{{$item->m_title}}</h3>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -366,7 +369,7 @@
                                     </div>
                                 </div>
                                 <div class="title">
-                                    <h3>{{$magazine_new->title}}</h3>
+                                    {{-- <h3>{{$magazine_new->title}}</h3> --}}
                                 </div>
                             </section>
                             
