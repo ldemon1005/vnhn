@@ -285,7 +285,7 @@ class ArticelController extends Controller
         }
         if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
         else $result = [];
-        // dd($result);
+
         if($id == 0){
             $data = [
                 'id' => 0,
@@ -563,7 +563,7 @@ class ArticelController extends Controller
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
-            $arrticel_hot = DB::table($this->db->news)->whereIn('id',$articel_hot_ids)->orderBy('hot_item')->get();
+            $arrticel_hot = DB::table($this->db->news)->orderByDesc('id')->whereIn('id',$articel_hot_ids)->take(15)->get();
         }
 
         $data = [

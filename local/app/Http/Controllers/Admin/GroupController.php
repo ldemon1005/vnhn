@@ -157,7 +157,7 @@ class GroupController extends Controller
 
     function form_sort_group($parent_id = 0){
         if($parent_id == 0){
-            $list_group = DB::table($this->db->group)->where('parentid',0)->orderBy('order')->get();
+            $list_group = DB::table($this->db->group)->where('home_index',1)->orderBy('order')->get();
 
             $data = [
                 'list_group' => $list_group

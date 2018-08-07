@@ -2,161 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0335a73-a8cb-450c-91b2-1ae833e5ca02" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/EmagazineController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/app/Models/Emagazine.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/database/migrations/2018_08_04_090213_create_emagazines_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/assets/admin/js/comment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/assets/admin/js/emagazine.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/assets/admin/js/group_video.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/assets/images/Rolling-1s-200px.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/assets/js/emagazine.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/093823-thu-truong-bo-gtvt-le-dinh-tho-vua-ky-quyet-dinh-cap-giay-phep-kinh-doanh-hang-khong-chung-cho-ctcp-dich-vu-globaltrans-air.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/0cfd9c2a8e7b23f26ab7e917a82ffada_anh 1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/14498369a9dd92f2eb3df1428fd1b5bc_anh 2.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/148ae4e2e7f4d6f76b842af43dff5014_photo_2018-08-02_09-27-50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/1_1165526.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/1_175313.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/1fc3034dc3b4074eacf75c9b315aa6d1_anh_13.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/2080659_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/3b4b3002e3f606ecfe5b732497c38e12_anh 18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/406f777696c1b2ec585fac8b0e4680d5_anh 13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/5720_img_20161220163505.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/657347cca2987281d202095964c14737_photo_2018-08-02_09-27-50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/66110f721644ef28cfb52e38c51ec053_anh 10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/6930de5ca02b2e3c54b933f313394279_anh 8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/7a2ac87b4d33ccbee78e3860c1bf8b99_anh 9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/88e97a2952e4e515b7ca12fecf287497_anh 4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/95640fd4e936d0a9f1df1bb2e2c93a2c_anh 7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/C12A3318.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/Phan-Huy-Le.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/a1579617f75f49d965aa0994b0704200_anh 18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/a5c06183e056171300a5ba06eb5db87b_anh 1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/a97df0bae1c66ea9658a69fdf795f869_photo-2-1494509924648.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 12.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 13.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 15.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 17.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 18.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 19.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 2.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 8.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh 9.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/anh-2-1527731942.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/apple1_uwnt.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/content-link-iphone-transfer-content-ios11_2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/d2f3aee517f12e589413b96b8bf48ba2_anh 8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/di-du-lich.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/du-kien-cat-giam-hang-loat-chi-cuc-thue-hai-quan-kho-bac-35-.9817.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/e93153a768b5483380f00ff29ff907b0_photo_2018-08-02_09-27-50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/f4a53b623b635f69fbc19bf0a2d2be57_anh 5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/mot-lit-nuoc-mat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/nncnc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/photo-2-1494509924648.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/photo1520224070478-152022407047827504611.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/photo_2018-08-02_09-27-50.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/tb-bb-baaadje6In.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ttxvn_2607pho_Wall.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ttxvn_chu_tich_nuoc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/unnamed_2_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ve_so.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/von-nha-o-xa-hoi-1511251449.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ximang_giamphatthaiximang.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/Ảnh 10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/Ảnh 11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/Ảnh 16.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/Ảnh 3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ảnh 1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ảnh 2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ảnh 3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ảnh 4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ảnh 5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ảnh 6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/ảnh 7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/views/admin/emagazine/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/views/admin/emagazine/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/views/admin/emagazine/sort.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/resources/views/magazine/index/detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533353316.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533353398.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533353550.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533353560.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533354443.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533358342.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533366060.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533353316.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533353398.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533353550.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533353560.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533354443.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533358342.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533366060.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533371445.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/emagazine/resized-img_2018-08-04_1533371563.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533354802.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533354912.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533356986.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533357311.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533358342.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533366060.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533371446.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/local/storage/app/file_emagazine/file_2018-08-04_1533371564.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vnhn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vnhn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupVideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupVideoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Client/MagazineController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Client/MagazineController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/helpers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/database/migrations/2018_07_18_032517_adverts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/database/migrations/2018_07_18_070123_advert_top.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/database/migrations/2018_07_18_075120_group_vn.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/admin/css/master.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/admin/css/master.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/admin/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/admin/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/detail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/magazine_main.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/magazine_main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo14.png" beforeDir="false" afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533371563.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo1526165122002-1526165122013260657602.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo1527228175504-15272281755051781184942.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo1529081364140-1529081364141548953982.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo1532079843170-15320798431701414490616.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo1532635972290-15326359722901344678967.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/images/photo9.png" beforeDir="false" afterPath="$PROJECT_DIR$/local/storage/app/emagazine/img_2018-08-04_1533371445.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/js/header-footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/js/header-footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/uploads/1_8_2018/sadfdsg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/account/account.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/account/account.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/comment/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/comment/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/group_video/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/group_video/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/profile/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/profile/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/client/index/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/index/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/magazine/index/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/magazine/index/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/magazine/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/magazine/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/magazine/form_magazine.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/magazine/form_magazine.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +18,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/local/composer.json</pharConfigPath>
   </component>
   <component name="FUSProjectUsageTrigger">
@@ -176,41 +30,59 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="570671678">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="env" value="1" />
+          <entry key="php" value="17" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Blade" value="7" />
+          <entry key="PHP" value="10" />
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="env" value="5" />
+          <entry key="php" value="563" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Blade" value="8" />
+          <entry key="PHP" value="555" />
+          <entry key="PLAIN_TEXT" value="5" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/CommentController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2057">
-              <caret line="128" column="44" selection-start-line="128" selection-start-column="44" selection-end-line="128" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/resources/assets/css/detail.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9384">
-              <caret line="552" column="20" selection-start-line="552" selection-start-column="20" selection-end-line="552" selection-end-column="20" />
+            <state relative-caret-position="447">
+              <caret line="168" column="96" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -218,49 +90,158 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1037">
-              <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+            <state relative-caret-position="196">
+              <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web.config">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/time.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="164">
+              <caret line="127" column="58" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="287" selection-start-line="287" selection-end-line="287" />
+              <folding>
+                <element signature="e#471#4890#0#PHP" />
+                <element signature="e#537#586#0#PHP" />
+                <element signature="e#676#1080#0#PHP" />
+                <element signature="e#806#1080#0#PHP" />
+                <element signature="e#839#1051#0#PHP" />
+                <element signature="e#894#1050#2#PHP" />
+                <element signature="e#946#1035#0#PHP" />
+                <element signature="e#1206#1433#0#PHP" />
+                <element signature="e#1284#1433#0#PHP" />
+                <element signature="e#1315#1410#0#PHP" />
+                <element signature="e#1443#1492#0#PHP" />
+                <element signature="e#1502#1916#0#PHP" />
+                <element signature="e#1545#1605#0#PHP" />
+                <element signature="e#1618#1681#0#PHP" />
+                <element signature="e#1694#1757#0#PHP" />
+                <element signature="e#1770#1835#0#PHP" />
+                <element signature="e#1849#1906#0#PHP" />
+                <element signature="e#1964#2056#0#PHP" />
+                <element signature="e#2468#2567#0#PHP" />
+                <element signature="e#2579#2930#0#PHP" />
+                <element signature="e#2940#3240#0#PHP" />
+                <element signature="e#2985#3188#0#PHP" />
+                <element signature="e#3006#3187#2#PHP" />
+                <element signature="e#3059#3172#0#PHP" />
+                <element signature="e#3249#3368#0#PHP" />
+                <element signature="e#3461#3589#0#PHP" />
+                <element signature="e#3598#3732#0#PHP" />
+                <element signature="e#3741#3881#0#PHP" />
+                <element signature="e#3891#4070#0#PHP" />
+                <element signature="e#4109#4278#0#PHP" />
+                <element signature="e#4151#4267#0#PHP" />
+                <element signature="e#4296#4428#0#PHP" />
+                <element signature="e#4438#4602#0#PHP" />
+                <element signature="e#4611#4659#0#PHP" />
+                <element signature="e#4896#8640#0#PHP" />
+                <element signature="e#5124#5423#0#PHP" />
+                <element signature="e#5254#5423#0#PHP" />
+                <element signature="e#5567#5651#0#PHP" />
+                <element signature="e#5691#5768#0#PHP" />
+                <element signature="e#5777#5826#0#PHP" />
+                <element signature="e#5836#6249#0#PHP" />
+                <element signature="e#5879#5942#0#PHP" />
+                <element signature="e#5955#6016#0#PHP" />
+                <element signature="e#6029#6090#0#PHP" />
+                <element signature="e#6103#6168#0#PHP" />
+                <element signature="e#6182#6239#0#PHP" />
+                <element signature="e#6739#6838#0#PHP" />
+                <element signature="e#6848#7281#0#PHP" />
+                <element signature="e#7291#7591#0#PHP" />
+                <element signature="e#7336#7539#0#PHP" />
+                <element signature="e#7357#7538#2#PHP" />
+                <element signature="e#7410#7523#0#PHP" />
+                <element signature="e#7600#7720#0#PHP" />
+                <element signature="e#7783#7962#0#PHP" />
+                <element signature="e#7980#8029#0#PHP" />
+                <element signature="e#8049#8178#0#PHP" />
+                <element signature="e#8188#8352#0#PHP" />
+                <element signature="e#8361#8409#0#PHP" />
+                <element signature="e#10820#15369#0#PHP" />
+                <element signature="e#11144#11545#0#PHP" />
+                <element signature="e#11187#11246#0#PHP" />
+                <element signature="e#11259#11318#0#PHP" />
+                <element signature="e#11331#11390#0#PHP" />
+                <element signature="e#11403#11462#0#PHP" />
+                <element signature="e#11475#11535#0#PHP" />
+                <element signature="e#12005#15363#0#PHP" />
+                <element signature="e#12223#12530#0#PHP" />
+                <element signature="e#12261#12516#0#PHP" />
+                <element signature="e#12318#12449#0#PHP" />
+                <element signature="e#12543#12678#0#PHP" />
+                <element signature="e#12818#13479#0#PHP" />
+                <element signature="e#12974#13479#0#PHP" />
+                <element signature="e#13489#15363#0#PHP" />
+                <element signature="e#13576#15353#0#PHP" />
+                <element signature="e#13694#15353#0#PHP" />
+                <element signature="e#13973#14312#0#PHP" />
+                <element signature="e#14015#14294#0#PHP" />
+                <element signature="e#14076#14219#0#PHP" />
+                <element signature="e#14330#14473#0#PHP" />
+                <element signature="e#14627#15339#0#PHP" />
+                <element signature="e#14796#15339#0#PHP" />
+                <element signature="e#15375#16036#0#PHP" />
+                <element signature="e#15752#16029#0#PHP" />
+                <element signature="e#15892#16029#0#PHP" />
+                <element signature="e#16042#16584#0#PHP" />
+                <element signature="e#16153#16480#0#PHP" />
+                <element signature="e#16491#16578#0#PHP" />
+                <element signature="e#16590#17134#0#PHP" />
+                <element signature="e#16715#16915#0#PHP" />
+                <element signature="e#16933#16979#0#PHP" />
+                <element signature="e#17072#17127#0#PHP" />
+                <element signature="e#17084#17126#1#PHP" />
+                <element signature="e#17140#17340#0#PHP" />
+                <element signature="e#17237#17274#0#PHP" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3145">
-              <caret line="185" column="43" selection-start-line="185" selection-start-column="29" selection-end-line="185" selection-end-column="43" />
+            <state relative-caret-position="288">
+              <caret line="71" column="122" selection-start-line="71" selection-start-column="113" selection-end-line="71" selection-end-column="122" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local/app/Http/Middleware/CheckVNHN.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/resources/views/admin/comment/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/local/app/Http/Middleware/CheckLogin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1411">
-              <caret line="83" column="168" selection-start-line="83" selection-start-column="168" selection-end-line="83" selection-end-column="168" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/resources/assets/admin/js/custom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3111">
-              <caret line="190" column="11" selection-start-line="190" selection-start-column="11" selection-end-line="190" selection-end-column="104" />
+            <state relative-caret-position="408">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -278,6 +259,15 @@
       <find>submit-comment</find>
       <find>comment</find>
       <find>update_comment</find>
+      <find>sort_hot_articel_post</find>
+      <find>$group_menu</find>
+      <find>$list_articel_hot</find>
+      <find>top</find>
+      <find>$not_ids</find>
+      <find>$group_menu_cate</find>
+      <find>danh</find>
+      <find>$list_articel</find>
+      <find>form_</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -298,16 +288,21 @@
         <option value="$PROJECT_DIR$/local/resources/views/admin/group_video/form_menu_video.blade.php" />
         <option value="$PROJECT_DIR$/local/resources/views/admin/group_video/index.blade.php" />
         <option value="$PROJECT_DIR$/local/resources/views/admin/group_video/sort_menu_video.blade.php" />
-        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupController.php" />
         <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupVideoController.php" />
         <option value="$PROJECT_DIR$/local/resources/views/admin/articel/index.blade.php" />
-        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Controller.php" />
-        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php" />
         <option value="$PROJECT_DIR$/local/resources/assets/css/detail.css" />
         <option value="$PROJECT_DIR$/local/routes/web.php" />
         <option value="$PROJECT_DIR$/local/resources/views/admin/comment/index.blade.php" />
         <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/CommentController.php" />
         <option value="$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php" />
+        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Controller.php" />
+        <option value="$PROJECT_DIR$/local/resources/views/admin/magazine/form_magazine.blade.php" />
+        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupController.php" />
+        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php" />
+        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php" />
+        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php" />
+        <option value="$PROJECT_DIR$/local/.env" />
+        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" />
       </list>
     </option>
   </component>
@@ -410,8 +405,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="y" value="1" />
+    <option name="x" value="355" />
+    <option name="y" value="71" />
     <option name="width" value="1380" />
     <option name="height" value="744" />
   </component>
@@ -428,91 +423,104 @@
           <expand>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Models" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="comment" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="routes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="articel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vnhn" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="local" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="storage" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vnhn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vnhn" type="462c0819:PsiDirectoryNode" />
+              <item name="local" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -536,7 +544,7 @@
     <property name="node.js.selected.package.jscs" value="" />
     <property name="node.js.selected.package.tslint" value="" />
     <property name="nodejs_interpreter_path" value="node" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -569,21 +577,22 @@
       <workItem from="1533258958056" duration="7541000" />
       <workItem from="1533283922840" duration="9862000" />
       <workItem from="1533543227124" duration="252000" />
+      <workItem from="1533549420641" duration="3037000" />
+      <workItem from="1533554144728" duration="4378000" />
+      <workItem from="1533604802340" duration="4308000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19757000" />
+    <option name="totallyTimeSpent" value="31480000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18910742" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.195629" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -592,9 +601,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.20772947" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.31310943" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="File Transfer" order="10" weight="0.32936078" />
+      <window_info anchor="bottom" id="File Transfer" order="10" weight="0.32827735" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -700,20 +711,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
-          <caret line="367" column="24" selection-start-line="367" selection-start-column="20" selection-end-line="367" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupVideoController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-          <folding>
-            <element signature="e#46#71#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -732,55 +733,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/CommentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2057">
-          <caret line="128" column="44" selection-start-line="128" selection-start-column="44" selection-end-line="128" selection-end-column="44" />
+        <state relative-caret-position="561">
+          <caret line="36" column="34" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local/resources/assets/css/detail.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9384">
-          <caret line="552" column="20" selection-start-line="552" selection-start-column="20" selection-end-line="552" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+        <state relative-caret-position="9758">
+          <caret line="574" column="1" selection-start-line="574" selection-start-column="1" selection-end-line="574" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web.config">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3145">
-          <caret line="185" column="43" selection-start-line="185" selection-start-column="29" selection-end-line="185" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/resources/views/admin/comment/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="83" column="168" selection-start-line="83" selection-start-column="168" selection-end-line="83" selection-end-column="168" />
+        <state relative-caret-position="1445">
+          <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -791,10 +764,207 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/admin/account/account.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3111">
-          <caret line="190" column="11" selection-start-line="190" selection-start-column="11" selection-end-line="190" selection-end-column="104" />
+        <state relative-caret-position="322">
+          <caret line="155" column="5" lean-forward="true" selection-start-line="155" selection-start-column="5" selection-end-line="155" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/admin/magazine/form_magazine.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="79" column="92" selection-start-line="79" selection-start-column="92" selection-end-line="79" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/admin/magazine/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="62" lean-forward="true" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="68" column="33" lean-forward="true" selection-start-line="68" selection-start-column="33" selection-end-line="68" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="21" column="33" lean-forward="true" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/time.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="127" column="58" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="168" column="96" selection-start-line="168" selection-start-column="78" selection-end-line="168" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="287" selection-start-line="287" selection-end-line="287" />
+          <folding>
+            <element signature="e#471#4890#0#PHP" />
+            <element signature="e#537#586#0#PHP" />
+            <element signature="e#676#1080#0#PHP" />
+            <element signature="e#806#1080#0#PHP" />
+            <element signature="e#839#1051#0#PHP" />
+            <element signature="e#894#1050#2#PHP" />
+            <element signature="e#946#1035#0#PHP" />
+            <element signature="e#1206#1433#0#PHP" />
+            <element signature="e#1284#1433#0#PHP" />
+            <element signature="e#1315#1410#0#PHP" />
+            <element signature="e#1443#1492#0#PHP" />
+            <element signature="e#1502#1916#0#PHP" />
+            <element signature="e#1545#1605#0#PHP" />
+            <element signature="e#1618#1681#0#PHP" />
+            <element signature="e#1694#1757#0#PHP" />
+            <element signature="e#1770#1835#0#PHP" />
+            <element signature="e#1849#1906#0#PHP" />
+            <element signature="e#1964#2056#0#PHP" />
+            <element signature="e#2468#2567#0#PHP" />
+            <element signature="e#2579#2930#0#PHP" />
+            <element signature="e#2940#3240#0#PHP" />
+            <element signature="e#2985#3188#0#PHP" />
+            <element signature="e#3006#3187#2#PHP" />
+            <element signature="e#3059#3172#0#PHP" />
+            <element signature="e#3249#3368#0#PHP" />
+            <element signature="e#3461#3589#0#PHP" />
+            <element signature="e#3598#3732#0#PHP" />
+            <element signature="e#3741#3881#0#PHP" />
+            <element signature="e#3891#4070#0#PHP" />
+            <element signature="e#4109#4278#0#PHP" />
+            <element signature="e#4151#4267#0#PHP" />
+            <element signature="e#4296#4428#0#PHP" />
+            <element signature="e#4438#4602#0#PHP" />
+            <element signature="e#4611#4659#0#PHP" />
+            <element signature="e#4896#8640#0#PHP" />
+            <element signature="e#5124#5423#0#PHP" />
+            <element signature="e#5254#5423#0#PHP" />
+            <element signature="e#5567#5651#0#PHP" />
+            <element signature="e#5691#5768#0#PHP" />
+            <element signature="e#5777#5826#0#PHP" />
+            <element signature="e#5836#6249#0#PHP" />
+            <element signature="e#5879#5942#0#PHP" />
+            <element signature="e#5955#6016#0#PHP" />
+            <element signature="e#6029#6090#0#PHP" />
+            <element signature="e#6103#6168#0#PHP" />
+            <element signature="e#6182#6239#0#PHP" />
+            <element signature="e#6739#6838#0#PHP" />
+            <element signature="e#6848#7281#0#PHP" />
+            <element signature="e#7291#7591#0#PHP" />
+            <element signature="e#7336#7539#0#PHP" />
+            <element signature="e#7357#7538#2#PHP" />
+            <element signature="e#7410#7523#0#PHP" />
+            <element signature="e#7600#7720#0#PHP" />
+            <element signature="e#7783#7962#0#PHP" />
+            <element signature="e#7980#8029#0#PHP" />
+            <element signature="e#8049#8178#0#PHP" />
+            <element signature="e#8188#8352#0#PHP" />
+            <element signature="e#8361#8409#0#PHP" />
+            <element signature="e#10820#15369#0#PHP" />
+            <element signature="e#11144#11545#0#PHP" />
+            <element signature="e#11187#11246#0#PHP" />
+            <element signature="e#11259#11318#0#PHP" />
+            <element signature="e#11331#11390#0#PHP" />
+            <element signature="e#11403#11462#0#PHP" />
+            <element signature="e#11475#11535#0#PHP" />
+            <element signature="e#12005#15363#0#PHP" />
+            <element signature="e#12223#12530#0#PHP" />
+            <element signature="e#12261#12516#0#PHP" />
+            <element signature="e#12318#12449#0#PHP" />
+            <element signature="e#12543#12678#0#PHP" />
+            <element signature="e#12818#13479#0#PHP" />
+            <element signature="e#12974#13479#0#PHP" />
+            <element signature="e#13489#15363#0#PHP" />
+            <element signature="e#13576#15353#0#PHP" />
+            <element signature="e#13694#15353#0#PHP" />
+            <element signature="e#13973#14312#0#PHP" />
+            <element signature="e#14015#14294#0#PHP" />
+            <element signature="e#14076#14219#0#PHP" />
+            <element signature="e#14330#14473#0#PHP" />
+            <element signature="e#14627#15339#0#PHP" />
+            <element signature="e#14796#15339#0#PHP" />
+            <element signature="e#15375#16036#0#PHP" />
+            <element signature="e#15752#16029#0#PHP" />
+            <element signature="e#15892#16029#0#PHP" />
+            <element signature="e#16042#16584#0#PHP" />
+            <element signature="e#16153#16480#0#PHP" />
+            <element signature="e#16491#16578#0#PHP" />
+            <element signature="e#16590#17134#0#PHP" />
+            <element signature="e#16715#16915#0#PHP" />
+            <element signature="e#16933#16979#0#PHP" />
+            <element signature="e#17072#17127#0#PHP" />
+            <element signature="e#17084#17126#1#PHP" />
+            <element signature="e#17140#17340#0#PHP" />
+            <element signature="e#17237#17274#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Middleware/CheckLogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="71" column="122" selection-start-line="71" selection-start-column="113" selection-end-line="71" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Middleware/CheckVNHN.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
         </state>
       </provider>
     </entry>

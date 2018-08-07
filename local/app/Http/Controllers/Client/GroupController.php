@@ -30,19 +30,28 @@ class GroupController extends Controller{
 
         $result[] = $slug[1];
         $this->recusive_find_child($list_group,$slug[1],$result);
+
         $result = array_unique($result);
+
         $list_articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->where('hot',1)->get(['news_vn_id'])->toJson();
 
         $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids,true),'news_vn_id');
 
-        $list_articel_hot = DB::table($this->db->news)->whereIn('id',$list_articel_hot_ids)->take(5)->get();
+        $list_articel_hot = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_articel_hot_ids)->where('status',1)->orderBy('order_item')->take(5)->get();
 
+        if($list_articel_hot->count() < 5){
+            $number = 5 - $list_articel_hot->count();
+            $list_articel_hot_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_articel_hot_ids)->orderBy('release_time')->take($number)->get();
+            $list_articel_hot = $list_articel_hot->toBase()->merge($list_articel_hot_1);
+        }
         $not_ids = [];
 
         foreach ($list_articel_hot as $val){
             $val->release_time = date('d/m/Y H:m',$val->release_time);
             $not_ids[] = $val->id;
         }
+
+
 
         /*
          *  articel top view
@@ -51,12 +60,11 @@ class GroupController extends Controller{
         $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->get()->toJson();
         $list_articel_ids = array_column(json_decode($list_articel_ids,true),'news_vn_id');
 
-        $articel_top_view = $this->articel_top_view($list_articel_ids,$not_ids);
+        $articel_top_view = $this->articel_top_view($list_articel_ids);
 
         foreach ($articel_top_view as $val){
             $val->title = cut_string_name($val->title,70);
             $val->release_time = date('d/m/Y H:m',$val->release_time);
-            $not_ids[] = $val->id;
         }
 
         /*
@@ -64,7 +72,7 @@ class GroupController extends Controller{
          */
 
 
-        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->paginate(7);
+        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('status',1)->paginate(7);
 
         $group_ids = array_column(json_decode($group_menu->toJson(),true),'id');
 
@@ -92,7 +100,7 @@ class GroupController extends Controller{
             'list_ad' => $advert,
             'ad_home' => $advert_home
         ];
-        // dd($data);
+
 
         return view('client.index.time',$data);
     }
@@ -100,15 +108,15 @@ class GroupController extends Controller{
     function recusive_find_child($list_group,$parentid,&$result){
         foreach ($list_group as $key => $group){
             if($parentid == $group->parentid){
-                $result[] = $group->parentid;
+                $result[] = $group->id;
                 unset($list_group[$key]);
                 $this->recusive_find_child($list_group,$group->id,$result);
             }
         }
     }
 
-    function articel_top_view($list_articel_ids,$not_ids){
-        $articel_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->whereNotIn('id',$not_ids)->orderBy('view')->paginate(5);
+    function articel_top_view($list_articel_ids){
+        $articel_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->orderBy('view')->paginate(5);
         return $articel_top_view;
     }
 
@@ -121,7 +129,7 @@ class GroupController extends Controller{
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->orderBy('parentid')->take(6)->get();
         }else{
             $parentid = $group->parentid;
             $ids[] = $parentid;
@@ -129,7 +137,7 @@ class GroupController extends Controller{
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->orderBy('parentid')->take(6)->get();
         }
         return $group_menu;
     }
