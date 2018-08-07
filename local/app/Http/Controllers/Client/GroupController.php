@@ -78,7 +78,7 @@ class GroupController extends Controller{
 
         unset($group_ids[0]);
 
-        $group_articel = Group_vn::whereIn('id',$group_ids)->take(3)->get();
+        $group_articel = Group_vn::whereIn('id',$group_ids)->where('parentid',$slug[1])->where('status',1)->take(3)->get();
 
         foreach ($group_articel as $item){
             $item->articel = $item->get_news_take_4();

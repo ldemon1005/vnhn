@@ -1,4 +1,8 @@
 @extends('client.master')
+@section('title', 'Tin nhanh Việt Nam')
+@section('fb_title', 'Tin nhanh Việt Nam Hội Nhập - Cập nhật xu hướng')
+@section('fb_des', 'Tạp chí vnhh là trang thông tin tạp chí đối ngoại,......')
+@section('fb_image', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
 @section('css')
     <style>
         a{

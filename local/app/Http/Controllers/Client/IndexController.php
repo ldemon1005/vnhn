@@ -201,7 +201,6 @@ class IndexController extends Controller
     }
 
     public function article_view(){
-        
         $id = (int)Input::get('id');
         $news = News::find($id);
         $news->view += 1;

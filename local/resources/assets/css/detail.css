@@ -213,14 +213,17 @@ ul.mainDetailRightList li a:hover {
 }
 
 
-.mainDetailLeftContent {
-	font-family: 'Merriweather', serif;
-	font-size: 14px;
-	line-height: 1.6;
+.mainDetailLeftContent, .mainDetailLeftContent p, .mainDetailLeftContent  p * {
+	font-family: 'Merriweather', serif !important;
+	font-size: 14px !important;
+	line-height: 1.6 !important;
 	color: #333;
 }
 .mainDetailLeftContent img{
 	max-width: 80%;
+	height: auto!important;
+	display: block;
+	margin: auto;
 }
 
 .mainDetailLeftInvolve{

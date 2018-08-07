@@ -2,13 +2,451 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0335a73-a8cb-450c-91b2-1ae833e5ca02" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/local/resources/assets/images/Layer 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/assets/images/cf140350-41c3-4873-b320-45bea6cb5213.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/1_8_2018/sadfdsg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/14102011 HTQT1.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/144012_Anh_Bao_TGVN_43.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/1484537395_v.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/171439_APEC_3-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/19_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/NQH_3082[1].jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/The-Gioi-Phang.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/anh 9.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/ca4phiendichtiengnhatquan1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/cach_mang_cong_nghiep_QNPF.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/e4c02d6fcb01fb684715a366dc53c2db_anh 9.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/mh_doimoitheche-910cb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/sss8189-1508911893468-1508911902113.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/tải xuống (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/tải xuống (2).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/4_8_2018/tải xuống.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/16bdf9ef006195882f26f3b46bb6013d_a2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/92baa57cc4605d84f661ab7a67de37b3_a2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/THB2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/a1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/a2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/anh sl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/d2a1ee93937277eb96e7f936ee02974f_a1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/f6ac4a163dd8fbd09c8d572b2bbd0652_a1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/ảnh 1 (1).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/5_8_2018/ảnh thời sự - PTT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/6_8_2018/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/6_8_2018/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/6_8_2018/3f371d7d5fe7ab95719396eb04256295_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/6_8_2018/anh 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/6_8_2018/b88ef2ee8ab58ceb201b52fc014cb4db_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/6_8_2018/ảnh 1......jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/6_8_2018/ảnh 1...jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/68795db974d29a8cc3c3.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/Hội nhập/1.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/Hội nhập/2.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/Hội nhập/3.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/Hội nhập/4.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/a1(1).jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/a1(2).jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/a1(3).jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/a1.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/a2(1).jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/a2.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Anh VNHN/anh 1.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Lan Đoàn/ảnh 1__.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Lan Đoàn/ảnh 1_____.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Lan Đoàn/ảnh 2__.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Lan Đoàn/ảnh 3.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Lan Đoàn/ảnh 4.png.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Lan Đoàn/ảnh 5.png.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/2-0617.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/38425104-557059134697313-1869869765284069376-n-bb-baaacOlKlw.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/38427280_1847137095403658_1280381848890900480_n-0605.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/38458687_1847138695403498_7620880864968179712_n-0605 (1).jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/NQH_3082[1].jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/NQH_3117[1].jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/NQH_3123[1].jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/ảnh 1 (1).JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/ảnh 2 .JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Q/ảnh 3.JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Sfdsgf.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/Sếp 2 copy.png.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 11(1).jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 11.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 12.JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 13.JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 14.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 15.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 16.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 17.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/anh 18.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 10/ảnh 1.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/anh 10.JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/anh 11.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/anh 7.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/anh 8.JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/anh 9.JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/ảnh 2.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/ảnh 3.png.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/ảnh 4.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/ảnh 5.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 11/ảnh 6.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 11.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 12.JPG.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 13.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 14.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 15.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 16.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 17.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 18.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/VNHN 6/anh 19.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 1.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 10.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 2.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 5.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 6.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 7.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 8.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/anh 9.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/Ảnh 3.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 5/Ảnh 4.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 1.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 10.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 2.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 3.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 4.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 5.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 6.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 7.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 8.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 7/Ảnh 9.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/anh 18.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/anh 19.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/Ảnh 11.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/Ảnh 12.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/Ảnh 13.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/Ảnh 14.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/Ảnh 15.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/Ảnh 16.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 8/Ảnh 17.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 1.jpeg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 10.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 2.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 3.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 4.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 5.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 6.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 7.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 8.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/VNHN 9/anh 9.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/adsfsdg.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/anh thoi su 5-8/THB.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/anh thoi su 5-8/THB2.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/anh thoi su 5-8/anh sl.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/anh thoi su 5-8/anh sạt lở.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/anh thoi su 5-8/ảnh sạt lo.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/anh thoi su 5-8/ảnh thời sự - PTT.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/sadfdsg.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/15799938_1296505017058641_8457613437970167996_o.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/17353471_1392164307492711_4091132027436881305_n.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/32461621_1912039162171887_5850219475512590336_n.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/34684276_1942344775807992_5562670221044482048_n.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/35780759_1964484476927355_7283062604598083584_n.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/3_idiots_2009_aamir_khan_madhavan_sharman_joshi_98139_1920x1200.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/Rafael-Nadal-HD-Wallpaper.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/Roger+Federer+2006+French+Open+Day+Fifteen+GX0-5Hrg7hal.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/azthethao_com.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 1/wallpaper-3-idiots-32189721-1920-1080.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/10277545_434513526686024_6635985391929176178_n.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/Cậu bé bán kẹo tạo nên phép màu.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/Thanh xuân không hối tiếc.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/bức xúc không làm ta vô can.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/cover_l.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/mot-lit-nuoc-mat.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/nhung-tam-long-cao-ca_450x652_w_b.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/sach-bon-co-con-gai-ebook.png.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/tuổi trẻ đáng giá bao nhiêu.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/thư mục 2/wallpaper-3-idiots-32189722-1920-1080.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/àddsgtfhu.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/ádf.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/data/Images/ádfdsfgds.jpg.cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/68795db974d29a8cc3c3.jpg/68795db974d29a8cc3c3__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/Hội nhập/1.jpg/1__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/Hội nhập/2.jpg/2__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/Hội nhập/3.jpg/3__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/Hội nhập/4.jpg/4__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/a1(1).jpg/a1(1)__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/a1(2).jpg/a1(2)__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/a1(3).jpg/a1(3)__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/a1.jpg/a1__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/a2(1).jpg/a2(1)__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/a2.jpg/a2__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Anh VNHN/anh 1.jpg/anh 1__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Lan Đoàn/ảnh 1__.jpg/ảnh 1____150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Lan Đoàn/ảnh 1_____.jpg/ảnh 1_______150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Lan Đoàn/ảnh 2__.jpg/ảnh 2____150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Lan Đoàn/ảnh 3.jpg/ảnh 3__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Lan Đoàn/ảnh 4.png/ảnh 4__150x150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Lan Đoàn/ảnh 5.png/ảnh 5__150x150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/2-0617.jpg/2-0617__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/38425104-557059134697313-1869869765284069376-n-bb-baaacOlKlw.jpg/38425104-557059134697313-1869869765284069376-n-bb-baaacOlKlw__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/38427280_1847137095403658_1280381848890900480_n-0605.jpg/38427280_1847137095403658_1280381848890900480_n-0605__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/38458687_1847138695403498_7620880864968179712_n-0605 (1).jpg/38458687_1847138695403498_7620880864968179712_n-0605 (1)__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/NQH_3082[1].jpg/NQH_3082[1]__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/NQH_3117[1].jpg/NQH_3117[1]__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/NQH_3123[1].jpg/NQH_3123[1]__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/ảnh 1 (1).JPG/ảnh 1 (1)__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/ảnh 2 .JPG/ảnh 2 __150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Q/ảnh 3.JPG/ảnh 3__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Sfdsgf.jpg/Sfdsgf__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/Sếp 2 copy.png/Sếp 2 copy__150x150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 11(1).jpg/anh 11(1)__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 11.jpg/anh 11__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 12.JPG/anh 12__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 13.JPG/anh 13__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 14.jpg/anh 14__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 15.jpg/anh 15__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 16.jpg/anh 16__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 17.jpg/anh 17__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/anh 18.jpg/anh 18__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 10/ảnh 1.jpg/ảnh 1__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/anh 10.JPG/anh 10__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/anh 11.jpg/anh 11__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/anh 7.jpg/anh 7__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/anh 8.JPG/anh 8__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/anh 9.JPG/anh 9__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/ảnh 2.jpg/ảnh 2__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/ảnh 3.png/ảnh 3__150x150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/ảnh 4.jpg/ảnh 4__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/ảnh 5.jpg/ảnh 5__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 11/ảnh 6.jpg/ảnh 6__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 11.jpg/anh 11__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 12.JPG/anh 12__150x150.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 13.jpg/anh 13__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 14.jpg/anh 14__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 15.jpg/anh 15__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 16.jpg/anh 16__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 17.jpg/anh 17__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 18.jpg/anh 18__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/VNHN 6/anh 19.jpg/anh 19__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 1.jpg/anh 1__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 10.jpg/anh 10__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 2.jpg/anh 2__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 5.jpg/anh 5__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 6.jpg/anh 6__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 7.jpg/anh 7__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 8.jpg/anh 8__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/anh 9.jpg/anh 9__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/Ảnh 3.jpg/Ảnh 3__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 5/Ảnh 4.jpg/Ảnh 4__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 1.jpg/Ảnh 1__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 10.jpg/Ảnh 10__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 2.jpg/Ảnh 2__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 3.jpg/Ảnh 3__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 4.jpg/Ảnh 4__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 5.jpg/Ảnh 5__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 6.jpg/Ảnh 6__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 7.jpg/Ảnh 7__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 8.jpg/Ảnh 8__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 7/Ảnh 9.jpg/Ảnh 9__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/anh 18.jpg/anh 18__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/anh 19.jpg/anh 19__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/Ảnh 11.jpg/Ảnh 11__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/Ảnh 12.jpg/Ảnh 12__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/Ảnh 13.jpg/Ảnh 13__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/Ảnh 14.jpg/Ảnh 14__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/Ảnh 15.jpg/Ảnh 15__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/Ảnh 16.jpg/Ảnh 16__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 8/Ảnh 17.jpg/Ảnh 17__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 1.jpeg/anh 1__150x150.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 10.jpg/anh 10__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 2.jpg/anh 2__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 3.jpg/anh 3__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 4.jpg/anh 4__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 5.jpg/anh 5__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 6.jpg/anh 6__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 7.jpg/anh 7__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 8.jpg/anh 8__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/VNHN 9/anh 9.jpg/anh 9__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/adsfsdg.jpg/adsfsdg__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/anh thoi su 5-8/THB.jpg/THB__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/anh thoi su 5-8/THB2.jpg/THB2__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/anh thoi su 5-8/anh sl.jpg/anh sl__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/anh thoi su 5-8/anh sạt lở.jpg/anh sạt lở__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/anh thoi su 5-8/ảnh sạt lo.jpg/ảnh sạt lo__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/anh thoi su 5-8/ảnh thời sự - PTT.jpg/ảnh thời sự - PTT__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/sadfdsg.jpg/sadfdsg__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/15799938_1296505017058641_8457613437970167996_o.jpg/15799938_1296505017058641_8457613437970167996_o__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/17353471_1392164307492711_4091132027436881305_n.jpg/17353471_1392164307492711_4091132027436881305_n__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/32461621_1912039162171887_5850219475512590336_n.jpg/32461621_1912039162171887_5850219475512590336_n__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/34684276_1942344775807992_5562670221044482048_n.jpg/34684276_1942344775807992_5562670221044482048_n__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/35780759_1964484476927355_7283062604598083584_n.jpg/35780759_1964484476927355_7283062604598083584_n__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/3_idiots_2009_aamir_khan_madhavan_sharman_joshi_98139_1920x1200.jpg/3_idiots_2009_aamir_khan_madhavan_sharman_joshi_98139_1920x1200__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/Rafael-Nadal-HD-Wallpaper.jpg/Rafael-Nadal-HD-Wallpaper__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/Roger+Federer+2006+French+Open+Day+Fifteen+GX0-5Hrg7hal.jpg/Roger+Federer+2006+French+Open+Day+Fifteen+GX0-5Hrg7hal__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/azthethao_com.jpg/azthethao_com__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 1/wallpaper-3-idiots-32189721-1920-1080.jpg/wallpaper-3-idiots-32189721-1920-1080__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/10277545_434513526686024_6635985391929176178_n.jpg/10277545_434513526686024_6635985391929176178_n__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/Cậu bé bán kẹo tạo nên phép màu.jpg/Cậu bé bán kẹo tạo nên phép màu__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/Thanh xuân không hối tiếc.jpg/Thanh xuân không hối tiếc__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/bức xúc không làm ta vô can.jpg/bức xúc không làm ta vô can__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/cover_l.jpg/cover_l__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/mot-lit-nuoc-mat.jpg/mot-lit-nuoc-mat__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/nhung-tam-long-cao-ca_450x652_w_b.jpg/nhung-tam-long-cao-ca_450x652_w_b__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/sach-bon-co-con-gai-ebook.png/sach-bon-co-con-gai-ebook__150x150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/tuổi trẻ đáng giá bao nhiêu.jpg/tuổi trẻ đáng giá bao nhiêu__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/thư mục 2/wallpaper-3-idiots-32189722-1920-1080.jpg/wallpaper-3-idiots-32189722-1920-1080__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/àddsgtfhu.jpg/àddsgtfhu__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/ádf.jpg/ádf__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/.ckfinder/cache/thumbs/Images/ádfdsfgds.jpg/ádfdsfgds__150x150.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/68795db974d29a8cc3c3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/Hội nhập/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/Hội nhập/2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/Hội nhập/3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/Hội nhập/4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/a1(1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/a1(2).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/a1(3).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/a1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/a2(1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/a2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Anh VNHN/anh 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Lan Đoàn/ảnh 1__.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Lan Đoàn/ảnh 1_____.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Lan Đoàn/ảnh 2__.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Lan Đoàn/ảnh 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Lan Đoàn/ảnh 4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Lan Đoàn/ảnh 5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/2-0617.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/38425104-557059134697313-1869869765284069376-n-bb-baaacOlKlw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/38427280_1847137095403658_1280381848890900480_n-0605.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/38458687_1847138695403498_7620880864968179712_n-0605 (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/NQH_3082[1].jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/NQH_3117[1].jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/NQH_3123[1].jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/ảnh 1 (1).JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/ảnh 2 .JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Q/ảnh 3.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Sfdsgf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/Sếp 2 copy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 11(1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 12.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 13.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/anh 18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 10/ảnh 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/anh 10.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/anh 11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/anh 7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/anh 8.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/anh 9.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/ảnh 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/ảnh 3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/ảnh 4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/ảnh 5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 11/ảnh 6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 12.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/VNHN 6/anh 19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/anh 9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/Ảnh 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 5/Ảnh 4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 7/Ảnh 9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/anh 18.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/anh 19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/Ảnh 11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/Ảnh 12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/Ảnh 13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/Ảnh 14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/Ảnh 15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/Ảnh 16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 8/Ảnh 17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/VNHN 9/anh 9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/adsfsdg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/anh thoi su 5-8/THB.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/anh thoi su 5-8/THB2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/anh thoi su 5-8/anh sl.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/anh thoi su 5-8/anh sạt lở.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/anh thoi su 5-8/ảnh sạt lo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/anh thoi su 5-8/ảnh thời sự - PTT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/sadfdsg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/15799938_1296505017058641_8457613437970167996_o.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/17353471_1392164307492711_4091132027436881305_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/32461621_1912039162171887_5850219475512590336_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/34684276_1942344775807992_5562670221044482048_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/35780759_1964484476927355_7283062604598083584_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/3_idiots_2009_aamir_khan_madhavan_sharman_joshi_98139_1920x1200.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/Rafael-Nadal-HD-Wallpaper.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/Roger+Federer+2006+French+Open+Day+Fifteen+GX0-5Hrg7hal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/azthethao_com.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 1/wallpaper-3-idiots-32189721-1920-1080.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/10277545_434513526686024_6635985391929176178_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/Cậu bé bán kẹo tạo nên phép màu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/Thanh xuân không hối tiếc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/bức xúc không làm ta vô can.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/cover_l.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/mot-lit-nuoc-mat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/nhung-tam-long-cao-ca_450x652_w_b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/sach-bon-co-con-gai-ebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/tuổi trẻ đáng giá bao nhiêu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/thư mục 2/wallpaper-3-idiots-32189722-1920-1080.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/àddsgtfhu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/ádf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/uploads/userfiles/images/ádfdsfgds.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/storage/app/avatar/img_2018-08-07_1533607814.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/storage/app/avatar/resized-img_2018-08-07_1533607814.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/WebsiteInfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Admin/WebsiteInfoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/website_info/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/website_info/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/app/Http/Middleware/CheckVNHN.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Middleware/CheckVNHN.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/time.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/time.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/js/header-footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/js/header-footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/Ảnh 10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/uploads/2_8_2018/Ảnh 10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/articel/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/articel/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/admin/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/admin/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/index/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/index/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/index/time.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/index/time.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/layouts/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,15 +480,15 @@
         <counts>
           <entry key="env" value="1" />
           <entry key="js" value="1" />
-          <entry key="php" value="25" />
+          <entry key="php" value="27" />
           <entry key="rnc" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="10" />
+          <entry key="Blade" value="11" />
           <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="15" />
+          <entry key="PHP" value="16" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="RNG Compact" value="1" />
         </counts>
@@ -58,13 +496,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="env" value="5" />
-          <entry key="php" value="822" />
+          <entry key="php" value="882" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Blade" value="137" />
-          <entry key="PHP" value="685" />
+          <entry key="PHP" value="745" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
@@ -89,8 +527,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="113" column="29" lean-forward="true" selection-start-line="113" selection-start-column="29" selection-end-line="113" selection-end-column="29" />
+            <state relative-caret-position="272">
+              <caret line="16" column="66" lean-forward="true" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+              <folding>
+                <element signature="e#575#598#0#HTML" expanded="true" />
+                <element signature="e#605#655#0#HTML" expanded="true" />
+                <element signature="e#901#924#0#HTML" expanded="true" />
+                <element signature="e#931#981#0#HTML" expanded="true" />
+                <element signature="e#2156#2178#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/time.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="151" column="55" selection-start-line="151" selection-start-column="41" selection-end-line="151" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -99,7 +562,7 @@
         <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="415">
-              <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+              <caret line="99" selection-start-line="99" selection-end-line="99" />
             </state>
           </provider>
         </entry>
@@ -108,7 +571,7 @@
         <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="450" column="13" lean-forward="true" selection-start-line="450" selection-start-column="13" selection-end-line="450" selection-end-column="13" />
+              <caret line="450" column="13" selection-start-line="450" selection-start-column="13" selection-end-line="450" selection-end-column="13" />
               <folding>
                 <element signature="e#471#4890#0#PHP" />
                 <element signature="e#537#586#0#PHP" />
@@ -175,11 +638,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/local/resources/views/admin/website_info/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+            <state relative-caret-position="294">
+              <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
               <folding>
                 <element signature="e#3039#3065#0#HTML" expanded="true" />
               </folding>
@@ -191,25 +654,7 @@
         <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/WebsiteInfoController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3536">
-              <caret line="208" column="42" selection-start-line="208" selection-start-column="40" selection-end-line="208" selection-end-column="132" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
-              <caret line="71" column="122" selection-start-line="71" selection-start-column="113" selection-end-line="71" selection-end-column="122" />
+              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -218,7 +663,7 @@
         <entry file="file://$PROJECT_DIR$/local/app/Http/Middleware/CheckVNHN.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
-              <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+              <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -246,7 +691,6 @@
       <find>comment</find>
       <find>update_comment</find>
       <find>sort_hot_articel_post</find>
-      <find>$group_menu</find>
       <find>$list_articel_hot</find>
       <find>top</find>
       <find>$not_ids</find>
@@ -256,6 +700,9 @@
       <find>form_</find>
       <find>app.</find>
       <find>group_news</find>
+      <find>List articel</find>
+      <find>$group_articel</find>
+      <find>$group_menu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -287,14 +734,14 @@
         <option value="$PROJECT_DIR$/local/resources/views/admin/magazine/form_magazine.blade.php" />
         <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/GroupController.php" />
         <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/ArticelController.php" />
-        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php" />
         <option value="$PROJECT_DIR$/local/.env" />
         <option value="$PROJECT_DIR$/local/resources/assets/js/custom.js" />
-        <option value="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" />
         <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php" />
         <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php" />
         <option value="$PROJECT_DIR$/local/app/Http/Controllers/Admin/WebsiteInfoController.php" />
         <option value="$PROJECT_DIR$/local/resources/views/admin/website_info/index.blade.php" />
+        <option value="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" />
+        <option value="$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php" />
       </list>
     </option>
   </component>
@@ -598,12 +1045,12 @@
       <workItem from="1533549420641" duration="3037000" />
       <workItem from="1533554144728" duration="4378000" />
       <workItem from="1533604802340" duration="5467000" />
-      <workItem from="1533662140048" duration="1261000" />
+      <workItem from="1533662140048" duration="2491000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33900000" />
+    <option name="totallyTimeSpent" value="35130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -620,9 +1067,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.31310943" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.31310943" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="File Transfer" order="10" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="File Transfer" order="10" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -814,20 +1261,6 @@
     <entry file="file://$PROJECT_DIR$/local/resources/views/admin/magazine/index.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/time.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="127" column="58" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/resources/views/client/articel/detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
@@ -865,8 +1298,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="208" column="42" selection-start-line="208" selection-start-column="40" selection-end-line="208" selection-end-column="132" />
+        <state relative-caret-position="3468">
+          <caret line="204" column="42" selection-start-line="204" selection-start-column="42" selection-end-line="204" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -880,7 +1313,7 @@
     <entry file="file://$PROJECT_DIR$/local/app/Http/Middleware/CheckVNHN.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -891,17 +1324,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="113" column="29" lean-forward="true" selection-start-line="113" selection-start-column="29" selection-end-line="113" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="415">
-          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
         </state>
       </provider>
     </entry>
@@ -915,7 +1341,7 @@
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/ArticelController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="450" column="13" lean-forward="true" selection-start-line="450" selection-start-column="13" selection-end-line="450" selection-end-column="13" />
+          <caret line="450" column="13" selection-start-line="450" selection-start-column="13" selection-end-line="450" selection-end-column="13" />
           <folding>
             <element signature="e#471#4890#0#PHP" />
             <element signature="e#537#586#0#PHP" />
@@ -984,17 +1410,45 @@
     <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Admin/WebsiteInfoController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local/resources/views/admin/website_info/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="94" column="16" lean-forward="true" selection-start-line="94" selection-start-column="16" selection-end-line="94" selection-end-column="16" />
+        <state relative-caret-position="294">
+          <caret line="74" column="41" lean-forward="true" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
           <folding>
             <element signature="e#3039#3065#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="66" lean-forward="true" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+          <folding>
+            <element signature="e#575#598#0#HTML" expanded="true" />
+            <element signature="e#605#655#0#HTML" expanded="true" />
+            <element signature="e#901#924#0#HTML" expanded="true" />
+            <element signature="e#931#981#0#HTML" expanded="true" />
+            <element signature="e#2156#2178#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/resources/views/client/index/time.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="151" column="55" selection-start-line="151" selection-start-column="41" selection-end-line="151" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local/app/Http/Controllers/Client/GroupController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
         </state>
       </provider>
     </entry>

@@ -38,7 +38,7 @@
                     <p class="info-footer">{{$web_info->license}}</p>
                     <p class="info-footer"><span>Tổng biên tập : {{$web_info->editor_in_chief}}</span></p>
                     <p class="info-footer"><span>Phó tổng biên tập : {{$web_info->deputy_editor}}</span></p>
-                    <p class="info-footer"><span>Ủy viên HĐBT: {{$web_info->senior_executive_editor}}</span></p>
+                    {{-- <p class="info-footer"><span>Ủy viên HĐBT: {{$web_info->senior_executive_editor}}</span></p> --}}
                     <p class="info-footer"><span>Tòa soạn trị sự:</span>{{$web_info->address}}</p>
                     <p><span>Điện thoại :</span> {{$web_info->phone}}  * <span> Email: </span>{{$web_info->email}}</p>
                 </div>

@@ -215,3 +215,5 @@ Route::group(['namespace' => 'Admin'], function (){
 Route::post('/upload_image',['as' => 'upload_image','uses' => 'ClientController@upload_image']);
 
 Route::get('{slug}', 'Client\IndexController@home');
+Route::get('local/resources/assets/{slug}', 'Client\IndexController@home');
+
