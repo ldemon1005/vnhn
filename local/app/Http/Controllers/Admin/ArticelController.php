@@ -408,6 +408,8 @@ class ArticelController extends Controller
             }
         }else { //Cập nhật bài viết
             $articel = News::find($data['id']);
+            if(!isset($data['hot_main'])) $data['hot_main'] = 0;
+            if(!isset($data['hot_item'])) $data['hot_item'] = 0;
             if(!$articel){
                 return redirect()->route('admin_articel')->with('error','Có lỗi xảy ra');
             }else {
@@ -530,7 +532,7 @@ class ArticelController extends Controller
         $result[] = (object)$root;
         $this->recusiveGroup($list_group, 0, "", $result);
 
-        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->orderBy('order_main')->paginate(20);
+        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->orderBy('order_main')->get();
 
         $data = [
             'list_articel' => $arrticel_hot,
@@ -563,7 +565,7 @@ class ArticelController extends Controller
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
-            $arrticel_hot = DB::table($this->db->news)->orderByDesc('id')->whereIn('id',$articel_hot_ids)->take(15)->get();
+            $arrticel_hot = DB::table($this->db->news)->orderBy('order_item')->where('status',1)->whereIn('id',$articel_hot_ids)->get();
         }
 
         $data = [
@@ -588,17 +590,17 @@ class ArticelController extends Controller
                 DB::table($this->db->news)->where('id',$key)->update(['order_item' => $val]);
             }
         }
-        return redirect()->route('sort_hot_articel' )->with('status','Sắp xếp thành công');
+        return redirect()->route('sort_hot_articel' )->with('success','Sắp xếp thành công');
     }
 
     public function delete_articel_hot($groupid,$id){
         if($groupid == 0){
             if(DB::table($this->db->news)->where('id',$id)->update(['hot_main' => 0])){
-                return redirect()->route('sort_hot_articel' )->with('status','Xóa thành công');
+                return redirect()->route('sort_hot_articel' )->with('success','Xóa thành công');
             }else return redirect()->route('sort_hot_articel' )->with('error','Xóa không thành công');
         }else {
-            if(DB::table($this->db->news)->where('id',$id)->update(['hot_item' => 0])){
-                return redirect()->route('sort_hot_articel' )->with('status','Xóa thành công');
+            if(DB::table($this->db->group_news)->where('news_vn_id',$id)->update(['hot' => 0]) || DB::table($this->db->news)->where('id',$id)->update(['hot_item' => 0])){
+                return redirect()->route('sort_hot_articel' )->with('success','Xóa thành công');
             }else return redirect()->route('sort_hot_articel' )->with('error','Xóa không thành công');
         }
     }

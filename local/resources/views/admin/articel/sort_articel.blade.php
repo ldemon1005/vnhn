@@ -80,6 +80,8 @@
 										<input style="width: 50px" type="text" value="{{$loop->index + 1}}"
 											   name="articel[{{$articel->id}}]">
 										<span class="text">{{$articel->title}}</span>
+										<span>&nbsp;&nbsp;&nbsp;</span>
+										<span>{{date('d/m/Y H:m',$articel->created_at)}}</span>
 										<div class="tools">
 											<a href="{{route('delete_articel_hot',['groupid' => $group_id,'id' => $articel->id])}}" class="text-danger">
 												<i class="fa fa-trash-o"></i>

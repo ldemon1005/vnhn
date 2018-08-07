@@ -87,9 +87,15 @@
                     <div class="row">
                         <label>File json : </label>
                     </div>
-                    <div class="row">
-                        <textarea class="form-control" rows="8">{!! json_encode($website_info->info,JSON_PRETTY_PRINT) !!}</textarea>
-                    </div>
+                    <form>
+                        <div class="row">
+                            <textarea class="form-control" rows="20">{{ json_encode($website_info->info,JSON_PRETTY_PRINT)}}</textarea>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                    </form>
+
                 </div>
             </div>
           </div>

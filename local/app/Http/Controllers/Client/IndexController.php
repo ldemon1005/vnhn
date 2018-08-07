@@ -129,9 +129,25 @@ class IndexController extends Controller
         $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
 
         if ($position == 0) {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderBy('order_item')->take(5)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderByDesc('release_time')->orderBy('order_item')->take(5)->get();
+
+            $count = $list_articel->count();
+
+            if($count < 5){
+                $limit = 5 - $count;
+                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                $list_articel = $list_articel->toBase()->merge($list_articel_1);
+            }
+
         } else {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderBy('order_item')->take(4)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderByDesc('release_time')->orderBy('order_item')->take(4)->get();
+
+            $count = $list_articel->count();
+            if($count < 4){
+                $limit = 4 - $count;
+                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                $list_articel = $list_articel->toBase()->merge($list_articel_1);
+            }
         }
 
         foreach ($list_articel as $item) {

@@ -181,15 +181,34 @@
                                 <label class="col-sm-2">Hiển thị</label>
                                 <div class="col-sm-10">
                                     <div class="row form-group">
-                                        <label class="col-sm-4">
-                                            <input type="checkbox" value="1" class="minimal" name="articel[hot_main]" {{$articel->hot_main == 1 ? 'checked' : ''}}>
-                                            Hot trang chủ
-                                        </label>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <label class="col-sm-4">
+                                                    <input type="checkbox" value="1" class="minimal" name="articel[hot_main]" onclick="hot_time_main(this.value)" {{$articel->hot_main == 1 ? 'checked' : ''}}>
+                                                    Hot trang chủ
+                                                </label>
+                                                <div id="hot_main" class="col-sm-8 {{$articel->hot_main != 1 ? 'd-none' : ''}}">
+                                                    <input type="number" class="form-control" name="articel[time_hot_main]" value="" placeholder="tính theo giờ">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <label class="col-sm-4">
-                                            <input type="checkbox" value="1" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>
-                                            Hot danh mục
-                                        </label>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <label class="col-sm-4">
+                                                    <input type="checkbox" value="1" onclick="hot_time_item(this.value)" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>
+                                                    Hot danh mục
+                                                </label>
+                                                <div id="hot_item" class="col-sm-8 {{$articel->hot_item != 1 ? 'd-none' : ''}}">
+                                                    <input type="number" class="form-control" name="articel[time_hot_item]" value="" placeholder="tính theo giờ">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{--<label class="col-sm-6">--}}
+                                            {{--<input type="checkbox" value="1" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>--}}
+                                            {{--Hot danh mục--}}
+                                        {{--</label>--}}
                                     </div>
                                 </div>
                             </div>
@@ -240,6 +259,23 @@
                 radioClass   : 'iradio_minimal-blue'
             })
         });
+
+
+        function hot_time_item(a) {
+            if(a == 1){
+                $('#hot_item').removeClass('d-none');
+            }else {
+                $('#hot_item').addClass('d-none');
+            }
+        }
+
+        function hot_time_main(a) {
+            if(a == 1){
+                $('#hot_main').removeClass('d-none');
+            }else {
+                $('#hot_main').addClass('d-none');
+            }
+        }
     </script>
 
     <script>

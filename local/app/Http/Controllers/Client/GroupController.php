@@ -72,7 +72,7 @@ class GroupController extends Controller{
          */
 
 
-        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('status',1)->paginate(7);
+        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('status',1)->orderByDesc('release_time')->paginate(7);
 
         $group_ids = array_column(json_decode($group_menu->toJson(),true),'id');
 

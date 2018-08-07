@@ -14,6 +14,8 @@ class WebsiteInfoController extends Controller
     public function index(){
         $website_info = DB::table($this->db->web_info)->first();
 
+        $info = $website_info->info;
+
         $website_info->info = (object)json_decode($website_info->info,true);
 
         $website_info->updated_at = date('d/m/Y H:m',$website_info->updated_at);
@@ -22,6 +24,7 @@ class WebsiteInfoController extends Controller
 
         $data = [
             'website_info' => $website_info,
+            'info' => $info
         ];
         return view('admin.website_info.index',$data);
     }
