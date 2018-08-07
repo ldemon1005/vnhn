@@ -18,7 +18,7 @@ class ArticelController extends Controller
 
         $articel = News::find($slug[1]);
 
-        $articel->update(['ncount' => $articel->ncount + 1]);
+        // $articel->update(['ncount' => $articel-> + 1ncount]);
 
         $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->whereNotNull('noidung')->where('noidung','!=','')
             ->orderByDesc
@@ -134,6 +134,7 @@ class ArticelController extends Controller
 
             'list_comment' => $list_comment
         ];
+        // dd($data['articel_detail']->view);
 
         return view('client.articel.detail',$data);
     }

@@ -1,16 +1,19 @@
+<div class="trailer">
+    Web đang chạy trên phiên bản thử nghiệm
+</div>
 <div id="header">
     <section id="header-top">
         <div class="container">
             <div class="row ">
                 <div class="top-header">
                     <div class="e-magazine">
-                        <a href="{{ asset('magazine') }}"><img src="{{asset('/local/resources/uploads/images/e-magazine.png')}}"></a>
+                        <a href="{{ asset('') }}"><img src="{{asset('/local/resources/uploads/images/e-magazine.png')}}"></a>
                     </div>
                     <div class="top-header-menu">
                         <ul class="menu-left">
-                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
+                            <li class="header-lang"><a style="cursor: pointer" ><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
+                            <li class="header-lang"><a style="cursor: pointer" ><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
@@ -80,9 +83,9 @@
                     <?php $count=0?>
                     @foreach ($menu as $item)
                         @if($item->id == 19)
-                            <li><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></li>
+                            <li class="menuHeaderItem"><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></li>
                         @else
-                            <li class="@if ( $count > 5 ) menu_head_hide @endif">
+                            <li class="menuHeaderItem @if ( $count > 5 ) menu_head_hide @endif">
                                 <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
                                 <?php $count1 = 0?>
                                 @if (isset($item->child) && $item->child->count())
@@ -112,7 +115,7 @@
                                 <li><a href="{{ route('get_articel_by_group',$menu[$i]->slug.'---n-'.$menu[$i]->id) }}">{{$menu[$i]->title}}</a></li>
                             @endfor
                         </ul>
-                        <div class="btn_dropdown_menu_head">
+                        <div class="btn_dropdown_menu_head unclick" >
                             <i class="fas fa-angle-down"></i>
                         </div>
                     </li>

@@ -123,7 +123,7 @@
                                             @if (Auth::user()->level > 2)
                                                 <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger ' : 'btn-success ' }}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
                                             @else 
-                                                <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger btnOn' : 'btn-success btnOff' }}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
+                                                <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger' : 'btn-success' }} {{ $articel->status == 0 ? 'btnOn' : ($articel->status == 1 ? 'btnOff' : '' )}}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
                                             @endif
                                             
                                             <div class="id_group" style="display: none;">{{$articel->id}}</div>
@@ -163,7 +163,7 @@
                                                         @case(2)
 
                                                             <button class="btn btn-block btn-sm btn-success btn1">Duyệt</button>
-                                                            @if(isset($articel->username) && $articel->username->level == 3))
+                                                            @if(isset($articel->username) && $articel->username->level == 3)
 
                                                             <button class="btn btn-block btn-sm btn-info btn3">Trả lại</button>
                                                             @else

@@ -3,6 +3,7 @@
 }
 .section1 .menu-time{
     position: relative;
+    overflow: hidden;
 }
 .section1 .menu-time ul {
     display: flex;
@@ -22,6 +23,7 @@
     line-height: 21px;
     font-weight: 600;
     position: relative;
+    white-space: nowrap;
 }
 
 .section1 .menu-time ul li a{

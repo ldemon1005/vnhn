@@ -1,3 +1,14 @@
+
+.trailer{
+	background: #d71a21;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+
 #header_btnMenu{
 	position: absolute;
     top: 0;
@@ -254,6 +265,7 @@ ul.dropdown_child li a{
 	}
 	#header{
 		height: auto;
+		position: relative;
 	}
     #header-top{
 		display: none;
@@ -301,7 +313,7 @@ ul.dropdown_child li a{
 	    flex-direction: row;
 	    align-items: center;
 	    line-height: 40px;
-	    background-color: #000a;
+	    background-color: #000a !important;
 	    padding: 0px;
 	    z-index: 2;
 	    position: fixed;
@@ -312,6 +324,7 @@ ul.dropdown_child li a{
 	    padding-right: 0;
 	    overflow: scroll;
 	    transition: 0.5s;
+
 
 	}
 	#header-menu .menu-header>li {

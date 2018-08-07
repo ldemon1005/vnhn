@@ -6,7 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <base href="{{ asset('local/resources/assets/admin') }}/">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="shortcut icon" href="http://vietnamhoinhap.vn/images/favicon.ico" />
+  <link rel="shortcut icon" href="../images/Layer 1.png" /> 
   <title>VNHN | @yield('title')</title>
 
   <link rel="stylesheet" type="text/css" href="../css/all.css">

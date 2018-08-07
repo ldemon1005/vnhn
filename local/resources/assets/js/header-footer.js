@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	
 	$('#header_btnMenu').click(function(){
 		// $('#header-menu .menu-header').css('top', '0');
 		$('#header-menu .menu-header').children("li:first-child").html('<a>Chuyên mục</a>');
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	});
 
 	var count1 = 2;
-	$('.btn_dropdown_menu_head').click(function(){
+	$('.menuHeaderItem .btn_dropdown_menu_head').click(function(){
 		$(this).prev().slideToggle();
 		// count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
 		// count1++;
@@ -103,6 +103,7 @@ $(document).ready(function(){
  //    });
 });
 var url = $('.currentUrl').text();
+
 function ad_view(ad_id){
     var btnThis = $(this);
    
@@ -114,19 +115,20 @@ function ad_view(ad_id){
           'id': ad_id
       },
       success: function () {
-      	
        	return true;
       },
       error: function () {
-      	alert('Lỗi Server');
-
+      	// alert('Lỗi Server');
+      	console.log('Lỗi Server')
         return false;
       }
     });
 	return false;
 }
+
 function article_view(news_id){
     var btnThis = $(this);
+
     $.ajax({
       method: 'POST',
       url: url+'article_view',
@@ -138,7 +140,8 @@ function article_view(news_id){
        	return true;
       },
       error: function () {
-      	alert('Lỗi Server');
+      	console.log('Lỗi Server')
+      	// alert('Lỗi Server');
         return false;
       }
     });

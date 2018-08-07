@@ -10,17 +10,18 @@
     @if(isset($articel_detail))
         <meta property="og:url"           content="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" />
         <meta property="og:type"          content="article" />
-        <meta property="og:title"         content="{{$articel_detail->title}}" />
-        <meta property="og:description"   content="{{$articel_detail->summary}}" />
-        <meta property="og:image"         content="{{asset('/local/resources'.$articel_detail->fimage)}}" />
+        <meta property="og:title"         content="@yield('fb_title')" />
+        <meta property="og:description"   content="@yield('fb_des')" />
+        <meta property="og:image"         content="@yield('fb_img')" />
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="300" />
+
     @endif
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Việt Nam hội nhập | @yield('title')</title>
-    <link rel="shortcut icon" href="http://vietnamhoinhap.vn/images/favicon.ico" />
+    <title>@yield('title')</title>
+    <link rel="shortcut icon" href="images/Layer 1.png" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans:400,400i,600,600i,700,700i&amp;subset=vietnamese" rel="stylesheet">

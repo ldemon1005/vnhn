@@ -1,4 +1,10 @@
 @extends('client.master')
+@section('title', $articel_detail->title)
+@section('fb_title', $articel_detail->title)
+@section('fb_des', $articel_detail->summary)
+@section('fb_img', asset('/local/resources'.$articel_detail->fimage))
+
+
 @section('css')
     <style>
         .error{
@@ -96,12 +102,12 @@
                             </div>
                         </div>
                     </div> --}}
-
+                    @if($list_comment->count())
                     <div class="mainDetailLeftComment">
                         <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') ==
                         'vn' ? 'Bình luận' : 'Comment'}}</h4>
 
-                        @if($list_comment->count())
+                        
                             <div id="bigger-3" class="list_comment {{$list_comment->count() <= 3 ? 'd-none' : ''}}">
                                 @foreach($list_comment->chunk(3)[0] as $comment)
                                     <div class="comment">
@@ -137,9 +143,9 @@
                                     </div>
                                 @endforeach
                             </div>
-                        @endif
+                        
                     </div>
-
+                    @endif
                     <div class="mainDetailLeftComment">
                         <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Ý kiến của bạn' : 'Your opinion'}}</h4>
                         <div class="mainDetailLeftCommentMain">
