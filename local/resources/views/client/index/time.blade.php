@@ -164,9 +164,14 @@
                                         <nav aria-label="Page navigation example">
                                           @if ($list_articel->lastPage() > 1)
                                           <ul class="pagination">
-                                            <li class="page-item {{ ($list_articel->currentPage() == 1) ? ' disabled' : '' }}"><a class="page-link" href="{{ $list_articel->url(1) }}">Trang trước</a></li>
-                                            
-                                            <li class="page-item {{ ($list_articel->currentPage() == $list_articel->lastPage()) ? ' disabled' : '' }}"><a class="page-link" href="{{ $list_articel->url($list_articel->currentPage()+1) }}">Trang tiếp</a></li>
+                                            <li class="page-item {{ ($list_articel->currentPage() == 1) ? ' disabled' : '' }}"><a class="page-link" href="{{ $list_articel->url(1) }}">{{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trang trước' : 'Previous' }}</a></li>
+                                            <li class="page-item">
+                                                <span class="page-link">
+                                                    {{ $list_articel->currentPage() }}
+                                                <span class="sr-only">(current)</span>
+                                              </span>
+                                            </li>
+                                            <li class="page-item {{ ($list_articel->currentPage() == $list_articel->lastPage()) ? ' disabled' : '' }}"><a class="page-link" href="{{ $list_articel->url($list_articel->currentPage()+1) }}">{{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trang tiếp' : 'Next' }}</a></li>
                                           </ul>
                                           @endif
                                         </nav>
