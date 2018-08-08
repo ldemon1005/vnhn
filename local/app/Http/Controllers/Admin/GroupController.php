@@ -97,7 +97,8 @@ class GroupController extends Controller
                     'parentid' => '0',
                     'keywords' => '',
                     'titlemeta' => '',
-                    'status' => 1
+                    'status' => 1,
+                    'hot_index' => 0
                 ];
 
                 $group = (object)$group;
@@ -175,21 +176,61 @@ class GroupController extends Controller
                 'content' => $view
             ]);
         }
+    }
 
+    function form_sort_group_category($parent_id = 0){
+        if($parent_id == 0){
+            $list_group = DB::table($this->db->group)->where('parentid',0)->orderBy('order')->get();
+
+            $data = [
+                'list_group' => $list_group
+            ];
+            return view('admin.group.sort_group_cate',$data);
+        }else {
+            $list_group = DB::table($this->db->group)->where('parentid',$parent_id)->orderBy('order')->get();
+            $group_parent = DB::table($this->db->group)->find($parent_id);
+            $data = [
+                'list_group' => $list_group,
+                'group_parent' => $group_parent
+            ];
+            $view =  View::make('admin.group.child_group_cate', $data)->render();
+            return json_encode([
+                'content' => $view
+            ]);
+        }
+    }
+
+    public function delete_home_index($id){
+        if(DB::table($this->db->group)->where('id',$id)->update(['home_index' => 0])){
+            return redirect()->route('form_sort_group',0)->with('success','Xóa thành công');
+        }else {
+            return redirect()->route('form_sort_group',0)->with('error','Xóa không thành công');
+        }
     }
 
     public function update_order(Request $request){
+        $cate = $request->get('cate',0);
+
         $data = $request->get('group');
         $check = 1;
         foreach ($data as $key => $item){
             isset($data['parentid']) ? $order = $data['parentid'].$item : $order = $item;
             DB::table($this->db->group)->where('id',$key)->update(['order' => $order]);
         }
-        if($check == 1){
-            return redirect()->route('form_sort_group', '00' )->with('success','Sắp xếp thành công');
+        if($cate == 0){
+            if($check == 1){
+                return redirect()->route('form_sort_group', '00' )->with('success','Sắp xếp thành công');
+            }else {
+                return redirect()->route('form_sort_group', '00')->with('error','Sắp xếp không thành công');
+            }
         }else {
-            return redirect()->route('form_sort_group', '00')->with('error','Sắp xếp không thành công');
+            if($check == 1){
+                return redirect()->route('form_sort_group_category', '00' )->with('success','Sắp xếp thành công');
+            }else {
+                return redirect()->route('form_sort_group_category', '00')->with('error','Sắp xếp không thành công');
+            }
         }
+
     }
 
     public function getOn(){

@@ -299,7 +299,6 @@ class ArticelController extends Controller
                 'tacgia' => '',
                 'nguontin' => '',
                 'url_nguon' => '',
-                'loaiview' => 0,
                 'content' => '',
                 'release_time' => (object)[
                     'day' => date('Y-m-d',time()),
@@ -379,7 +378,7 @@ class ArticelController extends Controller
         }
         else {
             $data['order_main'] = 1;
-            $data['time_hot_main'] = $data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2;
+            $data['time_hot_main'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
         }
 
         if(!isset($data['hot_item'])) {
@@ -388,7 +387,7 @@ class ArticelController extends Controller
         }
         else {
             $data['order_item'] = 1;
-            $data['time_hot_item'] = $data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2;
+            $data['time_hot_item'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
         }
 
 

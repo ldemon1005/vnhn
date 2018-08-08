@@ -42,12 +42,13 @@
 					<div class="card-header">
 						<h3 class="card-title">
 							<i class="ion ion-clipboard mr-1"></i>
-							Trang chủ
+							Danh mục
 						</h3>
 					</div>
 					<!-- /.card-header -->
 					<form method="post" action="{{route('update_order')}}">
 						{{csrf_field()}}
+						<input class="d-none" name="cate" value="1">
 						<div class="card-body">
 							<ul class="todo-list">
 								@foreach($list_group as $group)
@@ -58,14 +59,8 @@
 								</span>
 										<input style="width: 50px" type="text" value="{{$loop->index + 1}}"
 											   name="group[{{$group->id}}]">
-										<a style="cursor: pointer" onclick="getMunuChild({{$group->id}})"><span
+										<a style="cursor: pointer" onclick="getMunuChildCate({{$group->id}})"><span
 													class="text">{{$group->title}}</span></a>
-										<div class="tools">
-											<a href="{{route('delete_home_index',$group->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa')"
-											   class="text-danger">
-												<i class="fa fa-trash-o"></i>
-											</a>
-										</div>
 									</li>
 								@endforeach
 							</ul>

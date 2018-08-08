@@ -172,13 +172,15 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::group(['prefix' => 'group'], function(){
                 Route::post('on', 'GroupController@getOn');
                 Route::post('off', 'GroupController@getOff');
-                
+                Route::get('delete_home_index/{id}', 'GroupController@delete_home_index')->name('delete_home_index');
+
             });
             Route::get('/group','GroupController@getList')->name('admin_group');
             Route::get('/group/form_group/{id}',['as' => 'form_group','uses' => 'GroupController@form_group']);
             Route::post('/action_group',['as' => 'action_group','uses' => 'GroupController@action_group']);
             Route::get('/delete_group/{id}',['as' => 'delete_group','uses' => 'GroupController@delete_group']);
             Route::get('/group/form_sort_group/{id}',['as' => 'form_sort_group','uses' => 'GroupController@form_sort_group']);
+            Route::get('/group/form_sort_group_category/{id}',['as' => 'form_sort_group_category','uses' => 'GroupController@form_sort_group_category']);
             Route::post('/group/update_order',['as' => 'update_order','uses' => 'GroupController@update_order']);
 
             

@@ -81,6 +81,17 @@ function getMunuChild(id) {
     });
 }
 
+function getMunuChildCate(id) {
+    $.ajax({
+        url: '/admin/group/form_sort_group_category/'+id,
+        method: 'get',
+        dataType: 'json',
+    }).fail(function (ui, status) {
+    }).done(function (data, status) {
+        $("#group-child").html(data.content);
+    });
+}
+
 function change_status(video_id,status_video) {
     $('#status_video').addClass('disabled');
     $.ajax({

@@ -13,9 +13,9 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <div class="avatarImgSidebar" style="background: url('{{ file_exists(storage_path('app/avatar/'.Auth::user()->img)) && Auth::user()->img ? asset('local/storage/app/avatar/resized-'.Auth::user()->img) : '../images/images.png' }}') no-repeat center /cover;">
-                    
+
                 </div>
-                
+
             </div>
             <div class="info">
                 <a href="{{ asset('admin') }}" class="d-block">{{Auth::user()->fullname}}</a>
@@ -64,7 +64,7 @@
                 @endif
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif"">
+                    <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif">
                     <i class="fas fa-user-shield nav-icon"></i>
                     <p>
                         Cá Nhân
@@ -101,7 +101,16 @@
                                 <li class="nav-item">
                                     <a href="{{route('form_sort_group','00')}}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Sắp xếp</p>
+                                        <p>Sắp xếp trang chủ</p>
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if (Auth::user()->site == 1)
+                                <li class="nav-item">
+                                    <a href="{{route('form_sort_group_category','00')}}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>Sắp xếp danh mục</p>
                                     </a>
                                 </li>
                             @endif
@@ -250,11 +259,11 @@
                                     </a>
                                 </li>
                             @endif
-                            
+
                         </ul>
                     </li>
 
-                    
+
                 @endif
                 @if(Auth::user()->level < 3)
                     <li class="nav-item has-treeview">
@@ -286,10 +295,10 @@
                                     </a>
                                 </li>
                             @endif
-                            
+
                         </ul>
                     </li>
-                @endif 
+                @endif
                 @if (Auth::user()->level < 4 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin/comment') }}" class="nav-link @if (Request::segment(2) == 'comment') active @endif">

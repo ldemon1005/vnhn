@@ -134,6 +134,14 @@
                                     </div>
                                 </div>
                             </div>
+                            @if (Auth::user()->site == 1)
+                                <div class="row form-group">
+                                    <label class="col-sm-2">Hot index</label>
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" value="1" {{$group->hot_index == 1 ? 'checked' : ''}}  class="minimal" name="group[home_index]">
+                                    </div>
+                                </div>
+                            @endif
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $group->id ? 'Cập nhật' : 'Tạo mới' }}</button>
                             </div>
