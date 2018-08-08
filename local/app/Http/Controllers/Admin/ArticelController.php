@@ -299,7 +299,6 @@ class ArticelController extends Controller
                 'tacgia' => '',
                 'nguontin' => '',
                 'url_nguon' => '',
-                'loaiview' => 0,
                 'content' => '',
                 'release_time' => (object)[
                     'day' => date('Y-m-d',time()),
@@ -379,7 +378,7 @@ class ArticelController extends Controller
         }
         else {
             $data['order_main'] = 1;
-            $data['time_hot_main'] = $data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2;
+            $data['time_hot_main'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
         }
 
         if(!isset($data['hot_item'])) {
@@ -388,7 +387,7 @@ class ArticelController extends Controller
         }
         else {
             $data['order_item'] = 1;
-            $data['time_hot_item'] = $data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2;
+            $data['time_hot_item'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
         }
 
 
@@ -586,7 +585,7 @@ class ArticelController extends Controller
         $result[] = (object)$root;
         $this->recusiveGroup($list_group, 0, "", $result);
 
-        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->where('time_hot_main' ,'>=', time())->orderBy('order_main')->get();
+        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->where('time_hot_main' ,'>=', time())->orderBy('order_main')->orderBy('release_time','desc')->get();
 
         $data = [
             'list_articel' => $arrticel_hot,
@@ -619,7 +618,7 @@ class ArticelController extends Controller
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
-            $arrticel_hot = DB::table($this->db->news)->orderBy('order_item')->where('status',1)->where('time_hot_item','>=',time())->whereIn('id',$articel_hot_ids)->get();
+            $arrticel_hot = DB::table($this->db->news)->where('status',1)->where('time_hot_item','>=',time())->whereIn('id',$articel_hot_ids)->orderBy('order_item')->orderBy('release_time','desc')->get();
         }
 
         $data = [
@@ -703,16 +702,26 @@ class ArticelController extends Controller
     public function getOn(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 1;
+        if ($news->status == 0 || $news->status == 2) {
+            $news->status = 1;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response($id, 200);
+        return response('success', 200);
     }
     public function getOff(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 0;
+        if ($news->status == 1) {
+            $news->status = 0;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response('ok', 200);
+        return response('success', 200);
     }
 
     public function get2(){
@@ -720,24 +729,38 @@ class ArticelController extends Controller
         $id = Input::get('id');
         $news = News::find($id);
 
-        $news->status = 2;
-
+        if ($news->status == 1 || $news->status == 3) {
+            $news->status = 2;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response('ok', 200);
+        return response('success', 200);
     }
     public function get3(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 3;
+        if ($news->status == 2 || $news->status == 4) {
+            $news->status = 3;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response(3, 200);
+        return response('success', 200);
     }
     public function get4(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 4;
+        if ($news->status == 2 || $news->status == 3) {
+            $news->status = 4;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response(4, 200);
+        return response('success', 200);
     }
 
 
