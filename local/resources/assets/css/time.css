@@ -7,13 +7,13 @@
 }
 .section1 .menu-time ul {
     display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
+    flex-wrap: wrap;
     align-items: center;
     padding: 0;
     margin: 0;
     border-bottom: 1px solid #333;
     width: 100%;
+    max-height: 38px;
 }
 
 .section1 .menu-time ul li {
