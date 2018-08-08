@@ -106,6 +106,12 @@
                                                     @break
                                                 @case(3)
                                                     @switch($item->e_status)
+                                                        @case(0)
+                                                            <button class="btn btn-block btn-sm btn-default">Dừng</button>
+                                                            @break
+                                                        @case(1)
+                                                            <button class="btn btn-block btn-sm btn-default">Đang chạy</button>
+                                                            @break
                                                         @case(2)
                                                             <button class="btn btn-block btn-sm btn-default">Chờ Duyệt</button>
                                                             @break

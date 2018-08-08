@@ -37,7 +37,7 @@
                 <div class="card-body">
                 	<div class="form-group">
 	                    <label for="exampleInputEmail1">Tên đăng nhập</label>
-	                    <input type="text" class="form-control" placeholder="Username" name="username" value="{{isset($item)? $item->username : ''}}" required>
+	                    <input type="text" class="form-control" placeholder="Username" name="username" value="{{isset($item)? $item->username : ''}}" required {{ isset($item) ? 'disabled' : '' }}>
 	                </div>
 	                <div class="form-group">
 	                    <label for="exampleInputEmail1">Họ và tên</label>

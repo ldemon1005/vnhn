@@ -702,16 +702,26 @@ class ArticelController extends Controller
     public function getOn(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 1;
+        if ($news->status == 0 || $news->status == 2) {
+            $news->status = 1;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response($id, 200);
+        return response('success', 200);
     }
     public function getOff(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 0;
+        if ($news->status == 1) {
+            $news->status = 0;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response('ok', 200);
+        return response('success', 200);
     }
 
     public function get2(){
@@ -719,24 +729,38 @@ class ArticelController extends Controller
         $id = Input::get('id');
         $news = News::find($id);
 
-        $news->status = 2;
-
+        if ($news->status == 1 || $news->status == 3) {
+            $news->status = 2;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response('ok', 200);
+        return response('success', 200);
     }
     public function get3(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 3;
+        if ($news->status == 2 || $news->status == 4) {
+            $news->status = 3;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response(3, 200);
+        return response('success', 200);
     }
     public function get4(){
         $id = Input::get('id');
         $news = News::find($id);
-        $news->status = 4;
+        if ($news->status == 2 || $news->status == 3) {
+            $news->status = 4;
+        }
+        else{
+            return response('error', 200);
+        }
         $news->save();
-        return response(4, 200);
+        return response('success', 200);
     }
 
 

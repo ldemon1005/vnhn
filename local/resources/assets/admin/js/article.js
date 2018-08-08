@@ -63,6 +63,7 @@ $(document).ready(function(){
     var id = $(this).siblings(".id_group").text();
     var btnPrev = btnThis.parent().prev().find('button');
     var btnNext = btnThis.next();
+    var btnSibling = btnThis.siblings();
     console.log(id);
     $.ajax({
       method: 'POST',
@@ -72,14 +73,20 @@ $(document).ready(function(){
           'id': id
       },
       success: function (resp) {
-        btnThis.attr('class', 'btn btn-block btn-sm btn-default');
-        btnThis.text('Đang chạy');
+        if (resp == 'success') {
+          btnThis.attr('class', 'btn btn-block btn-sm btn-default');
+          btnThis.text('Đang chạy');
 
-        btnNext.css('display', 'none');
-        
-        btnPrev.attr('class', 'btn btn-block btn-sm btn-success btnOff');
-        btnPrev.text('Hoạt động');
+          btnNext.css('display', 'none');
+          
+          btnPrev.attr('class', 'btn btn-block btn-sm btn-success btnOff');
+          btnPrev.text('Hoạt động');
 
+          btnSibling.css('display', 'none');
+        }
+        else{
+          console.log('Bạn làm sai rồi')
+        }
       },
       error: function () {
         alert('Error');
@@ -90,7 +97,7 @@ $(document).ready(function(){
     var btnThis = $(this);
     var id = $(this).siblings(".id_group").text();
     var btnNext = btnThis.next();
-
+    var btnSibling = btnThis.siblings();
     $.ajax({
       method: 'POST',
       url: url+'admin/articel/status2',
@@ -99,10 +106,17 @@ $(document).ready(function(){
           'id': id
       },
       success: function (resp) {
-        btnThis.attr('class', 'btn btn-block btn-sm btn-default ');
-        btnThis.text('Đã gửi');
+        if (resp == 'success') {
+          btnThis.attr('class', 'btn btn-block btn-sm btn-default ');
+          btnThis.text('Đã gửi');
 
-        btnNext.css('display', 'none');
+          btnNext.css('display', 'none');
+
+          btnSibling.css('display', 'none');
+        }
+        else{
+          console.log('Bạn làm sai rồi')
+        }
       },
       error: function () {
         alert('Error');
@@ -112,7 +126,7 @@ $(document).ready(function(){
   $(document).on('click', '.btn3', function(event) {
     var btnThis = $(this);
     var id = $(this).next().text();
-
+    var btnSibling = btnThis.siblings();
     $.ajax({
       method: 'POST',
       url: url+'admin/articel/status3',
@@ -121,8 +135,15 @@ $(document).ready(function(){
           'id': id
       },
       success: function (resp) {
-        btnThis.attr('class', 'btn btn-block btn-sm btn-default');
-        btnThis.text('Đã gửi');
+        if (resp == 'success') {
+          btnThis.attr('class', 'btn btn-block btn-sm btn-default');
+          btnThis.text('Đã gửi');
+
+          btnSibling.css('display', 'none');
+        }
+        else{
+          console.log('Bạn làm sai rồi')
+        }
       },
       error: function () {
         alert('Error');
@@ -134,6 +155,7 @@ $(document).ready(function(){
     var id = $(this).next().text();
     var btnPrev = btnThis.prev();
     var btnPrev2 = btnThis.parent().prev().find('button');
+    var btnSibling = btnThis.siblings();
     $.ajax({
       method: 'POST',
       url: url+'admin/articel/status4',
@@ -142,11 +164,18 @@ $(document).ready(function(){
           'id': id
       },
       success: function (resp) {
-        btnThis.attr('class', 'btn btn-block btn-sm btn-default');
-        btnThis.text('Đã gửi');
+        if (resp == 'success') {
+          btnThis.attr('class', 'btn btn-block btn-sm btn-default');
+          btnThis.text('Đã gửi');
 
-        btnPrev.css('display', 'none');
-        btnPrev2.css('display', 'none');
+          btnPrev.css('display', 'none');
+          btnPrev2.css('display', 'none');
+
+          btnSibling.css('display', 'none');
+        }
+        else{
+          console.log('Bạn làm sai rồi')
+        }
       },
       error: function () {
         alert('Error');

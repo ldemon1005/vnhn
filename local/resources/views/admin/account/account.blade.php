@@ -63,12 +63,15 @@
 	                  <td class="hideResponsive768">{{$item->email}}</td>
 	                  <td>{{level_format($item->level)}}</td>
 	                  <td>
-	                  	<a href="{{ asset('admin/account/edit/'.$item->id) }}" class="btn btn-primary">Sửa</a>
-	                  	@if (Auth::user()->id == $item->id)
+	                  	@if(Auth::user()->level < $item->level || Auth::user()->level == 1)
+                        <a href="{{ asset('admin/account/edit/'.$item->id) }}" class="btn btn-primary">Sửa</a>
+                        <a href="{{ asset('admin/account/delete/'.$item->id) }}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="btn btn-danger"> Xóa</a>
+                      @endif
+	                  	{{-- @if (Auth::user()->id == $item->id)
 	                  		<a href="{{ asset('admin/account/delete/'.$item->id) }}" onclick="alert('Bạn không được xóa chính mình'); return false;" class="btn btn-danger"> Xóa</a>
 	                  	@else 
-	                  		<a href="{{ asset('admin/account/delete/'.$item->id) }}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="btn btn-danger"> Xóa</a>
-	                  	@endif
+	                  		
+	                  	@endif --}}
 	                  	
 	                  </td>
 	                </tr>
