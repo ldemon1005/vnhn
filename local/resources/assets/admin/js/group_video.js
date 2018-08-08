@@ -19,7 +19,7 @@ $(document).ready(function(){
         btnRemove.attr('style', 'display: none');
       },
       error: function () {
-        alert('Error');
+        console.log('Lỗi server');
       }
     });
   });
@@ -28,7 +28,6 @@ $(document).ready(function(){
     var btnThis = $(this);
     var id = $(this).next().text();
     var btnRemove = $(this).parent().next().find('.row a.text-danger');
-    alert(btnRemove.text());
     $.ajax({
       method: 'POST',
       url: url+'admin/group_video/off',
@@ -43,7 +42,7 @@ $(document).ready(function(){
         btnRemove.attr('style', 'display: block');
       },
       error: function () {
-        alert('Error');
+        console.log('Lỗi server');
       }
     });
   });

@@ -87,8 +87,6 @@ $(document).ready(function(){
         else{
           console.log('Bạn làm sai rồi')
         }
-          
-
       },
       error: function () {
         alert('Error');

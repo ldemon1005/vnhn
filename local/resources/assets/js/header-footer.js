@@ -1,5 +1,11 @@
 $(document).ready(function(){
 	
+
+	var menuHide = $('#header-menu .menu-header>li.menu_head_hide');
+	var menuShow = $('#header-menu .menu-header>li.menuHeaderItem');
+	var menudropdown = $('.dropdown_child li');
+
+
 	$('#header_btnMenu').click(function(){
 		// $('#header-menu .menu-header').css('top', '0');
 		$('#header-menu .menu-header').children("li:first-child").html('<a>Chuyên mục</a>');
@@ -34,11 +40,58 @@ $(document).ready(function(){
 	});
 	
 	$(window).resize(function(){
-		if ($(window).width() > 768) {
+		if ($(window).width() > 1200) {
+			for(var i = 0; i < menuShow.length ; i++){
+				if(i > 8){
+					menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+				}else{
+					menuShow.eq(i).attr('class', 'menuHeaderItem');
+				}
+			}
+			for(var i = 0; i < menudropdown.length ; i++){
+				if(i < 3){
+					menudropdown.eq(i).css('display', 'none');
+				}else{
+					menudropdown.eq(i).css('display', 'block');
+				}
+			}
+		}
+		else if ($(window).width() > 992) {
+			for(var i = 0; i < menuShow.length ; i++){
+				if(i > 7){
+					menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+				}else{
+					menuShow.eq(i).attr('class', 'menuHeaderItem');
+				}
+			}
+			for(var i = 0; i < menudropdown.length ; i++){
+				if(i < 2){
+					menudropdown.eq(i).css('display', 'none');
+				}else{
+					menudropdown.eq(i).css('display', 'block');
+				}
+			}
+		}
+		else if ($(window).width() > 768) {
+			for(var i = 0; i < menuShow.length ; i++){
+				if(i > 5){
+					menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+				}else{
+					menuShow.eq(i).attr('class', 'menuHeaderItem');
+				}
+			}
+			for(var i = 0; i < menudropdown.length ; i++){
+				if(i < 0){
+					menudropdown.eq(i).css('display', 'none');
+				}else{
+					menudropdown.eq(i).css('display', 'block');
+				}
+			}
 			// $('#header-menu .menu-header').css('top', '0');
 			$('#header-menu .menu-header').children("li:first-child").html('<a href="{{ asset("") }}"><i class="fas fa-home"></i></a>');
 			$('#header-menu .menu-header').css('display', 'flex');
 			$('#header-menu .menu-header').show();
+			
 			// $('#header-menu .menu-header').find("li").css('margin-left', '0');
 			// $('.btn_close_menu').css('right', '20%');
 		}else{
@@ -51,6 +104,54 @@ $(document).ready(function(){
 		}
 		
     });
+    if ($(window).width() > 1200) {
+		for(var i = 0; i < menuShow.length ; i++){
+			if(i > 8){
+				menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+			}else{
+				menuShow.eq(i).attr('class', 'menuHeaderItem');
+			}
+		}
+		for(var i = 0; i < menudropdown.length ; i++){
+			if(i < 3){
+				menudropdown.eq(i).css('display', 'none');
+			}else{
+				menudropdown.eq(i).css('display', 'block');
+			}
+		}
+	}
+	else if ($(window).width() > 992) {
+		for(var i = 0; i < menuShow.length ; i++){
+			if(i > 7){
+				menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+			}else{
+				menuShow.eq(i).attr('class', 'menuHeaderItem');
+			}
+		}
+		for(var i = 0; i < menudropdown.length ; i++){
+			if(i < 2){
+				menudropdown.eq(i).css('display', 'none');
+			}else{
+				menudropdown.eq(i).css('display', 'block');
+			}
+		}
+	}
+	else if ($(window).width() > 768) {
+		for(var i = 0; i < menuShow.length ; i++){
+			if(i > 5){
+				menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+			}else{
+				menuShow.eq(i).attr('class', 'menuHeaderItem');
+			}
+		}
+		for(var i = 0; i < menudropdown.length ; i++){
+			if(i < 0){
+				menudropdown.eq(i).css('display', 'none');
+			}else{
+				menudropdown.eq(i).css('display', 'block');
+			}
+		}
+	}
 
     $(document).on('click', ".menu_footer_right", function(){
        $('html, body').animate({

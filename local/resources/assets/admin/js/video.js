@@ -55,13 +55,13 @@ $(document).ready(function(){
             btnNext.attr('style', 'display: none');
             break;
           default:
-            alert('Lỗi');
+            console.log('Lỗi rồi');
             break;
         }
         
       },
       error: function () {
-        alert('Error');
+        console.log('Lỗi server');
       }
     });
   });
