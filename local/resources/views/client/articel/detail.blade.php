@@ -174,7 +174,7 @@
                                 <input name="comment[slug]" value="{{$articel_detail->slug}}" class="d-none">
                                 <div class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"></div>
                                 <div class="form-group mt-3">
-                                    <button id="submit-comment" type="button" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Gửi bình luận' : 'submit comment'}}</button>
+                                    <button id="submit-comment" type="button" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Gửi bình luận' : 'Comment'}}</button>
                                 </div>
                             </form>
                         </div>
@@ -226,7 +226,7 @@
                     </div>
                     <div class="mainDetailRightJournal mb-3">
                         <h4 class="mainDetailRightTitle red">
-                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tạp trí thường kì' : 'Regular magazine'}}
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tạp chí thường kì' : 'Regular magazine'}}
                         </h4>
                         <div class="slide">
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -366,7 +366,7 @@
                 },
                 'comment[email]': {
                     required: 'Vui lòng chọn email',
-                    email: 'Vui lòng nhập đúng định dạnh email'
+                    email: 'Vui lòng nhập đúng định dạng email'
                 }
             }
         });

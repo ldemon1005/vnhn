@@ -368,13 +368,22 @@ class ArticelController extends Controller
         $data['slug'] = str_slug($data['title']);
 
 
-        if(!isset($data['hot_main'])) $data['hot_main'] = 0;
+        if(!isset($data['hot_main'])) {
+            $data['hot_main'] = 0;
+            $data['time_hot_main'] = 0;
+        }
         else {
             $data['order_main'] = 1;
+            $data['time_hot_main'] = $data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2;
         }
-        if(!isset($data['hot_item'])) $data['hot_item'] = 0;
+
+        if(!isset($data['hot_item'])) {
+            $data['hot_item'] = 0;
+            $data['time_hot_item'] = 0;
+        }
         else {
-            $data['hot_item'] = 1;
+            $data['order_item'] = 1;
+            $data['time_hot_item'] = $data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2;
         }
 
 
@@ -391,10 +400,19 @@ class ArticelController extends Controller
 
             if(count($group_id)){
                 foreach ($group_id as $val){
-                    $item = [
-                        'group_vn_id' => $val,
-                        'news_vn_id' => (string)$articel->id
-                    ];
+                    if($data['hot_item'] == 1){
+                        $item = [
+                            'group_vn_id' => $val,
+                            'news_vn_id' => (string)$articel->id,
+                            'hot' => 1
+                        ];
+                    }else{
+                        $item = [
+                            'group_vn_id' => $val,
+                            'news_vn_id' => (string)$articel->id,
+                            'hot' => 0
+                        ];
+                    }
                     $data_group_news[] = $item;
                 }
             }
@@ -552,7 +570,7 @@ class ArticelController extends Controller
         $result[] = (object)$root;
         $this->recusiveGroup($list_group, 0, "", $result);
 
-        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->orderBy('order_main')->get();
+        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->where('time_hot_main' ,'>=', time())->orderBy('order_main')->get();
 
         $data = [
             'list_articel' => $arrticel_hot,
@@ -585,7 +603,7 @@ class ArticelController extends Controller
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
-            $arrticel_hot = DB::table($this->db->news)->orderBy('order_item')->where('status',1)->whereIn('id',$articel_hot_ids)->get();
+            $arrticel_hot = DB::table($this->db->news)->orderBy('order_item')->where('status',1)->where('time_hot_item','>=',time())->whereIn('id',$articel_hot_ids)->get();
         }
 
         $data = [
@@ -593,7 +611,6 @@ class ArticelController extends Controller
             'list_group' => $result,
             'group_id' => $group_id
         ];
-
         return view('admin.articel.sort_articel',$data);
     }
 

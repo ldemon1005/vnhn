@@ -31,7 +31,33 @@ class HomeController extends Controller
 //
 //        dd(json_encode($array));
 
+//        cập nhật data hot item
+//        $list_id = DB::table('group_news_vn')->where('hot' ,1)->get()->toJson();
+//
+//        $list_id = array_column(json_decode($list_id,true),'news_vn_id');
+//
+//        $list_article = DB::table('news_vn')->where('release_time', '<=',1533488306)->whereIn('id',$list_id)->get(['id'])->toJson();
+//
+//        $list_article_id = array_column(json_decode($list_article,true),'id');
+//
+//        DB::table('group_news_vn')->whereIn('news_vn_id',$list_article_id)->update(['hot' => 0]);
+//
+//        dd("chào");
 
+        //update time hot
+
+        //        cập nhật data hot item
+//        $list_id = DB::table('group_news_vn')->where('hot' ,1)->get()->toJson();
+//
+//        $list_id = array_column(json_decode($list_id,true),'news_vn_id');
+//
+//        $list_article = DB::table('news_vn')->whereIn('id',$list_id)->update(['time_hot_item' => time() + 86400*3]);
+
+        //cập nhật time hot main
+
+//        $list_article = DB::table('news_vn')->where('hot_main',1)->update(['time_hot_main' => time() + 86400*3]);
+//
+//        dd($list_article);
 
         return view('admin.index.home');
     }

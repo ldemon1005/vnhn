@@ -11,12 +11,12 @@
 
                             <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7:
                                     {{$web_info->hotline}}</a></li>
-                            <li class="lang respon768"><a href="{{ asset('') }}">Đặt mua Tạp chí</a></li>
-                            <li class="lang"><a href="{{ asset('') }}">Liên hệ quảng cáo</a></li>
+                            <li class="lang respon768"><a href="{{ asset('') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Buy magazines'}}</a></li>
+                            <li class="lang"><a href="{{ asset('') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising'}}</a></li>
                         </ul>
                     </div>
                     <div class="menu_footer_right">
-                        [Trở về đầu trang]
+                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Trở về đầu trang]' : 'Back to top'}}
                     </div>
                 </div>
             </div>

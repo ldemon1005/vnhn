@@ -106,6 +106,18 @@ Route::group(['namespace' => 'Admin'], function (){
 
             Route::post('status', 'VideoController@action_status');
         });
+        Route::group(['prefix' => 'group_video'], function(){
+            Route::get('/','GroupVideoController@index')->name('admin_video_group');
+            Route::get('/form_group_video/{id}','GroupVideoController@form_group_video')->name('form_group_video');
+            Route::post('/action_menu_video','GroupVideoController@action_menu_video')->name('action_menu_video');
+            Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
+            Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
+            Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
+
+            Route::post('on', 'GroupVideoController@getOn');
+            Route::post('off', 'GroupVideoController@getOff');
+
+        });
         Route::group(['middleware' => 'CheckSite'], function(){
             Route::group(['prefix' => 'account'], function(){
                 Route::get('/', 'AccountController@getList');
@@ -149,21 +161,6 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/delete_group/{id}',['as' => 'delete_group','uses' => 'GroupController@delete_group']);
             Route::get('/group/form_sort_group/{id}',['as' => 'form_sort_group','uses' => 'GroupController@form_sort_group']);
             Route::post('/group/update_order',['as' => 'update_order','uses' => 'GroupController@update_order']);
-
-
-
-            Route::group(['prefix' => 'group_video'], function(){
-                Route::get('/','GroupVideoController@index')->name('admin_video_group');
-                Route::get('/form_group_video/{id}','GroupVideoController@form_group_video')->name('form_group_video');
-                Route::post('/action_menu_video','GroupVideoController@action_menu_video')->name('action_menu_video');
-                Route::get('/delete_menu/{id}','GroupVideoController@delete_menu')->name('delete_menu');
-                Route::get('/form_sort','GroupVideoController@form_sort')->name('form_sort');
-                Route::post('/sort_menu','GroupVideoController@sort_menu')->name('sort_menu');
-
-                Route::post('on', 'GroupVideoController@getOn');
-                Route::post('off', 'GroupVideoController@getOff');
-
-            });
 
             
 

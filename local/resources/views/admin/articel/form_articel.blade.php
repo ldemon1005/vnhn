@@ -272,7 +272,8 @@
             ignore: [],
             rules: {
                 'articel[title]': {
-                    required: true
+                    required: true,
+                    maxlength : 80
                 },
                 'articel[release_time][day]': {
                     required: true
@@ -282,11 +283,15 @@
                 },
                 'articel[groupid][]': {
                     required: true
-                }
+                },
+                // 'articel[summary]': {
+                //     maxlength : 200
+                // }
             },
             messages: {
                 'articel[title]': {
-                    required: 'Vui lòng nhập tên danh mục'
+                    required: 'Vui lòng nhập tên danh mục',
+                    maxlength : 'Tiều đề không được quá 80 ký tự'
                 },
                 'articel[release_time][day]': {
                     required: 'Thiếu ngày phát hành'
@@ -296,7 +301,10 @@
                 },
                 'articel[groupid][]': {
                     required: 'Thiếu nhóm tin tức'
-                }
+                },
+                // 'articel[summary]': {
+                //     maxlength : 'Mô tả không được quá 200 ký tự'
+                // }
             }
         });
     </script>

@@ -124,7 +124,7 @@
                         <div class="row section2-left-top">
                             <div class="time-hot">
                                 <div class="title-parent">
-                                    <h2>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List articel'}}</h2>
+                                    <h2>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List article'}}</h2>
                                 </div>
                                 <hr style="border-top: 2px solid #000000"/>
 
