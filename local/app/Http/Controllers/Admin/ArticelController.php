@@ -367,6 +367,17 @@ class ArticelController extends Controller
         $data['updated_at'] = time();
         $data['slug'] = str_slug($data['title']);
 
+
+        if(!isset($data['hot_main'])) $data['hot_main'] = 0;
+        else {
+            $data['order_main'] = 1;
+        }
+        if(!isset($data['hot_item'])) $data['hot_item'] = 0;
+        else {
+            $data['hot_item'] = 1;
+        }
+
+
         // Start transaction
         DB::beginTransaction();
         $check = 1;
@@ -408,8 +419,7 @@ class ArticelController extends Controller
             }
         }else { //Cập nhật bài viết
             $articel = News::find($data['id']);
-            if(!isset($data['hot_main'])) $data['hot_main'] = 0;
-            if(!isset($data['hot_item'])) $data['hot_item'] = 0;
+
             if(!$articel){
                 return redirect()->route('admin_articel')->with('error','Có lỗi xảy ra');
             }else {
@@ -423,10 +433,20 @@ class ArticelController extends Controller
 
                 if(count($group_id)){
                     foreach ($group_id as $val){
-                        $item = [
-                            'group_vn_id' => $val,
-                            'news_vn_id' => (string)$articel->id
-                        ];
+                        if($data['hot_item'] == 1){
+                            $item = [
+                                'group_vn_id' => $val,
+                                'news_vn_id' => (string)$articel->id,
+                                'hot' => 1
+                            ];
+                        }else{
+                            $item = [
+                                'group_vn_id' => $val,
+                                'news_vn_id' => (string)$articel->id,
+                                'hot' => 0
+                            ];
+                        }
+
                         $data_group_news[] = $item;
                     }
                 }

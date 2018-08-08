@@ -131,23 +131,23 @@ class IndexController extends Controller
         $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
 
         if ($position == 0) {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderByDesc('release_time')->orderBy('order_item')->take(5)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->orderByDesc('release_time')->orderBy('order_item')->where('status',1)->take(5)->get();
 
             $count = $list_articel->count();
 
             if($count < 5){
                 $limit = 5 - $count;
-                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->orderByDesc('release_time')->where('status',1)->take($limit)->get();
                 $list_articel = $list_articel->toBase()->merge($list_articel_1);
             }
 
         } else {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderByDesc('release_time')->orderBy('order_item')->take(4)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->orderByDesc('release_time')->orderBy('order_item')->where('status',1)->take(4)->get();
 
             $count = $list_articel->count();
             if($count < 4){
                 $limit = 4 - $count;
-                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->orderByDesc('release_time')->where('status',1)->take($limit)->get();
                 $list_articel = $list_articel->toBase()->merge($list_articel_1);
             }
         }
@@ -161,7 +161,7 @@ class IndexController extends Controller
             }
         }
 
-        $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->orderByDesc('view')->take(5)->get();
+        $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('view')->take(5)->get();
 
         foreach ($list_top_view as $item) {
             if (time() - $item->release_time > 86400) {
@@ -184,7 +184,7 @@ class IndexController extends Controller
         $groups = Group_vn::where('home_index', 1)->where('status', 1)->where('type', '!=', 1)->orderBy('order')->take(10)->get()->slice(2, 8);
 
         foreach ($groups as $group) {
-            $group->articel = $group->belongsToMany(News::class, $this->db->group_news, 'group_vn_id', 'news_vn_id')->orderByDesc('id')->take(5)->get();
+            $group->articel = $group->belongsToMany(News::class, $this->db->group_news, 'group_vn_id', 'news_vn_id')->where('status',1)->orderBy('order_item')->take(5)->get();
         }
         $groups = $groups->chunk(4);
         return $groups;
@@ -193,7 +193,7 @@ class IndexController extends Controller
     public function get_advert($id)
     {
         $ads = AdvertTop::where('adt_gr_id', $id)->get();
-        
+
         $ad = array();
         for ($i = 1; $i < 8; $i++) {
             $ad[$i] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
@@ -225,5 +225,5 @@ class IndexController extends Controller
         $news->save();
         return response('ok', 200);
     }
-    
+
 }
