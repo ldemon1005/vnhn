@@ -23,10 +23,26 @@
                                 <a href="{{$web_info->facebook}}"><i class="fab fa-facebook-f"></i></a>
                                 <a href="{{$web_info->youtobe}}"><i class="fab fa-youtube"></i></a>
                                 <a href="{{ asset('') }}"><i class="fas fa-envelope"></i></a>
-                                <a href="{{ asset('') }}"><i class="fas fa-search" style="color: #303840"></i></a>
+                                <a href="{{ asset('') }}"><i class="fas fa-search btnShowSearch" style="color: #303840"></i></a>
                             </li>
                         </ul>
+                        {{--<div class="formSearchHide" >--}}
+                            {{--<form id="search_video" action="" method="get">--}}
+                                {{--<input name="key" type="text" class="form-control inputFormSearch" placeholder="Từ khóa tìm kiếm ...">--}}
+                                {{--<a onclick="search_video()" style="cursor: pointer"><i--}}
+                                            {{--class="fas fa-search" style="color: #303840"></i></a>--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
                     </div>
+
+
+                    {{--<div class="float-right" style="position: relative;z-index: 1000;width: 400px">--}}
+                        {{--<form id="search_video" action="" method="get">--}}
+                            {{--<input name="key" type="text" class="form-control" placeholder="Từ khóa tìm kiếm ...">--}}
+                            {{--<a onclick="search_video()" style="cursor: pointer"><i--}}
+                                        {{--class="fas fa-search" style="color: #303840"></i></a>--}}
+                        {{--</form>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
