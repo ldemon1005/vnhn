@@ -182,7 +182,7 @@
                                             <div class="stt">{{$i + 1}}.</div>
                                             <div class="caption"><h3>{{$list_top_view[$i]->title}}</h3></div>
                                             <div class="avatar">
-                                                <img src="{{ file_exists(resource_path($list_top_view[$i]->fimage)) ? asset('/local/resources'.$list_top_view[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_top_view[$i]->fimage }}">
+                                                <img src="{{ isset($list_top_view[$i]->fimage)  && $list_top_view[$i]->fimage ? (file_exists(storage_path('app/article/resized200-'.$list_top_view[$i]->fimage)) ? asset('local/storage/app/article/resized200-'.$list_top_view[$i]->fimage) : (file_exists(resource_path($list_top_view[$i]->fimage)) ? asset('/local/resources'.$list_top_view[$i]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}">
                                             </div>
                                         </a>
                                     @endfor
