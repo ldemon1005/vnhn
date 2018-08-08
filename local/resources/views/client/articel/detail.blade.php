@@ -187,7 +187,7 @@
                                     <a href="{{ route('get_detail_articel',$art_related->slug.'---n-'.$art_related->id) }}">
                                         <div class="mainDetailLeftInvolveItemImg">
 
-                                            <div class="avatar mb-2" style="background-image: url('{{ file_exists(resource_path($art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'http://vietnamhoinhap.vn/'.$art_related->fimage }}');">
+                                            <div class="avatar mb-2" style="background-image: url('{{ isset($art_related->fimage)  && $art_related->fimage ? (file_exists(storage_path('app/article/resized200-'.$art_related->fimage)) ? asset('local/storage/app/article/resized200-'.$art_related->fimage) : (file_exists(resource_path($art_related->fimage)) ? asset('/local/resources'.$art_related->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}');">
                                             </div>
                                             <h3 class="title">{{$art_related->title}}</h3>
 

@@ -128,10 +128,12 @@ class IndexController extends Controller
         }
 
         $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id', $list_group_ids)->get(['news_vn_id'])->toJson();
+        $list_articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id', $list_group_ids)->where('hot',1)->get(['news_vn_id'])->toJson();
         $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
+        $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids, true), 'news_vn_id');
 
         if ($position == 0) {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderByDesc('release_time')->orderBy('order_item')->take(5)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->whereNotNull('order_item')->where('status',1)->orderBy('order_item')->take(5)->get();
 
             $count = $list_articel->count();
 
@@ -142,7 +144,7 @@ class IndexController extends Controller
             }
 
         } else {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('hot_item', 1)->whereNotNull('order_item')->where('status',1)->orderByDesc('release_time')->orderBy('order_item')->take(4)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->whereNotNull('order_item')->where('status',1)->orderBy('order_item')->take(4)->get();
 
             $count = $list_articel->count();
             if($count < 4){
@@ -193,7 +195,7 @@ class IndexController extends Controller
     public function get_advert($id)
     {
         $ads = AdvertTop::where('adt_gr_id', $id)->get();
-        
+
         $ad = array();
         for ($i = 1; $i < 8; $i++) {
             $ad[$i] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
@@ -225,5 +227,5 @@ class IndexController extends Controller
         $news->save();
         return response('ok', 200);
     }
-    
+
 }

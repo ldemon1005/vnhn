@@ -106,6 +106,81 @@
 	    return implode(',',$imgArr);
 	}
 
+	//lưu ảnh riêng cho bài viết
+	function saveImageArticle($input,$path){
+	    $imgArr = [];
+	    $max_size500 = 500;
+	    $max_size200 = 200;
+	    foreach ($input as $image) {
+
+	        $filename = 'img_'.date("Y-m-d").'_'.round(microtime(true)).'.'.$image->extension();
+	        $image->storeAs($path,$filename);
+	        $imgArr[] = $filename;
+
+	        $image_info = getimagesize($image);
+	        $width_orig  = $image_info[0];
+	        $height_orig = $image_info[1];
+
+	        $ratio = $width_orig/$height_orig;
+	        if($ratio>=1){
+	        	//resize 500px
+	            $width500=$max_size500;
+	            $height500=$width500/$ratio;
+	            //resize 200px
+	            $width200=$max_size200;
+	            $height200=$width200/$ratio;
+	        }else{
+	            $height500=$max_size500;
+	            $width500=$height500*$ratio;
+
+	            $height200=$max_size200;
+	            $width200=$height200*$ratio;
+	        }
+	        $destination_image500 = imagecreatetruecolor($width500, $height500);
+	        $destination_image200 = imagecreatetruecolor($width200, $height200);
+
+	        $type_org = $image->extension();
+	        switch ($type_org) {
+	            case 'jpeg':
+	            $orig_image = imagecreatefromjpeg($image);
+	            imagecopyresampled($destination_image500, $orig_image, 0, 0, 0, 0, $width500, $height500, $width_orig, $height_orig);
+	            imagejpeg($destination_image500, 'local/storage/app/'.$path.'/resized500-'.$filename);
+
+	            imagecopyresampled($destination_image200, $orig_image, 0, 0, 0, 0, $width200, $height200, $width_orig, $height_orig);
+	            imagejpeg($destination_image200, 'local/storage/app/'.$path.'/resized200-'.$filename);
+	            break;
+
+	            case 'jpg':
+	            $orig_image = imagecreatefromjpeg($image);
+	            imagecopyresampled($destination_image500, $orig_image, 0, 0, 0, 0, $width500, $height500, $width_orig, $height_orig);
+	            imagejpeg($destination_image500, 'local/storage/app/'.$path.'/resized500-'.$filename);
+	            //200
+	            imagecopyresampled($destination_image200, $orig_image, 0, 0, 0, 0, $width200, $height200, $width_orig, $height_orig);
+	            imagejpeg($destination_image200, 'local/storage/app/'.$path.'/resized200-'.$filename);
+	            break;
+
+	            case 'png':
+	            $orig_image = imagecreatefrompng($image);
+	            imagecopyresampled($destination_image500, $orig_image, 0, 0, 0, 0, $width500, $height500, $width_orig, $height_orig);
+	            imagepng($destination_image500, 'local/storage/app/'.$path.'/resized500-'.$filename);
+	            //200
+	            imagecopyresampled($destination_image200, $orig_image, 0, 0, 0, 0, $width200, $height200, $width_orig, $height_orig);
+	            imagepng($destination_image200, 'local/storage/app/'.$path.'/resized200-'.$filename);
+	            break;
+
+	            case 'gif':
+	            $orig_image = imagecreatefromgif($image);
+	            imagecopyresampled($destination_image500, $orig_image, 0, 0, 0, 0, $width500, $height500, $width_orig, $height_orig);
+	            imagegif($destination_image500, 'local/storage/app/'.$path.'/resized500-'.$filename);
+
+	            imagecopyresampled($destination_image200, $orig_image, 0, 0, 0, 0, $width200, $height200, $width_orig, $height_orig);
+	            imagegif($destination_image200, 'local/storage/app/'.$path.'/resized200-'.$filename);
+	            break;
+	        }
+	    }
+	    return implode(',',$imgArr);
+	}
+
 	function time_format($time){
 		if ($time == null) {
 			return 'lỗi';

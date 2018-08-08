@@ -36,7 +36,7 @@
                     <div class="card-header">
                         <h3 class="card-title">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</h3>
                     </div>
-                    <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post">
+                    <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post" enctype="multipart/form-data" >
                         {{csrf_field()}}
                         <div class="card-body">
                             <div class="row form-group d-none">
@@ -118,7 +118,16 @@
                             <div class="row form-group">
                                 <label class="col-sm-2">Avatar</label>
                                 <div class="col-sm-3 form-group">
-                                    <div class="{{ $articel->fimage == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
+                                    <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
+                                    <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail imageForm" src="
+                                        {{ isset($articel->fimage)  && $articel->fimage ? 
+                                            (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ? 
+                                                asset('local/storage/app/article/resized500-'.$articel->fimage) : 
+                                                (file_exists(resource_path($articel->fimage)) ? 
+                                                    asset('/local/resources'.$articel->fimage) : 
+                                                    '../images/default-image.png')) : 
+                                        '../images/default-image.png' }}">
+                                    {{-- <div class="{{ $articel->fimage == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
                                          onclick="avatar.click()">
                                         <div class="d-inline-block" style="margin: auto">
                                             <img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">
@@ -131,7 +140,7 @@
                                     </div>
                                     <input #avatar class="d-none" type="file" id="avatar"
                                            onchange="uploadImage(avatar,avatar.files[0])">
-                                    <input class="d-none" name="articel[fimage]" value="{{$articel->fimage}}" id="src_avatar" type="text">
+                                    <input class="d-none" name="articel[fimage]" value="{{$articel->fimage}}" id="src_avatar" type="text"> --}}
                                 </div>
                             </div>
 
@@ -187,9 +196,9 @@
                                                     <input type="checkbox" value="1" class="minimal" name="articel[hot_main]" onclick="hot_time_main(this.value)" {{$articel->hot_main == 1 ? 'checked' : ''}}>
                                                     Hot trang chủ
                                                 </label>
-                                                <div id="hot_main" class="col-sm-8 {{$articel->hot_main != 1 ? 'd-none' : ''}}">
+                                                {{-- <div id="hot_main" class="col-sm-8 {{$articel->hot_main != 1 ? 'd-none' : ''}}">
                                                     <input type="number" class="form-control" name="articel[time_hot_main]" value="" placeholder="tính theo giờ">
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
@@ -199,9 +208,9 @@
                                                     <input type="checkbox" value="1" onclick="hot_time_item(this.value)" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>
                                                     Hot danh mục
                                                 </label>
-                                                <div id="hot_item" class="col-sm-8 {{$articel->hot_item != 1 ? 'd-none' : ''}}">
+                                                {{-- <div id="hot_item" class="col-sm-8 {{$articel->hot_item != 1 ? 'd-none' : ''}}">
                                                     <input type="number" class="form-control" name="articel[time_hot_item]" value="" placeholder="tính theo giờ">
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 

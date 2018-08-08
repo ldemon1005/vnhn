@@ -19,6 +19,14 @@ class ArticelController extends Controller
 
         $articel = News::find($slug[1]);
 
+        if($articel){
+            if($articel->status != 1){
+                return redirect()->route('home');
+            }
+        }else {
+            return redirect()->route('home');
+        }
+
         // $articel->update(['ncount' => $articel-> + 1ncount]);
 
         $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->whereNotNull('noidung')->where('noidung','!=','')
@@ -61,7 +69,8 @@ class ArticelController extends Controller
 
         $day_in_week_str = '';
 
-        if(Session::get('lang') == 'vn'){
+
+        if(Session::get('lang','vn') == 'vn'){
             switch ($day_in_week){
                 case 1 : $day_in_week_str = 'Thứ 2';break;
                 case 2 : $day_in_week_str = 'Thứ 3';break;
@@ -141,7 +150,7 @@ class ArticelController extends Controller
     }
 
     function articel_top_view($list_group){
-        $list_articel = DB::table($this->db->news)->whereIn('groupid',$list_group)->orderBy('view')->orderByDesc('release_time')->take(5)->get();
+        $list_articel = DB::table($this->db->news)->whereIn('groupid',$list_group)->orderBy('view')->where('status',1)->orderByDesc('release_time')->take(5)->get();
 
         return $list_articel;
     }
