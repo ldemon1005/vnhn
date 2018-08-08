@@ -96,7 +96,16 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('change_pass', 'ProfileController@postChangePass');
 
         });
+        Route::group(['prefix' => 'video'], function(){
+            Route::get('/','VideoController@get_list')->name('admin_video');
+            Route::get('/form_video/{id}','VideoController@form_video')->name('form_video');
+            Route::post('/action_video','VideoController@action_video')->name('action_video');
+            Route::get('/delete_video/{id}','VideoController@delete_video')->name('delete_video');
+            Route::get('/history_video/{id}','VideoController@history_video')->name('history_video');
+            Route::get('/update_status/{id}','VideoController@update_status')->name('update_status');
 
+            Route::post('status', 'VideoController@action_status');
+        });
         Route::group(['middleware' => 'CheckSite'], function(){
             Route::group(['prefix' => 'account'], function(){
                 Route::get('/', 'AccountController@getList');
@@ -156,16 +165,7 @@ Route::group(['namespace' => 'Admin'], function (){
 
             });
 
-            Route::group(['prefix' => 'video'], function(){
-                Route::get('/','VideoController@get_list')->name('admin_video');
-                Route::get('/form_video/{id}','VideoController@form_video')->name('form_video');
-                Route::post('/action_video','VideoController@action_video')->name('action_video');
-                Route::get('/delete_video/{id}','VideoController@delete_video')->name('delete_video');
-                Route::get('/history_video/{id}','VideoController@history_video')->name('history_video');
-                Route::get('/update_status/{id}','VideoController@update_status')->name('update_status');
-
-                Route::post('status', 'VideoController@action_status');
-            });
+            
 
             Route::group(['prefix' => 'advert'], function(){
                 Route::get('/', 'AdvertController@index');

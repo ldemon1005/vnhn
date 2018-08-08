@@ -17,7 +17,7 @@
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a href="{{ asset('') }}"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>
+                            <li class="header-lang"><a href="{{ asset('local/resources/assets/file/VNHN-qc-baodientu.pdf') }}" target="blank"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="list-icon">
                                 <a href="{{$web_info->facebook}}"><i class="fab fa-facebook-f"></i></a>

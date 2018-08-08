@@ -157,7 +157,7 @@
                         </li>
                     </ul>
                 </li>
-                @if (Auth::user()->site == 1 )
+                @if (Auth::user()->level < 3 )
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'video' || Request::segment(2) == 'group_video') active @endif">
                             <i class="nav-icon fas fa-video"></i>
