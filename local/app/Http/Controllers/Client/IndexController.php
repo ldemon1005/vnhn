@@ -119,7 +119,7 @@ class IndexController extends Controller
 
         $menu_time = $menu_time[$position][$position];
 
-        $menu_child = DB::table($this->db->group)->where('parentid', $menu_time->id)->get();
+        $menu_child = DB::table($this->db->group)->where('parentid', $menu_time->id)->orderBy('order')->get();
 
         $list_group_ids[] = $menu_time->id;
 

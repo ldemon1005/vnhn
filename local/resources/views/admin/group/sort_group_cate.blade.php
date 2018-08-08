@@ -46,31 +46,22 @@
 						</h3>
 					</div>
 					<!-- /.card-header -->
-					<form method="post" action="{{route('update_order')}}">
-						{{csrf_field()}}
-						<input class="d-none" name="cate" value="1">
-						<div class="card-body">
-							<ul class="todo-list">
-								@foreach($list_group as $group)
-									<li>
+					<div class="card-body">
+						<ul class="todo-list">
+							@foreach($list_group as $group)
+								<li>
 								<span class="handle">
 								  <i class="fa fa-ellipsis-v"></i>
 								  <i class="fa fa-ellipsis-v"></i>
 								</span>
-										<input style="width: 50px" type="text" value="{{$loop->index + 1}}"
-											   name="group[{{$group->id}}]">
-										<a style="cursor: pointer" onclick="getMunuChildCate({{$group->id}})"><span
-													class="text">{{$group->title}}</span></a>
-									</li>
-								@endforeach
-							</ul>
-						</div>
-						<!-- /.card-body -->
-						<div class="card-footer clearfix">
-							<button type="submit" class="btn btn-info float-right"><i class="fa fa-plus"></i> Cập nhật
-							</button>
-						</div>
-					</form>
+									<input style="width: 50px" type="text" value="{{$loop->index + 1}}"
+										   name="group[{{$group->id}}]">
+									<a style="cursor: pointer" onclick="getMunuChildCate({{$group->id}})"><span
+												class="text">{{$group->title}}</span></a>
+								</li>
+							@endforeach
+						</ul>
+					</div>
 				</div>
 			</section>
 
