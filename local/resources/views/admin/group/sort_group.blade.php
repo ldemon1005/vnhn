@@ -42,7 +42,7 @@
 					<div class="card-header">
 						<h3 class="card-title">
 							<i class="ion ion-clipboard mr-1"></i>
-							Danh mục cha
+							Trang chủ
 						</h3>
 					</div>
 					<!-- /.card-header -->

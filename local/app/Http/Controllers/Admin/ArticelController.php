@@ -586,7 +586,7 @@ class ArticelController extends Controller
         $result[] = (object)$root;
         $this->recusiveGroup($list_group, 0, "", $result);
 
-        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->where('time_hot_main' ,'>=', time())->orderBy('order_main')->get();
+        $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->where('status',1)->where('time_hot_main' ,'>=', time())->orderBy('order_main')->orderBy('release_time','desc')->get();
 
         $data = [
             'list_articel' => $arrticel_hot,
@@ -619,7 +619,7 @@ class ArticelController extends Controller
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
-            $arrticel_hot = DB::table($this->db->news)->orderBy('order_item')->where('status',1)->where('time_hot_item','>=',time())->whereIn('id',$articel_hot_ids)->get();
+            $arrticel_hot = DB::table($this->db->news)->where('status',1)->where('time_hot_item','>=',time())->whereIn('id',$articel_hot_ids)->orderBy('order_item')->orderBy('release_time','desc')->get();
         }
 
         $data = [

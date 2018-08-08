@@ -88,7 +88,7 @@ class IndexController extends Controller
 
     public function get_new_articel()
     {
-        $list_articel_new = DB::table($this->db->news)->where('hot_main', 1)->where('time_hot_main','>=',time())->where('status',1)->where('release_time', '<=', time())->orderBy('order_main')->take(10)->get();
+        $list_articel_new = DB::table($this->db->news)->where('hot_main', 1)->where('time_hot_main','>=',time())->where('status',1)->where('release_time', '<=', time())->orderBy('order_main')->orderBy('release_time','desc')->take(10)->get();
         foreach ($list_articel_new as $item) {
             if (time() - $item->release_time > 86400) {
                 $item->release_time = date('d/m/Y H:m', $item->release_time);
@@ -133,7 +133,7 @@ class IndexController extends Controller
         $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids, true), 'news_vn_id');
 
         if ($position == 0) {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->whereNotNull('order_item')->where('time_hot_item','>=',time())->where('status',1)->orderBy('order_item')->take(5)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->whereNotNull('order_item')->where('time_hot_item','>=',time())->where('status',1)->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
 
             $count = $list_articel->count();
 
@@ -144,7 +144,7 @@ class IndexController extends Controller
             }
 
         } else {
-            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->whereNotNull('order_item')->where('time_hot_item','>=',time())->where('status',1)->orderBy('order_item')->take(4)->get();
+            $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->whereNotNull('order_item')->where('time_hot_item','>=',time())->where('status',1)->orderBy('order_item')->orderBy('release_time','desc')->take(4)->get();
 
             $count = $list_articel->count();
             if($count < 4){
@@ -163,7 +163,7 @@ class IndexController extends Controller
             }
         }
 
-        $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->orderByDesc('view')->take(5)->get();
+        $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('view')->orderBy('release_time','desc')->take(5)->get();
 
         foreach ($list_top_view as $item) {
             if (time() - $item->release_time > 86400) {
@@ -186,7 +186,7 @@ class IndexController extends Controller
         $groups = Group_vn::where('home_index', 1)->where('status', 1)->where('type', '!=', 1)->orderBy('order')->take(10)->get()->slice(2, 8);
 
         foreach ($groups as $group) {
-            $group->articel = $group->belongsToMany(News::class, $this->db->group_news, 'group_vn_id', 'news_vn_id')->orderByDesc('id')->take(5)->get();
+            $group->articel = $group->belongsToMany(News::class, $this->db->group_news, 'group_vn_id', 'news_vn_id')->where('status',1)->orderBy('release_time','desc')->orderByDesc('id')->take(5)->get();
         }
         $groups = $groups->chunk(4);
         return $groups;

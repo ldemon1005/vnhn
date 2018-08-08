@@ -37,7 +37,7 @@ class GroupController extends Controller{
 
         $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids,true),'news_vn_id');
 
-        $list_articel_hot = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_articel_hot_ids)->where('status',1)->where('time_hot_item','>=',time())->where('release_time','<=',time())->orderBy('order_item')->take(5)->get();
+        $list_articel_hot = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_articel_hot_ids)->where('status',1)->where('time_hot_item','>=',time())->where('release_time','<=',time())->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
 
 
         /*
@@ -52,6 +52,10 @@ class GroupController extends Controller{
             $number = 5 - $list_articel_hot->count();
             $list_articel_hot_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_articel_ids)->where('release_time','<=',time())->orderBy('release_time')->take($number)->get();
             $list_articel_hot = $list_articel_hot->toBase()->merge($list_articel_hot_1);
+        }
+
+        foreach ($list_articel_hot as $val){
+            $val->release_time = date('d/m/Y H:m',$val->release_time);
         }
 
         $articel_top_view = $this->articel_top_view($list_articel_ids);
