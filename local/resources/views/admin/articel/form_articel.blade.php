@@ -211,17 +211,17 @@
                                         </div>
                                     </div>
 
-                                    <div class="row form-group">
-                                        <label class="col-sm-2">Loại</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control" name="articel[loaiview]">
-                                                <option value="0">Không chọn</option>
-                                                <option value="1">Video</option>
-                                                <option value="2">Ảnh</option>
-                                                <option value="3">Âm thanh</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    {{--<div class="row form-group">--}}
+                                        {{--<label class="col-sm-2">Loại</label>--}}
+                                        {{--<div class="col-sm-10">--}}
+                                            {{--<select class="form-control" name="articel[loaiview]">--}}
+                                                {{--<option value="0">Không chọn</option>--}}
+                                                {{--<option value="1">Video</option>--}}
+                                                {{--<option value="2">Ảnh</option>--}}
+                                                {{--<option value="3">Âm thanh</option>--}}
+                                            {{--</select>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id ? 'Cập nhật' : 'Tạo mới' }}</button>
                                     </div>

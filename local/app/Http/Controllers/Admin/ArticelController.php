@@ -60,7 +60,7 @@ class ArticelController extends Controller
                 $status = [0,1];
                 break;
             case 3:
-                $status = [0,2];
+                $status = [0,2,3];
                 break;
             case 4:
                 $status = [0,3,4];
@@ -736,7 +736,7 @@ class ArticelController extends Controller
             return response('error', 200);
         }
         $news->save();
-        return response('success', 200);
+        return response('ok', 200);
     }
     public function get3(){
         $id = Input::get('id');
@@ -748,7 +748,7 @@ class ArticelController extends Controller
             return response('error', 200);
         }
         $news->save();
-        return response('success', 200);
+        return response(3, 200);
     }
     public function get4(){
         $id = Input::get('id');
@@ -760,7 +760,7 @@ class ArticelController extends Controller
             return response('error', 200);
         }
         $news->save();
-        return response('success', 200);
+        return response(4, 200);
     }
 
 

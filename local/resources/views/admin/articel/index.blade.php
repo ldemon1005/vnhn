@@ -187,8 +187,13 @@
                                                             <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
                                                             @break
                                                         @case(3)
-                                                            <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
-                                                            <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
+                                                            @if(Auth::user()->id == $articel->userid)
+                                                                <button class="btn btn-block btn-sm btn-success btn2">Gửi lại</button>
+                                                            @else
+                                                                <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
+                                                                <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
+                                                            @endif
+                                                                
                                                             @break
 
                                                         @default
@@ -214,50 +219,9 @@
                                                     @break
                                             @endswitch
                                             
-                                            {{-- @switch($articel->status)
-                                                @case(0)
-                                                    <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
-                                                    @break
-                                                @case(1)
-                                                    <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
-                                                    @break
-                                                @case(2)
-                                                    <button class="btn btn-block btn-sm btn-success btn1">Duyệt</button>
-                                                    @break
-                                                @case(3)
-                                                    <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
-                                                    @break
-                                                @case(4)
-                                                    <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
-                                                    @break
-                                                @default
-                                                    <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
-                                                    @break
-                                            @endswitch --}}
+                                            
                                             <div class="id_group" style="display: none;">{{$articel->id}}</div>
-                                           {{--  <select style="width: 100%" class="form-control"
-                                                    onchange="chang_status_articel('{{$articel->id}}',this)">
-                                                @if($level <= 2)
-                                                    <option {{$articel->status == 1 ? 'selected' : ''}} value="1">
-                                                        Đăng
-                                                    </option>
-                                                    <option {{$articel->status == 0 ? 'selected' : ''}} value="0">
-                                                        Tắt
-                                                    </option>
-                                                @endif
-
-                                                @if($level <= 3)
-                                                    <option {{$articel->status == 3 ? 'selected' : ''}} value="3">
-                                                        Duyệt lần 1
-                                                    </option>
-                                                    <option {{$articel->status == 2 ? 'selected' : ''}} value="2">
-                                                        Duyệt lần 2
-                                                    </option>
-                                                    <option {{$articel->status == 4 ? 'selected' : ''}} value="4">
-                                                        Trả lại
-                                                    </option>
-                                                @endif
-                                            </select> --}}
+                                           
                                         </td>
                                         <td>
                                             <div class="row form-group">

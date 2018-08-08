@@ -144,7 +144,32 @@
                                         {{-- <hr style="border-top: 2px solid #999999"/> --}}
                                     @endforeach
                                     <div class="pagination float-right" style="padding-top: 15px">
-                                        {!! $list_articel->links('vendor.pagination.bootstrap-4') !!}
+                                        {{-- <nav aria-label="Page navigation">
+                                        @if ($list_articel->lastPage() > 1)
+                                            <ul class="pagination">
+                                               
+                                                <li class="page-item {{ ($list_articel->currentPage() == 1) ? ' disabled' : '' }}">
+                                                    <a href="{{ $list_articel->url(1) }}">Previous</a>
+                                                </li>
+                                                
+                                                <li class="page-item {{ ($list_articel->currentPage() == $list_articel->lastPage()) ? ' disabled' : '' }}">
+                                                    <a href="{{ $list_articel->url($list_articel->currentPage()+1) }}" >Next</a>
+                                                </li>
+                                            </ul>
+                                        @endif
+                                        </nav> --}}
+                                        {{-- {!! $list_articel->links('vendor.pagination.bootstrap-4') !!} --}}
+
+
+                                        <nav aria-label="Page navigation example">
+                                          @if ($list_articel->lastPage() > 1)
+                                          <ul class="pagination">
+                                            <li class="page-item {{ ($list_articel->currentPage() == 1) ? ' disabled' : '' }}"><a class="page-link" href="{{ $list_articel->url(1) }}">Trang trước</a></li>
+                                            
+                                            <li class="page-item {{ ($list_articel->currentPage() == $list_articel->lastPage()) ? ' disabled' : '' }}"><a class="page-link" href="{{ $list_articel->url($list_articel->currentPage()+1) }}">Trang tiếp</a></li>
+                                          </ul>
+                                          @endif
+                                        </nav>
                                     </div>
                                 </div>
                             </div>

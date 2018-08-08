@@ -83,7 +83,7 @@
 										<span>&nbsp;&nbsp;&nbsp;</span>
 										<span>{{date('d/m/Y H:m',$articel->created_at)}}</span>
 										<div class="tools">
-											<a href="{{route('delete_articel_hot',['groupid' => $group_id,'id' => $articel->id])}}" class="text-danger">
+											<a href="{{route('delete_articel_hot',['groupid' => $group_id,'id' => $articel->id])}}" class="text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa')">
 												<i class="fa fa-trash-o"></i>
 											</a>
 										</div>
