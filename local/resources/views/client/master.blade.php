@@ -9,6 +9,9 @@
     <!-- Meta facebook -->
     @if(isset($articel_detail))
         <meta property="og:url"           content="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" />
+    @else
+        <meta property="og:url"           content="{{ URL::current() }}" />
+    @endif
         <meta property="og:type"          content="article" />
         <meta property="og:title"         content="@yield('fb_title')" />
         <meta property="og:description"   content="@yield('fb_des')" />
@@ -16,7 +19,7 @@
         <meta property="og:image:width" content="400" />
         <meta property="og:image:height" content="300" />
 
-    @endif
+    
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

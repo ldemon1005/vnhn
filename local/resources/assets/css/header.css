@@ -58,27 +58,6 @@
 	flex: 1;
 	text-align: right;
 	line-height: 46px;
-	position: relative;
-}
-.formSearchHide{
-	width: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transition: 0.5s;
-    display: none;
-}
-.inputFormSearch{
-	margin: 6px 0;
-	padding: .25rem .75rem;
-}
-.formSearchHide form a{
-	cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 10px;
-    line-height: 45px;
 }
 
 
@@ -180,8 +159,12 @@
 #header-menu .menu-header>li:first-child{
 	border-left: 0;
 	padding-left: 0;
-	background: #c20e12;
+	
 }
+
+#header-menu .menu-header>li.active{
+	background: #c20e12;
+} 
 #header-menu .menu-header>li:first-child a{
 	font-size: 16px;
 }
@@ -383,6 +366,9 @@ ul.dropdown_child li a{
 	}
 	#header-menu .menu-header>li.dropdown{
 		display: none;
+	}
+	#header-menu .menu-header>li.active a{
+		color: #fff;
 	}
 
 	

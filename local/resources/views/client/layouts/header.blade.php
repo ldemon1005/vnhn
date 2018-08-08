@@ -17,22 +17,22 @@
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a href="{{ asset('local/resources/assets/file/VNHN-qc-baodientu.pdf') }}" target="blank"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}">Quảng cáo</p></a></li>
+                            <li class="header-lang"><a href="{{ asset('local/resources/assets/file/bang-gia.pdf') }}" target="blank"><p><img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}" style="margin-right: 5px">Quảng cáo</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="list-icon">
-                                <a href="{{$web_info->facebook}}"><i class="fab fa-facebook-f"></i></a>
-                                <a href="{{$web_info->youtobe}}"><i class="fab fa-youtube"></i></a>
-                                <a href="{{ asset('') }}"><i class="fas fa-envelope"></i></a>
+                                <a href="{{$web_info->facebook}}" target="blank"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{$web_info->youtobe}}" target="blank"><i class="fab fa-youtube"></i></a>
+                                {{-- <a href="{{ asset('') }}"><i class="fas fa-envelope"></i></a> --}}
                                 <a href="{{ asset('') }}"><i class="fas fa-search btnShowSearch" style="color: #303840"></i></a>
                             </li>
                         </ul>
-                        {{--<div class="formSearchHide" >--}}
-                            {{--<form id="search_video" action="" method="get">--}}
-                                {{--<input name="key" type="text" class="form-control inputFormSearch" placeholder="Từ khóa tìm kiếm ...">--}}
-                                {{--<a onclick="search_video()" style="cursor: pointer"><i--}}
-                                            {{--class="fas fa-search" style="color: #303840"></i></a>--}}
-                            {{--</form>--}}
-                        {{--</div>--}}
+                        {{-- <div class="formSearchHide" >
+                            <form id="search_video" action="" method="get">
+                                <input name="key" type="text" class="form-control inputFormSearch" placeholder="Từ khóa tìm kiếm ...">
+                                <a onclick="search_video()" style="cursor: pointer"><i
+                                            class="fas fa-search" style="color: #303840"></i></a>
+                            </form>
+                        </div> --}}
                     </div>
 
 
@@ -85,15 +85,15 @@
         <div class="container">
             <div class="row">
                 <ul class="menu-header">
-                    <li><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
+                    <li class="{{ isset($group_menu_cate[0]) ? '' : 'active' }}"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
 
                     {{-- {{$menu->child}} --}}
                     <?php $count=0?>
                     @foreach ($menu as $item)
                         @if($item->id == 19)
-                            <li class="menuHeaderItem"><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></li>
+                            <li class="menuHeaderItem " ><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></li>
                         @else
-                            <li class="menuHeaderItem @if ( $count > 5 ) menu_head_hide @endif">
+                            <li class="menuHeaderItem @if ( $count > 5 ) menu_head_hide @endif {{ isset($group_menu_cate[0]) && $group_menu_cate[0]->id == $item->id ? 'active' : '' }}">
                                 <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
                                 <?php $count1 = 0?>
                                 @if (isset($item->child) && $item->child->count())
@@ -116,7 +116,7 @@
                     @endforeach
                     
                     <li class="dropdown">
-                        <a>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chuyên mục khác' : 'Category orther'}}</a>
+                        <a>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chuyên mục khác' : 'Other Categories'}}</a>
                         <?php $count1 = 0?>
                         <ul class="dropdown_child">
                             @for($i = 6; $i < $menu->count(); $i++)

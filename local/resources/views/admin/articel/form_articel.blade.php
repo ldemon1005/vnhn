@@ -12,39 +12,39 @@
     @endif
     <div class="content-wrapper">
         <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}Bài viết</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
-                            <li class="breadcrumb-item"><a href="{{ asset('admin/articel') }}">Bài viết</a></li>
-                            <li class="breadcrumb-item active">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}Bài viết</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
+                  <li class="breadcrumb-item"><a href="{{ asset('admin/articel') }}">Bài viết</a></li>
+                  <li class="breadcrumb-item active">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</li>
+                </ol>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
         </section>
         <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-12 col-sm-12">
-                        <div class="card card-danger">
-                            <div class="card-header">
-                                <h3 class="card-title">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</h3>
+          <div class="container-fluid">
+            <div class="row">
+              <!-- left column -->
+              <div class="col-md-12 col-sm-12">
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</h3>
+                    </div>
+                    <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post" enctype="multipart/form-data" >
+                        {{csrf_field()}}
+                        <div class="card-body">
+                            <div class="row form-group d-none">
+                                <label class="col-sm-2">ID bài viết</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="articel[id]" value="{{$articel->id}}" class="form-control" placeholder="ID danh mục">
+                                </div>
                             </div>
-                            <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post">
-                                {{csrf_field()}}
-                                <div class="card-body">
-                                    <div class="row form-group d-none">
-                                        <label class="col-sm-2">ID bài viết</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="articel[id]" value="{{$articel->id}}" class="form-control" placeholder="ID danh mục">
-                                        </div>
-                                    </div>
 
                                     <div class="row form-group">
                                         <label class="col-sm-2">Tiêu đề bài viết <span class="text-danger">*</span></label>
@@ -115,25 +115,34 @@
                                     </div>
 
 
-                                    <div class="row form-group">
-                                        <label class="col-sm-2">Avatar</label>
-                                        <div class="col-sm-3 form-group">
-                                            <div class="{{ $articel->fimage == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
-                                                 onclick="avatar.click()">
-                                                <div class="d-inline-block" style="margin: auto">
-                                                    <img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">
-                                                </div>
-                                            </div>
-                                            <div class="img-avatar {{ $articel->fimage == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
-                                                <img id="blog_avatar" style="width: 100%" src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}" alt="">
-                                                <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
-                                                   onclick="removeImage()"></i>
-                                            </div>
-                                            <input #avatar class="d-none" type="file" id="avatar"
-                                                   onchange="uploadImage(avatar,avatar.files[0])">
-                                            <input class="d-none" name="articel[fimage]" value="{{$articel->fimage}}" id="src_avatar" type="text">
+                            <div class="row form-group">
+                                <label class="col-sm-2">Avatar</label>
+                                <div class="col-sm-3 form-group">
+                                    <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
+                                    <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail imageForm" src="
+                                        {{ isset($articel->fimage)  && $articel->fimage ?
+                                            (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ?
+                                                asset('local/storage/app/article/resized500-'.$articel->fimage) :
+                                                (file_exists(resource_path($articel->fimage)) ?
+                                                    asset('/local/resources'.$articel->fimage) :
+                                                    '../images/default-image.png')) :
+                                        '../images/default-image.png' }}">
+                                    {{-- <div class="{{ $articel->fimage == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
+                                         onclick="avatar.click()">
+                                        <div class="d-inline-block" style="margin: auto">
+                                            <img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">
                                         </div>
                                     </div>
+                                    <div class="img-avatar {{ $articel->fimage == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
+                                        <img id="blog_avatar" style="width: 100%" src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}" alt="">
+                                        <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
+                                           onclick="removeImage()"></i>
+                                    </div>
+                                    <input #avatar class="d-none" type="file" id="avatar"
+                                           onchange="uploadImage(avatar,avatar.files[0])">
+                                    <input class="d-none" name="articel[fimage]" value="{{$articel->fimage}}" id="src_avatar" type="text"> --}}
+                                </div>
+                            </div>
 
                                     <div class="row form-group">
                                         <label class="col-sm-2">Nội dung bài viết</label>

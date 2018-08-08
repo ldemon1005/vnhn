@@ -1,8 +1,8 @@
 @extends('client.master')
-@section('title', 'Tin nhanh Việt Nam')
+@section('title', 'Tin nhanh Việt Nam Hội Nhập')
 @section('fb_title', 'Tin nhanh Việt Nam Hội Nhập - Cập nhật xu hướng')
-@section('fb_des', 'Tạp chí vnhh là trang thông tin tạp chí đối ngoại,......')
-@section('fb_image', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
+@section('fb_des', 'Tạp chí VNHN là trang thông tin tạp chí đối ngoại,......')
+@section('fb_img', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
 @section('css')
     <style>
         a{
@@ -38,7 +38,7 @@
                                 <div class="new-item-time">
                                     @if(count($list_articel_hot))
                                     <a href="{{ route('get_detail_articel',$list_articel_hot[0]->slug.'---n-'.$list_articel_hot[0]->id) }}"  onclick="article_view('{{ $list_articel_hot[0]->id }}')">
-                                        <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[0]->fimage }}') no-repeat center /cover;">
+                                        <div class="avatar" style="background: url('{{ isset($list_articel_hot[0]->fimage)  && $list_articel_hot[0]->fimage ? (file_exists(storage_path('app/article/resized500-'.$list_articel_hot[0]->fimage)) ? asset('local/storage/app/article/resized500-'.$list_articel_hot[0]->fimage) : (file_exists(resource_path($list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
                                         </div>
                                         <h3 class="title mt-2">{{$list_articel_hot[0]->title}}</h3>
                                         <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
@@ -69,7 +69,7 @@
                                 @for($i = 1;$i<count($list_articel_hot);$i++)
                                     <div class="item-bottom">
                                         <a href="{{ route('get_detail_articel',$list_articel_hot[$i]->slug.'---n-'.$list_articel_hot[$i]->id) }}"  onclick="article_view('{{ $list_articel_hot[$i]->id }}')">
-                                            <div class="avatar" style="background: url('{{ file_exists(resource_path($list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'http://vietnamhoinhap.vn/'.$list_articel_hot[$i]->fimage }}') no-repeat center /cover;">
+                                            <div class="avatar" style="background: url('{{ isset($list_articel_hot[$i]->fimage)  && $list_articel_hot[$i]->fimage ? (file_exists(storage_path('app/article/resized200-'.$list_articel_hot[$i]->fimage)) ? asset('local/storage/app/article/resized200-'.$list_articel_hot[$i]->fimage) : (file_exists(resource_path($list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
                                             </div>
                                             <div class="content">
                                                 <h3 class="title">{{$list_articel_hot[$i]->title}}</h3>
@@ -137,7 +137,7 @@
                                                     <p class="date-time">{{date('d/m/Y H:m',$articel->release_time)}}</p>
                                                     <p class="caption">{{cut_string($articel->summary,220)}}</p>
                                                 </div>
-                                                <div class="avatar" style="background: url('{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}') no-repeat center /cover;">
+                                                <div class="avatar" style="background: url('{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
                                                 </div>
                                             </a>
                                         </div>
@@ -164,7 +164,7 @@
                                                             !!}</h3>
                                                             @if($loop->index == 0)
                                                                 <div class="avatar">
-                                                                    <a href="#"><img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'http://vietnamhoinhap.vn/'.$articel->fimage }}"></a>
+                                                                    <a href="#"><img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}"></a>
                                                                 </div>
                                                             @endif
                                                             <p class="date-time">{{$articel->release_time}}</p>

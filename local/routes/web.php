@@ -19,7 +19,7 @@ use \Illuminate\Support\Facades\Route;
 //,'middleware' => 'Start'
 Route::group(['namespace' => 'Client'],function (){
     Route::get('/','IndexController@index')->name('home');
-    Route::group(['prefix'=>'articel'],function(){
+    Route::group(['prefix'=>'article'],function(){
         Route::get('/{slug}','ArticelController@get_detail')->name('get_detail_articel');
         Route::post('action_comment','ArticelController@action_comment')->name('action_comment');
     });
@@ -118,6 +118,25 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('off', 'GroupVideoController@getOff');
 
         });
+
+        Route::group(['prefix' => 'magazine'], function(){
+            Route::get('/', 'MagazineNewController@getList');
+
+            Route::get('add','MagazineNewController@getAdd');
+            Route::post('add','MagazineNewController@postAdd');
+
+            Route::get('edit/{id}','MagazineNewController@getEdit');
+            Route::post('edit/{id}','MagazineNewController@postEdit');
+
+            Route::get('delete/{id}','MagazineNewController@getDelete');
+
+            Route::get('sort', 'MagazineNewController@getSort');
+            Route::post('sort', 'MagazineNewController@postSort');
+
+            Route::post('status', 'MagazineNewController@action_status');
+
+        });
+
         Route::group(['middleware' => 'CheckSite'], function(){
             Route::group(['prefix' => 'account'], function(){
                 Route::get('/', 'AccountController@getList');
@@ -199,23 +218,7 @@ Route::group(['namespace' => 'Admin'], function (){
 
 
             // });
-            Route::group(['prefix' => 'magazine'], function(){
-                Route::get('/', 'MagazineNewController@getList');
 
-                Route::get('add','MagazineNewController@getAdd');
-                Route::post('add','MagazineNewController@postAdd');
-
-                Route::get('edit/{id}','MagazineNewController@getEdit');
-                Route::post('edit/{id}','MagazineNewController@postEdit');
-
-                Route::get('delete/{id}','MagazineNewController@getDelete');
-
-                Route::get('sort', 'MagazineNewController@getSort');
-                Route::post('sort', 'MagazineNewController@postSort');
-
-                Route::post('status', 'MagazineNewController@action_status');
-
-            });
 
 
             Route::group(['prefix'=>'comment'],function(){

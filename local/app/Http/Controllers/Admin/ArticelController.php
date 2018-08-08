@@ -366,6 +366,11 @@ class ArticelController extends Controller
 
         $data['updated_at'] = time();
         $data['slug'] = str_slug($data['title']);
+        
+        $image = $request->file('img');
+        if ($request->hasFile('img')) {
+            $data['fimage'] = saveImageArticle([$image], 'article');
+        }
 
 
         if(!isset($data['hot_main'])) {
@@ -393,7 +398,16 @@ class ArticelController extends Controller
 
         if($data['id'] == 0){ //Tạo mới bài viết
             $data['created_at'] = time();
+
             $articel = News::create($data);
+            $image = $request->file('img');
+            // // dd($request);
+            // if ($request->hasFile('img')) {
+            //     // dd($image);
+            //     $articel->fimage = saveImageArticle([$image], 'article');
+            // }
+            // $articel->save();
+
             if(!$articel->id) $check = 0;
 
             $data_group_news = [];
@@ -443,6 +457,8 @@ class ArticelController extends Controller
             }else {
                 $data['updated_at'] = time();
 
+
+                
                 if(!$articel->update($data)){$check = 0;}
 
                 if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}

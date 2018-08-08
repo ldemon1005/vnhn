@@ -7,17 +7,17 @@
                     <div class="menu_footer_left">
                         <ul>
                             <li class="lang respon768"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
-                            <li class="lang"><a href="{{ asset('') }}">RSS</a></li>
+                            <li class="lang respon768"><a href="{{ asset('') }}">RSS</a></li>
 
                             <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7:
                                     {{$web_info->hotline}}</a></li>
-                            <li class="lang respon768"><a href="{{ asset('') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Buy magazines'}}</a></li>
+                            <li class="lang "><a href="{{ asset('') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Magazines subcription'}}</a></li>
                             <li class="lang"><a href="{{ asset('') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising'}}</a></li>
                         </ul>
                     </div>
-                    <div class="menu_footer_right">
-                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Trở về đầu trang]' : 'Back to top'}}
-                    </div>
+                    {{-- <div class="menu_footer_right">
+                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Trở về đầu trang]' : '[Back to top]'}}
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 <div class="footer-right">
                     <p class="title">*Vận hành bởi</p>
                     <div class="avatar-cgroup">
-                        <a href="{{ asset('') }}"><img src="{{asset('/local/resources/uploads/images/cgroup.png')}}"></a>
+                        <a href="http://cgroupvn.com/cgroup" target="blank"><img src="{{asset('/local/resources/uploads/images/cgroup.png')}}"></a>
                     </div>
                     <p class="version-mobi">Phiên bản mobile</p>
 
