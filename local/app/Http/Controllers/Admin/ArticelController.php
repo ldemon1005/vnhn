@@ -736,7 +736,7 @@ class ArticelController extends Controller
             return response('error', 200);
         }
         $news->save();
-        return response('ok', 200);
+        return response('success', 200);
     }
     public function get3(){
         $id = Input::get('id');
@@ -748,7 +748,7 @@ class ArticelController extends Controller
             return response('error', 200);
         }
         $news->save();
-        return response(3, 200);
+        return response('success', 200);
     }
     public function get4(){
         $id = Input::get('id');
@@ -760,7 +760,7 @@ class ArticelController extends Controller
             return response('error', 200);
         }
         $news->save();
-        return response(4, 200);
+        return response('success', 200);
     }
 
 
