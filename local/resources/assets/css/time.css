@@ -7,6 +7,8 @@
 }
 .section1 .menu-time ul {
     display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
     align-items: center;
     padding: 0;
     margin: 0;

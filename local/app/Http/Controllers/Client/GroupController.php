@@ -69,7 +69,6 @@ class GroupController extends Controller{
          * list articel
          */
 
-
         $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('status',1)->orderByDesc('release_time')->paginate(7);
 
         $group_ids = array_column(json_decode($group_menu->toJson(),true),'id');
@@ -123,19 +122,19 @@ class GroupController extends Controller{
 
         if($group->parentid == '00'){
             $ids[] = $group->id;
-            $group_menu = DB::table($this->db->group)->where('parentid',$group_id)->where('status',1)->orderBy('order')->take(6)->get();
+            $group_menu = DB::table($this->db->group)->where('parentid',$group_id)->where('status',1)->orderBy('order')->get();
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->orderBy('parentid')->orderBy('order')->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->orderBy('parentid')->orderBy('order')->get();
         }else{
             $parentid = $group->parentid;
             $ids[] = $parentid;
-            $group_menu = DB::table($this->db->group)->where('parentid',$parentid)->where('status',1)->orderBy('order')->take(6)->get();
+            $group_menu = DB::table($this->db->group)->where('parentid',$parentid)->where('status',1)->orderBy('order')->get();
             foreach ($group_menu as $menu){
                 $ids[] = $menu->id;
             }
-            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->orderBy('parentid')->orderBy('order')->take(6)->get();
+            $group_menu = DB::table($this->db->group)->whereIn('id',$ids)->where('status',1)->orderBy('parentid')->orderBy('order')->get();
         }
         return $group_menu;
     }

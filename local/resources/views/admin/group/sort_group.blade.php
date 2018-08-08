@@ -59,7 +59,7 @@
 										<input style="width: 50px" type="text" value="{{$loop->index + 1}}"
 											   name="group[{{$group->id}}]">
 										<a style="cursor: pointer" onclick="getMunuChild({{$group->id}})"><span
-													class="text">{{$group->title}}</span></a>
+													class="text {{$loop->index < 11 ? 'index_master' : ''}}">{{$group->title}}</span></a>
 										<div class="tools">
 											<a href="{{route('delete_home_index',$group->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa')"
 											   class="text-danger">

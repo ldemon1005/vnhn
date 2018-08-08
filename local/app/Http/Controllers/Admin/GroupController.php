@@ -124,6 +124,10 @@ class GroupController extends Controller
         unset($data['id']);
         $data['slug'] = str_slug($data['title']);
         $data['updated_at'] = time();
+        if(!isset($data['home_index'])){
+            $data['home_index'] = 0;
+        }
+
         if($id == 0){
             $data['created_at'] = time();
             try{
@@ -149,16 +153,16 @@ class GroupController extends Controller
         }
     }
 
-    function delete_group($id){
+    function delete_group($id,$group_id){
         if(DB::table($this->db->group)->delete($id)){
-            return redirect()->route('admin_group')->with('status','Xóa thành công');
+            return redirect('/admin/group?group_id='.$group_id)->with('status','Xóa thành công');
         }
-        return redirect()->route('admin_group')->with('error','Xóa không thành công');
+        return redirect('/admin/group?group_id='.$group_id)->with('error','Xóa không thành công');
     }
 
     function form_sort_group($parent_id = 0){
         if($parent_id == 0){
-            $list_group = DB::table($this->db->group)->where('home_index',1)->orderBy('order')->get();
+            $list_group = DB::table($this->db->group)->where('home_index',1)->orWhere('parentid',0)->where('status' ,1)->orderBy('order')->get();
 
             $data = [
                 'list_group' => $list_group
