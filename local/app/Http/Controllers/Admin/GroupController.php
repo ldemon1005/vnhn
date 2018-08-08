@@ -98,7 +98,7 @@ class GroupController extends Controller
                     'keywords' => '',
                     'titlemeta' => '',
                     'status' => 1,
-                    'hot_index' => 0
+                    'home_index' => 0
                 ];
 
                 $group = (object)$group;

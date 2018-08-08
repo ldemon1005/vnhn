@@ -138,7 +138,7 @@
                                 <div class="row form-group">
                                     <label class="col-sm-2">Hot index</label>
                                     <div class="col-sm-10">
-                                        <input type="checkbox" value="1" {{$group->hot_index == 1 ? 'checked' : ''}}  class="minimal" name="group[home_index]">
+                                        <input type="checkbox" value="1" {{$group->home_index == 1 ? 'checked' : ''}}  class="minimal" name="group[home_index]">
                                     </div>
                                 </div>
                             @endif
