@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <div class="mainDetailLeftInvolve">
-                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested articel'}}</h4>
+                        <h4 class="mainDetailLeftTitle">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài được quan tâm' : 'Interested article'}}</h4>
                         <div class="mainDetailLeftInvolveMain">
                             @foreach($articel_related_3 as $art_related)
                                 <div class="mainDetailLeftInvolveItem">
