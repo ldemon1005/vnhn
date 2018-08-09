@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\Group_vn;
 use App\Model\News;
+use App\Models\Video_vn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,7 @@ class HomeController extends Controller
 //        $list_article = DB::table('news_vn')->where('hot_main',1)->update(['time_hot_main' => time() + 86400*3]);
 //
 //        dd($list_article);
+
 
         return view('admin.index.home');
     }

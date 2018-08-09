@@ -73,6 +73,9 @@ class IndexController extends Controller
             'ad_home' => $advert_home
         ];
 
+//        dd(time() + 86400*30);
+//        dd($data);
+
         return view('client.index.index', $data);
     }
 

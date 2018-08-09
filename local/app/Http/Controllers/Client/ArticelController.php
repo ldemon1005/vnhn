@@ -49,7 +49,7 @@ class ArticelController extends Controller
         }
 
 
-        $list_group = DB::table($this->db->group)->where('status',1)->whereIn('id',$result)->get();
+        $list_group = DB::table($this->db->group)->where('status',1)->whereIn('id',$result)->orderBy('parentid')->get();
 
         $articel_related = DB::table($this->db->news)->whereIn('groupid',$group_related)->where('status',1)->orderBy('order_item')
             ->orderByDesc('release_time')->take(8)->get();

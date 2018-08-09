@@ -336,7 +336,7 @@
 
 
 
-    @if(\Illuminate\Support\Facades\Config::get('app.locale') == 'vn')
+    @if(\Illuminate\Support\Facades\Config::get('app.locale','vn') == 'vn')
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     @else
         <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>

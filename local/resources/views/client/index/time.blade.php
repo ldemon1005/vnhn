@@ -111,8 +111,39 @@
                                 </a> --}}
                         </div>
 
+                        <section class="new-right-2">
+                            <div class="category">
+                                <h3>VNHN video</h3>
+                            </div>
+                            <div class="video">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe id="{{$list_video_new[0]->id}}" class="embed-responsive-item" src="{{ (file_exists(resource_path($list_video_new[0]->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$list_video_new[0]->url_video) ? : '') ? : $list_video_new[0]->url_video }}" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="list-video">
+                                <ul>
+                                    <li>
+                                        <a>
+                                            <i class="fas fa-caret-right mr-1"></i>{{$list_video_new[0]->title}}
+                                        </a>
+                                    </li>
+
+                                    @for($i = 1;$i < count($list_video_new); $i++)
+                                        <li>
+                                            <a style="cursor: pointer;text-decoration: none;color: #000000" onclick="open_video('{{route('open_video',$list_video_new[$i]->id)}}')">
+                                                <i class="fas fa-caret-right"></i>
+                                                {{$list_video_new[$i]->title}}
+                                            </a>
+                                        </li>
+                                    @endfor
+                                </ul>
+                            </div>
+                        </section>
+
                         
                     </div>
+
+
                 </div>
             </div>
         </section>

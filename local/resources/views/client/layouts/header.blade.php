@@ -13,7 +13,7 @@
                         <ul class="menu-left">
                             <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
+                            <li class="header-lang"><a style="cursor: pointer" href="{{asset('')}}"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
@@ -98,7 +98,7 @@
                             <li class="menuHeaderItem " ><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></li>
                         @else
                             <li class="menuHeaderItem @if ( $count > 8 ) menu_head_hide @endif {{ isset($group_menu_cate[0]) && $group_menu_cate[0]->id == $item->id ? 'active' : '' }}">
-                                <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title}}</a>
+                                <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title,10}}</a>
                                 <?php $count1 = 0?>
                                 @if (isset($item->child) && $item->child->count())
                                 <ul>

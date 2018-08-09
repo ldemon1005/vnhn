@@ -149,6 +149,33 @@ class VideoController extends Controller
         else{
             $data['status'] = 2;
         }
+
+        if($data['type_link'] == 2){
+            $name = explode('v=',$data['url_video']);
+            $videoId = '';
+            if(isset($name[1])) $videoId = $name[1];
+            else {
+                $name = explode('/',$data['url_video']);
+                if(isset($name[count($name)-1])) $videoId = $name[count($name)-1];
+            }
+            if($videoId) {
+                $theURL = "http://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=$videoId&format=json";
+                $headers = get_headers($theURL);
+                if(substr($headers[0], 9, 3) == "404") {
+                    DB::rollBack();
+                    $date = $data['release_time'];
+                    unset($data['release_time']);
+                    $data['release_time']['day'] = date('d/m/Y',$date);
+                    $data['release_time']['h'] = date('h:i A',$date);
+                    $data['groupid'] = $group_id;
+                    return redirect()->route('form_video',0)->with('error','Không tìm thấy link video')->with('data',((object)$data));
+                }
+                $data['avatar'] = "http://img.youtube.com/vi/$videoId/hqdefault.jpg";
+                $data['url_video'] = 'http://www.youtube.com/embed/'.$videoId;
+            }
+            else return redirect()->route('form_video',0)->with('error','Không tìm thấy link video')->with('data',((object)$data));
+        }
+
         if($data['id'] == 0){//Tạo mới video
             $data['created_at'] = time();
             $user_login = Auth::user();
@@ -171,6 +198,7 @@ class VideoController extends Controller
             }else {
                 DB::rollBack();
                 $date = $data['release_time'];
+                unset($data['release_time']);
                 $data['release_time']['day'] = date('d/m/Y',$date);
                 $data['release_time']['h'] = date('h:i A',$date);
                 $data['groupid'] = $group_id;
@@ -196,6 +224,7 @@ class VideoController extends Controller
             }else {
                 DB::rollBack();
                 $date = $data['release_time'];
+                unset($data['release_time']);
                 $data['release_time']['day'] = date('d/m/Y',$date);
                 $data['release_time']['h'] = date('h:i A',$date);
                 $data['groupid'] = $group_id;

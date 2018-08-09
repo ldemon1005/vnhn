@@ -50,7 +50,7 @@ class GroupController extends Controller{
 
         if($list_articel_hot->count() < 5){
             $number = 5 - $list_articel_hot->count();
-            $list_articel_hot_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_articel_ids)->where('release_time','<=',time())->orderBy('release_time')->take($number)->get();
+            $list_articel_hot_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_articel_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number)->get();
             $list_articel_hot = $list_articel_hot->toBase()->merge($list_articel_hot_1);
         }
 
@@ -84,6 +84,8 @@ class GroupController extends Controller{
         $advert = app('App\Http\Controllers\Client\IndexController')->get_advert($slug[1]);
 
         $advert_home = app('App\Http\Controllers\Client\IndexController')->get_advert_home();
+
+        $list_video_new = $this->get_video_new();
         $data = [
             'group_menu_id' => $slug[1],
             'group_menu_cate' => $group_menu,
@@ -95,11 +97,19 @@ class GroupController extends Controller{
             'group_articel' => $group_articel,
 
             'list_ad' => $advert,
-            'ad_home' => $advert_home
+            'ad_home' => $advert_home,
+
+            'list_video_new' => $list_video_new
         ];
 
 
         return view('client.index.time',$data);
+    }
+
+    public function get_video_new()
+    {
+        $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->take(5)->get();
+        return $list_video_new;
     }
 
     function recusive_find_child($list_group,$parentid,&$result){
@@ -113,7 +123,7 @@ class GroupController extends Controller{
     }
 
     function articel_top_view($list_articel_ids){
-        $articel_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->orderBy('view')->paginate(5);
+        $articel_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('status',1)->orderBy('view')->paginate(5);
         return $articel_top_view;
     }
 

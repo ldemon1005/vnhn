@@ -19,7 +19,7 @@ class Video_vn extends Model
         if(Session::get('lang','vn') == 'vn'){
             $this->table = 'video_vn';
         }else {
-            $this->table = 'video_en';
+            $this->table = 'video_vn';
         }
     }
 }

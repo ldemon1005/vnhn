@@ -155,12 +155,30 @@
 }
 
 .new-right-time .quangcao-1{
-    height: 600px;
     width: auto;
+    min-height: 200px;
 }
+
 .new-right-time .quangcao-1 a{
     display: block;
     margin-bottom: 5px;
+}
+
+.new-right-2{
+    margin-top: 30px;
+}
+
+.new-right-2 .category{
+    border-bottom: 2px solid #000000;
+    margin-bottom: 14px;
+}
+
+.new-right-2 .category h3{
+    color: #d71a21;
+    font-size: 18px;
+    font-family: 'Merriweather', serif;
+    line-height: 1.4;
+    font-weight: Bold;
 }
 
 .new-right-time .quangcao-2{
@@ -528,3 +546,4 @@ hr{
         font-size: 16px;
     }
 }
+
