@@ -11,8 +11,8 @@
 
                             <li class="lang respon768"><a href="{{ asset('') }}">Hotline 24/7:
                                     {{$web_info->hotline}}</a></li>
-                            <li class="lang "><a href="{{ asset('') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Magazines subcription'}}</a></li>
-                            <li class="lang"><a href="{{ asset('') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising'}}</a></li>
+                            <li class="lang "><a href="{{ asset('advert/order') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Magazines subcription'}}</a></li>
+                            <li class="lang"><a href="{{ asset('advert/contact') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising'}}</a></li>
                         </ul>
                     </div>
                     {{-- <div class="menu_footer_right">

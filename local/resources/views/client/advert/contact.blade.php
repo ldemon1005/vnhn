@@ -61,8 +61,10 @@
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="formInput">
-                                        <select class="form-control">
-                                            <option></option>
+                                        <select class="form-control" name="city">
+                                            @foreach($list_city as $city)
+                                                <option name="{{$city->matp}}" value="{{$city->name}}">{{$city->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

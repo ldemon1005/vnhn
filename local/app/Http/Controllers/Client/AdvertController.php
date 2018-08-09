@@ -40,8 +40,8 @@ class AdvertController extends Controller
     	$data->name = $request->name;
     	$data->email = $request->email;
     	$data->phone = $request->phone;
-    	// $data->city = $request->city;
-    	$data->city = "Hà nội";
+    	$data->city = $request->city;
+    	// $data->city = "Hà nội";
     	$data->company = $request->company;
     	$data->type = $request->type;
     	$data->content = $request->content;

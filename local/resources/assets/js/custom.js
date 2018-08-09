@@ -1,3 +1,4 @@
+var url = $('.currentUrl').text();
 function open_video(url) {
     newwindow=window.open(url,'VietNamHoiNhap','height=500,width=800,top=150,left=200, location=0');
     if (window.focus) {newwindow.focus()}
@@ -6,7 +7,7 @@ function open_video(url) {
 
 function set_lang(lang) {
     $.ajax({
-        url: '/set_lang/' + lang,
+        url: url+'/set_lang/' + lang,
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {
@@ -17,9 +18,10 @@ function set_lang(lang) {
 
 
 $(document).on('change', '#province', function (e) {
+    alert($(this).val()+$(this).find('option:selected').attr('id'));
     e.preventDefault();
     $.ajax({
-        url: '/advert/get_district/' + $(this).val(),
+        url: url+'/advert/get_district/' + $(this).val(),
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {
@@ -37,7 +39,7 @@ $(document).on('change', '#province', function (e) {
 $(document).on('change', '#district_id', function (e) {
     e.preventDefault();
     $.ajax({
-        url: '/advert/get_wards/' + $(this).val(),
+        url: url+'/advert/get_wards/' + $(this).val(),
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {

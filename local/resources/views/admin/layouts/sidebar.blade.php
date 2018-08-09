@@ -321,6 +321,22 @@
 
                 @if (Auth::user()->level<3 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
+                        <a href="{{ asset('admin/contact/contact') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
+                            <i class="nav-icon fas fa-info-circle"></i>
+                            <p>
+                                Liên hệ quảng cáo
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="{{ asset('admin/contact/order') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
+                            <i class="nav-icon fas fa-info-circle"></i>
+                            <p>
+                                Đặt mua báo
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
                         <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
                             <i class="nav-icon fas fa-info-circle"></i>
                             <p>

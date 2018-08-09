@@ -1,4 +1,9 @@
-
+.container{
+	height: 100%;
+}
+.row{
+	height: 100%;
+}
 
 .logo{
 	position: fixed;
@@ -35,9 +40,13 @@
 	font-weight: bold;
 }
 .sectionRight{
-
+	width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .sectionImg{
+	width: 100%;
 	border-radius: 50%;
 }
 .sectionImg:after{

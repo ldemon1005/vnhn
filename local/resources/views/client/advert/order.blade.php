@@ -64,7 +64,7 @@
                                         <select class="form-control select2" name="address_1" id="province">
                                             <option>Chọn tỉnh/thành phố</option>
                                             @foreach($list_city as $city)
-                                                <option value="{{$city->matp}}">{{$city->name}}</option>
+                                                <option value="{{$city->matp}}" id="{{$city->name}}">{{$city->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
