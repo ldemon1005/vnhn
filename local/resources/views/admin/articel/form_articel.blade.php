@@ -281,8 +281,8 @@
             ignore: [],
             rules: {
                 'articel[title]': {
-                    required: true,
-                    maxlength : 80
+                    required: true
+                    // maxlength : 80
                 },
                 'articel[release_time][day]': {
                     required: true
@@ -299,8 +299,8 @@
             },
             messages: {
                 'articel[title]': {
-                    required: 'Vui lòng nhập tên danh mục',
-                    maxlength : 'Tiều đề không được quá 80 ký tự'
+                    required: 'Vui lòng nhập tên danh mục'
+                    // maxlength : 'Tiều đề không được quá 80 ký tự'
                 },
                 'articel[release_time][day]': {
                     required: 'Thiếu ngày phát hành'
