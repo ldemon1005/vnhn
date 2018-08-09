@@ -60,8 +60,11 @@
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="formInput">
-                                        <select class="form-control" name="address_1">
-                                            <option></option>
+                                        <select class="form-control select2" name="address_1" id="province">
+                                            <option>Chọn tỉnh/thành phố</option>
+                                            @foreach($list_city as $city)
+                                                <option value="{{$city->matp}}">{{$city->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -73,8 +76,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
-                                    <div class="formInput">
-                                        <select class="form-control" name="address_2">
+                                    <div class="formInput" id="form_district">
+                                        <select class="form-control select2" name="address_2" id="district_id">
                                             <option></option>
                                         </select>
                                     </div>
@@ -85,8 +88,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
-                                    <div class="formInput">
-                                        <select class="form-control" name="address_3">
+                                    <div class="formInput" id="form_ward">
+                                        <select class="form-control select2" name="address_3" id="ward_id">
                                             <option></option>
                                         </select>
                                     </div>

@@ -47,8 +47,11 @@ Route::group(['namespace' => 'Client'],function (){
         
         Route::get('order', 'AdvertController@getOrder');
         Route::post('order', 'AdvertController@postOrder');
+        Route::get('get_district/{id}','AdvertController@get_district')->name('get_district');
+        Route::get('get_wards/{id}','AdvertController@get_wards')->name('get_wards');
 
     });
+
 });
 
 

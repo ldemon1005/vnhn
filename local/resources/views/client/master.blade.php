@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="admin/plugins/select2/select2.min.css">
 
 
 
@@ -59,6 +60,11 @@
 
 <script src="https://apis.google.com/js/platform.js"></script>
 
+<!-- Select2 -->
+<script src="admin/plugins/select2/select2.full.min.js"></script>
+
+<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -67,6 +73,11 @@
         js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+    });
+</script>
 @yield('script')
 </html>
