@@ -238,6 +238,15 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::get('/update_comment/{id}','CommentController@update_status')->name('update_comment');
                 Route::get('/delete_comment/{id}','CommentController@delete_comment')->name('delete_comment');
             });
+
+            Route::group(['prefix'=>'contact'], function(){
+                Route::get('contact', 'ContactController@getAdvertContact');
+                Route::post('contact', 'ContactController@getDetailAdvertContact');
+
+                Route::get('order', 'ContactController@getAdvertOrder');
+                Route::post('order', 'ContactController@getDetailAdvertOrder');
+
+            });
         });
     		
 	});
