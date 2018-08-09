@@ -40,11 +40,12 @@ class AdvertController extends Controller
     	$data->name = $request->name;
     	$data->email = $request->email;
     	$data->phone = $request->phone;
-    	$data->city = $request->city;
-    	// $data->city = "Hà nội";
+        $request->city != null ? $data->city = $request->city : $data->city = "Không có";
     	$data->company = $request->company;
     	$data->type = $request->type;
-    	$data->content = $request->content;
+        $request->content != null ? $data->content = $request->content : $data->content = "Không có";
+        
+    	
     	$data->save();
     	return back()->with('success', 'Gửi thành công');
     }
@@ -53,10 +54,11 @@ class AdvertController extends Controller
     	$data->name = $request->name;
     	$data->email = $request->email;
     	$data->phone = $request->phone;
-    	$data->address = $request->address_1.'|'.$request->address_2.'|'.$request->address_3;
+    	$data->address = $request->address_1.' || '.$request->address_2.' || '.$request->address_3;
+        $request->address != null ? $request->address_1.' || '.$request->address_2.' || '.$request->address_3 : $data->address = "Không có";
     	$data->no = $request->no;
     	$data->amount = $request->amount;
-    	$data->content = $request->content;
+    	$request->content != null ? $data->content = $request->content : $data->content = "Không có";
     	$data->save();
     	return back()->with('success', 'Gửi thành công');
     }

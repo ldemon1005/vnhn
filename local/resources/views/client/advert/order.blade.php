@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="col-md-9 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="name" class="form-control">
+                                        <input type="text" name="name" class="form-control" required> 
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-md-9 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="email" class="form-control">
+                                        <input type="email" name="email" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="phone" class="form-control">
+                                        <input type="number" name="phone" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
@@ -64,7 +64,7 @@
                                         <select class="form-control select2" name="address_1" id="province">
                                             <option>Chọn tỉnh/thành phố</option>
                                             @foreach($list_city as $city)
-                                                <option value="{{$city->matp}}" id="{{$city->name}}">{{$city->name}}</option>
+                                                <option value="{{$city->name}}" id="{{$city->matp}}">{{$city->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="no" class="form-control">
+                                        <input type="number" name="no" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-12">
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="amount" class="form-control">
+                                        <input type="number" name="amount" class="form-control" required>
                                     </div>
                                 </div>
                             </div>

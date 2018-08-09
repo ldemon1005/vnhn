@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="col-md-9 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="name" class="form-control">
+                                        <input type="text" name="name" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-md-9 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="email" class="form-control">
+                                        <input type="email" name="email" class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="col-md-3 col-sm-12">
                                     <div class="formInput">
-                                        <input type="text" name="phone" class="form-control">
+                                        <input type="number" name="phone" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-12">

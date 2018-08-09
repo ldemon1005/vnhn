@@ -18,10 +18,10 @@ function set_lang(lang) {
 
 
 $(document).on('change', '#province', function (e) {
-    alert($(this).val()+$(this).find('option:selected').attr('id'));
+    // alert($(this).val()+$(this).find('option:selected').attr('id'));
     e.preventDefault();
     $.ajax({
-        url: url+'/advert/get_district/' + $(this).val(),
+        url: url+'/advert/get_district/' + $(this).find('option:selected').attr('id'),
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {
@@ -39,7 +39,7 @@ $(document).on('change', '#province', function (e) {
 $(document).on('change', '#district_id', function (e) {
     e.preventDefault();
     $.ajax({
-        url: url+'/advert/get_wards/' + $(this).val(),
+        url: url+'/advert/get_wards/' + $(this).find('option:selected').attr('id'),
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {
