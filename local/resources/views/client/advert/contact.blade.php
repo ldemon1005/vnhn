@@ -18,6 +18,7 @@
                     <div class="mainLeft">
                         <h1>Liên hệ quảng cáo</h1>
                         <form method="post">
+                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-3 col-sm-12">
                                     <div class="formTitle">
