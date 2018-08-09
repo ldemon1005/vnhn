@@ -154,6 +154,7 @@
     flex: auto;
     text-align: center;
     position: relative;
+    white-space: nowrap;
 }
 #header-menu .menu-header>li:first-child{
 	border-left: 0;
