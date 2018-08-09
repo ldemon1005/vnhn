@@ -1,0 +1,102 @@
+.main{
+	margin-top: 120px;
+}
+.main .container{
+	padding: 0;
+}
+.mainLeft{
+
+}
+.mainLeft h1{
+	font-family: 'Merriweather', serif;
+	font-size: 36px;
+	line-height: 45px;
+	text-align: left;
+	color: #666666;
+	font-weight: bold;
+}
+form{
+	margin-top: 70px;
+}
+
+.formTitle{
+	font-family: 'Merriweather', serif;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: left;
+	color: #666666;
+	font-weight: bold;
+}
+.formInput{
+	margin-bottom: 38px;
+}
+.formInput input{
+	height: 42px;
+	padding: 0 10px;
+}
+.formInput input[type=submit]{
+	width: 165px;
+	height: 60px;
+	background: #D81920;
+	color: #fff;
+	font-family: 'Merriweather', serif;
+	font-size: 18px;
+	border: none;
+}
+
+
+
+
+.mainRight{
+	
+}
+.mainRightHead{
+	background: #D81920;
+	color: #fff;
+	font-family: 'Merriweather', serif;
+	font-size: 24px;
+	line-height: 52px;
+	height: 52px;
+	padding: 0 31px;
+}
+.mainRightBody{
+	padding: 25px;
+	border: 1px solid #C4C4C4;
+	border-top: 0;
+}
+.
+.mainRightBodyItem_1{
+
+}
+.mainRightBodyItem_1 img{
+	display: block;
+    margin: 20px 0;
+}
+.mainRightBodyItem_1_title{
+	font-family: 'Merriweather', serif;
+	font-size: 18px;
+	line-height: 32px;
+	font-weight: bold;
+}
+.mainRightBodyItem{
+	clear: both;
+	margin: 9px 0
+}
+.mainRightBodyItemIcon{
+	width: 30px;
+	color: #D81920;
+	font-size: 18px;
+	float: left;
+}	
+.mainRightBodyItemContent{
+	font-family: 'Open Sans', serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+.mainRightBodyItem_2{
+	margin: 40px 0 15px;
+}
+.mainRightBodyItem_2 img{
+	height: 48px;
+	width: auto;
+}

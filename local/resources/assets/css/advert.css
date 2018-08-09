@@ -1,0 +1,129 @@
+
+
+.logo{
+	position: fixed;
+	top: 5vh;
+	left: 6vw;
+	z-index: 2;
+}
+.footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+.footer img{
+	width: 100%;
+}
+
+.backgroundBody #particles-j{
+ 	height: 100%;
+
+}
+.sectionLeft{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.sectionLeft h2{
+	font-family: 'Merriweather', serif;
+	font-size: 36px;
+	line-height: 45px;
+	text-align: center;
+	color: #666666;
+	font-weight: bold;
+}
+.sectionRight{
+
+}
+.sectionImg{
+	border-radius: 50%;
+}
+.sectionImg:after{
+	content: '';
+	display: block;
+	padding-top: 100%;
+}
+.btn_group{
+	width: 494px;
+    margin: auto;
+}
+.btn_group a{
+	display: inline-block;
+	height: 60px;
+	width: 232px;
+	line-height: 60px;
+
+
+}
+
+a.btnContact{
+	font-family: 'Merriweather', serif;
+	font-size: 18px;
+	text-align: center;
+	color: #666666;
+	font-weight: bold;
+	border: 1px solid #e5e5e5;
+	margin-right: 25px;
+	background: #fff;
+	text-decoration: none;
+	display: inline-block;
+}
+a.btnDownload{
+	font-family: 'Merriweather', serif;
+	font-size: 18px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	background: #D81920;
+	text-decoration: none;
+	display: inline-block;
+}
+
+
+
+.backgroundBody{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+.backgroundBody #particles-j{
+ 	height: 100%;
+
+}
+/*.backgroundBodyImg{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	-webkit-animation-name: bgBody;
+    -webkit-animation-duration: 20s;
+    animation-name: bgBody;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1,1,1,1);
+
+}
+
+.backgroundBodyImg img{
+	width: 100%;
+
+}
+@keyframes bgBody {
+    0%   {
+		transform: scale(1);
+    }
+    
+    50%{
+    	transform: scale(1.5);
+    }
+    
+    100% {
+    	transform: scale(1);
+
+    }
+}*/

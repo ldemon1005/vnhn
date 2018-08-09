@@ -39,6 +39,16 @@ Route::group(['namespace' => 'Client'],function (){
         Route::get('{slug}', 'MagazineController@getDetail');
         Route::post('load_more', 'MagazineController@load_more');
     });
+
+    Route::group(['prefix' => 'advert'], function(){
+        Route::get('/', 'AdvertController@getAdvert');
+        Route::get('contact', 'AdvertController@getContact');
+        Route::post('contact', 'AdvertController@postContact');
+        
+        Route::get('order', 'AdvertController@getOrder');
+        Route::post('order', 'AdvertController@postOrder');
+
+    });
 });
 
 
