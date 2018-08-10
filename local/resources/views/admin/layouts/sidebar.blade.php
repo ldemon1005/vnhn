@@ -270,7 +270,7 @@
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'magazine') active @endif">
                             <i class="nav-icon fas fa-book-open"></i>
                             <p>
-                                Tạp chí
+                                Tạp chí thường kì
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -284,7 +284,7 @@
                             <li class="nav-item">
                                 <a href="{{ asset('admin/magazine') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Quản trị</p>
+                                    <p>Danhn sách</p>
                                 </a>
                             </li>
                             @if (Auth::user()->level < 3)

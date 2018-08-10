@@ -54,19 +54,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="row form-group">
+                                    {{-- <div class="row form-group">
                                         <label class="col-sm-2">Tiêu đề phụ</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="articel[titlephu]" value="{{$articel->titlephu}}" class="form-control" placeholder="Tiêu đề phụ">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="row form-group">
-                                        <label class="col-sm-2">Description meta</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" name="articel[description_meta]" value="{{$articel->description_meta}}" class="form-control" placeholder="Description meta">
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row form-group">
                                         <label class="col-sm-2">Ngày phát hành <span class="text-danger">*</span></label>
                                         <div class="col-sm-8">
@@ -107,42 +102,37 @@
                                         </div>
                                     </div>
 
+                                    
+
+
                                     <div class="row form-group">
-                                        <label class="col-sm-2">Keyword meta</label>
-                                        <div class="col-sm-10">
-                                            <textarea type="text" name="articel[keyword_meta]" class="form-control" placeholder="Keywords meta bài viết">{{$articel->keyword_meta}}</textarea>
+                                        <label class="col-sm-2">Ảnh đại diện</label>
+                                        <div class="col-sm-3 form-group">
+                                            <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
+                                            <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail imageForm" src="
+                                                {{ isset($articel->fimage)  && $articel->fimage ?
+                                                    (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ?
+                                                        asset('local/storage/app/article/resized500-'.$articel->fimage) :
+                                                        (file_exists(resource_path($articel->fimage)) ?
+                                                            asset('/local/resources'.$articel->fimage) :
+                                                            '../images/default-image.png')) :
+                                                '../images/default-image.png' }}">
+                                            {{-- <div class="{{ $articel->fimage == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
+                                                 onclick="avatar.click()">
+                                                <div class="d-inline-block" style="margin: auto">
+                                                    <img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">
+                                                </div>
+                                            </div>
+                                            <div class="img-avatar {{ $articel->fimage == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
+                                                <img id="blog_avatar" style="width: 100%" src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}" alt="">
+                                                <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
+                                                   onclick="removeImage()"></i>
+                                            </div>
+                                            <input #avatar class="d-none" type="file" id="avatar"
+                                                   onchange="uploadImage(avatar,avatar.files[0])">
+                                            <input class="d-none" name="articel[fimage]" value="{{$articel->fimage}}" id="src_avatar" type="text"> --}}
                                         </div>
                                     </div>
-
-
-                            <div class="row form-group">
-                                <label class="col-sm-2">Avatar</label>
-                                <div class="col-sm-3 form-group">
-                                    <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
-                                    <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail imageForm" src="
-                                        {{ isset($articel->fimage)  && $articel->fimage ?
-                                            (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ?
-                                                asset('local/storage/app/article/resized500-'.$articel->fimage) :
-                                                (file_exists(resource_path($articel->fimage)) ?
-                                                    asset('/local/resources'.$articel->fimage) :
-                                                    '../images/default-image.png')) :
-                                        '../images/default-image.png' }}">
-                                    {{-- <div class="{{ $articel->fimage == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
-                                         onclick="avatar.click()">
-                                        <div class="d-inline-block" style="margin: auto">
-                                            <img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">
-                                        </div>
-                                    </div>
-                                    <div class="img-avatar {{ $articel->fimage == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
-                                        <img id="blog_avatar" style="width: 100%" src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}" alt="">
-                                        <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
-                                           onclick="removeImage()"></i>
-                                    </div>
-                                    <input #avatar class="d-none" type="file" id="avatar"
-                                           onchange="uploadImage(avatar,avatar.files[0])">
-                                    <input class="d-none" name="articel[fimage]" value="{{$articel->fimage}}" id="src_avatar" type="text"> --}}
-                                </div>
-                            </div>
 
                                     <div class="row form-group">
                                         <label class="col-sm-2">Nội dung bài viết</label>
@@ -190,27 +180,42 @@
                                         <label class="col-sm-2">Hiển thị</label>
                                         <div class="col-sm-10">
                                             <div class="row form-group">
-                                                <label class="col-sm-3">
+                                                <label class="col-sm-6">
                                                     <input type="checkbox" value="1" onclick="hot_main($(this).is(':checked'))" class="minimal" name="articel[hot_main]" {{$articel->hot_main == 1 ? 'checked' : ''}}>
-                                                    Hot trang chủ
+                                                    Hot trang chủ trong
+                                                    <input type="number" name="articel[time_hot_main]" class="" placeholder="24" id="hot-main">
+                                                    giờ
                                                 </label>
 
-                                                <div class="col-sm-2 d-none" id="hot-main">
+                                                {{-- <div class="col-sm-2" id="hot-main">
                                                     <input name="articel[time_hot_main]" class="form-control" placeholder="giờ">
                                                 </div>
-
-                                                <label class="col-sm-3">
+ --}}
+                                                <label class="col-sm-6">
                                                     <input type="checkbox" value="1" onclick="hot_item($(this).is(':checked'))" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>
-                                                    Hot danh mục
+                                                    Hot danh mục trong
+                                                    <input type="number" name="articel[time_hot_item]" class="" placeholder="24" id="hot-item">
+                                                    giờ
                                                 </label>
 
-                                                <div class="col-sm-2 d-none" id="hot-item">
-                                                    <input name="articel[time_hot_item]" class="form-control" placeholder="giờ">
-                                                </div>
+                                                {{-- <div class="col-sm-2 d-none" id="hot-item">
+                                                    
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row form-group">
+                                        <label class="col-sm-2">Description meta</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="articel[description_meta]" value="{{$articel->description_meta}}" class="form-control" placeholder="Description meta">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <label class="col-sm-2">Keyword meta</label>
+                                        <div class="col-sm-10">
+                                            <textarea type="text" name="articel[keyword_meta]" class="form-control" placeholder="Keywords meta bài viết">{{$articel->keyword_meta}}</textarea>
+                                        </div>
+                                    </div>
                                     {{--<div class="row form-group">--}}
                                         {{--<label class="col-sm-2">Loại</label>--}}
                                         {{--<div class="col-sm-10">--}}
@@ -257,21 +262,39 @@
                 radioClass   : 'iradio_minimal-blue'
             })
         });
+        $(document).ready(function(){
+            if ($('input[name="articel[hot_main]"]').attr('checked')) {
+                $("#hot-main").prop('disabled', false);
+            }else{
+                $("#hot-main").prop('disabled', true);
+            }
 
-
+            if ($('input[name="articel[hot_item]"]').attr('checked')) {
+                $("#hot-item").prop('disabled', false);
+            }else{
+                $("#hot-item").prop('disabled', true);
+            }
+            
+            // $("#hot-item").prop('disabled', true);
+        });
+            
         function hot_main(a) {
             if(a){
-                $('#hot-main').removeClass('d-none');
+                // $('#hot-main').removeClass('d-none');
+                $("#hot-main").prop('disabled', false);
+                // document.getElementById("hot-main").disabled = false;
             }else {
-                $('#hot-main').addClass('d-none');
+                $("#hot-main").prop('disabled', true);
+                // document.getElementById("hot-main").disabled = true;
+                // $('#hot-main').addClass('d-none');
             }
         }
 
         function hot_item(a) {
             if(a){
-                $('#hot-item').removeClass('d-none');
+                $('#hot-item').prop('disabled', false);
             }else {
-                $('#hot-item').addClass('d-none');
+                $('#hot-item').prop('disabled', true);
             }
         }
     </script>

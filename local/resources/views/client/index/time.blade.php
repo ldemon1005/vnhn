@@ -168,7 +168,7 @@
                                                     <p class="date-time">{{date('d/m/Y H:m',$articel->release_time)}}</p>
                                                     <p class="caption">{{cut_string($articel->summary,220)}}</p>
                                                 </div>
-                                                <div class="avatar" style="background: url('{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
+                                                <div class="avatar" style="background: url('{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ? asset('local/storage/app/article/resized500-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
                                                 </div>
                                             </a>
                                         </div>
@@ -225,7 +225,7 @@
                                                             !!}</h3>
                                                             @if($loop->index == 0)
                                                                 <div class="avatar">
-                                                                    <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}" onclick="article_view('{{ $articel->id }}')"><img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}"></a>
+                                                                    <a href="#"><img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ? asset('local/storage/app/article/resized500-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}"></a>
                                                                 </div>
                                                             @endif
                                                             <p class="date-time">{{$articel->release_time}}</p>
