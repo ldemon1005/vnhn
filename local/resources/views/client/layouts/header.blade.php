@@ -8,13 +8,13 @@
     <?php $count_ad = 0?>
     @if (count($list_ad[8]) > 0)
             @if ($list_ad[8][0]->advert->ad_status == 1)
-                <a href="{{ $list_ad[8][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[8][0]->advert->ad_id}}')" target="_blank" ><img src="{{asset('local/storage/app/advert/'.$list_ad[8][0]->advert->ad_img)}}"></a>
+                <a href="{{ $list_ad[8][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[8][0]->advert->ad_id}}')"><img src="{{asset('local/storage/app/advert/'.$list_ad[8][0]->advert->ad_img)}}"></a>
                 <?php $count_ad++ ?>
             @endif
     @endif
     @if (count($ad_home[8]) > 0 && $count_ad == 0)
             @if ($ad_home[8][0]->advert->ad_status == 1)
-                <a href="{{ $ad_home[8][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[8][0]->advert->ad_id}}')" target="_blank" >
+                <a href="{{ $ad_home[8][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[8][0]->advert->ad_id}}')">
                     <img src="{{asset('local/storage/app/advert/'.$ad_home[1][0]->advert->ad_img)}}">
                 </a>
                 <?php $count_ad++ ?>
@@ -54,13 +54,13 @@
     <?php $count_ad = 0?>
     @if (count($list_ad[9]) > 0)
             @if ($list_ad[9][0]->advert->ad_status == 1)
-                <a href="{{ $list_ad[9][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[9][0]->advert->ad_id}}')" target="_blank" ><img src="{{asset('local/storage/app/advert/'.$list_ad[9][0]->advert->ad_img)}}"></a>
+                <a href="{{ $list_ad[9][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[9][0]->advert->ad_id}}')"><img src="{{asset('local/storage/app/advert/'.$list_ad[9][0]->advert->ad_img)}}"></a>
                 <?php $count_ad++ ?>
             @endif
     @endif
     @if (count($ad_home[9]) > 0 && $count_ad == 0)
             @if ($ad_home[9][0]->advert->ad_status == 1)
-                <a href="{{ $ad_home[9][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[9][0]->advert->ad_id}}')" target="_blank" >
+                <a href="{{ $ad_home[9][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[9][0]->advert->ad_id}}')">
                     <img src="{{asset('local/storage/app/advert/'.$ad_home[9][0]->advert->ad_img)}}">
                 </a>
                 <?php $count_ad++ ?>
