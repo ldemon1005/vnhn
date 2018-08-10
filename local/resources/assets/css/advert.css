@@ -30,6 +30,9 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	width: 85%;
+    text-align: justify;
+    text-align-last: center;
 }
 .sectionLeft h2{
 	font-family: 'Merriweather', serif;
@@ -55,13 +58,16 @@
 	padding-top: 100%;
 }
 .btn_group{
-	width: 494px;
+	width: 100%;
+	max-width: 494px;
     margin: auto;
+    display: flex;
 }
 .btn_group a{
+	flex: 1;
 	display: inline-block;
 	height: 60px;
-	width: 232px;
+	width: auto;
 	line-height: 60px;
 
 
@@ -136,3 +142,32 @@ a.btnDownload{
 
     }
 }*/
+
+
+@media only screen and (max-width: 768px) {
+	
+	.col-sm-0{
+		display: none;
+	}
+	.btn_group a{
+		font-size: 14px;
+	}
+	/*.container>.row{
+		flex-direction: column-reverse;
+	}*/
+	.logo{
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 200px;
+	}
+	.logo img{
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 324px) {
+	.btn_group a{
+		font-size: 11px;
+	}
+	
+}

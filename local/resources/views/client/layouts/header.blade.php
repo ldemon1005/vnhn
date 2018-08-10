@@ -141,6 +141,11 @@
     <div id="header_btnMenu">
         <i class="fas fa-bars"></i>
     </div>
+    <div class="btnAdvertContact">
+        <a href="{{ asset('advert') }}">
+            <img src="{{asset('/local/resources/uploads/images/ads-icon.png')}}" style="margin-right: 5px">
+        </a>
+    </div>
 </div>
 
 {{-- @section('script')
