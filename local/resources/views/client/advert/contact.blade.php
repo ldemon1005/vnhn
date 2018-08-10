@@ -14,7 +14,7 @@
     <div class="main">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-sm-12">
+                <div class="col-lg-8 col-md-12">
                     <div class="mainLeft">
                         <h1>Liên hệ quảng cáo</h1>
                         <form method="post">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-sm-12">
+                <div class="col-lg-4 col-md-12">
                     <div class="mainRight">
                         <div class="mainRightHead">
                             Liên hệ

@@ -29,6 +29,16 @@
     display: none; 
     transition: 0.5s;
 }
+.btnAdvertContact{
+	position: absolute;
+    top: 0;
+    right : 0;
+    font-size: 21px;
+    color: #d71a20;
+    padding: 16px 20px;
+    display: none;
+}
+
 #header {
 /*	height: 215px;*/
 }
@@ -301,6 +311,9 @@ ul.dropdown_child li a{
 		overflow: hidden;
 	}
 	#header_btnMenu{
+		display: block;
+	}
+	.btnAdvertContact{
 		display: block;
 	}
 	.btn_close_menu{

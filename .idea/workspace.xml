@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0335a73-a8cb-450c-91b2-1ae833e5ca02" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/assets/js/header-footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/js/header-footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/client/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/layouts/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/resources/views/client/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/assets/images/image (1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/assets/images/image (2).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local/resources/assets/images/image (3).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/admin/plugins/select2/select2.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/admin/plugins/select2/select2.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/admin/plugins/select2/select2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/admin/plugins/select2/select2.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/advert.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/advert.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/advertContact.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/advertContact.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/assets/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/advert/advert.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/advert/advert.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/advert/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/advert/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/local/resources/views/client/layouts/header.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +159,7 @@
         <entry file="file://$PROJECT_DIR$/local/resources/assets/js/header-footer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="193" column="14" lean-forward="true" selection-start-line="193" selection-start-column="14" selection-end-line="193" selection-end-column="14" />
+              <caret line="193" column="14" selection-start-line="193" selection-start-column="14" selection-end-line="193" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -173,7 +177,7 @@
         <entry file="file://$PROJECT_DIR$/local/resources/views/client/master.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+              <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -193,8 +197,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/local/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="258" column="18" selection-start-line="258" selection-start-column="18" selection-end-line="258" selection-end-column="18" />
+            <state relative-caret-position="281">
+              <caret line="249" column="79" lean-forward="true" selection-start-line="249" selection-start-column="79" selection-end-line="249" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -569,18 +573,18 @@
       <workItem from="1533699199273" duration="3540000" />
       <workItem from="1533741098935" duration="29564000" />
       <workItem from="1533777604193" duration="20445000" />
-      <workItem from="1533863605930" duration="6840000" />
+      <workItem from="1533863605930" duration="7089000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112828000" />
+    <option name="totallyTimeSpent" value="113077000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -591,7 +595,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.24485373" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.24485373" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="File Transfer" order="10" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
@@ -933,14 +937,14 @@
     <entry file="file://$PROJECT_DIR$/local/resources/views/client/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="54" column="35" lean-forward="true" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+          <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/local/resources/assets/js/header-footer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="193" column="14" lean-forward="true" selection-start-line="193" selection-start-column="14" selection-end-line="193" selection-end-column="14" />
+          <caret line="193" column="14" selection-start-line="193" selection-start-column="14" selection-end-line="193" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -953,8 +957,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/local/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="258" column="18" selection-start-line="258" selection-start-column="18" selection-end-line="258" selection-end-column="18" />
+        <state relative-caret-position="281">
+          <caret line="249" column="79" lean-forward="true" selection-start-line="249" selection-start-column="79" selection-end-line="249" selection-end-column="79" />
         </state>
       </provider>
     </entry>

@@ -19,6 +19,7 @@ function set_lang(lang) {
 
 $(document).on('change', '#province', function (e) {
     // alert($(this).val()+$(this).find('option:selected').attr('id'));
+
     e.preventDefault();
     $.ajax({
         url: url+'/advert/get_district/' + $(this).find('option:selected').attr('id'),

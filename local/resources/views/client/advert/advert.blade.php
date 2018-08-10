@@ -4,9 +4,9 @@
 <head>
 	<base href="{{ asset('local/resources/assets/') }}/">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>fullPage.js A simple Demo</title>
+	<title>Quảng cáo</title>
 	<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Quyeens" />
 	<meta name="description" content="fullPage very simple demo." />
 	<meta name="keywords"  content="fullpage,jquery,demo,simple" />
@@ -19,7 +19,10 @@
 <body>
 
 <div class="logo">
-	<img src="images/logo.png">
+	<a href="{{ asset('') }}">
+		<img src="images/logo.png">
+	</a>
+	
 </div>
 <div class="footer">
 	<img src="images/Vector.png">
@@ -49,9 +52,9 @@
 					</div>
 						
 				</div>
-				<div class="col-md-5 col-sm-12">
+				<div class="col-md-5 col-sm-0">
 					<div class="sectionRight">
-						<div class="sectionImg" style="background: url('images/image.png') no-repeat center /cover"></div>
+						<div class="sectionImg" style="background: url('images/image (1).png') no-repeat center /cover"></div>
 					</div>
 				</div>
 			</div>
@@ -76,9 +79,9 @@
 					</div>
 						
 				</div>
-				<div class="col-md-5 col-sm-12">
+				<div class="col-md-5 col-sm-0">
 					<div class="sectionRight">
-						<div class="sectionImg" style="background: url('images/image.png') no-repeat center /cover"></div>
+						<div class="sectionImg" style="background: url('images/image (2).png') no-repeat center /cover"></div>
 					</div>
 				</div>
 			</div>
@@ -103,9 +106,9 @@
 					</div>
 						
 				</div>
-				<div class="col-md-5 col-sm-12">
+				<div class="col-md-5 col-sm-0">
 					<div class="sectionRight">
-						<div class="sectionImg" style="background: url('images/image.png') no-repeat center /cover"></div>
+						<div class="sectionImg" style="background: url('images/image (3).png') no-repeat center /cover"></div>
 					</div>
 				</div>
 			</div>
