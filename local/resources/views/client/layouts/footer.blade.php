@@ -15,9 +15,9 @@
                             <li class="lang"><a href="{{ asset('advert/contact') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising'}}</a></li>
                         </ul>
                     </div>
-                    {{-- <div class="menu_footer_right">
-                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Trở về đầu trang]' : '[Back to top]'}}
-                    </div> --}}
+                    {{-- <div class="menu_footer_right">--}}
+                        {{--{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Trở về đầu trang]' : '[Back to top]'}}--}}
+                    {{--</div> --}}
                 </div>
             </div>
         </div>
@@ -62,6 +62,7 @@
             </div>
         </div>
     </section>
+    <a id="desk-mobile"><i class="fas fa-desktop"></i></a>
     <a id="back-to-top"><i class="fas fa-angle-double-up"></i>
 
 </a>

@@ -256,6 +256,7 @@ Route::group(['namespace' => 'Admin'], function (){
 });
 
 Route::post('/upload_image',['as' => 'upload_image','uses' => 'ClientController@upload_image']);
+Route::get('/desktop_mobile',['as' => 'desktop_mobile','uses' => 'ClientController@desktop_mobile']);
 
 Route::get('{slug}', 'Client\IndexController@home');
 Route::get('local/resources/assets/{slug}', 'Client\IndexController@home');
