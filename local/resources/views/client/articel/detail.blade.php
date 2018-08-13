@@ -2,7 +2,8 @@
 @section('title', $articel_detail->title)
 @section('fb_title', cut_string($articel_detail->title, 70))
 @section('fb_des', $articel_detail->summary)
-@section('fb_img', asset('/local/resources'.$articel_detail->fimage))
+{{--@section('fb_img', asset('/local/resources/'.$articel_detail->fimage))--}}
+@section('fb_img', isset($articel_detail->fimage)  && $articel_detail->fimage ? (file_exists(storage_path('app/article/resized500-'.$articel_detail->fimage)) ? asset('local/storage/app/article/resized500-'.$articel_detail->fimage) : (file_exists(resource_path($articel_detail->fimage)) ? asset('/local/resources'.$articel_detail->fimage) : 'images/default-image.png')) : 'images/default-image.png')
 
 
 @section('css')
@@ -54,27 +55,28 @@
 
                     <div class="mainDetailLeftBanner">
                         <?php $count_ad = 0?>
-                        @if (count($list_ad[4]) > 0)
-                            @for ($i = 0; $i < count($list_ad[4]); $i++)
-                                @if ($list_ad[4][$i]->advert->ad_status == 1)
-                                    <a href="{{ $list_ad[4][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[4][$i]->advert->ad_img)}}"></a>
+                        @if (count($list_ad[2]) > 0)
+                            @for ($i = 0; $i < count($list_ad[2]); $i++)
+                                @if ($list_ad[2][$i]->advert->ad_status == 1)
+                                    <a href="{{ $list_ad[2][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[2][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[2][$i]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
                             @endfor
                         @endif
                         @if (count($ad_home[6])>0)
-                            @for ($i = 0; $i < count($ad_home[6]); $i++)
-                                @if ($ad_home[6][$i]->advert->ad_status == 1 && $count_ad == 0)
-                                    <a href="{{ $ad_home[6][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[6][$i]->advert->ad_img)}}"></a>
-                                    <?php $count_ad++ ?>
-                                @endif
-                            @endfor
+                            
+                            @if ($ad_home[6][0]->advert->ad_status == 1 && $count_ad == 0)
+                                <a href="{{ $ad_home[6][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[6][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[6][0]->advert->ad_img)}}"></a>
+                                <?php $count_ad++ ?>
+                            @endif
                         @endif
                         @if ($count_ad == 0)
                             <a href="{{ asset('') }}">
-                                <img src="images/728x90.png">
+                                <img src="images/300x250.png">
                             </a>
+                            
                         @endif
+
                     </div>
                     {{-- <div class="mainDetailLeftRecommend">
                         <div class="mainDetailLeftRecommendItem left">
@@ -281,19 +283,18 @@
                         <?php $count_ad = 0?>
                         @if (count($list_ad[3]) > 0)
                             @for ($i = 0; $i < count($list_ad[3]); $i++)
-                                @if ($list_ad[3][$i]->advert->ad_status == 3)
+                                @if ($list_ad[3][$i]->advert->ad_status == 1)
                                     <a href="{{ $list_ad[3][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
                             @endfor
                         @endif
+                        {{ $ad_home[2][0]->advert->ad_status == 2 && $count_ad == 0 }}
                         @if (count($ad_home[2])>0)
-                            @for ($i = 0; $i < count($ad_home[2]); $i++)
-                                @if ($ad_home[2][$i]->advert->ad_status == 2 && $count_ad == 0)
-                                    <a href="{{ $ad_home[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[2][$i]->advert->ad_img)}}"></a>
+                                @if ($ad_home[2][0]->advert->ad_status == 1 && $count_ad == 0)
+                                    <a href="{{ $ad_home[2][0]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[2][0]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
-                            @endfor
                         @endif
                         @if ($count_ad == 0)
                             <a href="{{ asset('') }}">

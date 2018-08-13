@@ -33,7 +33,16 @@ class ArticelController extends Controller
             ->orderByDesc
         ('id')->first();
 
-        $group_id = explode(',',$articel->groupid)[0];
+        $group_id = DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->get()->toJson();
+
+        $group_id = array_column(json_decode($group_id,true),'group_vn_id') ;
+
+        $group_0 = DB::table($this->db->group)->whereIn('id',$group_id)->orderByDesc('parentid')->first();
+
+        $group_id = $group_0->id;
+
+//        dd($group_id);
+        
 
         $groups = DB::table($this->db->group)->where('status',1)->get();
 
@@ -145,7 +154,7 @@ class ArticelController extends Controller
 
             'list_comment' => $list_comment
         ];
-
+        
         return view('client.articel.detail',$data);
     }
 
