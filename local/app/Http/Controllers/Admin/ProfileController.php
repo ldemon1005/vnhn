@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Http\Requests\ProfileEditRequest;
-
+use Hash;
 use Auth;
 class ProfileController extends Controller
 {
@@ -32,16 +32,18 @@ class ProfileController extends Controller
     	return view('admin.profile.profile_change_pass', $data);
     }
     public function postChangePass(Request $request){
-    	$arr = ['username' => Auth::user()->username, 'password' => $request->old_password];
+    	// $arr = ['username' => Auth::user()->username, 'password' => $request->old_password];
     	// dd($request->old_password);
-    	if(Auth::attempt($arr, true)){
-    		if ($request->new_password == $request->re_new_password) {
-    			$acc = Account::find(Auth::user()->id);
-	    		$acc->password = bcrypt($request->new_password);
-	    		$acc->save();
-	    		
-    			return back()->with('success', 'Thay đổi mật khẩu thành công');
-    		}
+    	if(Hash::check($request->old_password, Auth::user()->password)){
+
+            if($request->new_password == $request->re_new_password){
+                $acc = Account::find(Auth::user()->id);
+                $acc->password = Hash::make($request->new_password);
+                $acc->save();
+                
+                return back()->with('success', 'Thay đổi mật khẩu thành công');
+            }
+    		
     		else{
     			return back()->withInput()->with('error','Nhập lại mật khẩu mới không trùng khớp');
 	    	}	
