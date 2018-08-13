@@ -1,6 +1,82 @@
 <div class="trailer">
     Web đang chạy trên phiên bản thử nghiệm
 </div>
+<div class="bannerMobiHeader">
+    {{-- <a href="{{ asset('advert/contact') }}">
+        <img src="images/414x90.jpg">
+    </a> --}}
+    <?php $count_ad = 0?>
+    @if (count($list_ad[8]) > 0)
+            @if ($list_ad[8][0]->advert->ad_status == 1)
+                <a href="{{ $list_ad[8][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[8][0]->advert->ad_id}}')"><img src="{{asset('local/storage/app/advert/'.$list_ad[8][0]->advert->ad_img)}}"></a>
+                <?php $count_ad++ ?>
+            @endif
+    @endif
+    @if (count($ad_home[8]) > 0 && $count_ad == 0)
+            @if ($ad_home[8][0]->advert->ad_status == 1)
+                <a href="{{ $ad_home[8][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[8][0]->advert->ad_id}}')">
+                    <img src="{{asset('local/storage/app/advert/'.$ad_home[1][0]->advert->ad_img)}}">
+                </a>
+                <?php $count_ad++ ?>
+            @endif
+    @endif
+    @if ($count_ad == 0)
+        <a href="{{ asset('') }}">
+            <img src="images/810x100.png">
+        </a>
+
+    @endif
+</div>
+<div class="bannerTabletHeader">
+    <?php $count_ad = 0?>
+    @if (count($list_ad[1]) > 0)
+            @if ($list_ad[1][0]->advert->ad_status == 1)
+                <a href="{{ $list_ad[1][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[1][0]->advert->ad_id}}')" target="_blank" ><img src="{{asset('local/storage/app/advert/'.$list_ad[1][0]->advert->ad_img)}}"></a>
+                <?php $count_ad++ ?>
+            @endif
+    @endif
+    @if (count($ad_home[1]) > 0 && $count_ad == 0)
+            @if ($ad_home[1][0]->advert->ad_status == 1)
+                <a href="{{ $ad_home[1][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[1][0]->advert->ad_id}}')" target="_blank" >
+                    <img src="{{asset('local/storage/app/advert/'.$ad_home[1][0]->advert->ad_img)}}">
+                </a>
+                <?php $count_ad++ ?>
+            @endif
+    @endif
+    @if ($count_ad == 0)
+        <a href="{{ asset('') }}">
+            <img src="images/810x100.png">
+        </a>
+
+    @endif
+</div>
+<div class="bannerMobiFooter">
+    <?php $count_ad = 0?>
+    @if (count($list_ad[9]) > 0)
+            @if ($list_ad[9][0]->advert->ad_status == 1)
+                <a href="{{ $list_ad[9][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[9][0]->advert->ad_id}}')"><img src="{{asset('local/storage/app/advert/'.$list_ad[9][0]->advert->ad_img)}}"></a>
+                <?php $count_ad++ ?>
+            @endif
+    @endif
+    @if (count($ad_home[9]) > 0 && $count_ad == 0)
+            @if ($ad_home[9][0]->advert->ad_status == 1)
+                <a href="{{ $ad_home[9][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[9][0]->advert->ad_id}}')">
+                    <img src="{{asset('local/storage/app/advert/'.$ad_home[9][0]->advert->ad_img)}}">
+                </a>
+                <?php $count_ad++ ?>
+            @endif
+    @endif
+    @if ($count_ad == 0)
+        <a href="{{ asset('') }}">
+            <img src="images/810x100.png">
+        </a>
+
+    @endif
+    <div class="btnCloseMobiFooter">
+        x
+    </div>
+</div>
+
 <div id="header">
     <section id="header-top">
         <div class="container">
@@ -13,7 +89,7 @@
                         <ul class="menu-left">
                             <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
-                            <li class="header-lang"><a style="cursor: pointer" href="{{asset('')}}"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
+                            <li class="header-lang"><a style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>
                             <li class="header-lang"><a href="{{ asset('') }}"><p><i class="fas fa-phone"></i>0888.790.111</p></a></li>
                             <li class="separation"><img src="{{asset('/local/resources/uploads/images/cham.png')}}"></li>

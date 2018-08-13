@@ -182,26 +182,15 @@ $(document).ready(function(){
 	}
 
 	$('#desk-mobile').click(function () {
-        if(isMobile.any){
-            $.ajax({
-                url: url+'desktop_mobile?mobile=' + 1,
-                method: 'get',
-                dataType: 'json',
-            }).fail(function (ui, status) {
-            }).done(function (data, status) {
-            	console.log("chào");
-                if (data.status == 1) window.location.reload();
-            })
-		}else {
-            $.ajax({
-                url: url+'desktop_mobile?mobile=' + 0,
-                method: 'get',
-                dataType: 'json',
-            }).fail(function (ui, status) {
-            }).done(function (data, status) {
-                if (data.status == 1) window.location.reload();
-            })
-		}
+        $.ajax({
+            url: url+'desktop_mobile',
+            method: 'get',
+            dataType: 'json',
+        }).fail(function (ui, status) {
+        }).done(function (data, status) {
+            console.log("chào");
+            if (data.status == 1) window.location.reload();
+        })
     });
 
 	$('.btnShowSearch').click(function(){

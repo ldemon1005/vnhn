@@ -6,11 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    @if(isset($mobile))
-        @if($mobile == 1)
-            <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1">
-        @endif
-    @else
+    @if($mobile == 0)
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1">
     @endif
 

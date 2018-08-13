@@ -58,10 +58,15 @@ class ClientController extends Controller
         return redirect()->route('home');
     }
 
-    function desktop_mobile(Request $request){
-        $mobile = $request->get('mobile');
-        Session::put('mobile',$mobile);
+    function desktop_mobile(){
+        $mobile = Session::get('moblie');
 
+        if($mobile == 1){
+            $mobile = 0;
+        }  else $mobile = 1;
+
+        Session::put('moblie',$mobile);
+        
         return json_encode([
             'status' => 1
         ]);
