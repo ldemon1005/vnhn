@@ -38,7 +38,9 @@ class Controller extends BaseController
             $info = $this->web_info();
             View::share('web_info',$info);
 
-            View::share('mobile',Session::get('mobile',0));
+            $ver_mobile = Session::get('ver_mobile',1);
+
+            View::share('mobile',$ver_mobile);
 
             return $next($request);
         });

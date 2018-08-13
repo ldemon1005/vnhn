@@ -59,14 +59,13 @@ class ClientController extends Controller
     }
 
     function desktop_mobile(){
-        $mobile = Session::get('moblie');
+        $mobile = Session::get('ver_mobile');
+        if(isset($mobile) && $mobile == 2){
+            $mobile = 1;
+        }  else $mobile = 2;
 
-        if($mobile == 1){
-            $mobile = 0;
-        }  else $mobile = 1;
+        Session::put(['ver_mobile' => $mobile]);
 
-        Session::put('moblie',$mobile);
-        
         return json_encode([
             'status' => 1
         ]);

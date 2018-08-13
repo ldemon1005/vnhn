@@ -192,7 +192,6 @@ $(document).ready(function(){
             dataType: 'json',
         }).fail(function (ui, status) {
         }).done(function (data, status) {
-            console.log("chào");
             if (data.status == 1) window.location.reload();
         })
     });
