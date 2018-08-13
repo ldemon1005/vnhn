@@ -232,8 +232,8 @@
                                         <label class="col-sm-2">Loại tin bài</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name="articel[loaitinbai]">
-                                                <option value="1">Tổng hợp</option>
-                                                <option value="2">Tự viết</option>
+                                                <option {{$articel->loaitinbai != 2 ? 'selected' : ''}} value="1">Tổng hợp</option>
+                                                <option {{$articel->loaitinbai == 2 ? 'selected' : ''}} value="2">Tự viết</option>
                                             </select>
                                         </div>
                                     </div>

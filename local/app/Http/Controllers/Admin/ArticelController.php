@@ -305,7 +305,8 @@ class ArticelController extends Controller
                     'h' => date('h:i A',time())
                 ],
                 'hot_main' => 0,
-                'hot_item' => 0
+                'hot_item' => 0,
+                'loaitinbai' => 1
             ];
             $articel = (object)$data;
         }else{
