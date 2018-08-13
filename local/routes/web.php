@@ -93,6 +93,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/delete_articel_hot/{groupid}/{id}','ArticelController@delete_articel_hot')->name('delete_articel_hot');
             Route::get('/update_status/{id}','ArticelController@update_status')->name('update_status');
             Route::get('/approved', 'ArticelController@approved');
+            Route::get('/approved_cgroup', 'ArticelController@approved_cgroup');
 
             Route::post('on', 'ArticelController@getOn');
             Route::post('off', 'ArticelController@getOff');

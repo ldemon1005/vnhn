@@ -145,7 +145,15 @@
                         <li class="nav-item">
                             <a href="{{asset('admin/articel/approved')}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Phê duyệt bài viết</p>
+                                <p>Phê duyệt bài viết {{ Auth::user()->level == 2 && Auth::user()->site == 2 ? 'VNHN' : '' }}</p>
+                            </a>
+                        </li>
+                        @endif
+                        @if(Auth::user()->level == 2 && Auth::user()->site == 2 )
+                        <li class="nav-item">
+                            <a href="{{asset('admin/articel/approved_cgroup')}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Phê duyệt bài viết Cgroup</p>
                             </a>
                         </li>
                         @endif
@@ -329,7 +337,7 @@
                 @if (Auth::user()->level<3 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin/contact/contact') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
-                            <i class="nav-icon fas fa-info-circle"></i>
+                            <i class="nav-icon fas fa-bell"></i>
                             <p>
                                 Liên hệ quảng cáo
                             </p>
@@ -337,7 +345,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin/contact/order') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
-                            <i class="nav-icon fas fa-info-circle"></i>
+                            <i class="nav-icon fas fa-check-circle"></i>
                             <p>
                                 Đặt mua báo
                             </p>

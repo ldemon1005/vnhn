@@ -83,7 +83,7 @@
 .new-left-time .new-item-time .avatar:after{
     content: "";
     display: block;
-    padding-top: 65%;
+    padding-top: 60%;
 }
 
 .new-left-time .new-item-time .avatar img{

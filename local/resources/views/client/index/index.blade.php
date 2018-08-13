@@ -2,7 +2,7 @@
 @section('title', 'Tin nhanh Việt Nam Hội Nhập')
 @section('fb_title', 'Tin nhanh Việt Nam Hội Nhập - Cập nhật xu hướng')
 @section('fb_des', 'Tạp chí VNHN là trang thông tin tạp chí đối ngoại,......')
-@section('fb_img', 'http://vietnamhoinhap.vn/local/resources/uploads/2_8_2018/tescareersheadteacherrecruitment-1521781229.jpg')
+@section('fb_img', asset('local/resources/assets/images/PostLink.png'))
 
 @section('main')
     <div id="main">
