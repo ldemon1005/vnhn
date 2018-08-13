@@ -6935,7 +6935,7 @@ var View = fc.View = Class.extend({
 				mom.local();
 			}
 		}
-		else if (options.timezone === 'UTC') {
+		else if (options.timezone === 'Asia/Ho_Chi_Minh') {
 			mom = fc.moment.utc.apply(null, arguments); // process as UTC
 		}
 		else {

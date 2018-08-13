@@ -156,6 +156,13 @@
                                     <p>Danh sách bài viết hot</p>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('report_article')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Thống kê bài viết</p>
+                                </a>
+                            </li>
                         @endif
 
                         <li class="nav-item">

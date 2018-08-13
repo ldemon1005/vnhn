@@ -13,11 +13,14 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
 
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
+
   <link rel="stylesheet" href="plugins/select2/select2.min.css">
 
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
 
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
@@ -62,6 +65,7 @@
 
   <!-- bootstrap time picker -->
   <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+  <script src="plugins/daterangepicker/daterangepicker.js"></script>
 
   <!-- Select2 -->
   <script src="plugins/select2/select2.full.min.js"></script>

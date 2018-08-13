@@ -35,7 +35,7 @@
                         {{$articel_detail->day_in_week_str}}, {{$articel_detail->release_time}} (GMT+7)
                         <div class="float-right">
                             <div class="fb-like" data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}"
-                                 data-action="like" data-size="small" data-layout="button_count"
+                                 data-size="small" data-layout="button_count"
                                  data-share="true"></div>
                         </div>
                     </div>

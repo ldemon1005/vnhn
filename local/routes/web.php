@@ -248,10 +248,14 @@ Route::group(['namespace' => 'Admin'], function (){
 
                 Route::get('order', 'ContactController@getAdvertOrder');
                 Route::post('order', 'ContactController@getDetailAdvertOrder');
+            });
 
+            Route::group(['prefix'=>'report'], function(){
+                Route::get('report_article', 'ReportController@report_article')->name('report_article');
             });
         });
-    		
+
+
 	});
 });
 

@@ -227,6 +227,16 @@
                                             {{--</select>--}}
                                         {{--</div>--}}
                                     {{--</div>--}}
+
+                                    <div class="row form-group">
+                                        <label class="col-sm-2">Loại tin bài</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control" name="articel[loaitinbai]">
+                                                <option value="1">Tổng hợp</option>
+                                                <option value="2">Tự viết</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id ? 'Cập nhật' : 'Tạo mới' }}</button>
                                     </div>
