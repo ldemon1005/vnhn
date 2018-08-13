@@ -773,6 +773,17 @@ a:hover {
 	.menu-footer {
 	    margin: 0; 
 	}
+	.quangcao-2{
+		height: auto;
+	}
+	.quangcao-4{
+		min-height: 0;
+		height: auto;
+		margin-top: 0;
+	}
+	.articel-new{
+		margin-bottom: 0;
+	}
 
 }
 @media only screen and (max-width: 576px) {

@@ -66,15 +66,15 @@
               <div class="card-body">
                 <div class="form-group">
                     <label>Mật khẩu cũ</label>
-                    <input type="password" class="form-control" placeholder="Username" name="old_password">
+                    <input type="password" class="form-control" placeholder="Điền mật khẩu cũ" name="old_password">
                 </div>
                 <div class="form-group">
                     <label>Mật khẩu mới</label>
-                    <input type="password" class="form-control" placeholder="Fullname" name="new_password">
+                    <input type="password" class="form-control" placeholder="Điền mật khẩu mới" name="new_password">
                 </div>
                 <div class="form-group">
                     <label>Xác nhận lại mật khẩu</label>
-                    <input type="password" class="form-control" placeholder="Enter email" name="re_new_password"> 
+                    <input type="password" class="form-control" placeholder="Điền lại mật khẩu mới" name="re_new_password"> 
                 </div>
               </div>
               <!-- /.card-body -->

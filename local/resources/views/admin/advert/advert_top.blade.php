@@ -43,6 +43,8 @@
                       @for ($i = 1; $i < (Request::segment(4) == 1 ? 8 : 5); $i++)
                         <option value="{{$i}}" {{Request::segment(5) == $i ? 'selected' : '' }}>Vị trí {{$i}}</option>
                       @endfor
+                      <option value="8" {{Request::segment(5) == 8 ? 'selected' : '' }}>Vị trí đầu (điện thoại)</option>
+                      <option value="9" {{Request::segment(5) == 9 ? 'selected' : '' }}>Vị trí dưới (điện thoại)</option>
                     </select>
                   </div>
                 </div>

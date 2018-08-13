@@ -27,6 +27,10 @@ $(document).ready(function(){
 
 	});
 
+
+	$('.btnCloseMobiFooter').click(function(){
+		$('.bannerMobiFooter').css('display', 'none');
+	});
 	var count1 = 2;
 	$('.menuHeaderItem .btn_dropdown_menu_head').click(function(){
 		$(this).prev().slideToggle();

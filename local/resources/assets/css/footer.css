@@ -205,8 +205,8 @@
 
 #back-to-top {
 	position: fixed;
-    bottom: 50%;
-    right: 20px;
+    bottom: 100px;
+    right: 10px;
     z-index: 9999;
     width: 32px;
     height: 32px;
@@ -226,26 +226,6 @@
 #back-to-top.show {
   	opacity: 1;
 }
-
-#desk-mobile {
-	position: fixed;
-	bottom: 50px;
-	right: 20px;
-	z-index: 9999;
-	width: 32px;
-	height: 32px;
-	text-align: center;
-	line-height: 30px;
-	background: #0C7FCC;
-	color: #fff;
-	cursor: pointer;
-	border: 0;
-	border-radius: 2px;
-	text-decoration: none;
-	transition: opacity 0.2s ease-out;
-	opacity: 1;
-}
-
 #content {
   	height: 2000px;
 }

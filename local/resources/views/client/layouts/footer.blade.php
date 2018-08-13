@@ -65,5 +65,5 @@
     <a id="desk-mobile"><i class="fas fa-desktop"></i></a>
     <a id="back-to-top"><i class="fas fa-angle-double-up"></i>
 
-</a>
+    </a>
 </div>

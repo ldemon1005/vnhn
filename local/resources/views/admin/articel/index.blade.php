@@ -63,11 +63,15 @@
                                             <select class="form-control select2" multiple="multiple"
                                                     data-placeholder="Lọc theo trạng thái" name="articel[status][]"
                                                     style="width: 100%;">
+                                                @if(Auth::user()->level == 2 || Auth::user()->level == 1 )
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(0,$paramater['status']) ? 'selected' : '' : ''}} value="0">Dừng</option>
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(1,$paramater['status']) ? 'selected' : '' : ''}} value="1">Đang chạy</option>
+                                                @endif
+                                                @if(Auth::user()->level == 1)
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(2,$paramater['status']) ? 'selected' : '' : ''}} value="2">Chờ duyệt lần 2</option>
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(3,$paramater['status']) ? 'selected' : '' : ''}} value="3">Chờ duyệt lần 1</option>
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(4,$paramater['status']) ? 'selected' : '' : ''}} value="4">Trả lại</option>
+                                                @endif
                                             </select>
                                         </div>
                                         <div class="col-md-2 float-right">
@@ -83,7 +87,7 @@
                                     <th>Tác giả</th>
                                     <th>Chuyên mục</th>
                                     <th class="hideResponsive768">Ngày tạo--Ngày update</th>
-                                    <th>Avatar</th>
+                                    <th>Hình ảnh</th>
                                     <th>Trạng thái</th>
                                     <th style="min-width: 50px">Duyệt bài</th>
                                     <th>Thao tác</th>
@@ -158,10 +162,10 @@
                                                 @case(2) 
                                                     @switch($articel->status)
                                                         @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default">Dừng</button>
+                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
                                                             @break
                                                         @case(1)
-                                                            <button class="btn btn-block btn-sm btn-default">Đang chạy</button>
+                                                            <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
                                                             @break
                                                         @case(2)
 
@@ -182,7 +186,7 @@
                                                 @case(3)
                                                     @switch($articel->status)
                                                         @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default">Dừng</button>
+                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
                                                             @break
                                                         @case(2)
                                                             <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
