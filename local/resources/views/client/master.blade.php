@@ -79,5 +79,167 @@
         $('.select2').select2();
     });
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+    
+
+    var menuHide = $('#header-menu .menu-header>li.menu_head_hide');
+    var menuShow = $('#header-menu .menu-header>li.menuHeaderItem');
+    var menudropdown = $('.dropdown_child li');
+
+
+    $('#header_btnMenu').click(function(){
+        // $('#header-menu .menu-header').css('top', '0');
+        $('#header-menu .menu-header').children("li:first-child").html('<a>Chuyên mục</a>');
+        $('#header-menu .menu-header').show();
+        // setTimeout(function(){
+        //  $('#header-menu .menu-header').find("li").css('margin-left', '0');
+        //  $('.btn_close_menu').css('right', '20%');
+        // },500);
+
+    });
+    $('.btn_close_menu').click(function(){
+        $('#header-menu .menu-header').hide();
+        // $('#header-menu .menu-header').find("li").css('margin-left', '-80%');
+        // $('.btn_close_menu').css('right', '100%');
+        // setTimeout(function(){
+        //  $('#header-menu .menu-header').css('top', '-100%');
+        // },500);
+
+
+    });
+
+
+    $('.btnCloseMobiFooter').click(function(){
+        $('.bannerMobiFooter').css('display', 'none');
+    });
+    var count1 = 2;
+    $('.menuHeaderItem .btn_dropdown_menu_head').click(function(){
+        $(this).prev().slideToggle();
+        // count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
+        // count1++;
+    });
+    $('.dropdown').click(function(){
+        $(this).find('.dropdown_child').slideToggle();
+        // count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
+        // count1++;
+    });
+    
+    $(window).resize(function(){
+        if ($(window).width() > 1200) {
+            for(var i = 0; i < menuShow.length ; i++){
+                if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 8 : 6}}){
+                    menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+                }else{
+                    menuShow.eq(i).attr('class', 'menuHeaderItem');
+                }
+            }
+            for(var i = 0; i < menudropdown.length ; i++){
+                if(i < {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 3 : 1}}){
+                    menudropdown.eq(i).css('display', 'none');
+                }else{
+                    menudropdown.eq(i).css('display', 'block');
+                }
+            }
+        }
+        else if ($(window).width() > 992) {
+            for(var i = 0; i < menuShow.length ; i++){
+                if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 7 : 5}}){
+                    menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+                }else{
+                    menuShow.eq(i).attr('class', 'menuHeaderItem');
+                }
+            }
+            for(var i = 0; i < menudropdown.length ; i++){
+                if(i < 2){
+                    menudropdown.eq(i).css('display', 'none');
+                }else{
+                    menudropdown.eq(i).css('display', 'block');
+                }
+            }
+        }
+        else if ($(window).width() > 768) {
+            for(var i = 0; i < menuShow.length ; i++){
+                if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 5 : 3}}){
+                    menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+                }else{
+                    menuShow.eq(i).attr('class', 'menuHeaderItem');
+                }
+            }
+            for(var i = 0; i < menudropdown.length ; i++){
+                if(i < 0){
+                    menudropdown.eq(i).css('display', 'none');
+                }else{
+                    menudropdown.eq(i).css('display', 'block');
+                }
+            }
+            // $('#header-menu .menu-header').css('top', '0');
+            $('#header-menu .menu-header').children("li:first-child").html('<a href="{{ asset("") }}"><i class="fas fa-home"></i></a>');
+            $('#header-menu .menu-header').css('display', 'flex');
+            $('#header-menu .menu-header').show();
+            
+            // $('#header-menu .menu-header').find("li").css('margin-left', '0');
+            // $('.btn_close_menu').css('right', '20%');
+        }else{
+            
+            $('#header-menu .menu-header').css('display', 'block');
+            $('#header-menu .menu-header').hide();
+            // $('#header-menu .menu-header').find("li").css('margin-left', '-80%');
+            // $('.btn_close_menu').css('right', '100%');
+            // $('#header-menu .menu-header').css('top', '-100%');
+        }
+        
+    });
+    if ($(window).width() > 1200) {
+        for(var i = 0; i < menuShow.length ; i++){
+            if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 8 : 6}}){
+                menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+            }else{
+                menuShow.eq(i).attr('class', 'menuHeaderItem');
+            }
+        }
+        for(var i = 0; i < menudropdown.length ; i++){
+            if(i < {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 3 : 1}}){
+                menudropdown.eq(i).css('display', 'none');
+            }else{
+                menudropdown.eq(i).css('display', 'block');
+            }
+        }
+    }
+    else if ($(window).width() > 992) {
+        for(var i = 0; i < menuShow.length ; i++){
+            if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 7 : 5}}){
+                menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+            }else{
+                menuShow.eq(i).attr('class', 'menuHeaderItem');
+            }
+        }
+        for(var i = 0; i < menudropdown.length ; i++){
+            if(i < 2){
+                menudropdown.eq(i).css('display', 'none');
+            }else{
+                menudropdown.eq(i).css('display', 'block');
+            }
+        }
+    }
+    else if ($(window).width() > 768) {
+        for(var i = 0; i < menuShow.length ; i++){
+            if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 5 : 3}}){
+                menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+            }else{
+                menuShow.eq(i).attr('class', 'menuHeaderItem');
+            }
+        }
+        for(var i = 0; i < menudropdown.length ; i++){
+            if(i < 0){
+                menudropdown.eq(i).css('display', 'none');
+            }else{
+                menudropdown.eq(i).css('display', 'block');
+            }
+        }
+    }
+});
+
+</script>
 @yield('script')
 </html>

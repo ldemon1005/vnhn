@@ -173,7 +173,7 @@
                         @if($item->id == 19)
                             <li class="menuHeaderItem " ><a href="{{$item->link}}" target="_blank">{{$item->title}}</a></li>
                         @else
-                            <li class="menuHeaderItem @if ( $count > 8 ) menu_head_hide @endif {{ isset($group_menu_cate[0]) && $group_menu_cate[0]->id == $item->id ? 'active' : '' }}">
+                            <li class="menuHeaderItem {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? ($count > 8 ? 'menu_head_hide' : ' ') : ($count > 6 ? 'menu_head_hide' : ' ') }} {{ isset($group_menu_cate[0]) && $group_menu_cate[0]->id == $item->id ? 'active' : '' }}">
                                 <a href="{{ route('get_articel_by_group',$item->slug.'---n-'.$item->id) }}">{{$item->title,10}}</a>
                                 <?php $count1 = 0?>
                                 @if (isset($item->child) && $item->child->count())

@@ -37,7 +37,7 @@
                 <div class="card-body">
                 	<div class="form-group">
 	                    <label for="exampleInputEmail1">Tên đăng nhập</label>
-	                    <input type="text" class="form-control" placeholder="Username" name="username" value="{{isset($item)? $item->username : ''}}" required {{ isset($item) ? 'disabled' : '' }}>
+	                    <input type="text" class="form-control" placeholder="Username" name="username" value="{{isset($item)? $item->username : ''}}" required>
 	                </div>
 	                <div class="form-group">
 	                    <label for="exampleInputEmail1">Họ và tên</label>
@@ -85,7 +85,7 @@
                   {{-- {{ isset($group_id)? '1' : '0' }} --}}
                   <div class="form-group">
                       <label for="exampleInputPassword1">Quyền truy cập</label>
-                      <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="group_id[]" style="width: 100%;">
+                      <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="group_id[]" style="width: 100%;" required>
                           @foreach($list_group as $group)
 
                             <option {{isset($gr_acc) && in_array($group->id,$gr_acc) && $gr_acc[0] != null? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
