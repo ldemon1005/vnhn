@@ -18,7 +18,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-
         /*
          *  phần new
          */
@@ -232,9 +231,32 @@ class IndexController extends Controller
     public function get_articel_group()
     {
         $groups = Group_vn::where('home_index', 1)->where('status', 1)->where('type', '!=', 1)->orderBy('order')->take(10)->get()->slice(2, 8);
-
+        $list_group = DB::table($this->db->group)->where('status',1)->get();
         foreach ($groups as $group) {
-            $group->articel = $group->belongsToMany(News::class, $this->db->group_news, 'group_vn_id', 'news_vn_id')->where('status',1)->orderBy('release_time','desc')->orderByDesc('id')->take(5)->get();
+            unset($result);
+            $result[] = $group->id;
+
+            $this->recusive_find_child($list_group,$group->id,$result);
+
+            $result = array_unique($result);
+
+            $list_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->where('hot',1)->get()->toJson();
+
+            $list_ids = array_column(json_decode($list_ids),'news_vn_id');
+
+
+            $article = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_ids)->where('status',1)->where('time_hot_item','>=',time())->where('release_time','<=',time())->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
+
+            $number = 5 - $article->count();
+
+            if($article->count() > 0){
+                $list_not_ids = array_column(json_decode($article->toJson()),'id');
+            }else $list_not_ids = [];
+
+            $article_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_ids)->whereNotIn('id',$list_not_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number)->get();
+            $article = $article->toBase()->merge($article_1);
+
+            $group->articel = $article;
         }
         $groups = $groups->chunk(4);
         return $groups;

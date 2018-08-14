@@ -731,7 +731,15 @@ class ArticelController extends Controller
         if($group_id == 0){
             $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->orderBy('order_main')->get();
         }else {
-            $articel_hot_ids = DB::table($this->db->group_news)->where('group_vn_id',$group_id)->where('hot',1)->get(['news_vn_id'])->toJson();
+            $list_group = DB::table($this->db->group)->where('status',1)->get();
+            $result_1[] = $group_id;
+
+            $this->recusive_find_child($list_group,$group_id,$result_1);
+
+            $result_1 = array_unique($result_1);
+
+
+            $articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result_1)->where('hot',1)->get(['news_vn_id'])->toJson();
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 

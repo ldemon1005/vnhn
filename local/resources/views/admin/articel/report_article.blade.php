@@ -46,13 +46,17 @@
                                         <div class="col-md-4">
                                             <input value="{{$key}}" name="key" class="form-control" placeholder="nhập từ khóa">
                                         </div>
-                                        <div class="col-md-3 input-group">
-                                            <button type="button" class="btn btn-default pull-right"
-                                                    id="daterange-btn"><span><i class="fa fa-calendar"></i> Date range picker</span>
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                            <input id="from" name="from" class="d-none">
-                                            <input id="to" name="to" class="d-none">
+                                        <div class="col-md-5 input-group">
+                                            <div class="d-flex flex-row align-items-center">
+                                                <div><b>Thời gian thống kê: {{$from}} <span class="text-warning">đến</span> {{$to}}</b></div>
+                                                <div class="ml-3">
+                                                    <button type="button" class="btn btn-default pull-right"
+                                                            id="daterange-btn"><span><i class="fa fa-calendar"></i></span>
+                                                    </button>
+                                                    <input id="from" name="from" class="d-none">
+                                                    <input id="to" name="to" class="d-none">
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-md-2 float-right">
@@ -70,17 +74,19 @@
                                     <th>Số bài tổng hợp</th>
                                     <th>Số bài tự viết</th>
                                     <th>Chưa đăng</th>
+                                    {{--<th>Đối tác</th>--}}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($list_user as $user)
                                     <tr>
-                                        <td>{{$user->username}}</td>
+                                        <td> <a href="{{route('detail_report_article',$user->id)}}">{{$user->username}}</a></td>
                                         <td>{{$user->fullname}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->tong_hop}}</td>
                                         <td>{{$user->tu_viet}}</td>
                                         <td>{{$user->chua_dang}}</td>
+                                        {{--<td>{{$user->site == 1 ? "CGROUP" : "VNHN"}}</td>--}}
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -157,8 +163,8 @@
                     'Tháng này'  : [moment().startOf('month'), moment().endOf('month')],
                     'Tháng trước'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
                 },
-                startDate: moment().startOf('month'),
-                endDate  : moment().endOf('month')
+                startDate: moment('{{$from}}','DD-MM-YYYY').startOf('day'),
+                endDate  : moment('{{$to}}','DD-MM-YYYY').endOf('day')
             },
             function (start, end) {
                 $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))

@@ -50,7 +50,12 @@ class GroupController extends Controller{
 
         if($list_articel_hot->count() < 5){
             $number = 5 - $list_articel_hot->count();
-            $list_articel_hot_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_articel_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number)->get();
+
+            if($list_articel_hot->count() > 0){
+                $list_not_ids = array_column(json_decode($list_articel_hot->toJson()),'id');
+            }else $list_not_ids = [];
+
+            $list_articel_hot_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_articel_ids)->whereNotIn('id',$list_not_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number)->get();
             $list_articel_hot = $list_articel_hot->toBase()->merge($list_articel_hot_1);
         }
 
@@ -110,16 +115,6 @@ class GroupController extends Controller{
     {
         $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->take(5)->get();
         return $list_video_new;
-    }
-
-    function recusive_find_child($list_group,$parentid,&$result){
-        foreach ($list_group as $key => $group){
-            if($parentid == $group->parentid){
-                $result[] = $group->id;
-                unset($list_group[$key]);
-                $this->recusive_find_child($list_group,$group->id,$result);
-            }
-        }
     }
 
     function articel_top_view($list_articel_ids){

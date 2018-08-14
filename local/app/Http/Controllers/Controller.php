@@ -119,6 +119,14 @@ class Controller extends BaseController
         return $info;
     }
 
-
+    function recusive_find_child($list_group,$parentid,&$result){
+        foreach ($list_group as $key => $group){
+            if($parentid == $group->parentid){
+                $result[] = $group->id;
+                unset($list_group[$key]);
+                $this->recusive_find_child($list_group,$group->id,$result);
+            }
+        }
+    }
     
 }

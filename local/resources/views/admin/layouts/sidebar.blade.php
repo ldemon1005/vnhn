@@ -164,13 +164,6 @@
                                     <p>Danh sách bài viết hot</p>
                                 </a>
                             </li>
-
-                            <li class="nav-item">
-                                <a href="{{route('report_article')}}" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thống kê bài viết</p>
-                                </a>
-                            </li>
                         @endif
 
                         <li class="nav-item">
@@ -358,6 +351,26 @@
                                 Thông tin website
                             </p>
                         </a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->site == 1 && Auth::user()->level < 3)
+                    <li class="nav-item has-treeview">
+                        <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
+                            <i class="nav-icon far fa-flag"></i>
+                            <p>
+                                Thống kê
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('report_article')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>Thống kê bài viết</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 @endif
 

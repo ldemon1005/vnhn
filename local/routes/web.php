@@ -253,6 +253,7 @@ Route::group(['namespace' => 'Admin'], function (){
 
             Route::group(['prefix'=>'report'], function(){
                 Route::get('report_article', 'ReportController@report_article')->name('report_article');
+                Route::get('detail_report_article/{id}', 'ReportController@detail_report_article')->name('detail_report_article');
             });
         });
 
