@@ -202,7 +202,7 @@
 .new-list-bottom-time .item-bottom .avatar:after{
     content: "";
     display: block;
-    padding-top: 56%;
+    padding-top: 60%;
 }
 
 .new-list-bottom-time .avatar img{

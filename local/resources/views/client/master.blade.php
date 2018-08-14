@@ -33,8 +33,8 @@
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+{{--     <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css"> --}}
     <link rel="stylesheet" href="admin/plugins/select2/select2.min.css">
 
 
@@ -53,7 +53,7 @@
 {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="js/owl.carousel.min.js"></script>
+{{-- <script src="js/owl.carousel.min.js"></script> --}}
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/custom.js"></script>
 <script type="text/javascript" src="js/header-footer.js"></script>
@@ -63,7 +63,7 @@
 <!-- Select2 -->
 <script src="admin/plugins/select2/select2.full.min.js"></script>
 
-<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+{{-- <script type="text/javascript" src="js/bootstrap-select.min.js"></script> --}}
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

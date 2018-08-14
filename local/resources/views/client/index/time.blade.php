@@ -250,9 +250,9 @@
                                         @endif
                                     @endfor
                                 @endif
-                                @if (count($ad_home[6])>0)
+                                @if (count($ad_home[6])>0 && $count_ad == 0)
                                     @for ($i = 0; $i < count($ad_home[6]); $i++)
-                                        @if ($ad_home[6][$i]->advert->ad_status == 1 && $count_ad == 0)
+                                        @if ($ad_home[6][$i]->advert->ad_status == 1)
                                             <a href="{{ $ad_home[6][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[6][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[6][$i]->advert->ad_img)}}"></a>
                                             <?php $count_ad++ ?>
 
@@ -286,9 +286,9 @@
                                         @endif
                                     @endfor
                                 @endif
-                                @if (count($ad_home[7])>0)
+                                @if (count($ad_home[7])>0 && $count_ad == 0 )
                                     @for ($i = 0; $i < count($ad_home[7]); $i++)
-                                        @if ($ad_home[7][$i]->advert->ad_status == 1 && $count_ad == 0 )
+                                        @if ($ad_home[7][$i]->advert->ad_status == 1)
                                             <a href="{{ $ad_home[7][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[7][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
                                             <?php $count_ad++ ?>
                                         @endif

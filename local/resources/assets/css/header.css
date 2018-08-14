@@ -44,6 +44,11 @@
 	color: #fff;
 	border-radius: 50%;
 }
+a.btnSetLang{
+	cursor: pointer;
+    display: inline-block !important;
+    width: auto !important;
+}
 #header_btnMenu{
 	position: absolute;
     top: 0;

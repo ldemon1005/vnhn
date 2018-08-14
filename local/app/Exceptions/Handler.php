@@ -50,15 +50,26 @@ class Handler extends ExceptionHandler
     {   
         // dd($exception);
         // return view('error.404');
+        // return response()->view('error.404', [], 404);
+        // return parent::render($request, $exception);
+        // if ($this->isHttpException($e))
+        // {
+        //     return $this->renderHttpException($e);
+        // }
+        // else
+        // {
+        //     return parent::render($request, $e);
+        // }
+        if ($exception instanceof ModelNotFoundException) {
+            if ($request->ajax()) {
+                // Nếu request ở dạng ajax trả về lỗi 404 với thông báo dạng Json
+                return response()->json(['error' => 'Không tìm thấy user'], 404);
+            } else {
+                // Request thông thường trả về view 404
+                return response()->view('error.404', [], 404);
+            }
+        }
         return parent::render($request, $exception);
-        if ($this->isHttpException($e))
-        {
-            return $this->renderHttpException($e);
-        }
-        else
-        {
-            return parent::render($request, $e);
-        }
     }
     // protected function unauthenticated($request, AuthenticationException $exception)
     // {

@@ -194,7 +194,10 @@
                         @endif
                         <?php $count++;?>
                     @endforeach
-                    
+                        <li class="menuHeaderItem menu_head_hide">
+                            <a class="btnSetLang" style="cursor: pointer" onclick="set_lang('vn')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/vn.png')}}"></a>
+                            <a class="btnSetLang" style="cursor: pointer" onclick="set_lang('en')"><img style="width: auto;height: 13px;line-height: 46px" src="{{asset('/local/resources/uploads/images/en.png')}}"></a>
+                        </li>
                     <li class="dropdown">
                         <a>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chuyên mục khác' : 'Other Categories'}}</a>
                         <?php $count1 = 0?>

@@ -402,7 +402,7 @@ a:hover {
 /*.category-1 .category-1-right .item-top-view .avatar:after{
 	content: "";
 	display: block;
-	margin-top: 56%;
+	margin-top: 60%;
 
 }*/
 .category-1 .category-1-right .item-top-view .avatar img{
@@ -476,7 +476,7 @@ a:hover {
 .category .item .avatar:after{
 	content: "";
 	display: block;
-	padding-bottom: 56%;
+	padding-bottom: 60%;
 
 }
 
@@ -509,7 +509,7 @@ a:hover {
 .articel-bottom-left-item .avatar:after{
 	content: "";
 	display: block;
-	padding-bottom: 56%;
+	padding-bottom: 60%;
 }
 
 .articel-bottom-left-item img{
