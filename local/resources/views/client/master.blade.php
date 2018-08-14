@@ -37,8 +37,8 @@
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+{{--     <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css"> --}}
     <link rel="stylesheet" href="admin/plugins/select2/select2.min.css">
 
 
@@ -57,7 +57,7 @@
 {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="js/owl.carousel.min.js"></script>
+{{-- <script src="js/owl.carousel.min.js"></script> --}}
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/custom.js"></script>
 <script type="text/javascript" src="js/header-footer.js"></script>
@@ -67,7 +67,7 @@
 <!-- Select2 -->
 <script src="admin/plugins/select2/select2.full.min.js"></script>
 
-<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+{{-- <script type="text/javascript" src="js/bootstrap-select.min.js"></script> --}}
 
 <div id="fb-root"></div>
 
@@ -87,6 +87,168 @@
         //Initialize Select2 Elements
         $('.select2').select2();
     });
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    
+
+    var menuHide = $('#header-menu .menu-header>li.menu_head_hide');
+    var menuShow = $('#header-menu .menu-header>li.menuHeaderItem');
+    var menudropdown = $('.dropdown_child li');
+
+
+    $('#header_btnMenu').click(function(){
+        // $('#header-menu .menu-header').css('top', '0');
+        $('#header-menu .menu-header').children("li:first-child").html('<a>Chuyên mục</a>');
+        $('#header-menu .menu-header').show();
+        // setTimeout(function(){
+        //  $('#header-menu .menu-header').find("li").css('margin-left', '0');
+        //  $('.btn_close_menu').css('right', '20%');
+        // },500);
+
+    });
+    $('.btn_close_menu').click(function(){
+        $('#header-menu .menu-header').hide();
+        // $('#header-menu .menu-header').find("li").css('margin-left', '-80%');
+        // $('.btn_close_menu').css('right', '100%');
+        // setTimeout(function(){
+        //  $('#header-menu .menu-header').css('top', '-100%');
+        // },500);
+
+
+    });
+
+
+    $('.btnCloseMobiFooter').click(function(){
+        $('.bannerMobiFooter').css('display', 'none');
+    });
+    var count1 = 2;
+    $('.menuHeaderItem .btn_dropdown_menu_head').click(function(){
+        $(this).prev().slideToggle();
+        // count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
+        // count1++;
+    });
+    $('.dropdown').click(function(){
+        $(this).find('.dropdown_child').slideToggle();
+        // count1 % 2 ? $(this).css('transform',' rotate(0deg)') :  $(this).css('transform',' rotate(180deg)');
+        // count1++;
+    });
+    
+    $(window).resize(function(){
+        if ($(window).width() > 1200) {
+            for(var i = 0; i < menuShow.length ; i++){
+                if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 8 : 6}}){
+                    menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+                }else{
+                    menuShow.eq(i).attr('class', 'menuHeaderItem');
+                }
+            }
+            for(var i = 0; i < menudropdown.length ; i++){
+                if(i < {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 3 : 1}}){
+                    menudropdown.eq(i).css('display', 'none');
+                }else{
+                    menudropdown.eq(i).css('display', 'block');
+                }
+            }
+        }
+        else if ($(window).width() > 992) {
+            for(var i = 0; i < menuShow.length ; i++){
+                if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 7 : 5}}){
+                    menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+                }else{
+                    menuShow.eq(i).attr('class', 'menuHeaderItem');
+                }
+            }
+            for(var i = 0; i < menudropdown.length ; i++){
+                if(i < 2){
+                    menudropdown.eq(i).css('display', 'none');
+                }else{
+                    menudropdown.eq(i).css('display', 'block');
+                }
+            }
+        }
+        else if ($(window).width() > 768) {
+            for(var i = 0; i < menuShow.length ; i++){
+                if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 5 : 3}}){
+                    menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+                }else{
+                    menuShow.eq(i).attr('class', 'menuHeaderItem');
+                }
+            }
+            for(var i = 0; i < menudropdown.length ; i++){
+                if(i < 0){
+                    menudropdown.eq(i).css('display', 'none');
+                }else{
+                    menudropdown.eq(i).css('display', 'block');
+                }
+            }
+            // $('#header-menu .menu-header').css('top', '0');
+            $('#header-menu .menu-header').children("li:first-child").html('<a href="{{ asset("") }}"><i class="fas fa-home"></i></a>');
+            $('#header-menu .menu-header').css('display', 'flex');
+            $('#header-menu .menu-header').show();
+            
+            // $('#header-menu .menu-header').find("li").css('margin-left', '0');
+            // $('.btn_close_menu').css('right', '20%');
+        }else{
+            
+            $('#header-menu .menu-header').css('display', 'block');
+            $('#header-menu .menu-header').hide();
+            // $('#header-menu .menu-header').find("li").css('margin-left', '-80%');
+            // $('.btn_close_menu').css('right', '100%');
+            // $('#header-menu .menu-header').css('top', '-100%');
+        }
+        
+    });
+    if ($(window).width() > 1200) {
+        for(var i = 0; i < menuShow.length ; i++){
+            if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 8 : 6}}){
+                menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+            }else{
+                menuShow.eq(i).attr('class', 'menuHeaderItem');
+            }
+        }
+        for(var i = 0; i < menudropdown.length ; i++){
+            if(i < {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 3 : 1}}){
+                menudropdown.eq(i).css('display', 'none');
+            }else{
+                menudropdown.eq(i).css('display', 'block');
+            }
+        }
+    }
+    else if ($(window).width() > 992) {
+        for(var i = 0; i < menuShow.length ; i++){
+            if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 7 : 5}}){
+                menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+            }else{
+                menuShow.eq(i).attr('class', 'menuHeaderItem');
+            }
+        }
+        for(var i = 0; i < menudropdown.length ; i++){
+            if(i < 2){
+                menudropdown.eq(i).css('display', 'none');
+            }else{
+                menudropdown.eq(i).css('display', 'block');
+            }
+        }
+    }
+    else if ($(window).width() > 768) {
+        for(var i = 0; i < menuShow.length ; i++){
+            if(i > {{ \Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 5 : 3}}){
+                menuShow.eq(i).attr('class', 'menuHeaderItem  menu_head_hide');
+            }else{
+                menuShow.eq(i).attr('class', 'menuHeaderItem');
+            }
+        }
+        for(var i = 0; i < menudropdown.length ; i++){
+            if(i < 0){
+                menudropdown.eq(i).css('display', 'none');
+            }else{
+                menudropdown.eq(i).css('display', 'block');
+            }
+        }
+    }
+});
+
 </script>
 @yield('script')
 </html>

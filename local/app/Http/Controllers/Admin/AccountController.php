@@ -104,7 +104,7 @@ class AccountController extends Controller
     }
     public function postEdit(AccountEditRequest $request, $id){
     	$acc = Account::find($id);
-    	
+    	$acc->username = $request->username;
         $request->fullname != null ? $acc->fullname = $request->fullname : $acc->fullname = 'Chưa có';
         $request->email != null ? $acc->email = $request->email : $acc->email = 'email@email.com';
         $request->phone != null ? $acc->phone = $request->phone : $acc->phone = '19001001';
