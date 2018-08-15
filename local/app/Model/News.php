@@ -16,6 +16,9 @@ class News extends Model
     function get_group(){
         return $this->belongsToMany(Group_vn::class,(new GroupNews_vn())->getTable(),'news_vn_id','group_vn_id')->get();
     }
+    function log(){
+        return $this->hasMany('App\Model\LogFile_vn', 'id', 'LogId');
+    }
 
     public function __construct(array $attributes = [])
     {

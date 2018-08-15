@@ -22,4 +22,7 @@ class LogFile_vn extends Model
             $this->table = 'logfile_en';
         }
     }
+    function acc(){
+        return $this->belongsTo('App\Models\Account', 'userId');
+    }
 }

@@ -33,8 +33,8 @@ class EmagazineController extends Controller
 		  	$data = new Emagazine;
 		  	$data->e_title = $request->e_title;
 		  	$data->e_slug = str_slug($request->e_title);
-		  	$data->e_summary = $request->e_summary;
-		  	$data->e_title_meta = $request->e_title_meta;
+		  	$request->e_summary != null ? $data->e_summary = $request->e_summary : $data->e_summary = 'Việt Nam Hội Nhập' ;
+		  	$request->e_title_meta != null ? $data->e_title_meta = $request->e_title_meta : $data->e_title_meta = $request->e_title;
 		  	$data->e_keyword_meta = $request->e_keyword_meta;
 
 		  	//Lưu ảnh đại diện
@@ -47,13 +47,23 @@ class EmagazineController extends Controller
 	        if ($request->hasFile('e_detail') && $file_detail->getClientOriginalExtension() == 'html') {
 	           	$filename_save = 'file_'.date("Y-m-d").'_'.round(microtime(true));
 	            $filename = $filename_save.'.'.$file_detail->getClientOriginalExtension();
-				
-	        	$file_detail->storeAs('file_emagazine',$filename);
-	        	$data->e_detail = $filename;
+				$foldername = 'folder_'.round(microtime(true));
+	        	$file_detail->storeAs('file_emagazine/'.$foldername,$filename);
+	        	$data->e_detail = $foldername.'/'.$filename;
+	        	$data->e_folder = $foldername;
 	        }
 	        else{
 	        	return back()->withInput(Input::all())->with('error' ,'Tệp không đúng định dạng');
 	        }
+
+			$muti_file = $request->muti_file;
+			if (count($muti_file) != 0) {
+				foreach ($muti_file as $file) {
+					$filename = $file->getClientOriginalName();
+					$file->storeAs('file_emagazine/'.$foldername ,$filename);
+				}
+	        }
+
 	        $data->e_view = 0;
 	        // dd(Auth::user()->id);
 	        $data->e_acc_id = Auth::user()->id;
@@ -68,6 +78,7 @@ class EmagazineController extends Controller
 	        $data->save();
 		}
 		catch (\Exception $e) {
+			dd($e);
 		    return back()->with('error', 'Lỗi không thêm được bài');
 		}
     	return redirect('admin/emagazine')->with('success', 'Thêm thành công');;
@@ -82,29 +93,42 @@ class EmagazineController extends Controller
 		  	$data = Emagazine::find($id);
 		  	$data->e_title = $request->e_title;
 		  	$data->e_slug = str_slug($request->e_title);
-		  	$data->e_summary = $request->e_summary;
-		  	$data->e_title_meta = $request->e_title_meta;
+		  	$request->e_summary != null ? $data->e_summary = $request->e_summary : $data->e_summary = 'Việt Nam Hội Nhập' ;
+		  	$request->e_title_meta != null ? $data->e_title_meta = $request->e_title_meta : $data->e_title_meta = $request->e_title;
 		  	$data->e_keyword_meta = $request->e_keyword_meta;
+
 		  	//Lưu ảnh đại diện
 		  	$image = $request->file('e_img');
 	        if ($request->hasFile('e_img')) {
 	            $data->e_img = saveImage([$image], 1000, 'emagazine');
 	        }
+	        $foldername = $data->e_folder;
 	        //Lưu file giao diện
 	        $file_detail = $request->file('e_detail');
-	        if ($request->hasFile('e_detail')) {
-	        	// dd($file_detail->getClientOriginalExtension());
-	        	$filename_save = 'file_'.date("Y-m-d").'_'.round(microtime(true));
+	        if ($request->hasFile('e_detail') && $file_detail->getClientOriginalExtension() == 'html') {
+				$filename_save = 'file_'.date("Y-m-d").'_'.round(microtime(true));
 	            $filename = $filename_save.'.'.$file_detail->getClientOriginalExtension();
-				
-	        	$file_detail->storeAs('file_emagazine',$filename);
-	        	$data->e_detail = $filename;
+	        	$file_detail->storeAs('file_emagazine/'.$foldername,$filename);
+	        	$data->e_detail = $foldername.'/'.$filename;
+	        	$data->e_folder = $foldername;
+	        }
+	        else{
+	        	return back()->withInput(Input::all())->with('error' ,'Tệp không đúng định dạng');
+	        }
+	        
+			$muti_file = $request->muti_file;
+			if (count($muti_file) != 0) {
+				foreach ($muti_file as $file) {
+					$filename = $file->getClientOriginalName();
+					$file->storeAs('file_emagazine/'.$foldername ,$filename);
+				}
 	        }
 	        // dd(Auth::user()->id);
 	        $data->updated_at = time();
 	        $data->save();
 		}
 		catch (\Exception $e) {
+			dd( $e);
 		    return back()->with('error','Lỗi không thêm được bài');
 		}
     	return back()->with('success', 'Sửa thành công');

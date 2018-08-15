@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Client'],function (){
         Route::get('/', 'MagazineController@getHome');
         Route::get('{slug}', 'MagazineController@getDetail');
         Route::post('load_more', 'MagazineController@load_more');
+        Route::post('view', 'MagazineController@magazine_view');
     });
 
     Route::group(['prefix' => 'advert'], function(){

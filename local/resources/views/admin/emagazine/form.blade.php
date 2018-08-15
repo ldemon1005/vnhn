@@ -55,6 +55,10 @@
 	                    <label for="exampleInputPassword1">Chi tiết(.html)</label>
 	                    <input type="file" class="form-control" name="e_detail">
 	                </div>
+                  <div class="form-group">
+                      <label for="exampleInputPassword1">File liên quan</label>
+                      <input type="file" class="form-control" name="muti_file[]" multiple >
+                  </div>
 	                <div class="form-group">
 	                    <label for="exampleInputFile">Ảnh đại diện</label>
                       <div>

@@ -58,4 +58,27 @@ $(document).ready(function(){
 		    
   	});
 
+  	
+
 });
+var url = $('.currentUrl').text();
+function view(id){
+    
+   	
+    $.ajax({
+      method: 'POST',
+      url: url+'magazine/view',
+      data: {
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+          'id': id
+      },
+      success: function () {
+       	return true;
+      },
+      error: function () {
+      	console.log('Lỗi Server')
+        return false;
+      }
+    });
+	return false;
+}

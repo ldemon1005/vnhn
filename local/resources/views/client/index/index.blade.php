@@ -304,7 +304,7 @@
                                         </div>
                                         <h3 class="title">{{$articel->title}}</h3>
                                         <p class="date-time"><i class="far fa-clock"></i> {{$articel->release_time}}</p>
-                                        <p class="caption">{{cut_string($articel->summary,300)}}</p>
+                                        <p class="caption">{{$articel->summary}}</p>
                                     </a>
                                 </div>
                             @endforeach

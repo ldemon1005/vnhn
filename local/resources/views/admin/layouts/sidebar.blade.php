@@ -31,7 +31,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == '') active @endif">
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>
-                            Thống kê
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê' : 'Dashboard'}}
                         </p>
                     </a>
                 </li>
@@ -41,7 +41,7 @@
                            class="nav-link @if (Request::segment(2) == 'account') active @endif">
                         <i class="fas fa-users-cog nav-icon"></i>
                         <p>
-                            Quản lí tài khoản
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản lí tài khoản' : 'Account management'}}
                             <i class="right fa fa-angle-left"></i>
                         </p>
                         </a>
@@ -49,13 +49,13 @@
                             <li class="nav-item">
                                 <a href="{{ asset('admin/account') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danh sách tài khoản</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách tài khoản' : 'Account list'}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ asset('admin/account/add') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thêm mới</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : 'Add new'}}</p>
                                 </a>
                             </li>
 
@@ -67,7 +67,7 @@
                     <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif">
                     <i class="fas fa-user-shield nav-icon"></i>
                     <p>
-                        Cá Nhân
+                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Cá Nhân' : 'Profile'}}
                         <i class="right fa fa-angle-left"></i>
                     </p>
                     </a>
@@ -75,13 +75,13 @@
                         <li class="nav-item">
                             <a href="{{ asset('admin/profile') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Thông tin cá nhân</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin cá nhân' : 'Change information'}}</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ asset('admin/profile/change_pass') }}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Đổi mật khẩu</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đổi mật khẩu' : 'Change Password'}}</p>
                             </a>
                         </li>
 
@@ -92,7 +92,7 @@
                         <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'group') active @endif" >
                             <i class="nav-icon fas fa-ellipsis-h"></i>
                             <p>
-                                Danh mục
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục' : 'Category'}}
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -101,7 +101,7 @@
                                 <li class="nav-item">
                                     <a href="{{route('form_sort_group','00')}}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Sắp xếp trang chủ</p>
+                                        <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp trang chủ' : 'Sort Categories'}}</p>
                                     </a>
                                 </li>
                             @endif
@@ -118,7 +118,7 @@
                             <li class="nav-item">
                                 <a href="{{route('admin_group')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danh sách mục</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách mục' : 'Categories list'}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -129,7 +129,7 @@
                     <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'articel') active @endif">
                         <i class="nav-icon fas fa-newspaper"></i>
                         <p>
-                            Quản trị tin
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản trị tin' : 'Article management'}}
                             <i class="fa fa-angle-left right"></i>
                         </p>
                     </a>
@@ -138,37 +138,23 @@
                         <li class="nav-item">
                             <a href="{{route('admin_articel')}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Danh sách bài viết</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'Article list'}}</p>
                             </a>
                         </li>
                         @if (Auth::user()->level < 4)
                         <li class="nav-item">
                             <a href="{{asset('admin/articel/approved')}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Phê duyệt bài viết</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phê duyệt bài viết' : 'Approve'}}</p>
                             </a>
                         </li>
                         @endif
-                        {{-- @if(Auth::user()->level == 2 && Auth::user()->site == 2 )
-                        <li class="nav-item">
-                            <a href="{{asset('admin/articel/approved_cgroup')}}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Phê duyệt bài viết Cgroup</p>
-                            </a>
-                        </li>
-                        @endif --}}
+                        
                         @if (Auth::user()->level < 3 && Auth::user()->site == 1)
                             <li class="nav-item">
                                 <a href="{{route('sort_hot_articel')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danh sách bài viết hot</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{route('report_article')}}" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thống kê bài viết</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết hot' : 'Sort articles'}}</p>
                                 </a>
                             </li>
                         @endif
@@ -176,7 +162,7 @@
                         <li class="nav-item">
                             <a href="{{route('form_articel',0)}}" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Viết bài</p>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Viết bài' : 'Add new'}}</p>
                             </a>
                         </li>
                     </ul>
@@ -186,7 +172,7 @@
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'video' || Request::segment(2) == 'group_video') active @endif">
                             <i class="nav-icon fas fa-video"></i>
                             <p>
-                                Video
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Video' : 'Video'}}
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -194,19 +180,19 @@
                             <li class="nav-item">
                                 <a href="{{route('admin_video_group')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danh mục video</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh mục video' : 'Video category'}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('admin_video')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danh sách video</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách video' : 'Video listing'}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('form_video',0)}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thêm video</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm video' : 'Add new'}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -218,7 +204,7 @@
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
                             <i class="nav-icon fas fa-paper-plane"></i>
                             <p>
-                                Quảng cáo
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quảng cáo' : 'Advertisement'}}
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -226,19 +212,19 @@
                             <li class="nav-item">
                                 <a href="{{ asset('admin/advert/add') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thêm mới</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : 'Add new'}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ asset('admin/advert') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Quản trị</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản trị' : 'Advertisement list'}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ asset('admin/advert/top') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Sắp xếp</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp' : 'Sort advertisement'}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -249,7 +235,7 @@
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'emagazine') active @endif">
                             <i class="nav-icon fas fa-palette"></i>
                             <p>
-                                Emagazine
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Emagazine' : 'Emagazine'}}
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -257,20 +243,20 @@
                             <li class="nav-item">
                                 <a href="{{ asset('admin/emagazine/add') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thêm mới</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : 'Add new'}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ asset('admin/emagazine') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Quản trị</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản trị' : 'Emagazine list'}}</p>
                                 </a>
                             </li>
                             @if (Auth::user()->level < 3)
                                 <li class="nav-item">
                                     <a href="{{ asset('admin/emagazine/sort') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Sắp xếp</p>
+                                        <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp' : 'Sort emagazine'}}</p>
                                     </a>
                                 </li>
                             @endif
@@ -285,7 +271,7 @@
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'magazine') active @endif">
                             <i class="nav-icon fas fa-book-open"></i>
                             <p>
-                                Tạp chí thường kì
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tạp chí thường kì' : 'Journal'}}
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -293,20 +279,20 @@
                             <li class="nav-item">
                                 <a href="{{ asset('admin/magazine/add') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thêm mới</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : 'Add new'}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ asset('admin/magazine') }}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Danhn sách</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danhn sách' : 'Journal list'}}</p>
                                 </a>
                             </li>
                             @if (Auth::user()->level < 3)
                                 <li class="nav-item">
                                     <a href="{{ asset('admin/magazine/sort') }}" class="nav-link">
                                         <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Sắp xếp</p>
+                                        <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sắp xếp' : 'Sort journal'}}</p>
                                     </a>
                                 </li>
                             @endif
@@ -319,7 +305,7 @@
                         <a href="{{ asset('admin/comment') }}" class="nav-link @if (Request::segment(2) == 'comment') active @endif">
                             <i class="nav-icon fas fa-comments"></i>
                             <p>
-                                Quản trị bình luận
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản trị bình luận' : 'Comment '}}
                             </p>
                         </a>
                     </li>
@@ -336,18 +322,18 @@
 
                 @if (Auth::user()->level<3 && Auth::user()->site == 1)
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin/contact/contact') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
+                        <a href="{{ asset('admin/contact/contact') }}" class="nav-link @if (Request::segment(3) == 'contact') active @endif">
                             <i class="nav-icon fas fa-bell"></i>
                             <p>
-                                Liên hệ quảng cáo
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising '}}
                             </p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin/contact/order') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
+                        <a href="{{ asset('admin/contact/order') }}" class="nav-link @if (Request::segment(3) == 'order') active @endif">
                             <i class="nav-icon fas fa-check-circle"></i>
                             <p>
-                                Đặt mua báo
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua báo' : 'Magazines subcription '}}
                             </p>
                         </a>
                     </li>
@@ -355,7 +341,7 @@
                         <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
                             <i class="nav-icon fas fa-info-circle"></i>
                             <p>
-                                Thông tin website
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin website' : 'Website information '}}
                             </p>
                         </a>
                     </li>
@@ -366,7 +352,7 @@
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
                             <i class="nav-icon far fa-flag"></i>
                             <p>
-                                Thống kê
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê' : 'Statistical '}}
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
@@ -374,7 +360,7 @@
                             <li class="nav-item">
                                 <a href="{{route('report_article')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Thống kê bài viết</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê bài viết' : 'Statistics articles '}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -386,7 +372,7 @@
                     <a href="{{ asset('logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
-                            Đăng xuất
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đăng xuất' : 'Logout '}}
                         </p>
                     </a>
                 </li>

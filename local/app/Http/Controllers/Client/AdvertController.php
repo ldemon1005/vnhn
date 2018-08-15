@@ -55,7 +55,7 @@ class AdvertController extends Controller
     	$data->email = $request->email;
     	$data->phone = $request->phone;
     	$data->address = $request->address_1.' || '.$request->address_2.' || '.$request->address_3;
-        $request->address != null ? $request->address_1.' || '.$request->address_2.' || '.$request->address_3 : $data->address = "Không có";
+        $request->address_1 != null ? $request->address_1.' || '.$request->address_2.' || '.$request->address_3 : $data->address = "Không có";
     	$data->no = $request->no;
     	$data->amount = $request->amount;
     	$request->content != null ? $data->content = $request->content : $data->content = "Không có";

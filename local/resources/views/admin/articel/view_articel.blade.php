@@ -9,9 +9,50 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Việt Nam hội nhập!</title>
+
+    <style type="text/css">
+		.new-item {
+		    width: 500px;
+		    margin: 20px auto;
+		}
+		.new-item .avatar {
+		    width: auto;
+		    height: auto;
+		    overflow: hidden;
+		    margin-bottom: 10px;
+		}
+		.new-item .avatar:after {
+		    content: "";
+		    display: block;
+		    padding-top: 60%;
+		}
+		.new-item .title {
+		    font-weight: Bold;
+		    font-family: 'Merriweather', serif;
+		}
+		.date-time {
+		    margin: -5px 0 5px;
+		    font-size: 11px;
+		    color: #999999;
+		}		
+    	.content{
+    		width: 80vw;
+    		margin: auto;
+    	}
+    </style>
 </head>
 <body>
-{!! $log->noidung !!}
+	<div class="new-item">
+        <div class="avatar" style="background: url('') no-repeat center /cover;">
+        </div>
+        <h3 class="title mt-2">Đẩy mạnh ngoại giao phục vụ phát triển trong thời kỳ hội nhập quốc tế sâu rộng</h3>
+        <p class="date-time"><i class="far fa-clock"></i> 2 giờ trước</p>
+        <p class="caption">VNHNO - Sáng 15-8, Phiên toàn thể thứ nhất của Hội nghị Ngoại giao lần thứ 30 với chủ đề “Phương hướng đối ngoại: Đẩy mạnh ngoại giao phục vụ phát triển trong thời kỳ hội nhập quốc tế sâu rộng” đã diễn ra tại Hà Nội, dưới...</p>
+    </div>
+	<div class="content">
+		{!! $log->noidung !!}
+	</div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

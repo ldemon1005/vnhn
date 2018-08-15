@@ -12,7 +12,7 @@ function historyVideo(video_id) {
 
 function historyArticel(id) {
     $.ajax({
-        url: '/admin/articel/history_articel/'+id,
+        url: 'http://localhost/vnhn/admin/articel/history_articel/'+id,
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {

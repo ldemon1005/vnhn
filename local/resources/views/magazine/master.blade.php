@@ -9,7 +9,7 @@
 
 
     <title>@yield('title')</title>
-    <link rel="shortcut icon" href="http://vietnamhoinhap.vn/images/favicon.ico" />
+    <link rel="shortcut icon" href="http://vietnamhoinhap.vn/local/resources/assets/images/icon.png" />
     <meta property="og:url"         content="{{Request::url()}}" />
 
     <meta property="fb:app_id"      content="" />

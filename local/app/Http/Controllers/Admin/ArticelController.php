@@ -54,7 +54,7 @@ class ArticelController extends Controller
 
         switch (Auth::user()->level) {
             case 1:
-                $status = [];
+                $status = [0,1];
                 break;
             case 2:
                 $status = [0,1];
@@ -111,7 +111,7 @@ class ArticelController extends Controller
             $list_articel =  $list_articel->where('userid', Auth::user()->id);
         }
 
-        $list_articel = $list_articel->paginate(15);
+        $list_articel = $list_articel->paginate(10);
         // dd($list_articel);
         if(isset($paramater_return['status'])){
             $list_articel->appends(['status' => $paramater_return['status']]);
@@ -126,6 +126,52 @@ class ArticelController extends Controller
         foreach ($list_articel as $val) {
             $val->created_at = date('d/m/Y H:m', $val->created_at);
             $val->updated_at = date('d/m/Y H:m', $val->updated_at);
+
+            // dd($val);
+
+
+            // $log_author = DB::table($this->db->logfile)->where('LogId',$val->id)->orderBy('created_at', 'asc')->first();
+            // if (isset($log_author)) {
+            //     $val->author_date = $log_author->created_at;
+            //     $user_author = Account::find($log_author->userId)->username;
+            //     $val->author = $user_author;
+            // }
+            // else{
+            //     $val->author_date = 'chưa có';
+            //     $val->author = 'chưa có';
+
+            // }
+
+
+            // $log_approved = DB::table($this->db->logfile)->where('LogId',$val->id)->orderBy('created_at', 'desc')->first();
+            // if (isset( $log_approved )) {
+            //     $val->approved_date = $log_approved->created_at;
+            //     $user_approved = Account::find($log_approved->userId)->username;
+            //     $val->approved = $user_approved;
+            // }
+            // else{
+            //     $val->approved_date = 'chưa có';
+            //     $val->approved = 'chưa có';
+            // }
+
+            $val->author = Account::find($val->userid)->username; 
+            $val->author_date = $val->created_at;
+            if ($val->approved_id != null) {
+                $val->approved = Account::find($val->approved_id)->username; 
+                $val->approved_date = date('d/m/Y H:m', $val->approved_at);
+            }
+            else{
+                $val->approved = null;
+            }
+
+            $group_id_new = explode(',',$val->groupid);
+            foreach ($group_id_new as $id) {
+                $group = DB::table($this->db->group)->where('id', $id)->first();
+                if ($group->parentid != 0) {
+                    $parent = DB::table($this->db->group)->where('id', $id)->first();
+                }
+            }
+                
         }
         
         
@@ -146,9 +192,11 @@ class ArticelController extends Controller
             'list_articel' => $list_articel,
             'paramater' => $paramater,
         ];
-        for ($i=0; $i < count($data['list_articel']); $i++) { 
-            $data['list_articel'][$i]->username = Account::find($data['list_articel'][$i]->userid);
-        }
+        // for ($i=0; $i < count($data['list_articel']); $i++) { 
+              
+        // }
+        // dd($data['list_articel']);
+
         // foreach ($data['list_articel'] as $articel) {
         //     $ar = News::find($articel->id);
         //     $ar->groupid = 1455;
@@ -157,6 +205,7 @@ class ArticelController extends Controller
         
         // dd($data['list_articel'][0]);
         return view('admin.articel.index', $data);
+            
     }
 
     public function approved(Request $request){
@@ -477,8 +526,7 @@ class ArticelController extends Controller
         unset($data['content']);
         $data['groupid'] = join(',',$data['groupid']);
 
-        $user_login = Auth::user();
-        $data['userid'] = $user_login->id;
+        
 
         $data['updated_at'] = time();
         $data['slug'] = str_slug($data['title']);
@@ -514,6 +562,9 @@ class ArticelController extends Controller
 
         if($data['id'] == 0){ //Tạo mới bài viết
             $data['created_at'] = time();
+
+            $user_login = Auth::user();
+            $data['userid'] = $user_login->id;
 
             $articel = News::create($data);
             $image = $request->file('img');
@@ -637,10 +688,10 @@ class ArticelController extends Controller
 
         if($check == 1){
             DB::commit();
-            return redirect()->route('admin_articel')->with('status','Xóa thành công');
+            return back()->with('success','Xóa thành công');
         }else {
             DB::rollBack();
-            return redirect()->route('admin_articel')->with('error','Xóa không thành công');
+            return back()->with('error','Xóa không thành công');
         }
 
     }
@@ -731,15 +782,7 @@ class ArticelController extends Controller
         if($group_id == 0){
             $arrticel_hot = DB::table($this->db->news)->where('hot_main',1)->orderBy('order_main')->get();
         }else {
-            $list_group = DB::table($this->db->group)->where('status',1)->get();
-            $result_1[] = $group_id;
-
-            $this->recusive_find_child($list_group,$group_id,$result_1);
-
-            $result_1 = array_unique($result_1);
-
-
-            $articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result_1)->where('hot',1)->get(['news_vn_id'])->toJson();
+            $articel_hot_ids = DB::table($this->db->group_news)->where('group_vn_id',$group_id)->where('hot',1)->get(['news_vn_id'])->toJson();
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
@@ -828,10 +871,15 @@ class ArticelController extends Controller
         $id = Input::get('id');
         $news = News::find($id);
         if ($news->status == 0 || $news->status == 2) {
+            if(!$this->add_log($news, 1,'Đăng lên')) return response('error', 502);
+            $user_login = Auth::user();
+            $data['approved_id'] = $user_login->id;
+            $data['approved_at'] = time();
+            if(!$news->update($data))return response('error', 503);
             $news->status = 1;
         }
         else{
-            return response('error', 200);
+            return response('error', 501);
         }
         $news->save();
         return response('success', 200);
@@ -840,10 +888,11 @@ class ArticelController extends Controller
         $id = Input::get('id');
         $news = News::find($id);
         if ($news->status == 1) {
+            if(!$this->add_log($news, 0,'Gỡ xuống')) return response('error', 502);
             $news->status = 0;
         }
         else{
-            return response('error', 200);
+            return response('error', 501);
         }
         $news->save();
         return response('success', 200);
@@ -855,10 +904,15 @@ class ArticelController extends Controller
         $news = News::find($id);
 
         if ($news->status == 1 || $news->status == 3) {
+            if(!$this->add_log($news, 2,'Biên tập viên duyệt')) return response('error', 502);
+            $user_login = Auth::user();
+            $data['approved_id'] = $user_login->id;
+            $data['approved_at'] = time();
+            if(!$news->update($data))return response('error', 503);
             $news->status = 2;
         }
         else{
-            return response('error', 200);
+            return response('error', 501);
         }
         $news->save();
         return response('success', 200);
@@ -867,10 +921,11 @@ class ArticelController extends Controller
         $id = Input::get('id');
         $news = News::find($id);
         if ($news->status == 2 || $news->status == 4) {
+            if(!$this->add_log($news, 3,'Gửi lại')) return response('error', 502);
             $news->status = 3;
         }
         else{
-            return response('error', 200);
+            return response('error', 501);
         }
         $news->save();
         return response('success', 200);
@@ -879,10 +934,11 @@ class ArticelController extends Controller
         $id = Input::get('id');
         $news = News::find($id);
         if ($news->status == 2 || $news->status == 3) {
+            if(!$this->add_log($news, 4,'Trả lại')) return response('error', 502);
             $news->status = 4;
         }
         else{
-            return response('error', 200);
+            return response('error', 501);
         }
         $news->save();
         return response('success', 200);

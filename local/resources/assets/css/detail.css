@@ -410,6 +410,10 @@ ul.mainDetailRightList li a:hover {
 	}
 }
 @media only screen and (max-width: 768px) {
+	iframe{
+		max-width: 80% !important;
+		height: auto;
+	}
     .section1{
 		width: auto;
 		margin: 0 20px;

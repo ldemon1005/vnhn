@@ -83,13 +83,14 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th class="titleTable">Tiêu đề bài viết</th>
-                                    <th>Tác giả</th>
-                                    <th>Chuyên mục</th>
-                                    <th class="hideResponsive768">Ngày tạo--Ngày update</th>
                                     <th>Hình ảnh</th>
-                                    @if(Request::segment(3) != 'approved_cgroup')
+                                    <th class="titleTable">Tiêu đề bài viết</th>
+                                    <th>Chuyên mục</th>
+                                    <th>Người tạo</th>
+                                    <th class="nowrap">Người duyệt</th>
+                                    @if(Request::segment(3) == null)
                                         <th>Trạng thái</th>
+                                    @else
                                         <th style="min-width: 50px">Duyệt bài</th>
                                     @endif
                                     <th>Thao tác</th>
@@ -98,8 +99,12 @@
                                 <tbody>
                                 @foreach($list_articel as $articel)
                                     <tr>
+                                        <td>
+                                            <div class="avatar">
+                                                <img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : '../images/default-image.png')) : '../images/default-image.png' }}">
+                                            </div>
+                                        </td>
                                         <td>{{$articel->title}}</td>
-                                        <td>{{isset($articel->username)? $articel->username->username : 'Không còn'}}</td>
                                         <td>
                                             <?php $count = 0?>
                                             @foreach($list_group as $articel_item)
@@ -117,161 +122,133 @@
                                             @endif
                                             
                                         </td>
-                                        <td class="hideResponsive768">
-                                            {{$articel->created_at}}--{{$articel->updated_at}}
-                                        </td>
                                         <td>
-                                            <div class="avatar">
-                                                {{-- <img src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}"> --}}
+                                            @if(isset($articel->author))
+                                                <div class="">{{ $articel->author  }} </div>
+                                                <div class="timeTiny">{{ $articel->author_date  }} </div>
 
-                                                <img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : '../images/default-image.png')) : '../images/default-image.png' }}">
-                                                
-                                            </div>
-                                        </td>
-                                        @if(Request::segment(3) != 'approved_cgroup')
-                                        <td>
-                                            @if (Auth::user()->level > 2)
-                                                <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger ' : 'btn-success ' }}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
-                                            @else 
-                                                <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger' : 'btn-success' }} {{ $articel->status == 0 ? 'btnOn' : ($articel->status == 1 ? 'btnOff' : '' )}}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
+                                            @else
+                                                Không còn
                                             @endif
                                             
-                                            <div class="id_group" style="display: none;">{{$articel->id}}</div>
                                         </td>
                                         <td>
-                                            @switch(Auth::user()->level)
-                                                @case(1)
-                                                     @switch($articel->status)
-                                                        @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
-                                                            @break
-                                                        @case(1)
-                                                            <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
-                                                            @break
-                                                        @case(2)
-                                                            <button class="btn btn-block btn-sm btn-success btn1">Chờ duyệt lần 2</button>
-                                                            @break
-                                                        @case(3)
-                                                            <button class="btn btn-block btn-sm btn-success btn2">Chờ duyệt lần 1</button>
-                                                            @break
-                                                        @case(4)
-                                                            <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
-                                                            @break
-                                                        @default
-                                                            <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
-                                                            @break
-                                                    @endswitch
-                                                    @break
-                                                @case(2) 
-                                                    @switch($articel->status)
-                                                        @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
-                                                            @break
-                                                        @case(1)
-                                                            <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
-                                                            @break
-                                                        @case(2)
+                                            @if(isset($articel->approved))
+                                                <div class="">{{ $articel->approved  }} </div>
+                                                <div class="timeTiny">{{ $articel->approved_date  }} </div>
 
-                                                            <button class="btn btn-block btn-sm btn-success btn1">Duyệt</button>
-                                                            @if(isset($articel->username) && $articel->username->level == 3)
-
-                                                            <button class="btn btn-block btn-sm btn-info btn3">Trả lại</button>
-                                                            @else
-                                                            <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
-                                                            @endif
-                                                            @break
-
-                                                        @default
-                                                            <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
-                                                            @break
-                                                    @endswitch
-                                                    @break
-                                                @case(3)
-                                                    @switch($articel->status)
-                                                        @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
-                                                            @break
-                                                        @case(2)
-                                                            <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
-                                                            @break
-                                                        @case(3)
-                                                            @if(Auth::user()->id == $articel->userid)
-                                                                <button class="btn btn-block btn-sm btn-success btn2">Gửi lại</button>
-                                                            @else
-                                                                <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
-                                                                <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
-                                                            @endif
-                                                                
-                                                            @break
-
-                                                        @default
-                                                            <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
-                                                            @break
-                                                    @endswitch
-                                                    @break
-                                                 @case(4)
-                                                    @switch($articel->status)
-                                                        @case(3)
-                                                            <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
-                                                            @break
-                                                        @case(4)
-                                                            <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
-                                                            @break
-                                                        @default
-                                                            <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
-                                                            @break
-                                                    @endswitch
-                                                    @break
-                                                @default
-                                                    <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
-                                                    @break
-                                            @endswitch
+                                            @else
+                                                Không còn
+                                            @endif
                                             
-                                            {{-- @switch($articel->status)
-                                                @case(0)
-                                                    <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
-                                                    @break
-                                                @case(1)
-                                                    <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
-                                                    @break
-                                                @case(2)
-                                                    <button class="btn btn-block btn-sm btn-success btn1">Duyệt</button>
-                                                    @break
-                                                @case(3)
-                                                    <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
-                                                    @break
-                                                @case(4)
-                                                    <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
-                                                    @break
-                                                @default
-                                                    <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
-                                                    @break
-                                            @endswitch --}}
-                                            <div class="id_group" style="display: none;">{{$articel->id}}</div>
-                                           {{--  <select style="width: 100%" class="form-control"
-                                                    onchange="chang_status_articel('{{$articel->id}}',this)">
-                                                @if($level <= 2)
-                                                    <option {{$articel->status == 1 ? 'selected' : ''}} value="1">
-                                                        Đăng
-                                                    </option>
-                                                    <option {{$articel->status == 0 ? 'selected' : ''}} value="0">
-                                                        Tắt
-                                                    </option>
-                                                @endif
-
-                                                @if($level <= 3)
-                                                    <option {{$articel->status == 3 ? 'selected' : ''}} value="3">
-                                                        Duyệt lần 1
-                                                    </option>
-                                                    <option {{$articel->status == 2 ? 'selected' : ''}} value="2">
-                                                        Duyệt lần 2
-                                                    </option>
-                                                    <option {{$articel->status == 4 ? 'selected' : ''}} value="4">
-                                                        Trả lại
-                                                    </option>
-                                                @endif
-                                            </select> --}}
                                         </td>
+                                        
+                                        @if(Request::segment(3) != 'approved_cgroup')
+                                        @if(Request::segment(3) == null)
+                                            <td>
+                                                @if (Auth::user()->level > 2)
+                                                    <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger ' : 'btn-success ' }}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
+                                                @else 
+                                                    <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger' : 'btn-success' }} {{ $articel->status == 0 ? 'btnOn' : ($articel->status == 1 ? 'btnOff' : '' )}}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
+                                                @endif
+                                                
+                                                <div class="id_group" style="display: none;">{{$articel->id}}</div>
+                                            </td>
+                                        @else
+                                            <td>
+                                                @switch(Auth::user()->level)
+                                                    @case(1)
+                                                         @switch($articel->status)
+                                                            @case(0)
+                                                                <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
+                                                                @break
+                                                            @case(1)
+                                                                <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
+                                                                @break
+                                                            @case(2)
+                                                                <button class="btn btn-block btn-sm btn-success btn1">Chờ duyệt lần 2</button>
+                                                                @break
+                                                            @case(3)
+                                                                <button class="btn btn-block btn-sm btn-success btn2">Chờ duyệt lần 1</button>
+                                                                @break
+                                                            @case(4)
+                                                                <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
+                                                                @break
+                                                            @default
+                                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                                @break
+                                                        @endswitch
+                                                        @break
+                                                    @case(2) 
+                                                        @switch($articel->status)
+                                                            @case(0)
+                                                                <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
+                                                                @break
+                                                            @case(1)
+                                                                <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
+                                                                @break
+                                                            @case(2)
+
+                                                                <button class="btn btn-block btn-sm btn-success btn1">Duyệt</button>
+                                                                @if(isset($articel->username) && $articel->username->level == 3)
+
+                                                                <button class="btn btn-block btn-sm btn-info btn3">Trả lại</button>
+                                                                @else
+                                                                <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
+                                                                @endif
+                                                                @break
+
+                                                            @default
+                                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                                @break
+                                                        @endswitch
+                                                        @break
+                                                    @case(3)
+                                                        @switch($articel->status)
+                                                            @case(0)
+                                                                <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
+                                                                @break
+                                                            @case(2)
+                                                                <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
+                                                                @break
+                                                            @case(3)
+                                                                @if(Auth::user()->id == $articel->userid)
+                                                                    <button class="btn btn-block btn-sm btn-success btn2">Gửi lại</button>
+                                                                @else
+                                                                    <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
+                                                                    <button class="btn btn-block btn-sm btn-info btn4">Trả lại</button>
+                                                                @endif
+                                                                    
+                                                                @break
+
+                                                            @default
+                                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                                @break
+                                                        @endswitch
+                                                        @break
+                                                     @case(4)
+                                                        @switch($articel->status)
+                                                            @case(3)
+                                                                <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
+                                                                @break
+                                                            @case(4)
+                                                                <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
+                                                                @break
+                                                            @default
+                                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                                @break
+                                                        @endswitch
+                                                        @break
+                                                    @default
+                                                        <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                        @break
+                                                @endswitch
+                                                
+                                                <div class="id_group" style="display: none;">{{$articel->id}}</div>
+                                            </td>
+                                        @endif
+                                            
+                                            
                                         @endif
                                         <td>
                                             <div class="row form-group">

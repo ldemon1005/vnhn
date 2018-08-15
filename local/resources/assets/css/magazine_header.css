@@ -52,7 +52,10 @@ table {
 
 
 
-
+body{
+	padding-top: 50px;
+	
+}
 header{
 	position: fixed;
     top: 0;
@@ -63,7 +66,7 @@ header{
     background: #fff;
     text-align: center;
     box-shadow: 0 0 18px 0 rgba(0,0,0,0.15);
-    z-index: 1;
+    z-index: 2;
 }
 
 .headerBtnHome{
@@ -90,6 +93,7 @@ header{
 }
 .headerLogo a img{
 	height: 100%;
+	width: auto;
 }
 
 .headerLikeShare{
@@ -99,8 +103,29 @@ header{
 
 .headerMain{
 	line-height: 50px;
+	font-family: Merriweather;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 
-
+@media only screen and (max-width: 768px) {
+    
+    .headerMain {
+        display: none;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .mainLogo {
+        margin: 25px 0 25px;
+        
+    }
+    .headerLogo{
+    	padding: 5px 0;
+    }
+    .headerLikeShare{
+        padding: 0;
+    }
+    
+}
 
