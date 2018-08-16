@@ -240,10 +240,13 @@ class IndexController extends Controller
 
             $result = array_unique($result);
 
-            $list_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->where('hot',1)->get()->toJson();
+            $list_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->where('hot',1)->get();
 
             $list_ids = array_column(json_decode($list_ids),'news_vn_id');
 
+            $list_ids_1 = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->get();
+
+            $list_ids_1 = array_column(json_decode($list_ids_1),'news_vn_id');
 
             $article = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_ids)->where('status',1)->where('time_hot_item','>=',time())->where('release_time','<=',time())->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
 
@@ -255,6 +258,15 @@ class IndexController extends Controller
 
             $article_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_ids)->whereNotIn('id',$list_not_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number)->get();
             $article = $article->toBase()->merge($article_1);
+
+            $number_1 = 5- $article->count();
+
+            if($article->count() > 0){
+                $list_not_ids = array_column(json_decode($article->toJson()),'id');
+            }else $list_not_ids = [];
+
+            $article_2 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_ids_1)->whereNotIn('id',$list_not_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number_1)->get();
+            $article = $article->toBase()->merge($article_2);
 
             $group->articel = $article;
         }

@@ -116,14 +116,17 @@ function change_status(video_id,status_video) {
     });
 }
 
-function change_lang() {
+function change_lang(type = 0) {
     $.ajax({
         url: '/set_lang/' + $('#lang').val(),
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {
     }).done(function (data, status) {
-        if (data.status == 1) location.reload();
+        if (data.status == 1){
+            if(type = 1) window.location= $('.currentUrl').text()+'/admin';
+            else window.location= $('.currentUrl').text();
+        }
     })
 }
 

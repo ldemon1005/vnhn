@@ -422,7 +422,9 @@ class ArticelController extends Controller
                 ],
                 'hot_main' => 0,
                 'hot_item' => 0,
-                'loaitinbai' => 1
+                'loaitinbai' => 1,
+                'time_hot_main' => 2,
+                'time_hot_item' => 2
             ];
             $articel = (object)$data;
         }else{
@@ -435,6 +437,9 @@ class ArticelController extends Controller
                 'day' => date('Y-m-d',$date),
                 'h' => date('h:i A',$date)
             ];
+
+            $articel->time_hot_main = round(($articel->time_hot_main - time())/3600) >= 0  ? intval(ceil(($articel->time_hot_main - time())/3600)) : 0;
+            $articel->time_hot_item = round(($articel->time_hot_item - time())/3600) >= 0 ? intval(ceil(($articel->time_hot_item - time())/3600)) : 0;
         }
 
         $data = [
@@ -495,7 +500,12 @@ class ArticelController extends Controller
         }
         else {
             $data['order_main'] = 1;
-            $data['time_hot_main'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
+            if($data['id'] == 0){
+                $data['time_hot_main'] = intval(ceil($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2)) ;
+            }else {
+                $data['time_hot_main'] = intval(ceil($data['release_time'] + $data['time_hot_main']*3600));
+            }
+
         }
 
         if(!isset($data['hot_item'])) {
@@ -504,9 +514,14 @@ class ArticelController extends Controller
         }
         else {
             $data['order_item'] = 1;
-            $data['time_hot_item'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
+            if($data['id'] == 0){
+                $data['time_hot_item'] = intval(ceil($data['time_hot_item'] ? $data['release_time'] + $data['time_hot_item']*3600 : $data['release_time'] + 86400*2));
+            }else {
+                $data['time_hot_item'] = intval(ceil($data['release_time'] + $data['time_hot_item']*3600));
+            }
         }
 
+//        dd($data);
 
         // Start transaction
         DB::beginTransaction();
@@ -718,8 +733,8 @@ class ArticelController extends Controller
         $group_id = $request->get('groupid');
 
         /*
- *  lấy danh sách danh mục
- */
+         *  lấy danh sách danh mục
+         */
         $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->get()->toArray();
         $root = [
             'id' => 0,
@@ -737,7 +752,6 @@ class ArticelController extends Controller
             $this->recusive_find_child($list_group,$group_id,$result_1);
 
             $result_1 = array_unique($result_1);
-
 
             $articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result_1)->where('hot',1)->get(['news_vn_id'])->toJson();
 

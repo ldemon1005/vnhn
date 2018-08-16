@@ -20,6 +20,15 @@ class GroupController extends Controller{
          *  group menu
          */
 
+        $group = Group_vn::find($slug[1]);
+        if($group){
+            if($group->status != 1){
+                return redirect()->route('home');
+            }
+        }else {
+            return redirect()->route('home');
+        }
+
         $group_menu = $this->menu_top_group($slug[1]);
 
         /*

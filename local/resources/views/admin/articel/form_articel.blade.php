@@ -183,7 +183,7 @@
                                                 <label class="col-sm-6">
                                                     <input type="checkbox" value="1" onclick="hot_main($(this).is(':checked'))" class="minimal" name="articel[hot_main]" {{$articel->hot_main == 1 ? 'checked' : ''}}>
                                                     Hot trang chủ trong
-                                                    <input type="number" name="articel[time_hot_main]" class="" placeholder="24" id="hot-main">
+                                                    <input type="number" value="{{$articel->time_hot_main}}" name="articel[time_hot_main]" class="" placeholder="24" id="hot-main">
                                                     giờ
                                                 </label>
 
@@ -194,7 +194,7 @@
                                                 <label class="col-sm-6">
                                                     <input type="checkbox" value="1" onclick="hot_item($(this).is(':checked'))" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>
                                                     Hot danh mục trong
-                                                    <input type="number" name="articel[time_hot_item]" class="" placeholder="24" id="hot-item">
+                                                    <input type="number" value="{{$articel->time_hot_item}}" name="articel[time_hot_item]" class="" placeholder="24" id="hot-item">
                                                     giờ
                                                 </label>
 
