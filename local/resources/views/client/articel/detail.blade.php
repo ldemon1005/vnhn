@@ -2,7 +2,7 @@
 @section('title', $articel_detail->title)
 @section('fb_title', cut_string($articel_detail->title, 70))
 @section('fb_des', $articel_detail->summary)
-@section('fb_img', asset('/local/resources'.$articel_detail->fimage))
+@section('fb_img', isset($articel_detail->fimage)  && $articel_detail->fimage ? (file_exists(storage_path('app/article/resized500-'.$articel_detail->fimage)) ? asset('local/storage/app/article/resized500-'.$articel_detail->fimage) : (file_exists(resource_path($articel_detail->fimage)) ? asset('/local/resources'.$articel_detail->fimage) : 'images/default-image.png')) : 'images/default-image.png')
 
 
 @section('css')
@@ -35,10 +35,27 @@
                         {{$articel_detail->day_in_week_str}}, {{$articel_detail->release_time}} (GMT+7)
                         <div class="float-right">
                             <div class="fb-like" data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}"
-                                 data-size="small" data-layout="button_count"
-                                 data-share="true"></div>
+                                 data-action="like" data-size="small" data-layout="button_count"></div>
+
+                            <div class="fb-share-button"
+                                 data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" data-size="small"
+                                 data-layout="button_count">
+                            </div>
                         </div>
                     </div>
+                    @if($relates != null)
+                    <div class="mainDetailLeftRelate">
+                        <ul style="padding-left: 20px;">
+                            @foreach($relates as $article)
+                            <li>
+                                <a href="{{ route('get_detail_articel',$article->slug.'---n-'.$article->id) }}">
+                                    {{ $article->title }}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="mainDetailLeftContent">
                         {!! $articel_detail->content !!}
                     </div>
@@ -287,10 +304,10 @@
                                 @endif
                             @endfor
                         @endif
-                        @if (count($ad_home[2])>0)
-                            @for ($i = 0; $i < count($ad_home[2]); $i++)
-                                @if ($ad_home[2][$i]->advert->ad_status == 1 && $count_ad == 0)
-                                    <a href="{{ $ad_home[2][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[2][$i]->advert->ad_img)}}"></a>
+                        @if (count($ad_home[7])>0 && $count_ad == 0)
+                            @for ($i = 0; $i < count($ad_home[7]); $i++)
+                                @if ($ad_home[7][$i]->advert->ad_status == 1)
+                                    <a href="{{ $ad_home[7][$i]->advert->ad_link}}"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
                                     <?php $count_ad++ ?>
                                 @endif
                             @endfor

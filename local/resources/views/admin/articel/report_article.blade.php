@@ -70,9 +70,10 @@
                                 <tr>
                                     <th>Tài khoản</th>
                                     <th>Họ và tên</th>
-                                    <th>Email</th>
-                                    <th>Số bài tổng hợp</th>
-                                    <th>Số bài tự viết</th>
+                                    <th>Bài tổng hợp</th>
+                                    <th>Bài tự viết</th>
+                                    <th>Bài biên tập</th>
+                                    <th>Bài copy</th>
                                     <th>Chưa đăng</th>
                                     {{--<th>Đối tác</th>--}}
                                 </tr>
@@ -80,11 +81,19 @@
                                 <tbody>
                                 @foreach($list_user as $user)
                                     <tr>
-                                        <td> <a href="{{route('detail_report_article',$user->id)}}">{{$user->username}}</a></td>
+                                        <td> 
+                                            <a href="{{route('detail_report_article',$user->id)}}">
+                                                <div class="avatarImg50 report" style="background: url('{{ file_exists(storage_path('app/avatar/'.$user->img)) && $user->img ? asset('local/storage/app/avatar/resized-'.$user->img) : '../images/images.png' }}') no-repeat center /cover;">
+                                                </div>
+                                                {{$user->username}}
+                                                <div class="timeTiny">{{$user->email}}</div>
+                                            </a>
+                                        </td>
                                         <td>{{$user->fullname}}</td>
-                                        <td>{{$user->email}}</td>
                                         <td>{{$user->tong_hop}}</td>
                                         <td>{{$user->tu_viet}}</td>
+                                        <td>{{$user->bien_tap}}</td>
+                                        <td>{{$user->copy}}</td>
                                         <td>{{$user->chua_dang}}</td>
                                         {{--<td>{{$user->site == 1 ? "CGROUP" : "VNHN"}}</td>--}}
                                     </tr>

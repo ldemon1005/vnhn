@@ -40,29 +40,50 @@
                                     </div>
                                 </form>
                             <div style="margin:20px 0">
-                                <div class="row">
-                                    <div class="col-md-3">
+                                <div class="row" style="margin-bottom: 20px; ">
+                                    <div class="col-md-4">
                                         <div class="bg-primary text-white total">
                                             <div class="text-small">Tổng số</div>
                                             <div class="number"> {{$user->total}}</div>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-success text-white total">
+                                            <div class="text-small"> Bài đã đăng</div>
+                                            <div class="number">  {{$user->da_dang}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="bg-secondary text-white total">
+                                            <div class="text-small">Bài chưa đăng</div>
+                                            <div class="number">  {{$user->chua_dang}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-md-3">
-                                        <div class="bg-info text-white total">
-                                            <div class="text-small">Bài viết tổng hợp</div>
-                                            <div class="number">  {{$user->tong_hop}}</div>
+                                        <div class="bg-warning text-white total">
+                                            <div class="text-small">Tổng hợp</div>
+                                            <div class="number"> {{$user->tong_hop}}</div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="bg-success text-white total">
-                                            <div class="text-small"> Bài tự viết</div>
+                                        <div class="bg-danger text-white total">
+                                            <div class="text-small">Tự viết</div>
                                             <div class="number">  {{$user->tu_viet}}</div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <div class="bg-secondary text-white total">
-                                            <div class="text-small">Bài chưa đăng</div>
-                                            <div class="number">  {{$user->chua_dang}}</div>
+                                        <div class="bg-info text-white total">
+                                            <div class="text-small">Biên tập</div>
+                                            <div class="number">  {{$user->bien_tap}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="bg-black text-white total">
+                                            <div class="text-small">Copy</div>
+                                            <div class="number">  {{$user->copy}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -76,18 +97,24 @@
                                     <th>Ngày viết bài</th>
                                     <th>Bài tổng hợp</th>
                                     <th>Bài tự viết</th>
+                                    <th>Bài biên tập</th>
+                                    <th>Bài copy</th>
+
                                     <th>Chưa đăng</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($list_article as $article)
                                     <tr>
-                                        <td>
-                                            @if($article->status == 1)
+                                        <td class="a_hover">
+                                            {{-- @if($article->status == 1)
                                                 <a href="{{ route('get_detail_articel',$article->slug.'---n-'.$article->id) }}">{{$article->title}}</a>
                                             @else
                                                 {{$article->title}}
-                                            @endif
+                                            @endif --}}
+                                            <a  style="cursor: pointer;"  onclick="view_articel_now('{{route('view_log_now',$article->id)}}')" >
+                                                 {{$article->title}}
+                                            </a>
                                         </td>
                                         <td>{{date('d/m/Y H:m',$article->created_at)}}</td>
                                         <td class="text-center">
@@ -97,6 +124,16 @@
                                         </td>
                                         <td class="text-center">
                                             @if($article->loaitinbai == 2 && $article->status == 1)
+                                                <i class="fa fa-check text-success"></i>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if($article->loaitinbai == 3 && $article->status == 1)
+                                                <i class="fa fa-check text-success"></i>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if($article->loaitinbai == 4 && $article->status == 1)
                                                 <i class="fa fa-check text-success"></i>
                                             @endif
                                         </td>
@@ -214,4 +251,11 @@
 
     </script>
     <script type="text/javascript" src="js/article.js"></script>
+    <script>
+        function view_articel_now(url) {
+            newwindow=window.open(url,'VietNamHoiNhap','height=500,width=800,top=150,left=200, location=0');
+            if (window.focus) {newwindow.focus()}
+            return false;
+        }
+    </script>
 @stop

@@ -44,7 +44,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                                 {{--{{dd($paramater)}}--}}
-                                <form action="{{ url('/admin/articel') }}" method="get">
+                                <form action="{{ Request::segment(3) == 'approved' ? url('/admin/articel/approved') : url('/admin/articel') }}" method="get">
                                     <div class="row form-group">
                                         <div class="col-md-4">
                                             <input value="{{isset($paramater['key_search']) ? $paramater['key_search'] : ''}}" class="form-control" name="articel[key_search]" placeholder="Từ khóa tìm kiếm">
@@ -104,7 +104,11 @@
                                                 <img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : '../images/default-image.png')) : '../images/default-image.png' }}">
                                             </div>
                                         </td>
-                                        <td>{{$articel->title}}</td>
+                                        <td class="a_hover">
+                                            <a  style="cursor: pointer;"  onclick="view_articel_now('{{route('view_log_now',$articel->id)}}')" >
+                                                 {{$articel->title}}
+                                            </a>
+                                        </td>
                                         <td>
                                             <?php $count = 0?>
                                             @foreach($list_group as $articel_item)
@@ -138,7 +142,13 @@
                                                 <div class="timeTiny">{{ $articel->approved_date  }} </div>
 
                                             @else
-                                                Không còn
+                                                @if(isset($articel->author))
+                                                    <div class="">{{ $articel->author  }} </div>
+                                                    <div class="timeTiny">{{ $articel->author_date  }} </div>
+
+                                                @else
+                                                    Không còn
+                                                @endif
                                             @endif
                                             
                                         </td>
@@ -252,16 +262,14 @@
                                         @endif
                                         <td>
                                             <div class="row form-group">
-                                                @if(Request::segment(3) != 'approved_cgroup')
-                                                <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
-
+                                                @if($articel->status != 1)
+                                                    <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
+                                                @endif
                                                     
                                                 <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status == 1) style="display: none" @endif  onclick="return confirm('Bạn chắc chắn muốn xóa')"><i
                                                             class="fa fa-trash"></i></a>
                                                 <a style="cursor: pointer" onclick="historyArticel({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
-                                                @else
-                                                    <a href="{{ asset('admin') }}" class="btn btn-block btn-sm btn-success">Xem</a>
-                                                @endif
+                                                
                                             </div>
                                         </td>
                                     </tr>
@@ -296,4 +304,11 @@
     <!-- Select2 -->
     <script src="plugins/select2/select2.full.min.js"></script>
     <script type="text/javascript" src="js/article.js"></script>
+    <script>
+        function view_articel_now(url) {
+            newwindow=window.open(url,'VietNamHoiNhap','height=500,width=800,top=150,left=200, location=0');
+            if (window.focus) {newwindow.focus()}
+            return false;
+        }
+    </script>
 @stop

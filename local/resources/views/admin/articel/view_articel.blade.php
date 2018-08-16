@@ -13,7 +13,7 @@
     <style type="text/css">
 		.new-item {
 		    width: 500px;
-		    margin: 20px auto;
+		    margin: 20px auto 50px;
 		}
 		.new-item .avatar {
 		    width: auto;
@@ -39,18 +39,42 @@
     		width: 80vw;
     		margin: auto;
     	}
+    	.content img{
+    		max-width: 80%;
+    	}
+    	.mainDetailLeftInfo {
+		    display: flex;
+		    float: right;
+		}
+		.mainDetailLeftInfo p {
+		    display: flex;
+		    font-size: 14px;
+		    font-weight: bold;
+		    font-style: italic;
+		    color: #999999;
+		}
     </style>
 </head>
 <body>
 	<div class="new-item">
-        <div class="avatar" style="background: url('') no-repeat center /cover;">
+        <div class="avatar" style="background: url('{{ isset($article->fimage)  && $article->fimage ? (file_exists(storage_path('app/article/resized500-'.$article->fimage)) ? asset('local/storage/app/article/resized500-'.$article->fimage) : (file_exists(resource_path($article->fimage)) ? asset('/local/resources'.$article->fimage) : resource_path('assets/images/default-image.png'))) : resource_path('assets/images/default-image.png') }}') no-repeat center /cover;">
         </div>
-        <h3 class="title mt-2">Đẩy mạnh ngoại giao phục vụ phát triển trong thời kỳ hội nhập quốc tế sâu rộng</h3>
-        <p class="date-time"><i class="far fa-clock"></i> 2 giờ trước</p>
-        <p class="caption">VNHNO - Sáng 15-8, Phiên toàn thể thứ nhất của Hội nghị Ngoại giao lần thứ 30 với chủ đề “Phương hướng đối ngoại: Đẩy mạnh ngoại giao phục vụ phát triển trong thời kỳ hội nhập quốc tế sâu rộng” đã diễn ra tại Hà Nội, dưới...</p>
+        <h3 class="title mt-2">{{$article->title}}</h3>
+        <p class="date-time"><i class="far fa-clock"></i>  {{$article->release_time}}</p>
+        <p class="caption">{{ cut_string($article->summary, 300)}}</p>
     </div>
+
 	<div class="content">
 		{!! $log->noidung !!}
+		
+		<div class="mainDetailLeftInfo mb-4">
+            <p>{!! $article->tacgia !!}</p>
+            	@if($article->tacgia != '' && $article->nguontin != '')
+                <span>&nbsp;/&nbsp;</span>
+            	@endif
+            <p>{!! $article->nguontin !!}</p>
+        </div>
+       
 	</div>
 
 

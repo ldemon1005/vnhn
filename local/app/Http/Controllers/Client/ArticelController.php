@@ -18,7 +18,14 @@ class ArticelController extends Controller
         $slug = explode('---n-',$slug);
 
         $articel = News::find($slug[1]);
-
+        
+        if ($articel->relate != null) {
+            $relate_id = explode(',',$articel->relate);
+            $relates = DB::table($this->db->news)->whereIn('id',$relate_id)->get();
+        }
+        else{
+            $relates = null;
+        }
         if($articel){
             if($articel->status != 1){
                 return redirect()->route('home');
@@ -31,7 +38,7 @@ class ArticelController extends Controller
 
         $content = DB::table($this->db->logfile)->where('LogId',$slug[1])->whereNotNull('noidung')->where('noidung','!=','')
             ->orderByDesc
-        ('id')->first();
+            ('id')->first();
 
         $group_id = DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->get()->toJson();
 
@@ -41,26 +48,32 @@ class ArticelController extends Controller
 
         $group_id = $group_0->id;
 
-//        dd($group_id);
-        
+        $parent_id = $group_0->parentid;
 
         $groups = DB::table($this->db->group)->where('status',1)->get();
 
         $result = [];
-        $group_related = [];
+        $group_related = $group_id;
 
         $this->recusive_menu_parent($groups,$group_id,$result,$group_related);
+
+        $list_group_related[] = $group_related;
+        $this->recusive_find_child($groups,$group_related,$list_group_related);
+
+        $list_article_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$list_group_related)->get()->toJson();
+
+        $list_article_ids = array_column(json_decode($list_article_ids,true),'news_vn_id') ;
 
         if(count($result)){
             $result = array_unique($result);
 
-            $group_related = array_unique($group_related);
+            $list_article_ids = array_unique($list_article_ids);
         }
 
 
         $list_group = DB::table($this->db->group)->where('status',1)->whereIn('id',$result)->orderBy('parentid')->get();
 
-        $articel_related = DB::table($this->db->news)->whereIn('groupid',$group_related)->where('status',1)->orderBy('order_item')
+        $articel_related = DB::table($this->db->news)->whereIn('id',$list_article_ids)->where('status',1)->orderBy('order_item')
             ->orderByDesc('release_time')->take(8)->get();
 
         foreach ($articel_related as $item){
@@ -109,7 +122,7 @@ class ArticelController extends Controller
          *  articel top view
          */
 
-        $articel_top_view = $this->articel_top_view($group_related);
+        $articel_top_view = $this->articel_top_view($list_article_ids);
 
         /*
          * magazine
@@ -117,7 +130,7 @@ class ArticelController extends Controller
         // $magazine_new = $this->get_magazine_new();
         $magazine_new = MagazineNew::where('m_status', 1)->orderBy('m_hot', 'asc')->get();
 
-        
+
         // advert
         $advert = app('App\Http\Controllers\Client\IndexController')->get_advert($group_id);
 
@@ -138,6 +151,8 @@ class ArticelController extends Controller
                 }
             }
         }
+
+
         $list_video_new = $this->get_video_new();
         $data = [
             'list_group' => $list_group,
@@ -150,16 +165,17 @@ class ArticelController extends Controller
             'list_video_new' => $list_video_new,
             'list_ad'=> $advert,
             'ad_home' => $advert_home,
-
+            'relates' => $relates,
 
             'list_comment' => $list_comment
         ];
-        
+
+
         return view('client.articel.detail',$data);
     }
 
     function articel_top_view($list_group){
-        $list_articel = DB::table($this->db->news)->whereIn('groupid',$list_group)->orderBy('view')->where('status',1)->orderByDesc('release_time')->take(5)->get();
+        $list_articel = DB::table($this->db->news)->whereIn('id',$list_group)->orderBy('view')->where('status',1)->orderByDesc('release_time')->take(5)->get();
 
         return $list_articel;
     }
@@ -171,14 +187,15 @@ class ArticelController extends Controller
     }
 
     public function get_video_new(){
-        $list_video_new = DB::table($this->db->video)->where('release_time','<=',time())->where('status',1)->take(5)->get();
+        $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->orderByDesc('release_time')->take(5)->get();
         return $list_video_new;
     }
 
     public function recusive_menu_parent($list_menu,$parentid,&$result,&$group_related){
         foreach ($list_menu as $key => $val){
-            if($val->parentid == $parentid) $group_related[] = $val->id;
+//            if($val->parentid == $parentid) $group_related[] = $val->id;
             if($val->id == $parentid){
+                if($val->parentid == 0) $group_related = $val->id;
                 $result[] = $val->id;
                 unset($list_menu[$key]);
                 $this->recusive_menu_parent($list_menu,$val->parentid,$result,$group_related);
@@ -221,5 +238,4 @@ class ArticelController extends Controller
         return $ip;
     }
 
-    
 }

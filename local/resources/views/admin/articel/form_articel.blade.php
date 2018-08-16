@@ -87,7 +87,7 @@
                                     <div class="row form-group">
                                         <label class="col-sm-2">Danh mục tin <span class="text-danger">*</span></label>
                                         <div class="col-sm-10">
-                                            <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="articel[groupid][]" required
+                                            <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="articel[groupid][]" id="group" required
                                                     style="width: 100%;">
                                                 @foreach($list_group as $articel_item)
                                                     <option {{in_array($articel_item->id,$articel->groupid) ? 'selected' : ''}} value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
@@ -227,13 +227,27 @@
                                             {{--</select>--}}
                                         {{--</div>--}}
                                     {{--</div>--}}
-
+                                    <div class="row form-group">
+                                        <label class="col-sm-2">Tin liên quan</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-control select2" multiple="multiple" data-placeholder="Chọn tin liên quan" name="articel[relate][]"
+                                                    style="width: 100%;" id="relate">
+                                                @foreach($article_relate as $relate)
+                                                    <option {{in_array($relate->id, $articel->relate) ? 'selected' : ''}} value="{{ $relate->id }}">{{ $relate->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="row form-group">
                                         <label class="col-sm-2">Loại tin bài</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name="articel[loaitinbai]">
-                                                <option {{$articel->loaitinbai != 2 ? 'selected' : ''}} value="1">Tổng hợp</option>
-                                                <option {{$articel->loaitinbai == 2 ? 'selected' : ''}} value="2">Tự viết</option>
+                                                <option {{$articel->loaitinbai == 0 ? 'selected' : ''}} value="2">Chọn loại tin</option>
+                                                <option {{$articel->loaitinbai == 1 ? 'selected' : ''}} value="1">Tin tổng hợp</option>
+                                                <option {{$articel->loaitinbai == 2 ? 'selected' : ''}} value="2">Tin tự viết</option>
+                                                <option {{$articel->loaitinbai == 3 ? 'selected' : ''}} value="3">Tin biên tập</option>
+                                                <option {{$articel->loaitinbai == 4 ? 'selected' : ''}} value="4">Tin copy</option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -307,6 +321,57 @@
                 $('#hot-item').prop('disabled', true);
             }
         }
+        // $(document).on('change', '#group', function (e) {
+        //     var group_id = $(this).val();
+            
+
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: url+'/admin/articel/get_relate/'   ,
+        //         method: 'get',
+        //         dataType: 'json',
+        //     }).fail(function (ui, status) {
+        //         console.log('error');
+        //     }).done(function (data, status) {
+        //         console.log(data.content);
+        //         if(data.content){
+        //             console.log(data.content);
+        //             setTimeout(function () {
+        //                 $('#relate').html(data.content);
+        //                 // $('#relate').selectpicker('refresh');
+        //             },200);
+        //         }
+        //     })
+        // });
+        $(document).on('change', '#group', function (e) {
+            var group_id = $(this).val();
+
+            
+
+            e.preventDefault();
+            $.ajax({
+              method: 'POST',
+              url: url+'admin/articel/get_relate',
+              data: {
+                  '_token': $('meta[name="csrf-token"]').attr('content'),
+                  'groupid': group_id
+              },
+              success: function (resp) {
+               if(resp){
+                    console.log(resp);
+                    setTimeout(function () {
+                        $('#relate').append(resp);
+                        // $('#relate').selectpicker('refresh');
+                    },200);
+                }
+
+              },
+              error: function () {
+                console.log('error');
+              }
+            });
+        });
+        
     </script>
 
     <script>

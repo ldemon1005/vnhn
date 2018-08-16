@@ -167,6 +167,41 @@
                         </li>
                     </ul>
                 </li>
+                {{-- @if (Auth::user()->level < 4 )
+                    <li class="nav-item has-treeview">
+                        <a href="{{ asset('admin') }}" class="nav-link  @if (Request::segment(2) == 'topic') active @endif">
+                            <i class="nav-icon fas fa-bookmark"></i>
+                            <p>
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chuyên đề' : 'Topic'}}
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            <li class="nav-item">
+                                <a href="{{route('admin_topic')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách chuyên đề' : 'Topic list'}}</p>
+                                </a>
+                            </li>
+                            @if (Auth::user()->level < 3 && Auth::user()->site == 1)
+                                <li class="nav-item">
+                                    <a href="{{route('sort_hot_topic')}}" class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon"></i>
+                                        <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chuyên đề nổi bật' : 'Sort topic'}}</p>
+                                    </a>
+                                </li>
+                            @endif
+                            <li class="nav-item">
+                                <a href="{{route('form_topic',0)}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thêm mới' : 'Add new'}}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                @endif --}}
                 @if (Auth::user()->level < 3 )
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'video' || Request::segment(2) == 'group_video') active @endif">
@@ -347,25 +382,25 @@
                     </li>
                 @endif
 
-                @if (Auth::user()->site == 1 && Auth::user()->level < 3)
-                    <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
-                            <i class="nav-icon far fa-flag"></i>
-                            <p>
-                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê' : 'Statistical '}}
-                                <i class="fa fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('report_article')}}" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê bài viết' : 'Statistics articles '}}</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
+                
+                <li class="nav-item has-treeview">
+                    <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
+                        <i class="nav-icon far fa-flag"></i>
+                        <p>
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê' : 'Statistical '}}
+                            <i class="fa fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{Auth::user()->level < 3 ? route('report_article') : route('detail_report_article',Auth::user()->id)}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê bài viết' : 'Statistics articles '}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
 
 
                 <li class="nav-item has-treeview">

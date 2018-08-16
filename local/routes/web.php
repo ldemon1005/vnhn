@@ -88,6 +88,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/delete_articel/{id}','ArticelController@delete_articel')->name('delete_articel');
             Route::get('/history_articel/{id}','ArticelController@history_articel')->name('history_articel');
             Route::get('/view_log/{id}','ArticelController@view_log')->name('view_log');
+            Route::get('/view_log_now/{id}','ArticelController@view_log_now')->name('view_log_now');
             Route::get('/sort_hot_articel','ArticelController@sort_hot_articel')->name('sort_hot_articel');
             Route::post('/sort_hot_articel_post','ArticelController@sort_hot_articel_post')->name('sort_hot_articel_post');
             Route::post('/update_order_articel','ArticelController@update_order_articel')->name('update_order_articel');
@@ -102,6 +103,18 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('status2', 'ArticelController@get2');
             Route::post('status3', 'ArticelController@get3');
             Route::post('status4', 'ArticelController@get4');
+
+            Route::post('get_relate', 'ArticelController@get_relate');
+        });
+        Route::group(['prefix' => 'topic'], function(){
+            Route::get('/', 'TopicController@getList')->name('admin_topic');
+            Route::get('/sort', 'TopicController@getSort')->name('sort_hot_topic');
+            Route::post('/sort', 'TopicController@postSort')->name('sort_hot_topic_post');
+            Route::get('/form/{id}', 'TopicController@getForm')->name('form_topic');
+            Route::post('/form/{id}', 'TopicController@postForm')->name('form_topic_post');
+            
+            Route::get('/delete/{id}', 'TopicController@getDelete')->name('delete_topic');
+
         });
         Route::group(['prefix' => 'profile'], function(){
             Route::get('/', 'ProfileController@getDetail');
