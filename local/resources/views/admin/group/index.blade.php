@@ -40,15 +40,19 @@
 
                         <div class="card-header">
                             <div class="row form-group">
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     @if (Auth::user()->site == 1)
                                         <a href="{{route('form_group',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới danh mục</h3></a>
                                     @endif
                                 </div>
-                                <div class="col-md-6">
+                                
+                                <div class="col-md-8">
                                     <form action="{{route('admin_group')}}" method="get">
                                         <div class="row form-group">
-                                            <div class="col-md-9">
+                                            <div class="col-md-4">
+                                                <input value="{{isset($paramater['key_search']) ? $paramater['key_search'] : ''}}" class="form-control" name="key_search" placeholder="Từ khóa tìm kiếm">
+                                            </div>
+                                            <div class="col-md-4">
                                                 <select class="select2" data-placeholder="Chọn danh mục"
                                                         name="groupid"
                                                         style="width: 100%;">
@@ -85,6 +89,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                    {{-- {{ dd($list_group) }} --}}
                                 @foreach($list_group as $group)
                                     <tr>
                                         <td>{{$group->title}}</td>

@@ -25,7 +25,7 @@ $(document).ready(function(){
         btnThis.parent().next().next().find(".btnDelete").attr('style','display:none');
       },
       error: function () {
-        alert('Error');
+        console.log('Error');
       }
     });
   });
@@ -53,7 +53,7 @@ $(document).ready(function(){
         btnThis.parent().next().next().find(".btnDelete").attr('style','display:block');
       },
       error: function () {
-        alert('Error');
+        console.log('Error');
       }
     });
   });
@@ -82,7 +82,7 @@ $(document).ready(function(){
 
       },
       error: function () {
-        alert('Error');
+        console.log('Error');
       }
     });
   });
@@ -105,7 +105,7 @@ $(document).ready(function(){
         btnNext.css('display', 'none');
       },
       error: function () {
-        alert('Error');
+        console.log('Error');
       }
     });
   });
@@ -125,7 +125,7 @@ $(document).ready(function(){
         btnThis.text('Đã gửi');
       },
       error: function () {
-        alert('Error');
+        console.log('Error');
       }
     });
   });
@@ -149,7 +149,7 @@ $(document).ready(function(){
         btnPrev2.css('display', 'none');
       },
       error: function () {
-        alert('Error');
+        console.log('Error');
       }
     });
   });

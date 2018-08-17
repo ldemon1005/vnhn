@@ -33,7 +33,7 @@
                     <div class="mainDetailLeftTime">
                         <i class="far fa-clock"></i>
                         {{$articel_detail->day_in_week_str}}, {{$articel_detail->release_time}} (GMT+7)
-                        <div class="float-right">
+                        <div class="float-right btn-fb">
                             <div class="fb-like" data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}"
                                  data-action="like" data-size="small" data-layout="button_count"></div>
 
@@ -189,7 +189,9 @@
                                 <input name="comment[idnew]" value="{{$articel_detail->id}}" class="d-none">
                                 <input name="comment[groupid]" value="{{$articel_detail->groupid}}" class="d-none">
                                 <input name="comment[slug]" value="{{$articel_detail->slug}}" class="d-none">
+
                                 <div class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"></div>
+                                
                                 <div class="form-group mt-3">
                                     <button id="submit-comment" type="button" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Gửi bình luận' : 'Comment'}}</button>
                                 </div>
@@ -354,7 +356,7 @@
 
 
     @if(\Illuminate\Support\Facades\Config::get('app.locale','vn') == 'vn')
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js?hl=vi" async defer></script>
     @else
         <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
     @endif

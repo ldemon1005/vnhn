@@ -12,7 +12,7 @@ function set_lang(lang) {
         dataType: 'json',
     }).fail(function (ui, status) {
     }).done(function (data, status) {
-        if (data.status == 1) window.location="/";
+        if (data.status == 1) window.location= url;
     })
 }
 

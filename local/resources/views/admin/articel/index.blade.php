@@ -88,9 +88,10 @@
                                     <th>Chuyên mục</th>
                                     <th>Người tạo</th>
                                     <th class="nowrap">Người duyệt</th>
-                                    @if(Request::segment(3) == null)
+                                    @if(Request::segment(3) != 'approved_cgroup')
                                         <th>Trạng thái</th>
-                                    @else
+                                    @endif
+                                    @if(Auth::user()->level > 2 || Request::segment(3) == 'approved_cgroup')
                                         <th style="min-width: 50px">Duyệt bài</th>
                                     @endif
                                     <th>Thao tác</th>
@@ -153,8 +154,8 @@
                                             
                                         </td>
                                         
-                                        @if(Request::segment(3) != 'approved_cgroup')
-                                        @if(Request::segment(3) == null)
+                                        @if(Request::segment(3) != 'approved')
+                                        
                                             <td>
                                                 @if (Auth::user()->level > 2)
                                                     <button class="btn btn-block btn-sm {{ $articel->status != 1 ? 'btn-danger ' : 'btn-success ' }}">{{ $articel->status == 1? ' Hoạt động' : 'Không hoạt động' }}</button>
@@ -164,7 +165,8 @@
                                                 
                                                 <div class="id_group" style="display: none;">{{$articel->id}}</div>
                                             </td>
-                                        @else
+                                        @endif
+                                        @if(Auth::user()->level > 2 || Request::segment(3) == 'approved')
                                             <td>
                                                 @switch(Auth::user()->level)
                                                     @case(1)
@@ -232,7 +234,7 @@
                                                                 @break
 
                                                             @default
-                                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                                <button class="btn btn-block btn-sm btn-default">Không</button>
                                                                 @break
                                                         @endswitch
                                                         @break
@@ -245,7 +247,7 @@
                                                                 <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
                                                                 @break
                                                             @default
-                                                                <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                                <button class="btn btn-block btn-sm btn-default">Không</button>
                                                                 @break
                                                         @endswitch
                                                         @break
@@ -259,10 +261,10 @@
                                         @endif
                                             
                                             
-                                        @endif
+                                        
                                         <td>
                                             <div class="row form-group">
-                                                @if($articel->status != 1)
+                                                @if($articel->status != 1 || Auth::user()->level < 3)
                                                     <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
                                                 @endif
                                                     

@@ -112,6 +112,20 @@ class ArticelController extends Controller
         }
 
         $list_articel = $list_articel->paginate(10);
+
+        // foreach ($list_articel as $item) {
+        //     // dd($item->summary);
+
+        //     $str = substr($item->summary,0,4);
+        //     // dd($str);
+        //     if ($str != 'VNHN') {
+                
+        //         $art = News::find($item->id);
+        //         $art->summary = 'VNHNO - '.$item->summary;
+        //         $art->save();
+        //     }
+        // }
+
         // dd($list_articel);
         if(isset($paramater_return['status'])){
             $list_articel->appends(['status' => $paramater_return['status']]);
@@ -474,7 +488,14 @@ class ArticelController extends Controller
             ];
             $articel = (object)$data;
         }else{
+
             $articel = DB::table($this->db->news)->find($id);
+            if ($user->level == 4 && $articel->userid != $user->id) {
+                return redirect('admin');
+            }
+            if($user->level == 4 && $articel->status == 1){
+                return redirect('admin');
+            }
             $articel->groupid = explode(',',$articel->groupid);
             $articel->relate = explode(',',$articel->relate);
             $article_relate = DB::table($this->db->news)->whereIn('groupid', $articel->groupid)->get();
@@ -527,8 +548,10 @@ class ArticelController extends Controller
         $content = $data['content'];
         unset($data['content']);
         $data['groupid'] = join(',',$data['groupid']);
-        // dd($data['relate']);
-        $data['relate'] = join(',',$data['relate']);
+        if (isset($data['relate']) &&$data['relate'] != null) {
+           $data['relate'] = join(',',$data['relate']);
+        }
+        
 
 
         
@@ -569,7 +592,7 @@ class ArticelController extends Controller
 
             $data['status'] = $status;
             $data['created_at'] = time();
-
+            
             $user_login = Auth::user();
             $data['userid'] = $user_login->id;
             if (Auth::user()->level < 4) {
@@ -675,7 +698,7 @@ class ArticelController extends Controller
                 if(!$this->add_log($articel,$status,'Chỉnh sửa,'.$status_str)) $check = 0;
                 if($check == 1){
                     DB::commit();
-                    return redirect()->route('admin_articel')->with('success','Cập nhật thành công');
+                    return back()->with('success','Cập nhật thành công');
                 }else {
                     DB::rollBack();
                     $data['content'] = $content;
@@ -692,6 +715,12 @@ class ArticelController extends Controller
 
     public function delete_articel($id){
         $articel = News::find($id);
+        if ($articel->status == 1) {
+            return redirect('admin');
+        }
+        if (Auth::user() == 4 && $articel->userid != Auth::user()->id) {
+            return redirect('admin');
+        }
         DB::beginTransaction();
         $check = 1;
 
@@ -754,8 +783,18 @@ class ArticelController extends Controller
         if ($log->noidung == null) {
             $log = DB::table($this->db->logfile)->where('LogId', $article->id)->where('noidung', '!=' , null)->orderBy('ID','desc')->first();
         }
+
+        if ($article->relate != null) {
+            $relate_id = explode(',',$article->relate);
+            $relates = DB::table($this->db->news)->whereIn('id',$relate_id)->get();
+        }
+        else{
+            $relates = null;
+        }
+
         $data = [
             'log' => $log,
+            'relates' => $relates,
             'article' => $article
         ];
         
@@ -766,10 +805,17 @@ class ArticelController extends Controller
 
         $log = DB::table($this->db->logfile)->where('LogId', $article->id)->where('noidung', '!=' , null)->orderBy('ID','desc')->first();
         
-
+        if ($article->relate != null) {
+            $relate_id = explode(',',$article->relate);
+            $relates = DB::table($this->db->news)->whereIn('id',$relate_id)->get();
+        }
+        else{
+            $relates = null;
+        }
         $this->get_time($article);
         $data = [
             'log' => $log,
+            'relates' => $relates,
             'article' => $article
         ];
         

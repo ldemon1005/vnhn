@@ -20,6 +20,15 @@ class GroupController extends Controller{
          *  group menu
          */
 
+        $group = Group_vn::find($slug[1]);
+        if($group){
+            if($group->status != 1){
+                return redirect()->route('home');
+            }
+        }else {
+            return redirect()->route('home');
+        }
+
         $group_menu = $this->menu_top_group($slug[1]);
 
         /*
@@ -113,7 +122,7 @@ class GroupController extends Controller{
 
     public function get_video_new()
     {
-        $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->take(5)->get();
+        $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->orderByDesc('release_time')->take(5)->get();
         return $list_video_new;
     }
 

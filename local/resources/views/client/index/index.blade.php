@@ -11,7 +11,7 @@
                 <div class="row articel-new">
                     <div class="new-left">
                         <div class="row">
-                            <div class="col-md-12 new-left-main">
+                            <div class="col-md-8 col-sm-12 mb-3 new-left-main">
                                 <a href="{{ route('get_detail_articel',$list_articel_new[0]->slug.'---n-'.$list_articel_new[0]->id) }}" class="new-item" onclick="article_view('{{ $list_articel_new[0]->id }}')">
                                     <div class="avatar" style="background: url('{{ isset($list_articel_new[0]->fimage)  && $list_articel_new[0]->fimage ? (file_exists(storage_path('app/article/resized500-'.$list_articel_new[0]->fimage)) ? asset('local/storage/app/article/resized500-'.$list_articel_new[0]->fimage) : (file_exists(resource_path($list_articel_new[0]->fimage)) ? asset('/local/resources'.$list_articel_new[0]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
                                     </div>
@@ -19,8 +19,11 @@
                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_new[0]->release_time}}</p>
                                     <p class="caption">{{ cut_string($list_articel_new[0]->summary, 300)}}</p>
                                 </a>
-                                <div class="new-list-right">
-                                    @for (  $i = 1;   $i < 6;    $i++)
+                                
+                            </div>
+                            <div class="col-md-4 col-sm-12 mb-3 new-list-right">
+                                
+                                    @for (  $i = 5;   $i < 10;    $i++)
                                         <a href="{{ route('get_detail_articel',$list_articel_new[$i]->slug.'---n-'.$list_articel_new[$i]->id) }}" class="new-list-right-item" onclick="article_view('{{ $list_articel_new[$i]->id }}')">
                                             <h3 class="title">
                                                 {{$list_articel_new[$i]->title}}
@@ -28,23 +31,25 @@
                                             <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
                                         </a>
                                     @endfor
-
-                                </div>
                             </div>
-
-                        </div>
-                        <div class="row new-list-bottom mb-3">
-                            @for (  $i = 6;   $i < 10;    $i++)
-                                <div class="col-md-3">
-                                    <a href="{{ route('get_detail_articel',$list_articel_new[$i]->slug.'---n-'.$list_articel_new[$i]->id) }}" class="article" onclick="article_view('{{ $list_articel_new[$i]->id }}')">
-                                        <div class="avatar" style="background-image: url('{{ isset($list_articel_new[$i]->fimage)  && $list_articel_new[$i]->fimage ? (file_exists(storage_path('app/article/resized200-'.$list_articel_new[$i]->fimage)) ? asset('local/storage/app/article/resized200-'.$list_articel_new[$i]->fimage) : (file_exists(resource_path($list_articel_new[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}');">
-                                        </div>
-                                        <h3 class="title mt-2">{{$list_articel_new[$i]->title}}</h3>
-                                        <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
-                                    </a>
-                                        
+                            <div class="col-md-12 mb-3 new-list-bottom">
+                                <div class="row">
+                                @for (  $i = 1;   $i < 5;    $i++)
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <a href="{{ route('get_detail_articel',$list_articel_new[$i]->slug.'---n-'.$list_articel_new[$i]->id) }}" class="article" onclick="article_view('{{ $list_articel_new[$i]->id }}')">
+                                            <div class="avatar" style="background-image: url('{{ isset($list_articel_new[$i]->fimage)  && $list_articel_new[$i]->fimage ? (file_exists(storage_path('app/article/resized200-'.$list_articel_new[$i]->fimage)) ? asset('local/storage/app/article/resized200-'.$list_articel_new[$i]->fimage) : (file_exists(resource_path($list_articel_new[$i]->fimage)) ? asset('/local/resources'.$list_articel_new[$i]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}');">
+                                            </div>
+                                            <div class="article_meta">
+                                                <h3 class="title mt-2">{{$list_articel_new[$i]->title}}</h3>
+                                                <p class="date-time">{{$list_articel_new[$i]->release_time}}</p>
+                                            </div>
+                                               
+                                        </a>
+                                    </div>
+                                @endfor    
                                 </div>
-                            @endfor
+                                
+                            </div>
                         </div>
                         <div class="row quangcao-2 item-quangcao mb-4" >
                             <?php $count_ad = 0?>
@@ -253,6 +258,7 @@
                     <hr style="margin: 20px -15px"/>
                 @endforeach
             </div>
+
         </section>
 
         <section class="section3">
@@ -310,6 +316,62 @@
                             @endforeach
                             
                         </div>
+                         <div class="category-1">
+                            <div class="category-1-left">
+                                <div class="menu">
+                                    <div class="menu-parent">
+                                        <h3>
+                                            <a href="{{ route('get_articel_by_group',$menu_parent_item_3->slug.'---n-'.$menu_parent_item_3->id) }}">
+                                                {{cut_string($menu_parent_item_3->title,30)}}
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div class="menu-child">
+                                        <ul class="child">
+                                            @for($i = 0;$i < count($menu_child_item_3) ;$i++)
+                                                <li><a href="{{ route('get_articel_by_group',$menu_child_item_3[$i]->slug.'---n-'.$menu_child_item_3[$i]->id) }}">{{$menu_child_item_3[$i]->title}}</a></li>
+                                            @endfor
+                                        </ul>
+                                    </div>
+                                    <div class="btnShowMenuChild">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                                <div class="row content">
+                                    @if(count($list_articel_item_3))
+                                        <div class="item-category">
+                                            <a href="{{ route('get_detail_articel',$list_articel_item_3[0]->slug.'---n-'.$list_articel_item_3[0]->id) }}" onclick="article_view('{{ $list_articel_item_3[0]->id }}')">
+                                                <div class="avatar" style="background: url('{{ isset($list_articel_item_3[0]->fimage)  && $list_articel_item_3[0]->fimage ? (file_exists(storage_path('app/article/resized500-'.$list_articel_item_3[0]->fimage)) ? asset('local/storage/app/article/resized500-'.$list_articel_item_3[0]->fimage) : (file_exists(resource_path($list_articel_item_3[0]->fimage)) ? asset('/local/resources'.$list_articel_item_3[0]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center 100% /cover;">
+                                                    
+                                                </div>
+                                                <div class="news-meta">
+                                                    <h3 class="title mt-2">{{$list_articel_item_3[0]->title}}</h3>
+                                                    <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item_3[0]->release_time}}</p>
+                                                    <p class="caption">{!! $list_articel_item_3[0]->summary !!}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
+
+                                    <div class="list-right">
+                                        @for($i = 1;$i < count($list_articel_item_3);$i++)
+                                            <div class="list-right-item">
+                                                <a href="{{ route('get_detail_articel',$list_articel_item_3[$i]->slug.'---n-'.$list_articel_item_3[$i]->id) }}" onclick="article_view('{{ $list_articel_item_3[$i]->id }}')">
+                                                    <div class="avatar" style="background: url('{{ isset($list_articel_item_3[$i]->fimage)  && $list_articel_item_3[$i]->fimage ? (file_exists(storage_path('app/article/resized200-'.$list_articel_item_3[$i]->fimage)) ? asset('local/storage/app/article/resized200-'.$list_articel_item_3[$i]->fimage) : (file_exists(resource_path($list_articel_item_3[$i]->fimage)) ? asset('/local/resources'.$list_articel_item_3[$i]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
+                                                    </div>
+                                                    <div class="news-meta">
+                                                        <h3 class="title">{{$list_articel_item_3[$i]->title}}</h3>
+                                                        <p class="date-time">{{$list_articel_item_3[$i]->release_time}}</p>
+                                                        <p class="caption">{{$list_articel_item_3[$i]->summary}}</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        @endfor
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="articel-bottom-right">
                         <div class="quangcao-group">

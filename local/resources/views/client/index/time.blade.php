@@ -33,51 +33,85 @@
 
                 <div class="row">
                     <div class="new-left-time">
-                        <div class="new-left-time-top">
-
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12 mb-3 new-left-time-b">
                                 <div class="new-item-time">
                                     @if(count($list_articel_hot))
                                     <a href="{{ route('get_detail_articel',$list_articel_hot[0]->slug.'---n-'.$list_articel_hot[0]->id) }}"  onclick="article_view('{{ $list_articel_hot[0]->id }}')">
                                         <div class="avatar" style="background: url('{{ isset($list_articel_hot[0]->fimage)  && $list_articel_hot[0]->fimage ? (file_exists(storage_path('app/article/resized500-'.$list_articel_hot[0]->fimage)) ? asset('local/storage/app/article/resized500-'.$list_articel_hot[0]->fimage) : (file_exists(resource_path($list_articel_hot[0]->fimage)) ? asset('/local/resources'.$list_articel_hot[0]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
                                         </div>
                                         <h3 class="title mt-2">{{$list_articel_hot[0]->title}}</h3>
-                                        <p class="date-time">{{$list_articel_hot[0]->release_time}}</p>
-                                        <p class="caption">{{cut_string($list_articel_hot[0]->summary, 300)}}</p>
+                                        <div class="date-time">{{$list_articel_hot[0]->release_time}}</div>
+                                        <div class="caption">{{cut_string($list_articel_hot[0]->summary, 300)}}</div>
                                     </a>
-                                    @endif
+                                    @endif   
                                 </div>
-
-
-                            <div class="new-list-right-time">
-                                <div class="caption">
-                                    <h3>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đọc nhiều' : 'Top view'}}</h3>
+                                    
+                            </div>
+                            <div class="col-md-4 col-sm-12 mb-3 new-left-time-s">
+                                <div class="new-list-right-time">
+                                    <div class="caption">
+                                        <h3>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đọc nhiều' : 'Top view'}}</h3>
+                                    </div>
+                                    <div class="list-new">
+                                        @foreach($articel_top_view as $top_view)
+                                            <div class="item-top-view">
+                                                <a href="{{ route('get_detail_articel',$top_view->slug.'---n-'.$top_view->id) }}" onclick="article_view('{{ $top_view->id }}')">
+                                                    <h3 class="title">{{$top_view->title}}</h3>
+                                                    <p class="date-time">{{$top_view->release_time}}</p>
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="list-new">
-                                    @foreach($articel_top_view as $top_view)
-                                        <div class="item-top-view">
-                                            <a href="{{ route('get_detail_articel',$top_view->slug.'---n-'.$top_view->id) }}" onclick="article_view('{{ $top_view->id }}')">
-                                                <h3 class="title">{{$top_view->title}}</h3>
-                                                <p class="date-time">{{$top_view->release_time}}</p>
-                                            </a>
+                            </div>
+                            <div class="col-md-12 new-left-time-m">
+                                <div class="row new-list-bottom-time">
+                                    @for($i = 1;$i<count($list_articel_hot);$i++)
+                                        <div class="col-md-3 col-sm-12">
+                                            <div class="item-bottom">
+                                                <a href="{{ route('get_detail_articel',$list_articel_hot[$i]->slug.'---n-'.$list_articel_hot[$i]->id) }}"  onclick="article_view('{{ $list_articel_hot[$i]->id }}')">
+                                                    <div class="avatar" style="background: url('{{ isset($list_articel_hot[$i]->fimage)  && $list_articel_hot[$i]->fimage ? (file_exists(storage_path('app/article/resized200-'.$list_articel_hot[$i]->fimage)) ? asset('local/storage/app/article/resized200-'.$list_articel_hot[$i]->fimage) : (file_exists(resource_path($list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
+                                                    </div>
+                                                    <div class="content">
+                                                        <h3 class="title">{{$list_articel_hot[$i]->title}}</h3>
+                                                        <p class="date-time">{{$list_articel_hot[$i]->release_time}}</p>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
-                                    @endforeach
+                                    @endfor
                                 </div>
                             </div>
                         </div>
-                        <div class="new-left-time-bot">
-                            <div class="new-list-bottom-time">
-                                @for($i = 1;$i<count($list_articel_hot);$i++)
-                                    <div class="item-bottom">
-                                        <a href="{{ route('get_detail_articel',$list_articel_hot[$i]->slug.'---n-'.$list_articel_hot[$i]->id) }}"  onclick="article_view('{{ $list_articel_hot[$i]->id }}')">
-                                            <div class="avatar" style="background: url('{{ isset($list_articel_hot[$i]->fimage)  && $list_articel_hot[$i]->fimage ? (file_exists(storage_path('app/article/resized200-'.$list_articel_hot[$i]->fimage)) ? asset('local/storage/app/article/resized200-'.$list_articel_hot[$i]->fimage) : (file_exists(resource_path($list_articel_hot[$i]->fimage)) ? asset('/local/resources'.$list_articel_hot[$i]->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}') no-repeat center /cover;">
-                                            </div>
-                                            <div class="content">
-                                                <h3 class="title">{{$list_articel_hot[$i]->title}}</h3>
-                                                <p class="date-time">{{$list_articel_hot[$i]->release_time}}</p>
-                                            </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class=" quangcao-2 item-quangcao mb-4" >
+                                    <?php $count_ad = 0?>
+                                    @if (count($list_ad[3]) > 0)
+                                        @if ($list_ad[3][0]->advert->ad_status == 1)
+                                            <a href="{{ $list_ad[3][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[3][0]->advert->ad_id}}')" target="_blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][0]->advert->ad_img)}}"></a>
+                                            <?php $count_ad++ ?>
+                                        @endif
+                                    @endif
+                                    @if (count($ad_home[3])>0)
+                                        @for ($i = 0; $i < count($ad_home[3]); $i++)
+                                            @if ($ad_home[3][$i]->advert->ad_status == 1 && $count_ad == 0)
+                                                <a href="{{ $ad_home[3][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[3][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[3][$i]->advert->ad_img)}}"></a>
+                                                <?php $count_ad++ ?>
+                                            @endif
+                                        @endfor
+                                    @endif
+                                    @if ($count_ad == 0)
+                                        <a href="{{ asset('') }}">
+                                            <img src="images/728x90.png">
                                         </a>
-                                    </div>
-                                @endfor
+
+                                    @endif
+                                    {{-- <a href="{{ asset('') }}">
+                                        <img src="images/728x90.png">
+                                    </a> --}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,7 +158,7 @@
                                 <ul>
                                     <li>
                                         <a>
-                                            <i class="fas fa-caret-right mr-1"></i>{{$list_video_new[0]->title}}
+                                            <i class="fas fa-caret-right mr-1"></i>{{ cut_string($list_video_new[0]->title, 60)}}
                                         </a>
                                     </li>
 
@@ -132,7 +166,7 @@
                                         <li>
                                             <a style="cursor: pointer;text-decoration: none;color: #000000" onclick="open_video('{{route('open_video',$list_video_new[$i]->id)}}')">
                                                 <i class="fas fa-caret-right"></i>
-                                                {{$list_video_new[$i]->title}}
+                                                {{cut_string($list_video_new[$i]->title, 60)}}
                                             </a>
                                         </li>
                                     @endfor

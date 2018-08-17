@@ -119,7 +119,7 @@ function change_status(video_id,status_video) {
 
 function change_lang(type = 0) {
     $.ajax({
-        url: '/set_lang/' + $('#lang').val(),
+        url: url+'/set_lang/' + $('#lang').val(),
         method: 'get',
         dataType: 'json',
     }).fail(function (ui, status) {

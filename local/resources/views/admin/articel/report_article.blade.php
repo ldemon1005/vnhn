@@ -46,7 +46,7 @@
                                         <div class="col-md-4">
                                             <input value="{{$key}}" name="key" class="form-control" placeholder="nhập từ khóa">
                                         </div>
-                                        <div class="col-md-5 input-group">
+                                        <div class="col-md-4 input-group">
                                             <div class="d-flex flex-row align-items-center">
                                                 <div><b>Thời gian thống kê: {{$from}} <span class="text-warning">đến</span> {{$to}}</b></div>
                                                 <div class="ml-3">
@@ -59,17 +59,23 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2 float-right">
+                                        <div class="col-md-2 ">
                                             <button class="btn btn-primary float-right" type="submit"><i class="fa fa-search"></i>
                                             </button>
                                         </div>
+                                        <div class="col-md-2">
+                                            <div class="btn btn-default float-right btn_print">
+                                                <i class="fas fa-print"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table id="table_report" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>Tài khoản</th>
                                     <th>Họ và tên</th>
+                                    <th>Tổng bài</th>
                                     <th>Bài tổng hợp</th>
                                     <th>Bài tự viết</th>
                                     <th>Bài biên tập</th>
@@ -90,6 +96,7 @@
                                             </a>
                                         </td>
                                         <td>{{$user->fullname}}</td>
+                                        <td>{{$user->total}}</td>
                                         <td>{{$user->tong_hop}}</td>
                                         <td>{{$user->tu_viet}}</td>
                                         <td>{{$user->bien_tap}}</td>
@@ -186,5 +193,14 @@
         });
 
     </script>
-    <script type="text/javascript" src="js/article.js"></script>
+   {{--  <script type="text/javascript" src="js/article.js"></script> --}}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.btn_print').click(function(){
+                // alert('ok');
+                window.print();
+            });
+        });
+    </script>
+
 @stop

@@ -64,7 +64,7 @@
                 @endif
 
                 <li class="nav-item has-treeview">
-                    <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'user') active @endif">
+                    <a href="{{ asset('admin/') }}" class="nav-link @if (Request::segment(2) == 'profile') active @endif">
                     <i class="fas fa-user-shield nav-icon"></i>
                     <p>
                         {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Cá Nhân' : 'Profile'}}
@@ -384,7 +384,7 @@
 
                 
                 <li class="nav-item has-treeview">
-                    <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
+                    <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'report') active @endif">
                         <i class="nav-icon far fa-flag"></i>
                         <p>
                             {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê' : 'Statistical '}}

@@ -165,6 +165,11 @@ Route::group(['namespace' => 'Admin'], function (){
 
         });
 
+        Route::group(['prefix'=>'report'], function(){
+            Route::get('report_article', 'ReportController@report_article')->name('report_article');
+            Route::get('detail_report_article/{id}', 'ReportController@detail_report_article')->name('detail_report_article');
+        });
+
         Route::group(['middleware' => 'CheckSite'], function(){
             Route::group(['prefix' => 'account'], function(){
                 Route::get('/', 'AccountController@getList');
@@ -265,10 +270,7 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::post('order', 'ContactController@getDetailAdvertOrder');
             });
 
-            Route::group(['prefix'=>'report'], function(){
-                Route::get('report_article', 'ReportController@report_article')->name('report_article');
-                Route::get('detail_report_article/{id}', 'ReportController@detail_report_article')->name('detail_report_article');
-            });
+            
         });
 
 

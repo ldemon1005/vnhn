@@ -49,6 +49,9 @@ class IndexController extends Controller
 
         $articel_times_2 = $this->get_articel_item(1);
 
+        $articel_times_3 = $this->get_articel_item(2);
+
+
         $advert = $this->get_advert(1);
         $advert_home = $this->get_advert_home();
 
@@ -67,10 +70,15 @@ class IndexController extends Controller
             'menu_child_item_2' => $articel_times_2['menu_child'],
             'list_articel_item_2' => $articel_times_2['list_articel'],
 
+            'menu_parent_item_3' => $articel_times_3['menu_time'],
+            'menu_child_item_3' => $articel_times_3['menu_child'],
+            'list_articel_item_3' => $articel_times_3['list_articel'],
+
             'list_group' => $groups,
             'list_ad' => $advert,
             'ad_home' => $advert_home
         ];
+        // dd($data['list_articel_item_3']);
 
 //        dd(time() + 86400*30);
 //        dd($data);
@@ -116,7 +124,7 @@ class IndexController extends Controller
 
     public function get_video_new()
     {
-        $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->take(5)->get();
+        $list_video_new = DB::table($this->db->video)->where('status',1)->where('release_time', '<=', time())->orderByDesc('release_time')->take(5)->get();
         return $list_video_new;
     }
 
@@ -129,7 +137,7 @@ class IndexController extends Controller
 
     public function get_articel_item($position)
     {
-        $menu_time = DB::table($this->db->group)->where('home_index', 1)->where('status',1)->where('type', '!=', 1)->orderBy('order')->take(2)->get()->chunk(1);
+        $menu_time = DB::table($this->db->group)->where('home_index', 1)->where('status',1)->where('type', '!=', 1)->orderBy('order')->take(3)->get()->chunk(1);
 
         $menu_time = $menu_time[$position][$position];
 
@@ -143,17 +151,18 @@ class IndexController extends Controller
 
         $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id', $list_group_ids)->get(['news_vn_id'])->toJson();
         $list_articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id', $list_group_ids)->where('hot',1)->get(['news_vn_id'])->toJson();
+
         $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
         $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids, true), 'news_vn_id');
 
-        if ($position == 0) {
+        if ($position != 1) {
             $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->whereNotNull('order_item')->where('time_hot_item','>=',time())->where('status',1)->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
 
             $count = $list_articel->count();
 
             if($count < 5){
                 $limit = 5 - $count;
-                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->whereNotIn('id', $list_articel_hot_ids )->where('status',1)->orderByDesc('release_time')->take($limit)->get();
                 $list_articel = $list_articel->toBase()->merge($list_articel_1);
             }
 
@@ -230,7 +239,7 @@ class IndexController extends Controller
     }
     public function get_articel_group()
     {
-        $groups = Group_vn::where('home_index', 1)->where('status', 1)->where('type', '!=', 1)->orderBy('order')->take(10)->get()->slice(2, 8);
+        $groups = Group_vn::where('home_index', 1)->where('status', 1)->where('type', '!=', 1)->orderBy('order')->take(11)->get()->slice(3, 9);
         $list_group = DB::table($this->db->group)->where('status',1)->get();
         foreach ($groups as $group) {
             unset($result);
@@ -240,6 +249,9 @@ class IndexController extends Controller
 
             $result = array_unique($result);
 
+            $list_ids_not_hot = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->get()->toJson();
+            $list_ids_not_hot = array_column(json_decode($list_ids_not_hot),'news_vn_id');
+            
             $list_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->where('hot',1)->get()->toJson();
 
             $list_ids = array_column(json_decode($list_ids),'news_vn_id');
@@ -253,7 +265,7 @@ class IndexController extends Controller
                 $list_not_ids = array_column(json_decode($article->toJson()),'id');
             }else $list_not_ids = [];
 
-            $article_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_ids)->whereNotIn('id',$list_not_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number)->get();
+            $article_1 = DB::table($this->db->news)->where('status',1)->whereIn('id',$list_ids_not_hot)->whereNotIn('id',$list_not_ids)->where('release_time','<=',time())->orderByDesc('release_time')->take($number)->get();
             $article = $article->toBase()->merge($article_1);
 
             $group->articel = $article;

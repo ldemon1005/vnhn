@@ -65,6 +65,19 @@
     </div>
 
 	<div class="content">
+		@if($relates != null)
+        <div class="mainDetailLeftRelate">
+            <ul style="padding-left: 20px;">
+                @foreach($relates as $article)
+                <li>
+                    <a href="{{ route('get_detail_articel',$article->slug.'---n-'.$article->id) }}">
+                        {{ $article->title }}
+                    </a>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 		{!! $log->noidung !!}
 		
 		<div class="mainDetailLeftInfo mb-4">

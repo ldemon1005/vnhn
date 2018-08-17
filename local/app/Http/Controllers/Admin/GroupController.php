@@ -18,7 +18,9 @@ class GroupController extends Controller
         $group_id = explode(',', $group_id);
 
         $parentid = $request->get('groupid');
-
+        $paramater = $request->all();
+        
+        $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
 
         if (in_array(0 ,$group_id)) {
             $list_group = DB::table($this->db->group)->where('parentid', '0')->get()->toArray();
@@ -31,9 +33,9 @@ class GroupController extends Controller
             // $data['list_group'] = $result;
 
             if($parentid != null){
-                $list_group = DB::table($this->db->group)->where('parentid',$parentid)->orderByDesc('id')->paginate(15);
+                $list_group = DB::table($this->db->group)->where('parentid',$parentid)->orderByDesc('id');
             }else {
-                $list_group = DB::table($this->db->group)->orderByDesc('id')->paginate(15);
+                $list_group = DB::table($this->db->group)->orderByDesc('id');
             }
             
         }
@@ -42,11 +44,15 @@ class GroupController extends Controller
             $result = $list_group;
 
             if($parentid != null){
-                $list_group = DB::table($this->db->group)->where('parentid', '0')->where('parentid',$parentid)->orderByDesc('id')->paginate(15);
+                $list_group = DB::table($this->db->group)->where('parentid', '0')->where('parentid',$parentid)->orderByDesc('id');
             }else {
-                $list_group = DB::table($this->db->group)->where('parentid', '0')->whereIn('id', $group_id)->orderByDesc('id')->paginate(15);
+                $list_group = DB::table($this->db->group)->where('parentid', '0')->whereIn('id', $group_id)->orderByDesc('id');
             }
         }
+        if ($key_search) {
+            $list_group =  $list_group->where('title','like',"%$key_search%");
+        }
+        $list_group = $list_group->paginate(10);
         
         //dd($parentid);
         // $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
@@ -98,6 +104,7 @@ class GroupController extends Controller
                     'keywords' => '',
                     'titlemeta' => '',
                     'status' => 1,
+                    'fimages' => '',
                     'home_index' => 0
                 ];
 

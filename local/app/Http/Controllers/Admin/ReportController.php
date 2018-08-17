@@ -36,6 +36,7 @@ class ReportController extends Controller
                 $user->tu_viet = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->where('loaitinbai',2)->where('status',1)->count();
                 $user->bien_tap = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->where('loaitinbai',3)->where('status',1)->count();
                 $user->copy = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->where('loaitinbai',4)->where('status',1)->count();
+                $user->total = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->count();
 
                 $user->chua_dang = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->where('status','!=',1)->count();
                 
@@ -74,7 +75,7 @@ class ReportController extends Controller
 
         $user = DB::table('accounts')->find($id);
 
-        $list_article = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->paginate(20);
+        $list_article = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->get();
 
         $user->tong_hop = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->where('loaitinbai',1)->where('status',1)->count();
         $user->tu_viet = DB::table($this->db->news)->where('userid',$user->id)->where('created_at','>=',$from)->where('created_at','<=',$to)->where('loaitinbai',2)->where('status',1)->count();

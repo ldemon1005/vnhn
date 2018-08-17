@@ -1,7 +1,8 @@
 @extends('admin.master')
-@section('title', 'Quản trị')
+@section('title', 'Thống kê')
 @section('main')
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -20,7 +21,7 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" id="content">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -37,8 +38,13 @@
                                             <input id="from" name="from" class="d-none">
                                             <input id="to" name="to" class="d-none">
                                         </div>
+                                        <div class="btn btn-default ml-4" onclick="print()">
+                                            <i class="fas fa-print"></i>
+                                        </div>
+                                        
                                     </div>
                                 </form>
+                                
                             <div style="margin:20px 0">
                                 <div class="row" style="margin-bottom: 20px; ">
                                     <div class="col-md-4">
@@ -90,7 +96,7 @@
                             </div>
                             <hr/>
                             <h4>Danh sách bài viết</h4>
-                            <table id="example2" class="table table-bordered table-hover">
+                            <table id="table_report" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>Tiêu đề bài viết</th>
@@ -119,27 +125,27 @@
                                         <td>{{date('d/m/Y H:m',$article->created_at)}}</td>
                                         <td class="text-center">
                                             @if($article->loaitinbai == 1 && $article->status == 1)
-                                                <i class="fa fa-check text-success"></i>
+                                                <span class="text-success">x</span>
                                             @endif
                                         </td>
                                         <td class="text-center">
                                             @if($article->loaitinbai == 2 && $article->status == 1)
-                                                <i class="fa fa-check text-success"></i>
+                                                <span class="text-success">x</span>
                                             @endif
                                         </td>
                                         <td class="text-center">
                                             @if($article->loaitinbai == 3 && $article->status == 1)
-                                                <i class="fa fa-check text-success"></i>
+                                                <span class="text-success">x</span>
                                             @endif
                                         </td>
                                         <td class="text-center">
                                             @if($article->loaitinbai == 4 && $article->status == 1)
-                                                <i class="fa fa-check text-success"></i>
+                                                <span class="text-success">x</span>
                                             @endif
                                         </td>
                                         <td class="text-center">
                                             @if($article->status != 1)
-                                                <i class="fa fa-check text-success"></i>
+                                                <span class="text-success">x</span>
                                             @endif
                                         </td>
                                     </tr>
@@ -189,7 +195,7 @@
 @section('script')
     <!-- Select2 -->
     <script>
-        console.log('chào',moment());
+        console.log('Hello Human',moment());
         $('#daterange-btn').daterangepicker(
             {
                 opens: "right",
@@ -258,4 +264,55 @@
             return false;
         }
     </script>
+
+    {{-- xuất file excel --}}
+    <script src="plugins/table_excel/jquery.table2excel.min.js"></script>
+    <script type="text/javascript">
+        function print(){
+            $("#table_report").table2excel({
+                exclude: ".noExl",
+                name: "VietNamHoiNhap",
+                filename: "vnhn",
+                fileext: ".xls",
+                exclude_img: true,
+                exclude_links: true,
+                exclude_inputs: true
+            });
+        }
+
+        // function printData()
+        // {
+        //    var divToPrint=document.getElementById("content");
+        //    newWin= window.open("");
+        //    newWin.document.write(divToPrint.outerHTML);
+        //    newWin.print();
+        //    newWin.close();
+        // }
+
+        // $('btn_print').on('click',function(){
+        //     printData();
+        // })
+    </script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // $('#table_report').DataTable( {
+                
+            // } );
+            $('#table_report').DataTable( {
+                // "pagingType": "full_numbers",
+                "paging":   false,
+                dom: 'Bfrtip',
+                buttons: [
+                    'print'
+                ]
+            } );
+
+            
+        } );
+    </script>
+
 @stop

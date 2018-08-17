@@ -229,7 +229,9 @@
 #content {
   	height: 2000px;
 }
-
+.hideRespon768{
+	display: none;
+}
 
 
 @media only screen and (max-width: 1200px) {
@@ -247,7 +249,9 @@
 	
 }
 @media only screen and (max-width: 768px) {
-	
+	.hideRespon768{
+		display: block;
+	}
 	#footer{
 		border-top: 0;
 	}
@@ -267,6 +271,7 @@
 	    flex: 1;
 	}
 	.menu_footer_left ul li a{
+		white-space: nowrap;
 	    text-align: center;
 	}
 	.menu_footer_left ul li:last-child a{
