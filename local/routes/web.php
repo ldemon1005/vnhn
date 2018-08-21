@@ -100,6 +100,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('on', 'ArticelController@getOn');
             Route::post('off', 'ArticelController@getOff');
 
+            Route::post('status1', 'ArticelController@get1');
             Route::post('status2', 'ArticelController@get2');
             Route::post('status3', 'ArticelController@get3');
             Route::post('status4', 'ArticelController@get4');

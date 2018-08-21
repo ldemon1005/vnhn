@@ -102,7 +102,7 @@
                                                 <div class="news-meta">
                                                     <h3 class="title mt-2">{{$list_articel_item[0]->title}}</h3>
                                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item[0]->release_time}}</p>
-                                                    <p class="caption">{!! $list_articel_item[0]->summary !!}</p>
+                                                    <p class="caption">{{ cut_string($list_articel_item[0]->summary ,200)   }}</p>
                                                 </div>
                                             </a>
                                         </div>
@@ -182,7 +182,7 @@
                                     <h3>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đọc nhiều' : 'Top view'}}</h3>
                                 </div>
                                 <section class="top-view">
-                                    @for ($i = 0; $i < count($list_top_view); $i++)
+                                    @for ($i = 0; $i < 4; $i++)
                                         <a href="{{ route('get_detail_articel',$list_top_view[$i]->slug.'---n-'.$list_top_view[$i]->id) }}" class="item-top-view" onclick="article_view('{{ $list_top_view[$i]->id }}')">
                                             <div class="stt">{{$i + 1}}.</div>
                                             <div class="caption"><h3>{{$list_top_view[$i]->title}}</h3></div>
@@ -310,7 +310,7 @@
                                         </div>
                                         <h3 class="title">{{$articel->title}}</h3>
                                         <p class="date-time"><i class="far fa-clock"></i> {{$articel->release_time}}</p>
-                                        <p class="caption">{{$articel->summary}}</p>
+                                        <p class="caption">{{cut_string($articel->summary, 200)}}</p>
                                     </a>
                                 </div>
                             @endforeach
@@ -347,7 +347,7 @@
                                                 <div class="news-meta">
                                                     <h3 class="title mt-2">{{$list_articel_item_3[0]->title}}</h3>
                                                     <p class="date-time"><i class="far fa-clock"></i> {{$list_articel_item_3[0]->release_time}}</p>
-                                                    <p class="caption">{!! $list_articel_item_3[0]->summary !!}</p>
+                                                    <p class="caption">{{ cut_string($list_articel_item_3[0]->summary,200)  }}</p>
                                                 </div>
                                             </a>
                                         </div>

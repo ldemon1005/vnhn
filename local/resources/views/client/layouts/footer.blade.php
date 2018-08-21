@@ -9,9 +9,9 @@
                             <li class="lang respon768"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
                             <li class="lang respon768"><a href="{{ asset('') }}">RSS</a></li>
 
-                            <li class="lang respon768"><a href="tel:0964328383">Hotline 24/7:
-                                    {{$web_info->hotline}}</a></li>
-                            <li class="lang  "><a href="{{ asset('advert/order') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Magazines subcription'}}</a></li>
+                            <li class="lang "><a href="tel:0964328383">Hotline 24/7:
+                                    {{$web_info->hotline}} </a></li>
+                            <li class="lang respon768"><a href="{{ asset('advert/order') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Magazines subcription'}}</a></li>
                             <li class="lang"><a href="{{ asset('advert/contact') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising'}}</a></li>
                         </ul>
                     </div>
@@ -39,7 +39,8 @@
                     <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tổng biên tập' : 'Editor-in-Chief'}} : {{$web_info->editor_in_chief}}</span></p>
                     <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phó tổng biên tập' : 'Deputy Editor'}} : {{$web_info->deputy_editor}}</span></p>
 
-                    <p class="info-footer hideRespon768"><span>Hotline 24/7: {{$web_info->hotline}}</span></p>
+                    {{-- <p class="info-footer"><span>Hotline 24/7:</span> {{$web_info->hotline}} - <span>Email:</span> bannoidung@vietnamhoinhap.vn</p> --}}
+                    {{--   --}}
                     {{-- <p class="info-footer"><span>Ủy viên HĐBT: {{$web_info->senior_executive_editor}}</span></p> --}}
                     <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tòa soạn trị sự' : 'Journal Office-Editorial Board'}} :</span>{{$web_info->address}}</p>
                     <p><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Điện thoại' : 'Phone'}} :</span> {{$web_info->phone}}  * <span> Email: </span>{{$web_info->email}}</p>

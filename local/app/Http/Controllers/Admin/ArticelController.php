@@ -83,6 +83,7 @@ class ArticelController extends Controller
         $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $group_ids;
         $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
+        $site = isset($paramater['site']) ? $paramater['site'] : [];
         // $group_id = [1455];
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
 
@@ -107,6 +108,18 @@ class ArticelController extends Controller
             });
             // dd($list_articel->get());
         }
+        if (Auth::user()->level < 3 && Auth::user()->site == 1) {
+            if(count($site)){
+                $list_acc_ids = Account::whereIn('site', $site)->get(['id'])->toArray();
+                $list_articel = $list_articel->whereIn('userid',$list_acc_ids);
+            }
+        }
+        else{
+            $site = [Auth::user()->site];
+            $list_acc_ids = Account::whereIn('site', $site )->get(['id'])->toArray();
+            $list_articel = $list_articel->whereIn('userid',$list_acc_ids);
+        }
+
         if (Auth::user()->level > 2) {
             $list_articel =  $list_articel->where('userid', Auth::user()->id);
         }
@@ -205,7 +218,6 @@ class ArticelController extends Controller
             $group_ids = [];
         }
         else{
-            
             foreach ($list_group as $group) {
                 $group_ids[] = (int)$group->id;
             }
@@ -235,26 +247,37 @@ class ArticelController extends Controller
                 break;
         }
         $paramater = $request->all();
-
         if (isset($paramater['articel'])){
             $paramater = $paramater['articel'];
         }
-
+        
         $paramater_return = $paramater;
 
 
-        // dd($paramater['group_id']);
         $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $group_ids;
-        $status = isset($paramater['status']) ? $paramater['status'] : $status;
+        if (Auth::user()->level == 1) {
+            $status = isset($paramater['status']) ? $paramater['status'] : $status;
+        }
+        
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
-        // $group_id = [1455];
+        $site = isset($paramater['site']) ? $paramater['site'] : [];
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
 
+        
+        if (Auth::user()->level < 3 && Auth::user()->site == 1) {
+            if(count($site)){
+                $list_acc_ids = Account::whereIn('site', $site)->get(['id'])->toArray();
+                $list_articel = $list_articel->whereIn('userid',$list_acc_ids);
+            }
+        }
+        else{
+            $site = [Auth::user()->site];
+            $list_acc_ids = Account::whereIn('site', $site )->get(['id'])->toArray();
+            $list_articel = $list_articel->whereIn('userid',$list_acc_ids);
+        }
         if(count($status)){
             $list_articel = $list_articel->whereIn('status',$status);
-        }
-
-
+        }  
 
         if(count($group_id)){
             $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
@@ -270,12 +293,14 @@ class ArticelController extends Controller
                 $query->where('title','like',"%$key_search%")
                       ->orWhere('summary', 'like', "%$key_search%");
             });
-            // dd($list_articel->get());
         }
         if (Auth::user()->level > 3) {
             $list_articel =  $list_articel->where('userid', Auth::user()->id);
         }
-
+        else{
+            $list_articel =  $list_articel->whereNotIn('userid', [Auth::user()->id]);
+        }
+        
         $list_articel = $list_articel->paginate(10);
         // dd($list_articel);
         if(isset($paramater_return['status'])){
@@ -287,6 +312,11 @@ class ArticelController extends Controller
         if(isset($paramater_return['key_search'])){
             $list_articel->appends(['key_search' => $paramater_return['key_search']]);
         }
+        if(isset($paramater_return['site'])){
+            $list_articel->appends(['site' => $paramater_return['site']]);
+        }
+
+
 
         foreach ($list_articel as $val) {
             $val->created_at = date('d/m/Y H:m', $val->created_at);
@@ -317,12 +347,13 @@ class ArticelController extends Controller
             }
                 
         }
-
+        
         if(!$paramater){
             $paramater = [
                 'key_search' => '',
                 'group_id' => [],
-                'status' => []
+                'status' => [],
+                'site' => []
             ];
         }
 
@@ -331,8 +362,9 @@ class ArticelController extends Controller
             'list_articel' => $list_articel,
             'paramater' => $paramater,
         ];
+
         
-        return view('admin.articel.index', $data);
+        return view('admin.articel.approved', $data);
     }
 
     public function approved_cgroup(Request $request){
@@ -718,7 +750,9 @@ class ArticelController extends Controller
         if ($articel->status == 1) {
             return redirect('admin');
         }
-        if (Auth::user() == 4 && $articel->userid != Auth::user()->id) {
+        // dd($articel->userid);
+
+        if (Auth::user()->level == 4 && (int) $articel->userid != (int) Auth::user()->id) {
             return redirect('admin');
         }
         DB::beginTransaction();
@@ -994,6 +1028,29 @@ class ArticelController extends Controller
         if ($news->status == 1) {
             if(!$this->add_log($news, 0,'Gỡ xuống')) return response('error', 502);
             $news->status = 0;
+        }
+        else{
+            return response('error', 501);
+        }
+        $news->save();
+        return response('success', 200);
+    }
+
+    public function get1(){
+
+        $id = Input::get('id');
+        $news = News::find($id);
+
+        if ($news->status == 2 || $news->status == 0) {
+            if(!$this->add_log($news, 1,'Phó tổng duyệt - đăng lên')) return response('error', 502);
+            $user_login = Auth::user();
+            $data['approved_id'] = $user_login->id;
+            $data['approved_at'] = time();
+            if ($news->release_time < time()) {
+                $data['release_time'] = time();
+            }
+            if(!$news->update($data))return response('error', 503);
+            $news->status = 1;
         }
         else{
             return response('error', 501);

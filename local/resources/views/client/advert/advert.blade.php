@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
 	<link rel="stylesheet" type="text/css" href="css/advert.css" />
+	<link rel="shortcut icon" href="images/icon.png" />
+
 
 </head>
 <body>
@@ -39,7 +41,7 @@
 				<div class="col-md-7 col-sm-12">
 					<div class="sectionLeft">
 						<h2>PR bài viết</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+						<p> Việt Nam Hội Nhập là đơn vị viết bài PR – Quảng cáo dành trọn đam mê và tâm huyết để đảm bảo chất lượng hiệu quả cho bài viết của khách hàng. Chúng tôi quan tâm đến hiệu quả truyền thông của bài viết. Các bài viết PR giúp khách hàng xây dựng hình ảnh đẹp về nhãn hiệu sản phẩm hay dịch vụ của mình. Bài viết PR chuyên nghiệp là bài viết truyền tải đến độc giả những thông tin mà khách hàng muốn, không quá phô trương nhưng vẫn thu hút và xây dựng được lòng tin cho độc giả.</p>
 
 						<div class="btn_group">
 							<a href="{{ asset('advert/contact') }}" class="btnContact">
@@ -66,7 +68,7 @@
 				<div class="col-md-7 col-sm-12">
 					<div class="sectionLeft">
 						<h2>PR Tạp chí in</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+						<p>Quảng cáo trên các ấn phẩm là phương pháp đã có từ lâu và phổ biến rộng rãi. Việc quảng cáo trên các báo hay tạp chí phát hành giúp khách hàng truyền tải thông tin tới độc giả một cách dễ dàng. Đồng hành trong khung cảnh với người đọc, bài viết PR hay giúp nâng cao cảm xúc người đọc. </p>
 
 						<div class="btn_group">
 							<a href="{{ asset('advert/contact') }}" class="btnContact">
@@ -93,7 +95,7 @@
 				<div class="col-md-7 col-sm-12">
 					<div class="sectionLeft">
 						<h2>PR Báo điện tử</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+						<p>Cùng dòng chảy của sự phát triển công nghệ, Vietnamhoinhap.vn là báo điện tử chính thống tại Việt Nam, luôn cập nhập những tin tức mới nhất và hấp dẫn nhất đến với bạn đọc và thu hút được 1 lượng lớn độc giả nhờ các nội dung chất lượng. Vietnamhoinhap.vn cung cấp các giải pháp quảng cáo trực tuyến hiệu quả, sáng tạo cho nhiều doanh nghiệp mỗi năm.</p>
 
 						<div class="btn_group">
 							<a href="{{ asset('advert/contact') }}" class="btnContact">

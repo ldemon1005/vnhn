@@ -66,7 +66,7 @@ $(document).ready(function(){
     console.log(id);
     $.ajax({
       method: 'POST',
-      url: url+'admin/articel/on',
+      url: url+'admin/articel/status1',
       data: {
           '_token': $('meta[name="csrf-token"]').attr('content'),
           'id': id

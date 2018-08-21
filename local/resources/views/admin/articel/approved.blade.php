@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 ">Danh sách Bài viết</h1>
+                        <h1 class="m-0 ">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phê duyệt Bài viết' : 'Approve article '}}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Danh sách bài viết</li>
+                            <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trang chủ' : 'Home '}}</a></li>
+                            <li class="breadcrumb-item active">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phê duyệt Bài viết' : 'Approve article '}}</li>
                         </ol>
                     </div>
                 </div>
@@ -38,9 +38,9 @@
                             </div>
                         @endif
 
-                        <div class="card-header">
+                        {{-- <div class="card-header">
                             <a href="{{route('form_articel',0)}}" class="btn btn-primary"><h3 class="card-title">Thêm mới Bài viết</h3></a>
-                        </div>
+                        </div> --}}
                         <!-- /.card-header -->
                         <div class="card-body">
                                 {{--{{dd($paramater)}}--}}
@@ -58,22 +58,19 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
+                                        @if(Auth::user()->level < 2 )
                                         <div class="col-md-2">
                                             <select class="form-control select2" multiple="multiple"
                                                     data-placeholder="Lọc theo trạng thái" name="articel[status][]"
                                                     style="width: 100%;">
-                                                @if(Auth::user()->level == 2 || Auth::user()->level == 1 )
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(0,$paramater['status']) ? 'selected' : '' : ''}} value="0">Dừng</option>
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(1,$paramater['status']) ? 'selected' : '' : ''}} value="1">Đang chạy</option>
-                                                @endif
-                                                @if(Auth::user()->level == 1)
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(2,$paramater['status']) ? 'selected' : '' : ''}} value="2">Chờ duyệt lần 2</option>
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(3,$paramater['status']) ? 'selected' : '' : ''}} value="3">Chờ duyệt lần 1</option>
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(4,$paramater['status']) ? 'selected' : '' : ''}} value="4">Trả lại</option>
-                                                @endif
                                             </select>
                                         </div>
+                                        @endif
                                         @if(Auth::user()->site == 1 && Auth::user()->level < 3)
                                         <div class="col-md-2">
                                             <select class="form-control select2" multiple="multiple"
@@ -98,10 +95,10 @@
                                     <th>Chuyên mục</th>
                                     <th>Người tạo</th>
                                     <th class="nowrap">Người duyệt</th>
-                                    @if(Request::segment(3) != 'approved_cgroup')
+                                    @if(Request::segment(3) != 'approved')
                                         <th>Trạng thái</th>
                                     @endif
-                                    @if(Auth::user()->level > 2 || Request::segment(3) == 'approved_cgroup')
+                                    @if(Auth::user()->level > 2 || Request::segment(3) == 'approved')
                                         <th style="min-width: 50px">Duyệt bài</th>
                                     @endif
                                     <th>Thao tác</th>
