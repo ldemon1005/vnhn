@@ -515,13 +515,25 @@ class ArticelController extends Controller
                     'h' => date('h:i A',time())
                 ],
                 'hot_main' => 0,
+                'time_hot_main' => 0,
                 'hot_item' => 0,
+                'time_hot_item' => 0,
                 'loaitinbai' => 0
             ];
             $articel = (object)$data;
         }else{
 
             $articel = DB::table($this->db->news)->find($id);
+            $article = News::find($id);
+            if ($article->time_hot_item - time() < 0) {
+                $article->hot_item =  0;
+                
+            }
+            if ($article->time_hot_main - time() < 0) {
+                $article->hot_main =  0;
+                
+            }
+            $article->save();
             if ($user->level == 4 && $articel->userid != $user->id) {
                 return redirect('admin');
             }
@@ -533,6 +545,11 @@ class ArticelController extends Controller
             $article_relate = DB::table($this->db->news)->whereIn('groupid', $articel->groupid)->get();
             $content = DB::table($this->db->logfile)->orderByDesc('id')->where('noidung', '!=' , null)->where('LogId',$articel->id)->first();
             $articel->content = $content ? $content->noidung : '';
+
+            // dd($data);
+            
+            $articel->time_hot_item = round($articel->time_hot_item - time() > 0? ($articel->time_hot_item - time())/3600 : 0 );
+            $articel->time_hot_main = round($articel->time_hot_main - time() > 0? ($articel->time_hot_main - time())/3600 : 0 );
             $date = $articel->release_time;
             $articel->release_time = (object)[
                 'day' => date('Y-m-d',$date),
@@ -597,30 +614,34 @@ class ArticelController extends Controller
         }
 
 
-        if(!isset($data['hot_main'])) {
-            $data['hot_main'] = 0;
-            $data['time_hot_main'] = 0;
-        }
-        else {
-            $data['order_main'] = 1;
-            $data['time_hot_main'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
-        }
-
-        if(!isset($data['hot_item'])) {
-            $data['hot_item'] = 0;
-            $data['time_hot_item'] = 0;
-        }
-        else {
-            $data['order_item'] = 1;
-            $data['time_hot_item'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
-        }
-
+        
+        // dd($data);
 
         // Start transaction
         DB::beginTransaction();
         $check = 1;
 
         if($data['id'] == 0){ //Tạo mới bài viết
+
+
+            if(!isset($data['hot_main'])) {
+                $data['hot_main'] = 0;
+                $data['time_hot_main'] = 0;
+            }
+            else {
+                $data['order_main'] = 1;
+                $data['time_hot_main'] = round($data['time_hot_main'] ? $data['release_time'] + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
+            }
+
+            if(!isset($data['hot_item'])) {
+                $data['hot_item'] = 0;
+                $data['time_hot_item'] = 0;
+            }
+            else {
+                $data['order_item'] = 1;
+                $data['time_hot_item'] = round($data['time_hot_item'] ? $data['release_time'] + $data['time_hot_item']*3600 : $data['release_time'] + 86400*2);
+            }
+
 
             $data['status'] = $status;
             $data['created_at'] = time();
@@ -684,6 +705,24 @@ class ArticelController extends Controller
             }
         }else { //Cập nhật bài viết
             $articel = News::find($data['id']);
+
+            if(!isset($data['hot_main'])) {
+                $data['hot_main'] = 0;
+                $data['time_hot_main'] = 0;
+            }
+            else {
+                $data['order_main'] = 1;
+                $data['time_hot_main'] = round($data['time_hot_main'] ? time() + $data['time_hot_main']*3600 : $data['release_time'] + 86400*2);
+            }
+
+            if(!isset($data['hot_item'])) {
+                $data['hot_item'] = 0;
+                $data['time_hot_item'] = 0;
+            }
+            else {
+                $data['order_item'] = 1;
+                $data['time_hot_item'] = round($data['time_hot_item'] ? time() + $data['time_hot_item']*3600 : $data['release_time'] + 86400*2);
+            }
 
             if(!$articel){
                 return redirect()->route('admin_articel')->with('error','Có lỗi xảy ra');

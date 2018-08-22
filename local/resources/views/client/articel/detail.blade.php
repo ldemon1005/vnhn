@@ -67,6 +67,15 @@
                         @endif
                         <p>{!! $articel_detail->nguontin !!}</p>
                     </div>
+                    <div class="btn-fb">
+                        <div class="fb-like" data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}"
+                             data-action="like" data-size="small" data-layout="button_count"></div>
+
+                        <div class="fb-share-button"
+                             data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" data-size="small"
+                             data-layout="button_count">
+                        </div>
+                    </div>
 
 
                     <div class="mainDetailLeftBanner">

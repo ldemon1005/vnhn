@@ -371,6 +371,13 @@ ul.mainDetailRightList li a:hover {
 	color: #999999;
 }
 
+/*.fb-like>span{
+	min-width: 100px;
+}
+.fb-share-button>span{
+	min-width: 100px;
+}*/
+
 @media only screen and (max-width: 1200px) {
     .section1{
 		width: 960px;
@@ -411,7 +418,7 @@ ul.mainDetailRightList li a:hover {
 }
 @media only screen and (max-width: 768px) {
 	iframe{
-		max-width: 80% !important;
+		/*max-width: 80% !important;*/
 		height: auto;
 	}
     .section1{
@@ -476,6 +483,10 @@ ul.mainDetailRightList li a:hover {
 	}
 }
 @media only screen and (max-width: 576px) {
+	.btn-fb{
+		float: unset !important;
+    	margin-top: 10px;
+	}
 	#header-top{
 		display: none;
 	}

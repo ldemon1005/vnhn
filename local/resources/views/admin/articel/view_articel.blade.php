@@ -68,10 +68,10 @@
 		@if($relates != null)
         <div class="mainDetailLeftRelate">
             <ul style="padding-left: 20px;">
-                @foreach($relates as $article)
+                @foreach($relates as $article_item)
                 <li>
-                    <a href="{{ route('get_detail_articel',$article->slug.'---n-'.$article->id) }}">
-                        {{ $article->title }}
+                    <a href="{{ route('get_detail_articel',$article_item->slug.'---n-'.$article_item->id) }}">
+                        {{ $article_item->title }}
                     </a>
                 </li>
                 @endforeach
@@ -81,6 +81,7 @@
 		{!! $log->noidung !!}
 		
 		<div class="mainDetailLeftInfo mb-4">
+			{{-- {{ dd($article) }} --}}
             <p>{!! $article->tacgia !!}</p>
             	@if($article->tacgia != '' && $article->nguontin != '')
                 <span>&nbsp;/&nbsp;</span>
