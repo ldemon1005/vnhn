@@ -21,6 +21,7 @@ class GroupController extends Controller{
          */
 
         $group = Group_vn::find($slug[1]);
+
         if($group){
             if($group->status != 1){
                 return redirect()->route('home');
@@ -45,8 +46,16 @@ class GroupController extends Controller{
         $list_articel_hot_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$result)->where('hot',1)->get(['news_vn_id'])->toJson();
 
         $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids,true),'news_vn_id');
-
-        $list_articel_hot = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_articel_hot_ids)->where('status',1)->where('time_hot_item','>=',time())->where('release_time','<=',time())->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
+        // dd($group);
+        if ($group->parentid == 0) {
+            $list_articel_hot = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_articel_hot_ids)->where('status',1)->where('time_hot_item','>=',time())->where('release_time','<=',time())->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
+        }
+        else{
+            $list_articel_hot = DB::table($this->db->news)->whereNotNull('order_item')->whereIn('id',$list_articel_hot_ids)->where('status',1)->where(function ($query) {
+                $query->where('time_hot_item','>=',time())
+                      ->orWhere('time_hot_tiny','>=',time());
+            })->where('release_time','<=',time())->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
+        }
 
 
         /*

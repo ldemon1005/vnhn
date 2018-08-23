@@ -96,7 +96,7 @@
                                 </div>
                             </div>
 
-                            <div class="row form-group">
+                            {{-- <div class="row form-group">
                                 <label class="col-sm-2">Avatar</label>
                                 <div class="col-sm-3 form-group">
                                     <div class="{{ $group->avatar == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
@@ -114,8 +114,13 @@
                                            onchange="uploadImage(avatar,avatar.files[0])">
                                     <input class="d-none" name="group[avatar]" value="{{$group->avatar}}" id="src_avatar" type="text">
                                 </div>
+                            </div> --}}
+                            <div class="row form-group">
+                                <label class="col-sm-2">Link Icon (fontawesome.com)</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="group[fimages]" class="form-control" placeholder='VD: <i class="fab fa-youtube"></i>' value="{{$group->fimages}}">
+                                </div>
                             </div>
-
 
                             <div class="row form-group">
                                 <label class="col-sm-2">Trạng thái</label>

@@ -18,6 +18,16 @@ class ArticelController extends Controller
         $slug = explode('---n-',$slug);
 
         $articel = News::find($slug[1]);
+        if (!$articel) {
+            Session::put('lang', 'en');
+
+            $articel = News::find($slug[1]);
+            if (!$articel) {
+                return redirect('');
+            }
+            return header("Refresh:0");
+        }
+        
         
         if ($articel->relate != null) {
             $relate_id = explode(',',$articel->relate);

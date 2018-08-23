@@ -79,7 +79,7 @@
                                 <div class="col-sm-10">
                                     <div class="row image-slide" style="position: relative">
                                         @foreach($magazine->slide_show as $slide)
-                                            <div class="col-sm-3 img-avatar" style="position: relative;width: 100%;z-index: 1000">
+                                            <div class="col-sm-3 img-avatar" style="position: relative;width: 100% ; z-index: 10000">
                                                 <img id="blog_avatar" style="width: 100%" src="{{asset("/local/resources".$slide)}}"
                                                      alt="">
                                                 <i class="fa fa-trash text-danger pointer"
@@ -88,6 +88,9 @@
                                                 <input class="d-none" name="magazine[slide_show][]" value="{{$slide}}" type="text">
                                             </div>
                                         @endforeach
+                                        {{-- @if(count($magazine->slide_show) < 4)
+                                           
+                                        @endif --}}
                                             <div class="add-slide" style="position: absolute;top: 15px;right: 20px">
                                                 <a style="cursor: pointer" onclick="avatar.click()"><i class="fa fa-plus-circle"></i></a>
                                                 <input #avatar class="d-none" type="file" id="avatar"

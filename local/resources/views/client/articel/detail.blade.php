@@ -41,6 +41,10 @@
                                  data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" data-size="small"
                                  data-layout="button_count">
                             </div>
+                            <a href="{{$web_info->facebook}}" class="fb-fanpage" target="blank">
+                                <i class="fab fa-facebook-f"></i>
+                                Fanpage
+                            </a>
                         </div>
                     </div>
                     @if($relates != null)
@@ -68,13 +72,17 @@
                         <p>{!! $articel_detail->nguontin !!}</p>
                     </div>
                     <div class="btn-fb">
-                        <div class="fb-like" data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}"
+                        <div class="btn-fb-item fb-like" data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}"
                              data-action="like" data-size="small" data-layout="button_count"></div>
 
-                        <div class="fb-share-button"
+                        <div class="btn-fb-item fb-share-button"
                              data-href="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" data-size="small"
                              data-layout="button_count">
                         </div>
+                        <a href="{{$web_info->facebook}}" class="btn-fb-item fb-fanpage" target="blank">
+                            <i class="fab fa-facebook-f"></i>
+                            Fanpage
+                        </a>
                     </div>
 
 
@@ -199,7 +207,8 @@
                                 <input name="comment[groupid]" value="{{$articel_detail->groupid}}" class="d-none">
                                 <input name="comment[slug]" value="{{$articel_detail->slug}}" class="d-none">
 
-                                <div class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"></div>
+                                <div id="re-captcha" class="g-recaptcha" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}"  data-callback="onReCaptchaSuccess"></div>
+                                {{-- <div class="g-recaptcha" data-theme="light" data-type="image" data-sitekey="{{env('KEY_GOOGLE_CAPTCHA')}}" data-callback="onReCaptchaSuccess"> --}}
                                 
                                 <div class="form-group mt-3">
                                     <button id="submit-comment" type="button" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Gửi bình luận' : 'Comment'}}</button>
@@ -342,27 +351,6 @@
 @section('script')
     <script src="js/jquery.validate.min.js"></script>
 
-    <script type="text/javascript">
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 0,
-            nav: true,
-            autoHeight: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                992: {
-                    items: 2
-                },
-                1000: {
-                    items: 2
-                }
-            }
-        });
-    </script>
-
-
 
     @if(\Illuminate\Support\Facades\Config::get('app.locale','vn') == 'vn')
         <script src="https://www.google.com/recaptcha/api.js?hl=vi" async defer></script>
@@ -413,4 +401,55 @@
             $('#less-3').removeClass('d-none');
         }
     </script>
+    <script type="text/javascript">
+        var HEADER_HEIGHT = 0; // Height of header/menu fixed if exists
+        var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        var grecaptchaPosition;
+
+        var isScrolledIntoView = function (elem) {
+          var elemRect = elem.getBoundingClientRect();
+          var isVisible = (elemRect.top - HEADER_HEIGHT >= 0 && elemRect.bottom <= window.innerHeight);
+          
+          return isVisible;
+        };
+
+        if (isIOS) {
+          var recaptchaElements = document.querySelectorAll('.g-recaptcha');
+
+          window.addEventListener('scroll', function () {
+            Array.prototype.forEach.call(recaptchaElements, function (element) {
+              if (isScrolledIntoView(element)) {
+                grecaptchaPosition = document.documentElement.scrollTop || document.body.scrollTop;
+              }
+            });
+          }, false);
+        }
+
+        var onReCaptchaSuccess = function () {
+          if (isIOS && grecaptchaPosition !== undefined) {
+            window.scrollTo(0, grecaptchaPosition);
+          }
+        };
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(window).on("load", function() {
+                var advert = $('.mainDetailRightAdvert').offset().top;
+                
+                var footer = $('#footer').offset().top;
+                $( document ).scroll(function(){
+                    var top = $(document).scrollTop();
+
+                    if (top > advert-10 && top < footer - $(window).height()) {
+                        $('.mainDetailRightAdvert').css('margin-top', top-advert+20);
+                    }
+                    
+                   
+                });
+            });
+                
+        });
+            
+    </script>
+    
 @stop

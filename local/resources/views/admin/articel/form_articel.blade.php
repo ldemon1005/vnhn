@@ -180,7 +180,7 @@
                                         <label class="col-sm-2">Hiển thị</label>
                                         <div class="col-sm-10">
                                             <div class="row form-group">
-                                                <label class="col-sm-6">
+                                                <label class="col-sm-4">
                                                     <input type="checkbox" value="1" onclick="hot_main($(this).is(':checked'))" class="minimal" name="articel[hot_main]" {{$articel->hot_main == 1 ? 'checked' : ''}}>
                                                     Hot trang chủ trong
                                                     <input type="number" name="articel[time_hot_main]" class="" placeholder="24" id="hot-main" value="{{ $articel->time_hot_main }}">
@@ -191,10 +191,17 @@
                                                     <input name="articel[time_hot_main]" class="form-control" placeholder="giờ">
                                                 </div>
  --}}
-                                                <label class="col-sm-6">
+                                                <label class="col-sm-4">
                                                     <input type="checkbox" value="1" onclick="hot_item($(this).is(':checked'))" class="minimal" name="articel[hot_item]" {{$articel->hot_item == 1 ? 'checked' : ''}}>
                                                     Hot danh mục trong
                                                     <input type="number" name="articel[time_hot_item]" class="" placeholder="24" id="hot-item" value="{{ $articel->time_hot_item }}">
+                                                    giờ
+                                                </label>
+
+                                                <label class="col-sm-4">
+                                                    <input type="checkbox" value="1" onclick="hot_tiny($(this).is(':checked'))" class="minimal" name="articel[hot_tiny]" {{$articel->hot_tiny == 1 ? 'checked' : ''}}>
+                                                    Hot tiểu mục trong
+                                                    <input type="number" name="articel[time_hot_tiny]" class="" placeholder="24" id="hot-tiny" value="{{ $articel->time_hot_tiny }}">
                                                     giờ
                                                 </label>
 
@@ -298,6 +305,13 @@
             }else{
                 $("#hot-item").prop('disabled', true);
             }
+
+
+            if ($('input[name="articel[hot_tiny]"]').attr('checked')) {
+                $("#hot-tiny").prop('disabled', false);
+            }else{
+                $("#hot-tiny").prop('disabled', true);
+            }
             
             // $("#hot-item").prop('disabled', true);
         });
@@ -319,6 +333,14 @@
                 $('#hot-item').prop('disabled', false);
             }else {
                 $('#hot-item').prop('disabled', true);
+            }
+        }
+
+        function hot_tiny(a) {
+            if(a){
+                $('#hot-tiny').prop('disabled', false);
+            }else {
+                $('#hot-tiny').prop('disabled', true);
             }
         }
         // $(document).on('change', '#group', function (e) {

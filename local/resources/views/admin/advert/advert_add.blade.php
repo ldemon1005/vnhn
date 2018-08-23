@@ -60,10 +60,10 @@
 	                </div> --}}
 	                <div class="form-group">
 	                    <label for="exampleInputFile">Hình ảnh</label>
-						      <div class="">
-  							    <input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
-                    <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail imageForm" src="{{ isset($item->ad_img) && file_exists(storage_path('app/advert/resized-'.$item->ad_img)) && $item->ad_img ? asset('local/storage/app/advert/resized-'.$item->ad_img) : '../images/default-image.png' }}">
-  						    </div>
+						<div class="">
+							<input id="img" type="file" name="img" class="cssInput" onchange="changeImg(this)" style="display: none!important;">
+		                    <img style="cursor: pointer;max-width: 100%;max-height: 300px;" id="avatar" class="cssInput thumbnail imageForm" src="{{ isset($item->ad_img) && file_exists(storage_path('app/advert/resized-'.$item->ad_img)) && $item->ad_img ? asset('local/storage/app/advert/resized-'.$item->ad_img) : '../images/default-image.png' }}">
+						</div>
 	                </div>
                 </div>
                 <!-- /.card-body -->

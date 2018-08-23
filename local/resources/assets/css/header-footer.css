@@ -1,3 +1,6 @@
+html{
+	height: auto !important;
+}
 #header_btnMenu{
 	position: absolute;
     top: 0;

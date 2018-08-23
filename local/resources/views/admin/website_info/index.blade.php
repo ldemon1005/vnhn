@@ -84,18 +84,6 @@
                     <div class="row">
                         <label>Ngày cập nhật : {{$website_info->updated_at}}</label>
                     </div>
-                    <div class="row">
-                        <label>File json : </label>
-                    </div>
-                    <form>
-                        <div class="row">
-                            <textarea class="form-control" rows="20">{{ json_encode($website_info->info,JSON_PRETTY_PRINT)}}</textarea>
-                        </div>
-                        <div class="row">
-
-                        </div>
-                    </form>
-
                 </div>
             </div>
           </div>

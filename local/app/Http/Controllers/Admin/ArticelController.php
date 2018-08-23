@@ -518,6 +518,8 @@ class ArticelController extends Controller
                 'time_hot_main' => 0,
                 'hot_item' => 0,
                 'time_hot_item' => 0,
+                'hot_tiny' => 0,
+                'time_hot_tiny' => 0,
                 'loaitinbai' => 0
             ];
             $articel = (object)$data;
@@ -550,6 +552,7 @@ class ArticelController extends Controller
             
             $articel->time_hot_item = round($articel->time_hot_item - time() > 0? ($articel->time_hot_item - time())/3600 : 0 );
             $articel->time_hot_main = round($articel->time_hot_main - time() > 0? ($articel->time_hot_main - time())/3600 : 0 );
+            $articel->time_hot_tiny = round($articel->time_hot_tiny - time() > 0? ($articel->time_hot_tiny - time())/3600 : 0 );
             $date = $articel->release_time;
             $articel->release_time = (object)[
                 'day' => date('Y-m-d',$date),
@@ -642,6 +645,15 @@ class ArticelController extends Controller
                 $data['time_hot_item'] = round($data['time_hot_item'] ? $data['release_time'] + $data['time_hot_item']*3600 : $data['release_time'] + 86400*2);
             }
 
+            if(!isset($data['hot_tiny'])) {
+                $data['hot_tiny'] = 0;
+                $data['time_hot_tiny'] = 0;
+            }
+            else {
+                $data['order_item'] = 1;
+                $data['time_hot_tiny'] = round($data['time_hot_tiny'] ? $data['release_time'] + $data['time_hot_tiny']*3600 : $data['release_time'] + 86400*2);
+            }
+
 
             $data['status'] = $status;
             $data['created_at'] = time();
@@ -668,7 +680,7 @@ class ArticelController extends Controller
 
             if(count($group_id)){
                 foreach ($group_id as $val){
-                    if($data['hot_item'] == 1){
+                    if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
                         $item = [
                             'group_vn_id' => $val,
                             'news_vn_id' => (string)$articel->id,
@@ -724,6 +736,15 @@ class ArticelController extends Controller
                 $data['time_hot_item'] = round($data['time_hot_item'] ? time() + $data['time_hot_item']*3600 : $data['release_time'] + 86400*2);
             }
 
+            if(!isset($data['hot_tiny'])) {
+                $data['hot_tiny'] = 0;
+                $data['time_hot_tiny'] = 0;
+            }
+            else {
+                $data['order_item'] = 1;
+                $data['time_hot_tiny'] = round($data['time_hot_tiny'] ? time() + $data['time_hot_tiny']*3600 : $data['release_time'] + 86400*2);
+            }
+
             if(!$articel){
                 return redirect()->route('admin_articel')->with('error','Có lỗi xảy ra');
             }else {
@@ -743,7 +764,7 @@ class ArticelController extends Controller
 
                 if(count($group_id)){
                     foreach ($group_id as $val){
-                        if($data['hot_item'] == 1){
+                        if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
                             $item = [
                                 'group_vn_id' => $val,
                                 'news_vn_id' => (string)$articel->id,
@@ -941,7 +962,10 @@ class ArticelController extends Controller
 
             $articel_hot_ids = array_column(json_decode($articel_hot_ids,true),'news_vn_id');
 
-            $arrticel_hot = DB::table($this->db->news)->where('status',1)->where('time_hot_item','>=',time())->whereIn('id',$articel_hot_ids)->orderBy('order_item')->orderBy('release_time','desc')->get();
+            $arrticel_hot = DB::table($this->db->news)->where('status',1)->where(function ($query) {
+                $query->where('time_hot_item','>=',time())
+                      ->orWhere('time_hot_tiny','>=',time());
+            })->whereIn('id',$articel_hot_ids)->orderBy('order_item')->orderBy('release_time','desc')->get();
         }
 
         $data = [

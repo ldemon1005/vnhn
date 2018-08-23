@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountAddRequest;
 use App\Http\Requests\AccountEditRequest;
-
+use Illuminate\Support\Facades\Session;
 use App\Models\Account;
 
 use File;
@@ -24,11 +24,17 @@ class AccountController extends Controller
     	return view('admin.account.account', $data);
     }
     public function getAdd(){
-        $group_id = Auth::user()->group_id;
+        if (Session::get('lang', 'vn') == 'vn') {
+            $group_id = Auth::user()->group_id;
+
+        } else {
+            $group_id = Auth::user()->group_id_en;
+        }
         $group_id = explode(',', $group_id);
         
         if (in_array(0 ,$group_id)) {
             $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '0')->get()->toArray();
+
             $root = [
                 'id' => 0,
                 'title' => 'root'
@@ -56,10 +62,21 @@ class AccountController extends Controller
     	$request->level != null ? $acc->level = $request->level : $acc->level = 4;
     	$acc->status = 1;
         if ($request->group_id != null) {
-            $acc->group_id = implode(",", $request->group_id);
+            
+            if (Session::get('lang', 'vn') == 'vn') {
+                $acc->group_id = implode(",", $request->group_id);
+            } else {
+                $acc->group_id_en = implode(",", $request->group_id);
+
+            }
         }
         else{
-            $acc->group_id = null;
+            if (Session::get('lang', 'vn') == 'vn') {
+                $acc->group_id = null;
+            } else {
+                $acc->group_id_en = null;
+            }
+            
         }
         
         // site : các bên khác nhau
@@ -79,10 +96,17 @@ class AccountController extends Controller
     }
     public function getEdit($id){
     	$data['item'] = Account::find($id);
-        $group_id = Auth::user()->group_id;
+        
+        if (Session::get('lang', 'vn') == 'vn') {
+            $group_id = Auth::user()->group_id;
+            $data['gr_acc'] = Account::find($id)->group_id;
+        } else {
+            $group_id = Auth::user()->group_id_en;
+            $data['gr_acc'] = Account::find($id)->group_id_en;
+        }
         $group_id = explode(',', $group_id);
         
-        $data['gr_acc'] = Account::find($id)->group_id;
+        // $data['gr_acc'] = Account::find($id)->group_id;
         $data['gr_acc'] = explode(',', $data['gr_acc']);
         if (in_array(0 ,$group_id)) {
             $list_group = DB::table($this->db->group)->where('status', 1)->where('type','!=',1)->where('parentid', '0')->get()->toArray();
@@ -111,10 +135,20 @@ class AccountController extends Controller
         $request->password != null ? $acc->password = bcrypt($request->password) : $acc->password;
         $request->level != null ? $acc->level = $request->level : $acc->level = 4;
         if ($request->group_id != null) {
-            $acc->group_id = implode(",", $request->group_id);
+            if (Session::get('lang', 'vn') == 'vn') {
+                $acc->group_id = implode(",", $request->group_id);
+            } else {
+                $acc->group_id_en = implode(",", $request->group_id);
+                // dd( $acc->group_id_en);
+            }
+            
         }
         else{
-            $acc->group_id = null;
+            if (Session::get('lang', 'vn') == 'vn') {
+                $acc->group_id = null;
+            } else {
+                $acc->group_id_en = null;
+            }
         }
         // site : các bên khác nhau
         if (Auth::user()->level == 1) {

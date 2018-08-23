@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ asset('admin') }}" class="nav-link" target="blank">Trang chủ</a>
+            <a href="{{ asset('admin') }}" class="nav-link" target="blank">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trang chủ' : 'Home'}}</a>
         </li>
         {{-- <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -29,8 +29,8 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item d-none d-sm-inline-block">
             <select id="lang" class="form-control" onchange="change_lang()">
-                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'selected' : ''}} value="vn">Tiếng Việt</option>
-                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'en' ? 'selected' : ''}} value="en">Tiếng Anh</option>
+                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'selected' : ''}} value="vn">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Việt' : 'Vietnamese'}}</option>
+                <option {{\Illuminate\Support\Facades\Config::get('app.locale') == 'en' ? 'selected' : ''}} value="en">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tiếng Anh' : 'English'}}</option>
             </select>
         </li>
         <!-- Messages Dropdown Menu -->

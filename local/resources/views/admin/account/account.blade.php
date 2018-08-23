@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản lý tài khoản</h1>
+            <h1>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Quản lý tài khoản' : 'Account management'}}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ asset('admin') }}">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Tài khoản</li>
+              <li class="breadcrumb-item"><a href="{{ asset('admin') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trang chủ' : 'Home'}}</a></li>
+              <li class="breadcrumb-item active">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tài khoản' : 'Account'}}</li>
             </ol>
           </div>
         </div>
@@ -30,7 +30,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Danh sách tài khoản</h3>
+              <h3 class="card-title">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách tài khoản' : 'Account list'}}</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -38,12 +38,12 @@
               <table id="example1" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th class="hideResponsive768">Hình ảnh</th>
-                  <th>Tên đăng nhập</th>
-                  <th class="hideResponsive768">Họ tên</th>
-                  <th class="hideResponsive768">Email</th>
-                  <th>Chức vụ</th>
-                  <th>Tùy chọn</th>
+                  <th class="hideResponsive768">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Hình ảnh' : 'Image'}}</th>
+                  <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tên đăng nhập' : 'Username'}}</th>
+                  <th class="hideResponsive768">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Họ tên' : 'Fullname'}}</th>
+                  <th class="hideResponsive768">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Email' : 'Email'}}</th>
+                  <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chức vụ' : 'Position'}}</th>
+                  <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tùy chọn' : 'Option'}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,8 +64,8 @@
 	                  <td>{{level_format($item->level)}}</td>
 	                  <td>
 	                  	@if(Auth::user()->level < $item->level || Auth::user()->level == 1)
-                        <a href="{{ asset('admin/account/edit/'.$item->id) }}" class="btn btn-primary">Sửa</a>
-                        <a href="{{ asset('admin/account/delete/'.$item->id) }}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="btn btn-danger"> Xóa</a>
+                        <a href="{{ asset('admin/account/edit/'.$item->id) }}" class="btn btn-primary">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Sửa' : 'Edit'}}</a>
+                        <a href="{{ asset('admin/account/delete/'.$item->id) }}" onclick="return confirm('Bạn chắc chắn muốn xóa')" class="btn btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Xóa' : 'Delete'}}</a>
                       @endif
 	                  	{{-- @if (Auth::user()->id == $item->id)
 	                  		<a href="{{ asset('admin/account/delete/'.$item->id) }}" onclick="alert('Bạn không được xóa chính mình'); return false;" class="btn btn-danger"> Xóa</a>

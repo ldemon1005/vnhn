@@ -35,7 +35,7 @@ a:hover {
 }
 
 .articel-new .new-left a.new-item{
-	
+	width: 100%;
     display: block;
     text-decoration: none;
     
@@ -240,6 +240,8 @@ a:hover {
 }
 .menu-child ul.child{
 	margin-bottom: 0;
+	height: 40px;
+    overflow: hidden;
 }
 
 .child {
