@@ -27,11 +27,17 @@ class ArticelController extends Controller
             }
             return header("Refresh:0");
         }
+        else{
+            if($articel->release_time > time()){
+                return redirect('');
+            }
+            
+        }
         
         
         if ($articel->relate != null) {
             $relate_id = explode(',',$articel->relate);
-            $relates = DB::table($this->db->news)->whereIn('id',$relate_id)->get();
+            $relates = DB::table($this->db->news)->whereIn('id',$relate_id)->where('release_time','<=',time())->get();
         }
         else{
             $relates = null;
@@ -83,7 +89,7 @@ class ArticelController extends Controller
 
         $list_group = DB::table($this->db->group)->where('status',1)->whereIn('id',$result)->orderBy('parentid')->get();
 
-        $articel_related = DB::table($this->db->news)->whereIn('id',$list_article_ids)->where('status',1)->orderBy('order_item')
+        $articel_related = DB::table($this->db->news)->whereIn('id',$list_article_ids)->where('status',1)->where('release_time','<=',time())->orderBy('order_item')
             ->orderByDesc('release_time')->take(8)->get();
 
         foreach ($articel_related as $item){
@@ -185,7 +191,7 @@ class ArticelController extends Controller
     }
 
     function articel_top_view($list_group){
-        $list_articel = DB::table($this->db->news)->whereIn('id',$list_group)->orderBy('view')->where('status',1)->orderByDesc('release_time')->take(5)->get();
+        $list_articel = DB::table($this->db->news)->whereIn('id',$list_group)->orderBy('view')->where('status',1)->where('release_time','<=',time())->orderByDesc('release_time')->take(5)->get();
 
         return $list_articel;
     }

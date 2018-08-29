@@ -81,6 +81,27 @@
 	position: absolute;
     color: transparent;
 }
+.articleTime{
+	position: relative;
+}
+.articleTimeShow{
+	white-space: nowrap;
+	font-size: 14px;
+	color: #666;
+}
+.articleTimeBtnEdit{
+	position: absolute;
+    top: -20px;
+    right: -20px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+.articleTimeHide{
+	display: none;
+}
+.btn_send_time{
+	cursor: pointer;
+}
 @media only screen and (max-width: 768px) {
 	.hideResponsive768{
 		display: none;

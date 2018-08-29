@@ -106,7 +106,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <input type="submit" class="btn btn-primary" value="{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? (isset($item)? 'Thay đổi' : 'Thêm mới') : (isset($item)? 'Edit' : 'Add')}}">
+                  <input type="submit" class="btn btn-primary" value="{{isset($item)? 'Thay đổi' : 'Thêm mới'}}">
                   {{csrf_field()}}
                 </div>
 

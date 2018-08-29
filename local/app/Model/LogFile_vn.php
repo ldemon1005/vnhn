@@ -9,9 +9,7 @@ class LogFile_vn extends Model
 {
     protected $table = 'logfile_vn';
     public $timestamps = false;
-    public $fillable = [
-        'LogId', 'userId', 'GhiChu', 'noidung', 'created_at', 'groupid'
-    ];
+    public $guarded = [];
 
     public function __construct(array $attributes = [])
     {

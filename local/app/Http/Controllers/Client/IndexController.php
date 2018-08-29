@@ -199,7 +199,7 @@ class IndexController extends Controller
         //     }
         // }
 
-        $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->orderByDesc('view')->orderBy('release_time','desc')->take(5)->get();
+        $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->where('release_time','<=',time())->orderByDesc('view')->orderBy('release_time','desc')->take(5)->get();
 
         $list_top_view = $this->get_time_ez($list_top_view);
         // foreach ($list_top_view as $item) {

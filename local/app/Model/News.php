@@ -13,6 +13,17 @@ class News extends Model
 
     protected $guarded = [];
 
+    const tintonghop = 1;
+    const tinsanxuat = 2;
+    const tinbientap = 3;
+    const tincopy = 4;
+    const tindich = 5;
+    const tinanh = 6;
+    const tinvideo = 7;
+    const baidacbiet = 8;
+    const baibinhluan = 9;
+    const baipr = 10;
+    
     function get_group(){
         return $this->belongsToMany(Group_vn::class,(new GroupNews_vn())->getTable(),'news_vn_id','group_vn_id')->get();
     }

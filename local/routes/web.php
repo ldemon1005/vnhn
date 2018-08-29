@@ -96,16 +96,27 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/update_status/{id}','ArticelController@update_status')->name('update_status');
             Route::get('/approved', 'ArticelController@approved');
             Route::get('/approved_cgroup', 'ArticelController@approved_cgroup');
+            Route::get('/showmore', 'ArticelController@showmore')->name('show_more_article');
 
             Route::post('on', 'ArticelController@getOn');
             Route::post('off', 'ArticelController@getOff');
+
+            Route::post('return', 'ArticelController@getReturn');
 
             Route::post('status1', 'ArticelController@get1');
             Route::post('status2', 'ArticelController@get2');
             Route::post('status3', 'ArticelController@get3');
             Route::post('status4', 'ArticelController@get4');
+            Route::post('getComment', 'ArticelController@getComment');
 
             Route::post('get_relate', 'ArticelController@get_relate');
+
+            Route::post('set_time', 'ArticelController@set_time');
+
+
+            Route::get('/fix_bug','ArticelController@fix_bug');
+
+
         });
         Route::group(['prefix' => 'topic'], function(){
             Route::get('/', 'TopicController@getList')->name('admin_topic');

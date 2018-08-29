@@ -92,7 +92,7 @@ class GroupController extends Controller{
          * list articel
          */
 
-        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('status',1)->orderByDesc('release_time')->paginate(7);
+        $list_articel = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('release_time','<=',time())->where('status',1)->orderByDesc('release_time')->paginate(7);
 
         $group_ids = array_column(json_decode($group_menu->toJson(),true),'id');
 
@@ -136,7 +136,7 @@ class GroupController extends Controller{
     }
 
     function articel_top_view($list_articel_ids){
-        $articel_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('status',1)->orderBy('view')->paginate(5);
+        $articel_top_view = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->where('release_time', '<=', time())->where('status',1)->orderBy('view')->paginate(5);
         return $articel_top_view;
     }
 

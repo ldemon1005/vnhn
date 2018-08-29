@@ -249,17 +249,32 @@
                                         <label class="col-sm-2">Loại tin bài</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name="articel[loaitinbai]">
-                                                <option {{$articel->loaitinbai == 0 ? 'selected' : ''}} value="2">Chọn loại tin</option>
-                                                <option {{$articel->loaitinbai == 1 ? 'selected' : ''}} value="1">Tin tổng hợp</option>
-                                                <option {{$articel->loaitinbai == 2 ? 'selected' : ''}} value="2">Tin tự viết</option>
-                                                <option {{$articel->loaitinbai == 3 ? 'selected' : ''}} value="3">Tin biên tập</option>
-                                                <option {{$articel->loaitinbai == 4 ? 'selected' : ''}} value="4">Tin copy</option>
+                                                <option {{$articel->loaitinbai == 0 ? 'selected' : ''}} value="0">Chọn loại tin</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tintonghop ? 'selected' : ''}} value="{{ \App\Model\News::tintonghop }}">Tin tổng hợp</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="{{ \App\Model\News::tinsanxuat }}">Tin sản xuất</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin biên tập</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin copy</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin dịch</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin ảnh</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin video</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Bài đặc biệt</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Bài bình luận</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Bài PR, quảng cáo</option>
 
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="box-footer">
+                                    <div class="row form-group">
+                                        <div class="col-sm-10">
+                                            <input type="hidden" name="articel[send]" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">    
                                         <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id ? 'Cập nhật' : 'Tạo mới' }}</button>
+                                        @if(isset($articel->return_num) && $articel->return_num > 0 && Auth::user()->id == $articel->userid && Auth::user()->level == $articel->status)
+                                            <button type="button" class="btn btn-success btn_return pull-right" style="margin-right: 10px">Gửi lại</button>
+                                        @endif
+                                        
                                     </div>
                                 </div>
                             </form>
@@ -313,6 +328,10 @@
                 $("#hot-tiny").prop('disabled', true);
             }
             
+            $('.btn_return').click(function(){
+                $('input[name="articel[send]"]').val('1');
+                $('button[type="submit"]').click();
+            });
             // $("#hot-item").prop('disabled', true);
         });
             
