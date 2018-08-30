@@ -102,6 +102,12 @@
 .btn_send_time{
 	cursor: pointer;
 }
+.card-body{
+	overflow-x: auto;
+}
+.modal-body {
+    overflow-x: auto;
+}
 @media only screen and (max-width: 768px) {
 	.hideResponsive768{
 		display: none;
@@ -109,9 +115,7 @@
 	.titleTable{
 		min-width: 212px;
 	}
-	.card-body{
-		overflow-x: scroll;
-	}
+	
 	/*.table{
 		min-width: 1140px;
 		}*/

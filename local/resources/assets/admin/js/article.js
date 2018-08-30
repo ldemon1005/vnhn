@@ -17,7 +17,7 @@ $(document).ready(function(){
       },
       success: function (resp) {
         btnThis.attr('class', 'btn btn-block btn-sm btn-success btnOff');
-        btnThis.text('Hoạt động');
+        btnThis.text('Đang chạy');
 
         btnNext.attr('class', 'btn btn-block btn-sm btn-default btnRun');
         btnNext.text('Đang chạy');
@@ -44,7 +44,7 @@ $(document).ready(function(){
           'id': id
       },
       success: function (resp) {
-        btnThis.attr('class', 'btn btn-block btn-sm btn-danger btnOn');
+        btnThis.attr('class', 'btn btn-block btn-sm btn-default btnOn');
         btnThis.text('Không hoạt động');
 
         btnNext.attr('class', 'btn btn-block btn-sm btn-default btnDeni');

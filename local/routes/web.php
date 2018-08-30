@@ -96,7 +96,8 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/update_status/{id}','ArticelController@update_status')->name('update_status');
             Route::get('/approved', 'ArticelController@approved');
             Route::get('/approved_cgroup', 'ArticelController@approved_cgroup');
-            Route::get('/showmore', 'ArticelController@showmore')->name('show_more_article');
+            Route::get('/post_article', 'ArticelController@post_article')->name('post_article');
+            Route::get('/returned_article', 'ArticelController@returned_article')->name('returned_article');
 
             Route::post('on', 'ArticelController@getOn');
             Route::post('off', 'ArticelController@getOff');

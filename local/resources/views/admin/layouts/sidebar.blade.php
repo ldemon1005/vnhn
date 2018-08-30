@@ -173,11 +173,17 @@
                                 <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Viết bài' : 'Add new'}}</p>
                             </a>
                         </li>
-                        @if (Auth::user()->level < 4 && Auth::user()->site == 1)
+                        @if (Auth::user()->level == 3 && Auth::user()->site == 1)
                             <li class="nav-item">
-                                <a href="{{route('show_more_article')}}" class="nav-link">
+                                <a href="{{route('post_article')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Xem thêm' : 'Show more'}}</p>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài đã đăng' : 'Article post'}}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('returned_article')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài bị trả lại' : 'Article returned'}}</p>
                                 </a>
                             </li>
                         @endif

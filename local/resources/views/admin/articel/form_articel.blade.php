@@ -250,16 +250,16 @@
                                         <div class="col-sm-10">
                                             <select class="form-control" name="articel[loaitinbai]">
                                                 <option {{$articel->loaitinbai == 0 ? 'selected' : ''}} value="0">Chọn loại tin</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tintonghop ? 'selected' : ''}} value="{{ \App\Model\News::tintonghop }}">Tin tổng hợp</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="{{ \App\Model\News::tinsanxuat }}">Tin sản xuất</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin biên tập</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin copy</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin dịch</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin ảnh</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Tin video</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Bài đặc biệt</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Bài bình luận</option>
-                                                <option {{$articel->loaitinbai == \App\Model\News::tinsanxuat ? 'selected' : ''}} value="\App\Model\News::tinsanxuat">Bài PR, quảng cáo</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::TINTONGHOP ? 'selected' : ''}} value="{{ \App\Model\News::TINTONGHOP }}">Tin tổng hợp</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::TINSANXUAT ? 'selected' : ''}} value="{{ \App\Model\News::TINSANXUAT }}">Tin sản xuất</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::TINBIENTAP ? 'selected' : ''}} value="{{ \App\Model\News::TINBIENTAP }}">Tin biên tập</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::TINCOPY ? 'selected' : ''}} value="{{ \App\Model\News::TINCOPY }}">Tin copy</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::TINDICH ? 'selected' : ''}} value="{{ \App\Model\News::TINDICH }}">Tin dịch</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::TINANH ? 'selected' : ''}} value="{{ \App\Model\News::TINANH }}">Tin ảnh</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::TINVIDEO ? 'selected' : ''}} value="{{ \App\Model\News::TINVIDEO }}">Tin video</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::BAIDACBIET ? 'selected' : ''}} value="{{ \App\Model\News::BAIDACBIET }}">Bài đặc biệt</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::BAIBINHLUAN ? 'selected' : ''}} value="{{ \App\Model\News::BAIBINHLUAN }}">Bài bình luận</option>
+                                                <option {{$articel->loaitinbai == \App\Model\News::BAIPR ? 'selected' : ''}} value="{{ \App\Model\News::BAIPR }}">Bài PR, quảng cáo</option>
 
                                             </select>
                                         </div>

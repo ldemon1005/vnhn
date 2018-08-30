@@ -71,6 +71,16 @@
                                             </select>
                                         </div>
                                         @endif
+                                        @if (Auth::user()->site == 1)
+                                          <div class="col-md-2">
+                                            <select class="form-control select2" multiple="multiple"
+                                                    data-placeholder="Lọc theo lần gửi" name="articel[return_num][]"
+                                                    style="width: 100%;">
+                                                <option {{isset($paramater['return_num']) && count($paramater['return_num']) ? in_array(0,$paramater['return_num']) ? 'selected' : '' : ''}} value="0">Bài mới gửi</option>
+                                                <option {{isset($paramater['return_num']) && count($paramater['return_num']) ? in_array(1,$paramater['return_num']) ? 'selected' : '' : ''}} value="1">Bài gửi lại</option>
+                                            </select>
+                                        </div>  
+                                        @endif
                                         @if(Auth::user()->site == 1 && Auth::user()->level < 3)
                                         <div class="col-md-2">
                                             <select class="form-control select2" multiple="multiple"
@@ -90,6 +100,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
+                                     <th>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thời gian' : 'Post time'}}</th>
                                     <th>Hình ảnh</th>
                                     <th class="titleTable">Tiêu đề bài viết</th>
                                     <th>Chuyên mục</th>
@@ -105,6 +116,44 @@
                                 @foreach($list_articel as $articel)
                                     @if(Auth::user()->id != $articel->userid)
                                     <tr>
+                                        <td>
+                                            <div class="articleTime">
+                                                <div class="articleTimeShow">
+                                                    <div class="articleTimeShowDay">
+                                                        {{$articel->release_time->day}}
+                                                    </div>
+                                                    <div class="articleTimeShowH">
+                                                        {{$articel->release_time->h}}
+                                                    </div>
+                                                     
+                                                </div>
+                                                <div class="articleTimeBtnEdit">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </div>
+                                                <div class="articleTimeHide">
+                                                    <div>
+                                                        <input type="date" name="articel[release_time][day]" required
+                                                           value="{{$articel->release_time->day}}" min="1000-01-01"
+                                                           max="3000-12-31" class="form-control" style="font-size: 12px;">
+                                                    </div>
+                                                    
+                                                    <div class="input-group">
+                                                        <input type="text" name="articel[release_time][h]"
+                                                               value="{{$articel->release_time->h}}" class="form-control timepicker">
+
+                                                        <div class="input-group-append btn_send_time">
+                                                            <span class="input-group-text bg-danger">
+                                                                <i class="far fa-check-circle"></i>
+                                                            </span>
+                                                        </div>
+                                                        <div class="id_group" style="display: none;">{{$articel->id}}</div>
+                                                    </div>
+                                                    <!-- /.form group -->
+                                                </div>
+                                            </div>
+
+                                                    
+                                        </td>
                                         <td>
                                             <div class="avatar">
                                                 <img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized200-'.$articel->fimage)) ? asset('local/storage/app/article/resized200-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : '../images/default-image.png')) : '../images/default-image.png' }}">
@@ -162,64 +211,77 @@
                                             @switch(Auth::user()->level)
                                                 @case(1)
                                                      @switch($articel->status)
-                                                        @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
+                                                        @case(0){{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đang chạy' : 'Running'}}
+                                                            <button class="btn btn-block btn-sm btn-default btnDeni">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Dừng' : 'Stop'}}</button>
                                                             @break
                                                         @case(1)
-                                                            <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
+                                                            <button class="btn btn-block btn-sm btn-default btnRun">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đang chạy' : 'Running'}}</button>
                                                             @break
                                                         @case(2)
-                                                            <button class="btn btn-block btn-sm btn-success btn1">Chờ duyệt lần 2</button>
+                                                            <button class="btn btn-block btn-sm btn-success btn1">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chờ duyệt lần 2' : 'Wait for approval(2)'}}</button>
                                                             @break
                                                         @case(3)
-                                                            <button class="btn btn-block btn-sm btn-success btn2">Chờ duyệt lần 1</button>
+                                                            <button class="btn btn-block btn-sm btn-success btn2">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chờ duyệt lần 1' : 'Wait for approval(1)'}}</button>
                                                             @break
                                                         @case(4)
                                                             <button class="btn btn-block btn-sm btn-success btn3">Gửi lại</button>
                                                             @break
                                                         @default
-                                                            <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                            <button class="btn btn-block btn-sm btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lỗi' : 'Error'}}</button>
                                                             @break
                                                     @endswitch
                                                     @break
                                                 @case(2) 
                                                     @switch($articel->status)
                                                         @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
+                                                            <button class="btn btn-block btn-sm btn-default btnDeni">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Dừng' : 'Stop'}}</button>
                                                             @break
                                                         @case(1)
-                                                            <button class="btn btn-block btn-sm btn-default btnRun">Đang chạy</button>
+                                                            <button class="btn btn-block btn-sm btn-default btnRun">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đang chạy' : 'Running'}}</button>
                                                             @break
                                                         @case(2)
 
-                                                            <button class="btn btn-block btn-sm btn-success btn1">Duyệt</button>
+                                                            <button class="btn btn-block btn-sm btn-success btn1">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Duyệt' : 'Approval'}}</button>
                                                             @if(isset($articel->username) && $articel->username->level == 3)
-
-                                                            <button class="btn btn-block btn-sm btn-info btn_return">Trả lại</button>
+                                                                @if (Auth::check() && Auth::user()->site == 1)
+                                                                    <button class="btn btn-block btn-sm btn-info btn_return">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại('.$articel->return_num.')' : 'Returned'}}</button>
+                                                                @else
+                                                                    <button class="btn btn-block btn-sm btn-info btn_return">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại' : 'Returned'}}</button>
+                                                                @endif
+                                                                    
                                                             @else
-                                                            <button class="btn btn-block btn-sm btn-info btn_return">Trả lại</button>
+                                                                @if (Auth::check() && Auth::user()->site == 1)
+                                                                    <button class="btn btn-block btn-sm btn-info btn_return">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại('.$articel->return_num.')' : 'Returned'}}</button>
+                                                                @else
+                                                                    <button class="btn btn-block btn-sm btn-info btn_return">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại' : 'Returned'}}</button>
+                                                                @endif
                                                             @endif
                                                             @break
 
                                                         @default
-                                                            <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                            <button class="btn btn-block btn-sm btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lỗi' : 'Error'}}</button>
                                                             @break
                                                     @endswitch
                                                     @break
                                                 @case(3)
                                                     @switch($articel->status)
                                                         @case(0)
-                                                            <button class="btn btn-block btn-sm btn-default btnDeni">Dừng</button>
+                                                            <button class="btn btn-block btn-sm btn-default btnDeni">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Dừng' : 'Stop'}}</button>
                                                             @break
                                                         @case(2)
                                                             <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
                                                             @break
                                                         @case(3)
                                                             @if(Auth::user()->id == $articel->userid)
-                                                                <button class="btn btn-block btn-sm btn-success btnComment">Gửi lại</button>
+                                                                <button class="btn btn-block btn-sm btn-success btnComment">Lý do</button>
                                                             @else
-                                                                <button class="btn btn-block btn-sm btn-success btn2">Duyệt</button>
-                                                                <button class="btn btn-block btn-sm btn-info btn_return">Trả lại</button>
+                                                                <button class="btn btn-block btn-sm btn-success btn2">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Duyệt' : 'Approval'}}</button>
+                                                                @if (Auth::user()->site == 1 )
+                                                                    <button class="btn btn-block btn-sm btn-info btn_return">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại('.$articel->return_num.')' : 'Returned'}}</button>
+                                                                @else
+                                                                    <button class="btn btn-block btn-sm btn-info btn_return">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại' : 'Returned'}}</button>
+                                                                @endif
+                                                                
                                                             @endif
                                                                 
                                                             @break
@@ -235,7 +297,7 @@
                                                             <button class="btn btn-block btn-sm btn-default">Đã gửi</button>
                                                             @break
                                                         @case(4)
-                                                            <button class="btn btn-block btn-sm btn-success btnComment">Gửi lại</button>
+                                                            <button class="btn btn-block btn-sm btn-success btnComment">Lý do</button>
                                                             @break
                                                         @default
                                                             <button class="btn btn-block btn-sm btn-default">Không</button>
@@ -243,7 +305,7 @@
                                                     @endswitch
                                                     @break
                                                 @default
-                                                    <button class="btn btn-block btn-sm btn-danger">Lỗi</button>
+                                                    <button class="btn btn-block btn-sm btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lỗi' : 'Error'}}</button>
                                                     @break
                                             @endswitch
                                             
