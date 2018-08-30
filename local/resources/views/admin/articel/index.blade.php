@@ -96,6 +96,19 @@
                                             </select>
                                         </div>
                                         @endif
+                                        @if(Auth::user()->site == 1 && Auth::user()->level < 4 && Request::segment(3) == 'returned_article' && isset($list_admin))
+                                        <div class="col-md-2">
+                                            <select class="form-control select2" multiple="multiple"
+                                                    data-placeholder="Lọc theo người trả" name="articel[member_return][]"
+                                                    style="width: 100%;">
+                                                @foreach ($list_admin as $user)
+                                                    <option {{isset($paramater['member_return']) && count($paramater['member_return']) ? in_array($user->id,$paramater['member_return']) ? 'selected' : '' : ''}} value="{{ $user->id }}">{{ $user->fullname }}</option>
+                                                @endforeach
+                                                
+                                                
+                                            </select>
+                                        </div>
+                                        @endif
                                         <div class="col float-right">
                                             <button class="btn btn-primary float-right" type="submit"><i class="fa fa-search"></i>
                                             </button>
@@ -149,7 +162,7 @@
                                                     <div class="input-group">
                                                         <input type="text" name="articel[release_time][h]"
                                                                value="{{$articel->release_time->h}}" class="form-control timepicker">
-                                                        @if ($articel->status != 1 || Auth::user()->level <=  $articel->status)
+                                                        @if ($articel->status != 1 || Auth::user()->level <=  $articel->status+1)
                                                             <div class="input-group-append btn_send_time">
                                                                 <span class="input-group-text bg-danger">
                                                                     <i class="far fa-check-circle"></i>
@@ -320,7 +333,6 @@
                                                                 <button class="btn btn-block btn-sm btn-success ">
                                                                     {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đang chạy' : 'Running' }} 
                                                                 </button>
-                                                                
                                                                 @break
                                                             @case(2)
                                                                 <button class="btn btn-block btn-sm btn-warning">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Chờ duyệt ' : 'Wait'}}</button>
@@ -449,11 +461,15 @@
                                         
                                         <td>
                                             <div class="row form-group">
-                                                @if($articel->status == Auth::user()->level || Auth::user()->level < 3)
-                                                    <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
+                                                {{-- @if ($articel->status != 1 || Auth::user()->level < 3)
+                                                    
+                                                @endif --}}
+                                                @if($articel->status >= Auth::user()->level-1 || Auth::user()->level < 3)
                                                     <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status == 1) style="display: none" @endif  onclick="return confirm('Bạn chắc chắn muốn xóa')"><i
                                                             class="fa fa-trash"></i></a>
+                                                    <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
                                                 @endif
+
                                                     
                                                 
                                                 <a style="cursor: pointer" onclick="historyArticel({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>

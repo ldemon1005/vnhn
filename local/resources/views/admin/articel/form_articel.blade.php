@@ -86,10 +86,18 @@
 
                                     <div class="row form-group">
                                         <label class="col-sm-2">Danh mục tin <span class="text-danger">*</span></label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control select2" multiple="multiple" data-placeholder="Chọn danh mục" name="articel[groupid][]" id="group" required
+                                        <div class="col-sm-5">
+                                            <select class="form-control" data-placeholder="Chọn danh mục cha" name="articel[groupid][]" id="group" required
                                                     style="width: 100%;">
                                                 @foreach($list_group as $articel_item)
+                                                    <option {{in_array($articel_item->id,$articel->groupid) ? 'selected' : ''}} value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <select class="form-control" data-placeholder="Danh mục con" name="articel[groupid_child][]" id="group_child" required
+                                                    style="width: 100%;">
+                                                @foreach($list_group_child as $articel_item)
                                                     <option {{in_array($articel_item->id,$articel->groupid) ? 'selected' : ''}} value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
                                                 @endforeach
                                             </select>
@@ -271,7 +279,7 @@
                                     </div>
                                     <div class="box-footer">    
                                         <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id ? 'Cập nhật' : 'Tạo mới' }}</button>
-                                        @if(isset($articel->return_num) && $articel->return_num > 0 && Auth::user()->id == $articel->userid && Auth::user()->level == $articel->status)
+                                        @if(isset($articel->return_num) && Auth::user()->id == $articel->userid && Auth::user()->level == $articel->status)
                                             <button type="button" class="btn btn-success btn_return pull-right" style="margin-right: 10px">Gửi lại</button>
                                         @endif
                                         
@@ -387,8 +395,6 @@
         $(document).on('change', '#group', function (e) {
             var group_id = $(this).val();
 
-            
-
             e.preventDefault();
             $.ajax({
               method: 'POST',
@@ -399,10 +405,32 @@
               },
               success: function (resp) {
                if(resp){
-                    console.log(resp);
+                    // console.log(resp);
                     setTimeout(function () {
                         $('#relate').append(resp);
                         // $('#relate').selectpicker('refresh');
+                    },200);
+                }
+
+              },
+              error: function () {
+                console.log('error');
+              }
+            });
+
+            // e.preventDefault();
+            $.ajax({
+              method: 'POST',
+              url: url+'admin/articel/group_child_from',
+              data: {
+                  '_token': $('meta[name="csrf-token"]').attr('content'),
+                  'groupid': group_id
+              },
+              success: function (resp) {
+               if(resp){
+                    console.log(resp);
+                    setTimeout(function () {
+                        $('#group_child').html(resp);
                     },200);
                 }
 

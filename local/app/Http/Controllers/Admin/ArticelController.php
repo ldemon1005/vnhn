@@ -608,8 +608,18 @@ class ArticelController extends Controller
                       ->orWhereIn('parentid',$group_ids);
             })->get()->toArray();
         }
-        if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
+        // dd($list_group);
+        if (count($list_group)){
+             // $this->recusiveGroup($list_group,0,"",$result);
+            foreach ($list_group as $group) {
+                if ($group->parentid == 0) {
+                    $result[] = $group;
+                }
+            }
+            
+        }
         else $result = [];
+        $list_group_child = [];
         $article_relate = [];
         if($id == 0){
             $data = [
@@ -643,6 +653,7 @@ class ArticelController extends Controller
 
             $articel = DB::table($this->db->news)->find($id);
             $article = News::find($id);
+            // dd($article);
             if ($article->time_hot_item - time() <= 0) {
                 $article->hot_item =  0;
                 
@@ -662,13 +673,40 @@ class ArticelController extends Controller
             if($user->level == 4 && $articel->status == 1){
                 return redirect('admin');
             }
-            $articel->groupid = explode(',',$articel->groupid);
+            $groupids = explode(',',$articel->groupid);
+            // dd($groupids);
+            unset($articel->groupid);
+            $articel->groupid = [];
+            foreach ($groupids as $groupid) {
+                $group = DB::table($this->db->group)->where('status', 1)->where('id', $groupid)->first();
+                
+                if ($group->parentid == 0 ) {
+                    $articel->groupid[] = $group->id;
+                    $group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $group->id)->get();
+                    foreach ($group_child as $gr_child) {
+                        $list_group_child[] = $gr_child->id;
+                    }
+                }
+                else{
+
+                    $articel->groupid_child[] = $group->id;
+                }
+            }
+            // dd($articel);
             $articel->relate = explode(',',$articel->relate);
-            $article_relate = DB::table($this->db->news)->whereIn('groupid', $articel->groupid)->get();
+            
+            if (count($articel->groupid)) {
+                $article_relate = DB::table($this->db->news)->whereIn('groupid', $articel->groupid)->get();
+            }
+            else{
+                $article_relate = DB::table($this->db->news)->whereIn('groupid', $articel->groupid_child)->get();
+            }
+            
+            // dd($articel);
             $content = DB::table($this->db->logfile)->orderByDesc('id')->where('noidung', '!=' , null)->where('LogId',$articel->id)->first();
             $articel->content = $content ? $content->noidung : '';
 
-            // dd($data);
+            // dd($articel);
             
             $articel->time_hot_item = round($articel->time_hot_item - time() > 0? ($articel->time_hot_item - time())/3600 : 0 );
             $articel->time_hot_main = round($articel->time_hot_main - time() > 0? ($articel->time_hot_main - time())/3600 : 0 );
@@ -679,14 +717,16 @@ class ArticelController extends Controller
                 'day' => date('Y-m-d',$date),
                 'h' => date('h:i A',$date)
             ];
-        }
 
+        }
+        dd($list_group_child);
         $data = [
             'articel' => $articel,
             'list_group' => $result,
+            'list_group_child' => $list_group_child,
             'article_relate' => $article_relate
         ];
-
+        
         return view('admin.articel.form_articel',$data);
     }
 
@@ -720,12 +760,17 @@ class ArticelController extends Controller
 
         $content = $data['content'];
         unset($data['content']);
-        $data['groupid'] = join(',',$data['groupid']);
+        // $data['groupid'] = join(',',$data['groupid']);
         if (isset($data['relate']) &&$data['relate'] != null) {
            $data['relate'] = join(',',$data['relate']);
         }
-        
-
+        if (isset($data['groupid_child'])) {
+            $data['groupid'] = join(',',$data['groupid_child']);
+        }
+        else{
+             $data['groupid'] = join(',',$data['groupid']);
+        }
+        unset($data['groupid_child']);
 
         
 
@@ -1113,6 +1158,7 @@ class ArticelController extends Controller
     }
 
     public function returned_article(Request $request){
+        $list_admin = Account::where('level', 2)->get();
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
         if($user->group_id == '0'){
@@ -1157,6 +1203,7 @@ class ArticelController extends Controller
         $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
         $site = isset($paramater['site']) ? $paramater['site'] : [];
+        $member_return = isset($paramater['member_return']) ? $paramater['member_return'] : [];
         // $group_id = [1455];
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
 
@@ -1191,9 +1238,21 @@ class ArticelController extends Controller
             // dd($list_articel->get());
         }
 
-            $list_acc_ids = Account::where('site', $user->site)->where('level', '>', $user->level)->get(['id'])->toArray();
-            $list_articel = $list_articel->whereIn('userid',$list_acc_ids);
+        $list_acc_ids = Account::where('site', $user->site)->where('level', '>', $user->level)->get(['id'])->toArray();
+
+        $list_articel = $list_articel->whereIn('userid',$list_acc_ids);
         
+        if (count($member_return)) {
+
+            $list_return = $list_articel->get(['id'])->toArray();
+            $list_return = array_column(json_decode(json_encode($list_return),true),'id');
+            // dd($list_return);
+            $list_log_return = LogFile_vn::whereIn('LogId', $list_return)->whereIn('userId', $member_return)->where('TrangthaiID', 4)->get(['LogId'])->toArray();
+            // $list_log_return = array_column(json_decode(json_encode($list_log_return),true),'LogId');
+            $list_articel =  $list_articel->whereIn('id', $list_log_return);
+
+        }
+            
       
 
         $list_articel = $list_articel->paginate(10);
@@ -1255,6 +1314,7 @@ class ArticelController extends Controller
         }
 
         $data = [
+            'list_admin' => $list_admin,
             'list_group' => $result,
             'list_articel' => $list_articel,
             'paramater' => $paramater,
@@ -1521,6 +1581,28 @@ class ArticelController extends Controller
         ];
 
         $view = View::make('admin.articel.relate',$data)->render();
+        return response($view, 200);
+        // // return json_encode([
+        // //     'content' => $group_id
+        // // ]);
+        // return json_encode([
+        //     'content' => $view
+        // ]);
+    }
+    public function  get_group_child_form(){
+
+        $parentid = Input::get('groupid');
+        // $group_id = explode(',',$group_id);
+        
+        $list_group = DB::table($this->db->group)->where('status', 1)->get();
+        // dd($parentid);
+        $data['list_group_child'] = DB::table($this->db->group)->where('parentid', $parentid)->get();
+        // dd($list_group_child);
+        // $list_article = DB::table($this->db->news)->whereIn('groupid',$group_id)->get();
+
+       
+
+        $view = View::make('admin.articel.group_form',$data)->render();
         return response($view, 200);
         // // return json_encode([
         // //     'content' => $group_id

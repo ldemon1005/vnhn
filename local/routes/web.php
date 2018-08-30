@@ -96,6 +96,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/update_status/{id}','ArticelController@update_status')->name('update_status');
             Route::get('/approved', 'ArticelController@approved');
             Route::get('/approved_cgroup', 'ArticelController@approved_cgroup');
+
             Route::get('/post_article', 'ArticelController@post_article')->name('post_article');
             Route::get('/returned_article', 'ArticelController@returned_article')->name('returned_article');
 
@@ -114,6 +115,7 @@ Route::group(['namespace' => 'Admin'], function (){
 
             Route::post('set_time', 'ArticelController@set_time');
 
+            Route::post('group_child_from', 'ArticelController@get_group_child_form');
 
             Route::get('/fix_bug','ArticelController@fix_bug');
 
