@@ -27,6 +27,11 @@ class ArticelController extends Controller
         /*
          *  lấy danh sách danh mục
          */
+
+        $from = strtotime(date('Y-m-1 0:0'));
+
+        $to = time();
+
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
         if($user->group_id == '0'){
@@ -64,10 +69,10 @@ class ArticelController extends Controller
                 $status = [0,1];
                 break;
             case 3:
-                $status = [0,1,2,3];
+                $status = [0,1,2,3,5];
                 break;
             case 4:
-                $status = [0,1,2,3,4];
+                $status = [0,1,2,3,4,5];
                 break;
 
             default:
@@ -88,10 +93,21 @@ class ArticelController extends Controller
         $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
         $site = isset($paramater['site']) ? $paramater['site'] : [];
+        $member = isset($paramater['member']) ? $paramater['member'] : [];
         // $group_id = [1455];
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
 
+        if (isset($paramater['from']) && isset($paramater['to'])){
+            $from = strtotime($paramater['from']."00:00");
+            $to = strtotime($paramater['to']."23:59");
+            
+            $list_articel = $list_articel->where('created_at','>=',$from)->where('created_at','<=',$to);
+
+        }
+        
+        
         if(count($status)){
+            // dd($list_articel->get());
             if (isset($paramater['status']) && Auth::user()->level == 4 && in_array(2, $status)) {
                 $list_articel = $list_articel->where(function ($query) use ($key_search){
                 $query->where('status', 2)
@@ -104,7 +120,15 @@ class ArticelController extends Controller
             
         }
 
-
+        if (Auth::user()->site == 1) {
+            $list_member = Account::where('status', 1)->get();
+        }
+        else{
+            $list_member = Account::where('status', 1)->where('site', Auth::user()->site)->get();
+        }
+        if (count($member)) {
+            $list_articel = $list_articel->whereIn('userid',$member);
+        }
 
         if(count($group_id)){
             $list_articel_ids = DB::table($this->db->group_news)->whereIn('group_vn_id',$group_id)->get(['news_vn_id'])->toArray();
@@ -123,7 +147,9 @@ class ArticelController extends Controller
         }
         if (Auth::user()->level < 3 && Auth::user()->site == 1) {
             if(count($site)){
+
                 $list_acc_ids = Account::whereIn('site', $site)->get(['id'])->toArray();
+                
                 $list_articel = $list_articel->whereIn('userid',$list_acc_ids);
             }
         }
@@ -136,7 +162,7 @@ class ArticelController extends Controller
         if (Auth::user()->level > 2) {
             $list_articel =  $list_articel->where('userid', Auth::user()->id);
         }
-
+        // dd($list_articel->get());
         $list_articel = $list_articel->paginate(10);
 
         // foreach ($list_articel as $item) {
@@ -161,6 +187,18 @@ class ArticelController extends Controller
         }
         if(isset($paramater_return['key_search'])){
             $list_articel->appends(['key_search' => $paramater_return['key_search']]);
+        }
+        if(isset($paramater_return['site'])){
+            $list_articel->appends(['site' => $paramater_return['site']]);
+        }
+        if(isset($paramater_return['member'])){
+            $list_articel->appends(['member' => $paramater_return['member']]);
+        }
+        if(isset($paramater_return['from'])){
+            $list_articel->appends(['from' => $paramater_return['from']]);
+        }
+        if(isset($paramater_return['to'])){
+            $list_articel->appends(['to' => $paramater_return['to']]);
         }
 
         foreach ($list_articel as $val) {
@@ -199,7 +237,7 @@ class ArticelController extends Controller
             }
                 
         }
-
+        // dd($list_articel);
         if(!$paramater){
             $paramater = [
                 'key_search' => '',
@@ -207,12 +245,17 @@ class ArticelController extends Controller
                 'status' => []
             ];
         }
-
+        // $from = strtotime($from);
+        // $to = strtotime($to);
         $data = [
+            'list_member' => $list_member,
             'list_group' => $result,
             'list_articel' => $list_articel,
             'paramater' => $paramater,
+            'from' =>  date('d/m/Y H:m',$from),
+            'to' => date('d/m/Y H:m',$to)
         ];
+        // dd($data);
         
         return view('admin.articel.index', $data);
             
@@ -417,27 +460,20 @@ class ArticelController extends Controller
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
         $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-        // if($user->group_id == '0'){
-            
-        // }else {
-        //     $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
-        //         $query->whereIn('id',$group_ids)
-        //               ->orWhereIn('parentid',$group_ids);
-        //     })->get()->toArray();
-        // }
+        
         if (count($list_group)) $this->recusiveGroup($list_group,0,"",$result);
         else $result = [];
         
 
-        if (in_array(0 ,$group_ids)) {
-            $group_ids = [];
-        }
-        else{
-            foreach ($list_group as $group) {
-                $group_ids[] = (int)$group->id;
-            }
+        // if (in_array(0 ,$group_ids)) {
+        //     $group_ids = [];
+        // }
+        // else{
+        //     foreach ($list_group as $group) {
+        //         $group_ids[] = (int)$group->id;
+        //     }
             
-        }
+        // }
 
         /*
          *  lấy danh sách bài viết
@@ -469,7 +505,7 @@ class ArticelController extends Controller
         $paramater_return = $paramater;
 
 
-        $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : $group_ids;
+        $group_id = isset($paramater['group_id']) ? $paramater['group_id'] : [];
         if (Auth::user()->level == 1) {
             $status = isset($paramater['status']) ? $paramater['status'] : $status;
         }
@@ -516,8 +552,8 @@ class ArticelController extends Controller
         else{
             $list_articel =  $list_articel->whereNotIn('userid', [Auth::user()->id]);
         }
-        
-        $list_articel = $list_articel->where('return_num', '==', 0)->paginate(10);
+        // dd($list_articel->get());
+        $list_articel = $list_articel->where('return_num', 0)->paginate(10);
         // dd($list_articel);
         if(isset($paramater_return['status'])){
             $list_articel->appends(['status' => $paramater_return['status']]);
@@ -600,28 +636,32 @@ class ArticelController extends Controller
 
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
-            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-        }else {
-            $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
-                $query->whereIn('id',$group_ids)
-                      ->orWhereIn('parentid',$group_ids);
-            })->get()->toArray();
-        }
+        
         // dd($list_group);
-        if (count($list_group)){
-             // $this->recusiveGroup($list_group,0,"",$result);
-            foreach ($list_group as $group) {
-                if ($group->parentid == 0) {
-                    $result[] = $group;
-                }
-            }
-            
-        }
-        else $result = [];
+        
+        
         $list_group_child = [];
         $article_relate = [];
         if($id == 0){
+            if($user->group_id == '0'){
+                $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+            }else {
+                $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
+                    $query->whereIn('id',$group_ids)
+                          ->orWhereIn('parentid',$group_ids);
+                })->get()->toArray();
+            }
+
+            if (count($list_group)){
+                 // $this->recusiveGroup($list_group,0,"",$result);
+                foreach ($list_group as $group) {
+                    if ($group->parentid == 0) {
+                        $result[] = $group;
+                    }
+                }
+                
+            }
+            else $result = [];
             $data = [
                 'id' => 0,
                 'title' => '',
@@ -646,97 +686,162 @@ class ArticelController extends Controller
                 'time_hot_item' => 0,
                 'hot_tiny' => 0,
                 'time_hot_tiny' => 0,
-                'loaitinbai' => 0
+                'loaitinbai' => 0,
+                'status' => 5
             ];
-            $articel = (object)$data;
+            $article = (object)$data;
         }else{
 
-            $articel = DB::table($this->db->news)->find($id);
-            $article = News::find($id);
-            // dd($article);
-            if ($article->time_hot_item - time() <= 0) {
-                $article->hot_item =  0;
-                
+            $article = DB::table($this->db->news)->find($id);
+            $article_model = News::find($id);
+
+            $article_user = Account::find($article_model->userid);
+            $article_group_ids = explode(',',$article_user->group_id);
+            // dd($article_group_ids );
+            
+
+            if($article_group_ids == '0'){
+                $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+            }else{
+                $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($article_group_ids){
+                    $query->whereIn('id',$article_group_ids)
+                          ->orWhereIn('parentid',$article_group_ids);
+                })->get()->toArray();
             }
-            if ($article->time_hot_main - time() <= 0) {
-                $article->hot_main =  0;
-                
-            }
-            if ($article->time_hot_tiny - time() <= 0) {
-                $article->hot_tiny =  0;
-                
-            }
-            $article->save();
-            if ($user->level == 4 && $articel->userid != $user->id) {
-                return redirect('admin');
-            }
-            if($user->level == 4 && $articel->status == 1){
-                return redirect('admin');
-            }
-            $groupids = explode(',',$articel->groupid);
-            // dd($groupids);
-            unset($articel->groupid);
-            $articel->groupid = [];
-            foreach ($groupids as $groupid) {
-                $group = DB::table($this->db->group)->where('status', 1)->where('id', $groupid)->first();
-                
-                if ($group->parentid == 0 ) {
-                    $articel->groupid[] = $group->id;
-                    $group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $group->id)->get();
-                    foreach ($group_child as $gr_child) {
-                        $list_group_child[] = $gr_child->id;
+
+            
+            // $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+            if (count($list_group)){
+                 // $this->recusiveGroup($list_group,0,"",$result);
+                foreach ($list_group as $group) {
+                    if ($group->parentid == 0) {
+                        $result[] = $group;
                     }
                 }
-                else{
-
-                    $articel->groupid_child[] = $group->id;
-                }
             }
-            // dd($articel);
-            $articel->relate = explode(',',$articel->relate);
+            else $result = [];
             
-            if (count($articel->groupid)) {
-                $article_relate = DB::table($this->db->news)->whereIn('groupid', $articel->groupid)->get();
+            // dd($article);
+            if ($article_model->time_hot_item - time() <= 0) {
+                $article_model->hot_item =  0;
+                $update['hot_item'] = 0;
+            }
+            if ($article_model->time_hot_main - time() <= 0) {
+                $article_model->hot_main =  0;
+                $update['hot_main'] = 0;
+                
+            }
+            if ($article_model->time_hot_tiny - time() <= 0) {
+                $article_model->hot_tiny =  0;
+                $update['hot_tiny'] = 0;
+            }
+            if (isset($update)) {
+                // dd($update);
+                $article_model->update($update);
+            }
+            if ($user->level == 4 && $article->userid != $user->id) {
+                return redirect('admin');
+            }
+            if($user->level == 4 && $article->status == 1){
+                return redirect('admin');
+            }
+            $groupids = explode(',',$article->groupid);
+            // dd($groupids);
+            $groupid = $groupids[0];
+
+            unset($article->groupid);
+            
+            
+            
+            $group = DB::table($this->db->group)->where('status', 1)->where('id', $groupid)->first();
+            if ($group->parentid == 0 ) {
+                $article->groupid = $group->id;
+                $list_group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $group->id)->get();
+
             }
             else{
-                $article_relate = DB::table($this->db->news)->whereIn('groupid', $articel->groupid_child)->get();
+                $article->groupid = DB::table($this->db->group)->where('status', 1)->where('id', $group->parentid)->first()->id;
+                $article->groupid_child = $group->id;
+                $list_group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $article->groupid)->get();
+
+
+            }
+            // foreach ($groupids as $groupid) {
+            //     $group = DB::table($this->db->group)->where('status', 1)->where('id', $groupid)->first();
+                
+            //     if ($group->parentid == 0 ) {
+            //         $article->groupid[] = $group->id;
+
+            //         $group_child = DB::table($this->db->group)->where('status', 1)->where('parentid', $group->id)->get();
+            //         foreach ($group_child as $gr_child) {
+            //             $list_group_child[] = $gr_child->id;
+            //         }
+
+            //     }
+            //     else{
+            //         $list_group_child[] = $group->id;
+            //         $article->groupid[] = DB::table($this->db->group)->where('status', 1)->where('id', $group->parentid)->first()->id;
+
+            //     }
+            // }
+            // $article->groupid_child = $list_group_child;
+
+            
+            $article->relate = explode(',',$article->relate);
+            
+            if (isset($article->groupid_child)) {
+                $list_articel_ids = DB::table($this->db->group_news)->where('group_vn_id',$article->groupid_child)->get(['news_vn_id'])->toArray();
+                $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
+
+                $article_relate = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->get();
+            }
+            else{
+                $article->groupid_child = null;
+                $list_articel_ids = DB::table($this->db->group_news)->where('group_vn_id',$article->groupid)->get(['news_vn_id'])->toArray();
+                $list_articel_ids = array_column(json_decode(json_encode($list_articel_ids),true),'news_vn_id');
+
+                $article_relate = DB::table($this->db->news)->whereIn('id',$list_articel_ids)->get();
+                
             }
             
-            // dd($articel);
-            $content = DB::table($this->db->logfile)->orderByDesc('id')->where('noidung', '!=' , null)->where('LogId',$articel->id)->first();
-            $articel->content = $content ? $content->noidung : '';
+            // dd($article);
+            $content = DB::table($this->db->logfile)->orderByDesc('id')->where('noidung', '!=' , null)->where('LogId',$article->id)->first();
+            $article->content = $content ? $content->noidung : '';
 
-            // dd($articel);
+            // dd($article);
             
-            $articel->time_hot_item = round($articel->time_hot_item - time() > 0? ($articel->time_hot_item - time())/3600 : 0 );
-            $articel->time_hot_main = round($articel->time_hot_main - time() > 0? ($articel->time_hot_main - time())/3600 : 0 );
-            $articel->time_hot_tiny = round($articel->time_hot_tiny - time() > 0? ($articel->time_hot_tiny - time())/3600 : 0 );
-            $date = $articel->release_time;
+            $article->time_hot_item = round($article->time_hot_item - time() > 0? ($article->time_hot_item - time())/3600 : 0 );
+            $article->time_hot_main = round($article->time_hot_main - time() > 0? ($article->time_hot_main - time())/3600 : 0 );
+            $article->time_hot_tiny = round($article->time_hot_tiny - time() > 0? ($article->time_hot_tiny - time())/3600 : 0 );
+            $date = $article->release_time;
 
-            $articel->release_time = (object)[
+            $article->release_time = (object)[
                 'day' => date('Y-m-d',$date),
                 'h' => date('h:i A',$date)
             ];
+            
 
         }
-        dd($list_group_child);
+        
         $data = [
-            'articel' => $articel,
+            'articel' => $article,
             'list_group' => $result,
             'list_group_child' => $list_group_child,
             'article_relate' => $article_relate
         ];
+        // dd($data);
         
         return view('admin.articel.form_articel',$data);
     }
 
     public function action_articel(Request $request){
         $data = $request->get('articel');
+        // dd($request->all());
         // dd($data);
         $data['release_time'] = strtotime($data['release_time']['day'].' '.$data['release_time']['h']);
 
         // $status = $this->get_status()['status'];
-         switch (Auth::user()->level) {
+        switch (Auth::user()->level) {
             case 1:
                 $status = 1;
                 break;
@@ -753,7 +858,11 @@ class ArticelController extends Controller
                 $status = 0;
                 break;
         }
-        
+        if ($request->get('sbm_save') != null) {
+            $status = 5;
+        }
+
+        // dd($status);
         $status_str = $this->get_status()['status_str'];
         
         $group_id = $data['groupid'];
@@ -765,12 +874,15 @@ class ArticelController extends Controller
            $data['relate'] = join(',',$data['relate']);
         }
         if (isset($data['groupid_child'])) {
-            $data['groupid'] = join(',',$data['groupid_child']);
+            $data['groupid'] = $data['groupid_child'];
+            $groupid_child = $data['groupid_child'];
+            unset($data['groupid_child']);
         }
         else{
-             $data['groupid'] = join(',',$data['groupid']);
+            $data['groupid'] = $data['groupid'];
+            $groupid_child = $data['groupid'];
         }
-        unset($data['groupid_child']);
+        
 
         
 
@@ -844,24 +956,42 @@ class ArticelController extends Controller
 
             $data_group_news = [];
 
-            if(count($group_id)){
-                foreach ($group_id as $val){
-                    if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
-                        $item = [
-                            'group_vn_id' => $val,
-                            'news_vn_id' => (string)$articel->id,
-                            'hot' => 1
-                        ];
-                    }else{
-                        $item = [
-                            'group_vn_id' => $val,
-                            'news_vn_id' => (string)$articel->id,
-                            'hot' => 0
-                        ];
-                    }
-                    $data_group_news[] = $item;
+            // if(isset($group_id)){
+            //     foreach ($group_id as $val){
+            //         if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
+            //             $item = [
+            //                 'group_vn_id' => $val,
+            //                 'news_vn_id' => (string)$articel->id,
+            //                 'hot' => 1
+            //             ];
+            //         }else{
+            //             $item = [
+            //                 'group_vn_id' => $val,
+            //                 'news_vn_id' => (string)$articel->id,
+            //                 'hot' => 0
+            //             ];
+            //         }
+            //         $data_group_news[] = $item;
+            //     }
+            // }
+
+            if (isset($groupid_child)) {
+                if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
+                    $item = [
+                        'group_vn_id' => $groupid_child,
+                        'news_vn_id' => (string)$articel->id,
+                        'hot' => 1
+                    ];
+                }else{
+                    $item = [
+                        'group_vn_id' => $groupid_child,
+                        'news_vn_id' => (string)$articel->id,
+                        'hot' => 0
+                    ];
                 }
+                $data_group_news[] = $item;
             }
+            
             if(count($data_group_news)){
                 if(!DB::table($this->db->group_news)->insert($data_group_news)) $check = 0;
 
@@ -870,7 +1000,10 @@ class ArticelController extends Controller
             if(!$this->add_log($articel,$status,"Tạo mới,".$status_str)) $check = 0;
             if($check == 1){
                 DB::commit();
-                return redirect()->route('admin_articel')->with('status','Tạo mới thành công');
+                if ($request->get('sbm_save') != null) {
+                    return redirect()->route('admin_articel')->with('success','Lưu bài thành công');
+                }
+                return redirect()->route('admin_articel')->with('success','Tạo mới thành công');
             }else {
                 DB::rollBack();
                 $data['content'] = $content;
@@ -926,36 +1059,58 @@ class ArticelController extends Controller
                 }
                 // dd($send);
                 unset($data['send']);
-                
+
+                if ($articel->status == 5) {
+                    $data['status'] = $status;
+                }
+
                 if(!$articel->update($data)){$check = 0;}
-
-                if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}
-
+                // dd(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->get());
+                if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <= 0) {}
+                
                 $data_group_news = [];
 
-                if(count($group_id)){
-                    foreach ($group_id as $val){
-                        if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
-                            $item = [
-                                'group_vn_id' => $val,
-                                'news_vn_id' => (string)$articel->id,
-                                'hot' => 1
-                            ];
-                        }else{
-                            $item = [
-                                'group_vn_id' => $val,
-                                'news_vn_id' => (string)$articel->id,
-                                'hot' => 0
-                            ];
-                        }
+                // if(count($group_id)){
+                //     foreach ($group_id as $val){
+                //         if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
+                //             $item = [
+                //                 'group_vn_id' => $val,
+                //                 'news_vn_id' => (string)$articel->id,
+                //                 'hot' => 1
+                //             ];
+                //         }else{
+                //             $item = [
+                //                 'group_vn_id' => $val,
+                //                 'news_vn_id' => (string)$articel->id,
+                //                 'hot' => 0
+                //             ];
+                //         }
 
-                        $data_group_news[] = $item;
+                //         $data_group_news[] = $item;
+                //     }
+                // }
+
+                if (isset($groupid_child)) {
+                    if($data['hot_item'] == 1 || $data['hot_tiny'] == 1){
+                        $item = [
+                            'group_vn_id' => $groupid_child,
+                            'news_vn_id' => (string)$articel->id,
+                            'hot' => 1
+                        ];
+                    }else{
+                        $item = [
+                            'group_vn_id' => $groupid_child,
+                            'news_vn_id' => (string)$articel->id,
+                            'hot' => 0
+                        ];
                     }
+                    $data_group_news[] = $item;
                 }
 
                 if(count($data_group_news)){
                     if(!DB::table($this->db->group_news)->insert($data_group_news)){$check = 0;}
                 }
+
 
                 $articel->content = $content;
                 if ($send == '1') {
@@ -967,6 +1122,9 @@ class ArticelController extends Controller
                 
                 if($check == 1){
                     DB::commit();
+                    if ($request->get('sbm_save') != null) {
+                        return back()->with('success','Lưu bài thành công');
+                    }
                     if ($send == '1') {
                         return back()->with('success','Gửi lại thành công');
                     }
@@ -983,6 +1141,9 @@ class ArticelController extends Controller
                     $data['release_time']['day'] = date('Y-m-d',$date);
                     $data['release_time']['h'] = date('h:i A',$date);
                     $data['groupid'] = $group_id;
+                    if ($request->get('sbm_save') != null) {
+                        return redirect()->route('form_articel')->with('error','Lưu bài không thành công');
+                    }
                     return redirect()->route('form_articel',$articel->id)->with('error','Cập nhật không thành công')->with('articel',$data);
                 }
             }
@@ -1051,6 +1212,7 @@ class ArticelController extends Controller
         $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
         $site = isset($paramater['site']) ? $paramater['site'] : [];
+        $member = isset($paramater['member']) ? $paramater['member'] : [];
         // $group_id = [1455];
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
 
@@ -1065,6 +1227,17 @@ class ArticelController extends Controller
                 $list_articel = $list_articel->whereIn('status',$status);
             }
             
+        }
+
+        //lọc theo thành viên
+        if (Auth::user()->level < 3) {
+            $list_member = Account::where('status', 1)->get();
+        }
+        else{
+            $list_member = Account::where('status', 1)->where('site', Auth::user()->site)->where('level', '>', Auth::user()->level)->get();
+        }
+        if (count($member)) {
+            $list_articel = $list_articel->whereIn('userid',$member);
         }
 
 
@@ -1101,6 +1274,12 @@ class ArticelController extends Controller
         }
         if(isset($paramater_return['key_search'])){
             $list_articel->appends(['key_search' => $paramater_return['key_search']]);
+        }
+        if(isset($paramater_return['site'])){
+            $list_articel->appends(['site' => $paramater_return['site']]);
+        }
+        if(isset($paramater_return['member'])){
+            $list_articel->appends(['member' => $paramater_return['member']]);
         }
 
         foreach ($list_articel as $val) {
@@ -1149,12 +1328,13 @@ class ArticelController extends Controller
         }
 
         $data = [
+            'list_member' => $list_member,
             'list_group' => $result,
             'list_articel' => $list_articel,
-            'paramater' => $paramater,
+            'paramater' => $paramater
         ];
         
-        return view('admin.articel.index', $data);
+        return view('admin.articel.post_article', $data);
     }
 
     public function returned_article(Request $request){
@@ -1203,6 +1383,7 @@ class ArticelController extends Controller
         $status = isset($paramater['status']) ? $paramater['status'] : $status;
         $key_search = isset($paramater['key_search']) ? $paramater['key_search'] : [];
         $site = isset($paramater['site']) ? $paramater['site'] : [];
+        $member = isset($paramater['member']) ? $paramater['member'] : [];
         $member_return = isset($paramater['member_return']) ? $paramater['member_return'] : [];
         // $group_id = [1455];
         $list_articel = DB::table($this->db->news)->orderByDesc('id');
@@ -1218,6 +1399,17 @@ class ArticelController extends Controller
                 $list_articel = $list_articel->whereIn('status',$status);
             }
             
+        }
+
+        //lọc theo thành viên
+        if (Auth::user()->level < 3) {
+            $list_member = Account::where('status', 1)->get();
+        }
+        else{
+            $list_member = Account::where('status', 1)->where('site', Auth::user()->site)->where('level', '>', Auth::user()->level)->get();
+        }
+        if (count($member)) {
+            $list_articel = $list_articel->whereIn('userid',$member);
         }
 
 
@@ -1267,6 +1459,12 @@ class ArticelController extends Controller
         if(isset($paramater_return['key_search'])){
             $list_articel->appends(['key_search' => $paramater_return['key_search']]);
         }
+        if(isset($paramater_return['member'])){
+            $list_articel->appends(['member' => $paramater_return['member']]);
+        }
+        if(isset($paramater_return['member_return'])){
+            $list_articel->appends(['member_return' => $paramater_return['member_return']]);
+        }
 
         foreach ($list_articel as $val) {
             $val->created_at = date('d/m/Y H:m', $val->created_at);
@@ -1314,13 +1512,14 @@ class ArticelController extends Controller
         }
 
         $data = [
+            'list_member' => $list_member,
             'list_admin' => $list_admin,
             'list_group' => $result,
             'list_articel' => $list_articel,
             'paramater' => $paramater,
         ];
         
-        return view('admin.articel.index', $data);
+        return view('admin.articel.return_article', $data);
     }
 
     
@@ -1342,7 +1541,7 @@ class ArticelController extends Controller
 
         if(DB::table($this->db->logfile)->where('LogId',$id)->delete() <= 0) $check = 0;
 
-        if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <=0) {$check = 0;}
+        if(DB::table($this->db->group_news)->where('news_vn_id',$articel->id)->delete() <=0) {}
 
         if(!$articel->delete()) $check = 0;
 
@@ -1572,9 +1771,14 @@ class ArticelController extends Controller
     public function  get_relate(){
         $group_id = Input::get('groupid');
         // $group_id = explode(',',$group_id);
-
-        
-        $list_article = DB::table($this->db->news)->whereIn('groupid',$group_id)->get();
+        $group =  Group_vn::find($group_id);
+        if ($group->parentid == 0) {
+            $group_child = Group_vn::where('parentid', $group_id)->where('status',1)->get(['id'])->toArray();
+            $list_article = DB::table($this->db->news)->whereIn('groupid',$group_child )->where('status',1)->where('release_time', '<=', time())->orderByDesc('id')->get();
+            // return response($list_article, 200);
+        }else{
+            $list_article = DB::table($this->db->news)->whereIn('groupid',[$group_id])->where('status',1)->where('release_time', '<=', time())->orderByDesc('id')->get();
+        }        
 
         $data = [
             'list_article' => $list_article

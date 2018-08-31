@@ -44,7 +44,12 @@
 	padding: 5px 0;
 	margin-bottom: 20px;
 }
-
+.mainDetailLeftRelate ul li{
+	color: #ef3443;
+}
+.mainDetailLeftRelate ul li a{
+	color: #ef3443;
+}
 
 .mainDetailRight{
 	width: 300px;

@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title', 'Quản trị')
+@section('title', 'Phê duyệt')
 @section('main')
 
     <div class="content-wrapper">
@@ -316,9 +316,11 @@
                                                 @if($articel->status != 1 || Auth::user()->level < 3)
                                                     <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
                                                 @endif
-                                                    
-                                                <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status == 1) style="display: none" @endif  onclick="return confirm('Bạn chắc chắn muốn xóa')"><i
+                                                @if (Auth::user()->site == 1 || Request::segment(3) != 'approved_cgroup')
+                                                    <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status == 1) style="display: none" @endif  onclick="return confirm('Bạn chắc chắn muốn xóa')"><i
                                                             class="fa fa-trash"></i></a>
+                                                @endif
+                                                
                                                 <a style="cursor: pointer" onclick="historyArticel({{$articel->id}})"   title="Lịch sử" class="col-sm-4 text-dark"><i class="fa fa-book"></i></a>
                                                 
                                             </div>

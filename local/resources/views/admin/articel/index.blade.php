@@ -1,7 +1,11 @@
 @extends('admin.master')
 @section('title', 'Quản trị')
 @section('main')
-
+    <style type="text/css">
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+    </style>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -46,10 +50,10 @@
                                 {{--{{dd($paramater)}}--}}
                                 <form action="{{ url('/admin/articel/'.Request::segment(3)) }}" method="get">
                                     <div class="row form-group">
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 mb-2">
                                             <input value="{{isset($paramater['key_search']) ? $paramater['key_search'] : ''}}" class="form-control" name="articel[key_search]" placeholder="Từ khóa tìm kiếm">
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mb-2">
                                             <select class="form-control select2" multiple="multiple"
                                                     data-placeholder="Lọc theo danh mục" name="articel[group_id][]"
                                                     style="width: 100%;">
@@ -62,9 +66,9 @@
 
                                         @if(Request::segment(3) == null)
                                         
-                                        <div class="col-md-2">
+                                        <div class="col-md-1 mb-2">
                                             <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Lọc theo trạng thái" name="articel[status][]"
+                                                    data-placeholder="Trạng thái" name="articel[status][]"
                                                     style="width: 100%;">
                                                 {{-- @if(Auth::user()->level == 2 || Auth::user()->level == 1 ) --}}
                                                 <option {{isset($paramater['status']) && count($paramater['status']) ? in_array(0,$paramater['status']) ? 'selected' : '' : ''}} value="0">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Dừng' : 'Stop'}}</option>
@@ -87,17 +91,29 @@
 
                                         @endif
                                         @if(Auth::user()->site == 1 && Auth::user()->level < 3)
-                                        <div class="col-md-2">
+                                        <div class="col-md-1 mb-2">
                                             <select class="form-control select2" multiple="multiple"
-                                                    data-placeholder="Lọc theo công ty" name="articel[site][]"
+                                                    data-placeholder="Công ty" name="articel[site][]"
                                                     style="width: 100%;">
                                                 <option {{isset($paramater['site']) && count($paramater['site']) ? in_array(1,$paramater['site']) ? 'selected' : '' : ''}} value="1">Cgroup</option>
                                                 <option {{isset($paramater['site']) && count($paramater['site']) ? in_array(2,$paramater['site']) ? 'selected' : '' : ''}} value="2">VNHN</option>
                                             </select>
                                         </div>
                                         @endif
+                                        @if(Auth::user()->level < 3)
+                                        <div class="col-md-2 mb-2">
+                                            <select class="form-control select2" multiple="multiple"
+                                                    data-placeholder="Thành viên" name="articel[member][]"
+                                                    style="width: 100%;">
+                                                @foreach ($list_member as $account)
+                                                    <option {{isset($paramater['member']) && count($paramater['member']) ? in_array($account->id, $paramater['member']) ? 'selected' : '' : ''}} value="{{ $account->id }}">{{ $account->username }}</option>
+                                                @endforeach
+                                                
+                                            </select>
+                                        </div>
+                                        @endif
                                         @if(Auth::user()->site == 1 && Auth::user()->level < 4 && Request::segment(3) == 'returned_article' && isset($list_admin))
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mb-2">
                                             <select class="form-control select2" multiple="multiple"
                                                     data-placeholder="Lọc theo người trả" name="articel[member_return][]"
                                                     style="width: 100%;">
@@ -109,7 +125,17 @@
                                             </select>
                                         </div>
                                         @endif
-                                        <div class="col float-right">
+                                        <div class="com-md-3 mb-2 d-flex">
+                                            <div class="mr-2">
+                                                <button type="button" class="btn btn-default" title="{{ isset($paramater['from']) ? $paramater['from'] : ''}} - {{ isset($paramater['to']) ? $paramater['to'] : ''}}" 
+                                                        id="daterange-btn"><span><i class="fa fa-calendar"></i></span>
+                                                </button>
+                                                <input id="from" name="articel[from]" class="d-none">
+                                                <input id="to" name="articel[to]" class="d-none">
+                                            </div>
+                                            <div class="mt-1"><b>{{$from}} <span class="text-warning">đến</span> {{$to}}</b></div>
+                                        </div>
+                                        <div class="col mb-2 float-right">
                                             <button class="btn btn-primary float-right" type="submit"><i class="fa fa-search"></i>
                                             </button>
                                         </div>
@@ -317,6 +343,10 @@
                                                             @case(4)
                                                                 <button class="btn btn-block btn-sm btn-danger btnComment">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại' : 'Return'}}</button>
                                                                 @break
+                                                            @case(5)
+                                                                <button class="btn btn-block btn-sm btn-info btnSend" title="click để gửi">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lưu lại' : 'Save'}}</button>
+                                                                @break
+                                                            
                                                             @default
                                                                 <button class="btn btn-block btn-sm btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lỗi' : 'Error'}}</button>
                                                                 @break
@@ -343,6 +373,10 @@
                                                             @case(4)
                                                                 <button class="btn btn-block btn-sm btn-danger btnComment">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Trả lại' : 'Return'}}</button>
                                                                 @break
+                                                            @case(5)
+                                                                <button class="btn btn-block btn-sm btn-info btnSend" title="click để gửi">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lưu lại' : 'Save'}}</button>
+                                                                @break
+                                                            
                                                             @default
                                                                 <button class="btn btn-block btn-sm btn-danger">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Lỗi' : 'Error'}}</button>
                                                                 @break
@@ -464,7 +498,7 @@
                                                 {{-- @if ($articel->status != 1 || Auth::user()->level < 3)
                                                     
                                                 @endif --}}
-                                                @if($articel->status >= Auth::user()->level-1 || Auth::user()->level < 3)
+                                                @if($articel->status >= Auth::user()->level-1 || Auth::user()->level < 3 ||$articel->status == 0)
                                                     <a data-toggle="tooltip" title="Xóa" href="{{route('delete_articel',$articel->id)}}" class="col-sm-4 text-danger btnDelete" @if ($articel->status == 1) style="display: none" @endif  onclick="return confirm('Bạn chắc chắn muốn xóa')"><i
                                                             class="fa fa-trash"></i></a>
                                                     <a href="{{route('form_articel',$articel->id)}}" data-toggle="tooltip" title="Chỉnh sửa" class="col-sm-4 text-primary"><i class="fa fa-wrench"></i></a>
@@ -589,5 +623,67 @@
             if (window.focus) {newwindow.focus()}
             return false;
         }
+    </script>
+    <script>
+        console.log('Hello Human',moment());
+        $('#daterange-btn').daterangepicker(
+            {
+                opens: "right",
+                /*autoApply: true,*/
+                locale: {
+                    "format": "DD/MM/YYYY",
+                    "separator": " - ",
+                    "applyLabel": "Chọn",
+                    "cancelLabel": "Hủy",
+                    "fromLabel": "Từ",
+                    "toLabel": "Đến",
+                    "customRangeLabel": "Tùy chọn",
+                    "weekLabel": "W",
+                    "daysOfWeek": [
+                        "CN",
+                        "T2",
+                        "T3",
+                        "T4",
+                        "T5",
+                        "T6",
+                        "T7"
+                    ],
+                    "monthNames": [
+                        "Tháng 1",
+                        "Tháng 2",
+                        "Tháng 3",
+                        "Tháng 4",
+                        "Tháng 5",
+                        "Tháng 6",
+                        "Tháng 7",
+                        "Tháng 8",
+                        "Tháng 9",
+                        "Tháng 10",
+                        "Tháng 11",
+                        "Tháng 12"
+                    ],
+                    "firstDay": 1
+                },
+                ranges   : {
+                    'Hôm nay'       : [moment(), moment()],
+                    'Hôm qua'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '7 ngày trước' : [moment().subtract(6, 'days'), moment()],
+                    '30 ngày trước': [moment().subtract(29, 'days'), moment()],
+                    'Tháng này'  : [moment().startOf('month'), moment().endOf('month')],
+                    'Tháng trước'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment(),
+                endDate  : moment()
+            },
+            function (start, end) {
+                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            }
+        );
+        $('#daterange-btn').on('apply.daterangepicker', function(ev, picker) {
+            $('#from').val(picker.startDate.format('YYYY-MM-DD'));
+            $('#to').val(picker.endDate.format('YYYY-MM-DD'));
+            $('#search').submit();
+        });
+
     </script>
 @stop

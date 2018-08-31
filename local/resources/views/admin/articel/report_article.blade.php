@@ -46,7 +46,7 @@
                                         <div class="col-md-4">
                                             <input value="{{$key}}" name="key" class="form-control" placeholder="nhập từ khóa">
                                         </div>
-                                        <div class="col-md-4 input-group">
+                                        <div class="col-md-6 input-group">
                                             <div class="d-flex flex-row align-items-center">
                                                 <div><b>Thời gian thống kê: {{$from}} <span class="text-warning">đến</span> {{$to}}</b></div>
                                                 <div class="ml-3">
@@ -59,15 +59,16 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-2 ">
-                                            <button class="btn btn-primary float-right" type="submit"><i class="fa fa-search"></i>
+                                        <div class="col pull-right ">
+                                            
+                                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i>
                                             </button>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="btn btn-default float-right btn_print">
+                                            <div class="btn btn-default btn_print">
                                                 <i class="fas fa-print"></i>
                                             </div>
+                                            
                                         </div>
+                                        
                                     </div>
                                 </form>
                             <table id="table_report" class="table table-bordered table-hover">

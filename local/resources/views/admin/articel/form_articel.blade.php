@@ -87,18 +87,20 @@
                                     <div class="row form-group">
                                         <label class="col-sm-2">Danh mục tin <span class="text-danger">*</span></label>
                                         <div class="col-sm-5">
-                                            <select class="form-control" data-placeholder="Chọn danh mục cha" name="articel[groupid][]" id="group" required
+                                            <select class="form-control choose_relate" data-placeholder="Chọn danh mục cha" name="articel[groupid]" id="group" required
                                                     style="width: 100%;">
-                                                @foreach($list_group as $articel_item)
-                                                    <option {{in_array($articel_item->id,$articel->groupid) ? 'selected' : ''}} value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
+                                                <option value="" disabled {{ Request::segment(4) == '0' ? 'selected' : '' }}>Chọn danh mục cha</option>
+                                                @foreach($list_group as $group)
+                                                    <option {{$articel->groupid == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                         <div class="col-sm-5">
-                                            <select class="form-control" data-placeholder="Danh mục con" name="articel[groupid_child][]" id="group_child" required
+                                            <select class="form-control choose_relate" data-placeholder="Danh mục con" name="articel[groupid_child]" id="group_child"
                                                     style="width: 100%;">
-                                                @foreach($list_group_child as $articel_item)
-                                                    <option {{in_array($articel_item->id,$articel->groupid) ? 'selected' : ''}} value="{{ $articel_item->id }}">{{ $articel_item->title }}</option>
+                                                <option value="" disabled {{ Request::segment(4) == '0' || $articel->groupid_child == null ? 'selected' : '' }}>Chọn danh mục con</option>
+                                                @foreach($list_group_child as $group)
+                                                    <option {{$articel->groupid_child == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -150,9 +152,9 @@
                                                     <div class="box box-info">
                                                         <!-- /.box-header -->
                                                         <div class="box-body pad">
-                                                <textarea id="editor1" name="articel[content]" rows="10" cols="80">
-                                                    {{ $articel->content != '' ? $articel->content : 'Nội dung bài viết' }}
-                                                </textarea>
+                                                            <textarea id="editor1" name="articel[content]" rows="10" cols="80">
+                                                                {{ $articel->content != '' ? $articel->content : 'Nội dung bài viết' }}
+                                                            </textarea>
 
                                                         </div>
                                                     </div>
@@ -277,8 +279,12 @@
                                             <input type="hidden" name="articel[send]" value="" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="box-footer">    
-                                        <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id ? 'Cập nhật' : 'Tạo mới' }}</button>
+                                    <div class="box-footer">  
+                                         
+                                        <button type="submit" class="btn btn-info pull-right" style="margin-right: 10px">{{ $articel->id && $articel->status != 5 ? 'Cập nhật' : 'Tạo mới' }}</button>
+                                        @if ($articel->status == 5 || Request::segment(4) == 0)
+                                            <input type="submit" name="sbm_save" class="btn btn-outline-warning pull-right mr-3" value="Lưu lại">
+                                        @endif 
                                         @if(isset($articel->return_num) && Auth::user()->id == $articel->userid && Auth::user()->level == $articel->status)
                                             <button type="button" class="btn btn-success btn_return pull-right" style="margin-right: 10px">Gửi lại</button>
                                         @endif
@@ -298,6 +304,9 @@
 
 @section('script')
     <script src="plugins/ckeditor/ckeditor.js"></script>
+    <script src="plugins/ckeditor/html5video.js"></script>
+    
+    <script src="js/article.js"></script>
     <script>
         $(function () {
             CKEDITOR.replace( 'editor1', {
@@ -309,6 +318,7 @@
                 filebrowserImageUploadUrl: 'plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
                 filebrowserFlashUploadUrl: 'plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
             } );
+
 
             //iCheck for checkbox and radio inputs
             $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
@@ -392,54 +402,7 @@
         //         }
         //     })
         // });
-        $(document).on('change', '#group', function (e) {
-            var group_id = $(this).val();
-
-            e.preventDefault();
-            $.ajax({
-              method: 'POST',
-              url: url+'admin/articel/get_relate',
-              data: {
-                  '_token': $('meta[name="csrf-token"]').attr('content'),
-                  'groupid': group_id
-              },
-              success: function (resp) {
-               if(resp){
-                    // console.log(resp);
-                    setTimeout(function () {
-                        $('#relate').append(resp);
-                        // $('#relate').selectpicker('refresh');
-                    },200);
-                }
-
-              },
-              error: function () {
-                console.log('error');
-              }
-            });
-
-            // e.preventDefault();
-            $.ajax({
-              method: 'POST',
-              url: url+'admin/articel/group_child_from',
-              data: {
-                  '_token': $('meta[name="csrf-token"]').attr('content'),
-                  'groupid': group_id
-              },
-              success: function (resp) {
-               if(resp){
-                    console.log(resp);
-                    setTimeout(function () {
-                        $('#group_child').html(resp);
-                    },200);
-                }
-
-              },
-              error: function () {
-                console.log('error');
-              }
-            });
-        });
+        
         
     </script>
 

@@ -225,4 +225,95 @@ $(document).ready(function(){
       }
     });
   });
+  $(document).on('change', '.choose_relate', function (e) {
+    var group_id = $(this).val();
+
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: url+'admin/articel/get_relate',
+      data: {
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+          'groupid': group_id
+      },
+      success: function (resp) {
+       if(resp){
+            // console.log(resp);
+            setTimeout(function () {
+                $('#relate').html(resp);
+                // $('#relate').selectpicker('refresh');
+            },200);
+        }
+
+      },
+      error: function () {
+        console.log('error');
+      }
+    });
+
+
+    // e.preventDefault();
+    // $.ajax({
+    //   method: 'POST',
+    //   url: url+'admin/articel/group_child_from',
+    //   data: {
+    //       '_token': $('meta[name="csrf-token"]').attr('content'),
+    //       'groupid': group_id
+    //   },
+    //   success: function (resp) {
+    //    if(resp){
+    //         console.log(resp);
+    //         setTimeout(function () {
+    //             $('#group_child').html(resp);
+    //         },200);
+    //     }
+
+    //   },
+    //   error: function () {
+    //     console.log('error');
+    //   }
+    // });
+  });
+  $(document).on('change', '#group', function (e) {
+    var group_id = $(this).val();
+    $.ajax({
+      method: 'POST',
+      url: url+'admin/articel/group_child_from',
+      data: {
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+          'groupid': group_id
+      },
+      success: function (resp) {
+       if(resp){
+            console.log(resp);
+            setTimeout(function () {
+                $('#group_child').html(resp);
+            },200);
+        }
+
+      },
+      error: function () {
+        console.log('error');
+      }
+    });
+  });
+  $(document).on('click', '.btnSend', function(event) {
+    var btnThis = $(this);
+    var id = $(this).next().text();
+    $.ajax({
+      method: 'POST',
+      url: url+'admin/articel/send_article',
+      data: {
+          '_token': $('meta[name="csrf-token"]').attr('content'),
+          'id': id
+      },
+      success: function (resp) {
+        btnThis.attr('class', 'btn btn-block btn-sm btn-warning');
+        btnThis.text('Chờ duyệt');
+      },
+      error: function () {
+        console.log('Error');
+      }
+    });
+  });
 });
