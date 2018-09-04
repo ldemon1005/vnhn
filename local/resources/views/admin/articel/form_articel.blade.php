@@ -98,9 +98,9 @@
                                         <div class="col-sm-5">
                                             <select class="form-control choose_relate" data-placeholder="Danh mục con" name="articel[groupid_child]" id="group_child"
                                                     style="width: 100%;">
-                                                <option value="" disabled {{ Request::segment(4) == '0' || $articel->groupid_child == null ? 'selected' : '' }}>Chọn danh mục con</option>
+                                                <option value="" disabled {{ Request::segment(4) == '0' || isset($articel->groupid_child)  ? 'selected' : '' }}>Chọn danh mục con</option>
                                                 @foreach($list_group_child as $group)
-                                                    <option {{$articel->groupid_child == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
+                                                    <option {{isset($articel->groupid_child) && $articel->groupid_child == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

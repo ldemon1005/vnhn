@@ -13,5 +13,5 @@ CKEDITOR.editorConfig = function( config ) {
     config.filebrowserUploadUrl = '/backend/kcfinder/upload?opener=ckeditor&type=files';
     config.filebrowserImageUploadUrl = '/backend/kcfinder/uploadopener=ckeditor&type=images';
     config.filebrowserFlashUploadUrl = '/backend/kcfinder/uploadopener=ckeditor&type=flash';
-    config.extraPlugins = 'html5video1';
+    config.extraPlugins = 'html5video';
 };

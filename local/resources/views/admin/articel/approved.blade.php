@@ -72,7 +72,7 @@
                                         </div>
                                         @endif
                                         @if (Auth::user()->site == 1)
-                                          <div class="col-md-2">
+                                        <div class="col-md-2">
                                             <select class="form-control select2" multiple="multiple"
                                                     data-placeholder="Lọc theo lần gửi" name="articel[return_num][]"
                                                     style="width: 100%;">

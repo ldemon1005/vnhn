@@ -186,6 +186,12 @@
                                     <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài bị trả lại' : 'Article returned'}}</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('wait_article')}}" class="nav-link">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài chờ duyệt' : 'Article wait'}}</p>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                 </li>
