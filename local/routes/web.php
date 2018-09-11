@@ -74,7 +74,7 @@ Route::post('lockscreen', 'Admin\LoginController@postLockScreen');
 
 Route::group(['namespace' => 'Admin'], function (){
 	Route::group(['prefix' => 'admin', 'middleware' => 'CheckLogin'], function (){
-		Route::get('/', 'HomeController@getHome');
+		Route::get('/', 'HomeController@getHome')->name('admin');
 		// Route::get('/{slug}', 'HomeController@getHome');
 
         /*

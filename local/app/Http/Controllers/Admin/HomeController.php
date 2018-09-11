@@ -12,55 +12,165 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function getHome(){
-//        $array = [
-//            "hotline" => "0964.32.83.83",
-//            "license" => "Giấy phép số 153/GP- Cục PTTHTTĐT - Bộ thông tin và truyền thông cấp ngày 17/05/2017",
-//            "editor_in_chief" => "Đoàn Mạnh Phương",
-//            "deputy_editor" => "Nhà báo Trần Văn Ánh",
-//            "senior_executive_editor" => "ĐOÀN CÔNG CHUNG",
-//            "address" => "Tầng 8 Cung Tri thức thành phố, số 1 Tôn Thất Thuyết, phường Dịch Vọng Hậu, quận Cầu Giấy, Hà Nội",
-//            "phone" => "02437823798 * 02437823799",
-//            "email" => "info@vietnamhoinhap.com",
-//            "facebook" => null,
-//            "youtobe" => null,
-//            "link_googleplay" => null,
-//            "link_appstore" => null,
-//            "summary_1" => "Viện Chính sách, Pháp luật và Quản lý",
-//            "summary_2" => "Liên hiệp các Hội Kho",
-//        ];
-//
-//        dd(json_encode($array));
+    public $view_id;
+    public function getHome(Request $request){
+        $req = $request->all();
 
-//        cập nhật data hot item
-//        $list_id = DB::table('group_news_vn')->where('hot' ,1)->get()->toJson();
-//
-//        $list_id = array_column(json_decode($list_id,true),'news_vn_id');
-//
-//        $list_article = DB::table('news_vn')->where('release_time', '<=',1533488306)->whereIn('id',$list_id)->get(['id'])->toJson();
-//
-//        $list_article_id = array_column(json_decode($list_article,true),'id');
-//
-//        DB::table('group_news_vn')->whereIn('news_vn_id',$list_article_id)->update(['hot' => 0]);
-//
-//        dd("chào");
+        $from = strtotime(date('Y-m-1 0:0',time()));
+        $to = time();
 
-        //update time hot
+        if (isset($req['from']) && isset($req['to'])){
+            $from = strtotime($req['from']."00:00");
+            $to = strtotime($req['to']."23:59");
+        }
 
-        //        cập nhật data hot item
-//        $list_id = DB::table('group_news_vn')->where('hot' ,1)->get()->toJson();
-//
-//        $list_id = array_column(json_decode($list_id,true),'news_vn_id');
-//
-//        $list_article = DB::table('news_vn')->whereIn('id',$list_id)->update(['time_hot_item' => time() + 86400*3]);
+        $data_google = [];
+        $analytics = $this->initializeAnalytics();
+        $response = $this->getReportPageView($analytics,$from,$to);
+        $this->printResults($response,$data_google['page']);
 
-        //cập nhật time hot main
+        $user = $this->getReportUser($analytics,$from,$to);
+        $this->printResults($user,$data_google['user']);
 
-//        $list_article = DB::table('news_vn')->where('hot_main',1)->update(['time_hot_main' => time() + 86400*3]);
-//
-//        dd($list_article);
+//        dd($data_google);
+
+        $data = [
+            'data_google' => $data_google,
+            'from' =>  date('d/m/Y H:m',$from),
+            'to' => date('d/m/Y H:m',$to)
+        ];
+
+        return view('admin.index.home',$data);
+    }
+
+    function initializeAnalytics()
+    {
+        // Creates and returns the Analytics Reporting service object.
+
+        // Use the developers console and download your service account
+        // credentials in JSON format. Place them in this directory or
+        // change the key file location if necessary.
+        $this->view_id = env('VIEW_ID');
+
+        $KEY_FILE_LOCATION = __DIR__ . '/../../../../demo5-215411-9fb25b310016.json';
+
+        // Create and configure a new client object.
+        $client = new \Google_Client();
+        $client->setApplicationName("Analytics Reporting");
+        $client->setAuthConfig($KEY_FILE_LOCATION);
+        $client->setScopes(['https://www.googleapis.com/auth/analytics.readonly']);
+        $analytics = new \Google_Service_AnalyticsReporting($client);
+        return $analytics;
+    }
+
+    /**
+     * Queries the Analytics Reporting API V4.
+     *
+     * @param service An authorized Analytics Reporting API V4 service object.
+     * @return The Analytics Reporting API V4 response.
+     */
+    function getReportPageView($analytics,$from,$to) {
+
+        $dateRange = new \Google_Service_AnalyticsReporting_DateRange();
+        $dateRange->setStartDate(date('Y-m-d',$from));
+        $dateRange->setEndDate(date('Y-m-d',$to));
+
+        $pageView = new \Google_Service_AnalyticsReporting_Metric();
+        $pageView->setExpression("ga:pageviews");
+        $pageView->setAlias("pageviews");
+
+        $timeOnPage = new \Google_Service_AnalyticsReporting_Metric();
+        $timeOnPage->setExpression("ga:timeOnPage");
+        $timeOnPage->setAlias("timeOnPage");
+
+        $page_title = new \Google_Service_AnalyticsReporting_Dimension();
+        $page_title->setName("ga:pageTitle");
+
+//        $path = new \Google_Service_AnalyticsReporting_Dimension();
+//        $path->setName("ga:pagePath");
+
+        $request = new \Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($this->view_id);
+        $request->setDateRanges($dateRange);
+        $request->setDimensions(array($page_title));
+        $request->setMetrics(array($pageView,$timeOnPage));
+        $request->setOrderBys([
+            "fieldName" => "ga:pageviews",
+            "sortOrder" => "DESCENDING"
+        ]);
+
+        $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests( array( $request) );
+
+        return $analytics->reports->batchGet( $body );
+    }
 
 
-        return view('admin.index.home');
+    /**
+     * Queries the Analytics Reporting API V4.
+     *
+     * @param service An authorized Analytics Reporting API V4 service object.
+     * @return The Analytics Reporting API V4 response.
+     */
+    function getReportUser($analytics,$from,$to) {
+
+        $dateRange = new \Google_Service_AnalyticsReporting_DateRange();
+        $dateRange->setStartDate(date('Y-m-d',$from));
+        $dateRange->setEndDate(date('Y-m-d',$to));
+
+        $sessions = new \Google_Service_AnalyticsReporting_Metric();
+        $sessions->setExpression("ga:users");
+        $sessions->setAlias("users");
+
+        $browser = new \Google_Service_AnalyticsReporting_Dimension();
+        $browser->setName("ga:userType");
+
+        $request = new \Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($this->view_id);
+        $request->setDateRanges($dateRange);
+        $request->setDimensions(array($browser));
+        $request->setMetrics(array($sessions));
+        $request->setOrderBys([
+            "fieldName" => "ga:users",
+            "sortOrder" => "DESCENDING"
+        ]);
+
+        $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests( array( $request) );
+
+        return $analytics->reports->batchGet( $body );
+    }
+
+
+    /**
+     * Parses and prints the Analytics Reporting API V4 response.
+     *
+     * @param An Analytics Reporting API V4 response.
+     */
+    function printResults($reports,&$data) {
+        for ( $reportIndex = 0; $reportIndex < count( $reports ); $reportIndex++ ) {
+            $report = $reports[ $reportIndex ];
+            $header = $report->getColumnHeader();
+            $dimensionHeaders = $header->getDimensions();
+//            $metricHeaders = $header->getMetricHeader()->getMetricHeaderEntries();
+            $rows = $report->getData()->getRows();
+
+            for ( $rowIndex = 0; $rowIndex < count($rows); $rowIndex++) {
+                $row = $rows[ $rowIndex ];
+                $dimensions = $row->getDimensions();
+                $metrics = $row->getMetrics();
+                $key = '';
+                for ($i = 0; $i < count($dimensionHeaders) && $i < count($dimensions); $i++) {
+                    $key = $dimensions[$i];
+                }
+
+                for ($j = 0; $j < count($metrics); $j++) {
+                    $values = $metrics[$j]->getValues();
+                    for ($k = 0; $k < count($values); $k++) {
+                        $data[$key][$k] = $values[$k];
+                    }
+                }
+            }
+        }
     }
 }
