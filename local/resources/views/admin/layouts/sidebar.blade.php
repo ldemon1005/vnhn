@@ -193,6 +193,14 @@
                                 </a>
                             </li>
                         @endif
+
+                        <li class="nav-item">
+                            <a href="{{route('draft_article')}}" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Bài viết nháp' : 'Draft article'}}</p>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
                 {{-- @if (Auth::user()->level < 4 )
