@@ -100,6 +100,8 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/post_article', 'ArticelController@post_article')->name('post_article');
             Route::get('/returned_article', 'ArticelController@returned_article')->name('returned_article');
             Route::get('/wait_article', 'ArticelController@wait_article')->name('wait_article');
+            Route::get('/draft_article', 'ArticelController@draft_article')->name('draft_article');
+            
 
             Route::post('on', 'ArticelController@getOn');
             Route::post('off', 'ArticelController@getOff');
@@ -110,6 +112,8 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::post('status2', 'ArticelController@get2');
             Route::post('status3', 'ArticelController@get3');
             Route::post('status4', 'ArticelController@get4');
+            Route::post('send_article', 'ArticelController@send_article');
+            
             Route::post('getComment', 'ArticelController@getComment');
 
             Route::post('get_relate', 'ArticelController@get_relate');

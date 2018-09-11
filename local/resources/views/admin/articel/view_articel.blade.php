@@ -56,6 +56,12 @@
     </style>
 </head>
 <body>
+	@if (isset($comment) && $comment != null)
+		<div class="alert alert-info alert-dismissible ">
+			{{ $comment }}
+		</div>
+	@endif
+		
 	<div class="new-item">
         <div class="avatar" style="background: url('{{ isset($article->fimage)  && $article->fimage ? (file_exists(storage_path('app/article/resized500-'.$article->fimage)) ? asset('local/storage/app/article/resized500-'.$article->fimage) : (file_exists(resource_path($article->fimage)) ? asset('/local/resources'.$article->fimage) : resource_path('assets/images/default-image.png'))) : resource_path('assets/images/default-image.png') }}') no-repeat center /cover;">
         </div>

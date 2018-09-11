@@ -34,10 +34,10 @@
                 </div>
 
                 <div class="footer-mid">
-                    <p class="title">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tạp chí Việt Nam Hội nhập' : 'Vietnam Integration Magazine'}}</p>
+                    <p class="title">{{$web_info->summary_1}}</p>
                     <p class="info-footer">{{$web_info->license}}</p>
                     <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tổng biên tập' : 'Editor-in-Chief'}} : {{$web_info->editor_in_chief}}</span></p>
-                    <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phó tổng biên tập' : 'Deputy Editor'}} : {{$web_info->deputy_editor}}</span></p>
+                    <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phó Tổng biên tập' : 'Deputy Editor'}} : {{$web_info->deputy_editor}}</span></p>
 
                     {{-- <p class="info-footer"><span>Hotline 24/7:</span> {{$web_info->hotline}} - <span>Email:</span> bannoidung@vietnamhoinhap.vn</p> --}}
                     {{--   --}}
@@ -65,7 +65,8 @@
             </div>
         </div>
     </section>
-    <a id="back-to-top"><i class="fas fa-angle-double-up"></i>
-
-</a>
+    <div class="trailer">
+        Nghiêm cấm sao chép dưới mọi hình thức nếu không được VNHN chấp thuận bằng văn bản
+    </div>
+    <a id="back-to-top"><i class="fas fa-angle-double-up"></i></a>
 </div>

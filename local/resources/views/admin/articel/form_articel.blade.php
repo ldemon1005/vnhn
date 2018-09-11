@@ -36,8 +36,9 @@
                     <div class="card-header">
                         <h3 class="card-title">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</h3>
                     </div>
-                    <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post" enctype="multipart/form-data" >
+                    <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post" enctype="multipart/form-data" autocomplete="off">
                         {{csrf_field()}}
+                       
                         <div class="card-body">
                             <div class="row form-group d-none">
                                 <label class="col-sm-2">ID bài viết</label>
@@ -98,7 +99,7 @@
                                         <div class="col-sm-5">
                                             <select class="form-control choose_relate" data-placeholder="Danh mục con" name="articel[groupid_child]" id="group_child"
                                                     style="width: 100%;">
-                                                <option value="" disabled {{ Request::segment(4) == '0' || isset($articel->groupid_child)  ? 'selected' : '' }}>Chọn danh mục con</option>
+                                                <option value="" disabled {{ Request::segment(4) == '0' || !isset($articel->groupid_child)  ? 'selected' : '' }}>Chọn danh mục con</option>
                                                 @foreach($list_group_child as $group)
                                                     <option {{isset($articel->groupid_child) && $articel->groupid_child == $group->id ? 'selected' : ''}} value="{{ $group->id }}">{{ $group->title }}</option>
                                                 @endforeach
@@ -127,20 +128,7 @@
                                                             asset('/local/resources'.$articel->fimage) :
                                                             '../images/default-image.png')) :
                                                 '../images/default-image.png' }}">
-                                            {{-- <div class="{{ $articel->fimage == null  ? '' : 'd-none' }} blog-avatar boxborder text-center justify-content-center align-items-center pointer"
-                                                 onclick="avatar.click()">
-                                                <div class="d-inline-block" style="margin: auto">
-                                                    <img style="width: 60%" src="{{asset('/local/resources/assets/images/add_image_icon.png')}}" title="Thêm ảnh avatar">
-                                                </div>
-                                            </div>
-                                            <div class="img-avatar {{ $articel->fimage == null  ? 'd-none' : '' }}" style="position: relative;width: 100%">
-                                                <img id="blog_avatar" style="width: 100%" src="{{ file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : (file_exists('http://vietnamhoinhap.vn/'.$articel->fimage) ? 'http://vietnamhoinhap.vn/'.$articel->fimage : '../images/default-image.png' )}}" alt="">
-                                                <i class="fa fa-trash text-danger pointer" style="position: absolute;top: 10px;right: 15px"
-                                                   onclick="removeImage()"></i>
-                                            </div>
-                                            <input #avatar class="d-none" type="file" id="avatar"
-                                                   onchange="uploadImage(avatar,avatar.files[0])">
-                                            <input class="d-none" name="articel[fimage]" value="{{$articel->fimage}}" id="src_avatar" type="text"> --}}
+                                            
                                         </div>
                                     </div>
 
@@ -233,26 +221,42 @@
                                             <textarea type="text" name="articel[keyword_meta]" class="form-control" placeholder="Keywords meta bài viết">{{$articel->keyword_meta}}</textarea>
                                         </div>
                                     </div>
-                                    {{--<div class="row form-group">--}}
-                                        {{--<label class="col-sm-2">Loại</label>--}}
-                                        {{--<div class="col-sm-10">--}}
-                                            {{--<select class="form-control" name="articel[loaiview]">--}}
-                                                {{--<option value="0">Không chọn</option>--}}
-                                                {{--<option value="1">Video</option>--}}
-                                                {{--<option value="2">Ảnh</option>--}}
-                                                {{--<option value="3">Âm thanh</option>--}}
-                                            {{--</select>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
+                                    
                                     <div class="row form-group">
                                         <label class="col-sm-2">Tin liên quan</label>
-                                        <div class="col-sm-10">
-                                            <select class="form-control select2" multiple="multiple" data-placeholder="Chọn tin liên quan" name="articel[relate][]"
+                                        <div class="col-sm-5">
+                                            {{-- <select class="form-control select2" multiple="multiple" data-placeholder="Chọn tin liên quan" name="articel[relate][]"
                                                     style="width: 100%;" id="relate">
                                                 @foreach($article_relate as $relate)
                                                     <option {{in_array($relate->id, $articel->relate) ? 'selected' : ''}} value="{{ $relate->id }}">{{ $relate->title }}</option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
+                                            <input type="text" name="articel[relate]" class="d-none" id="relate_input">
+                                            <input type="text" name="" class="form-control search_relate" placeholder="Tìm kiếm">
+                                            <div class="search_value">
+                                                @foreach ($list_article_relate as $item)
+                                                    <div class="search_value_item" value="{{ $item->id }}">
+                                                        {{ $item->title }}
+                                                    </div>
+                                                @endforeach
+                                                {{-- <div class="search_value_item" value="352486">
+                                                    OKe oke oke
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="relate_select">
+                                                @foreach ($article_relate as $item)
+                                                    <div class="relate_select_item" value="{{ $item->id }}">
+                                                        <i class="fas fa-times"></i>
+                                                        {{ $item->title }}
+                                                    </div>
+                                                @endforeach
+                                                {{-- <div class="relate_select_item" value="1">
+                                                    <i class="fas fa-times"></i>
+                                                    Hêllo
+                                                </div> --}}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -276,7 +280,7 @@
                                     </div>
                                     <div class="row form-group">
                                         <div class="col-sm-10">
-                                            <input type="hidden" name="articel[send]" value="" class="form-control">
+                                            <input type="hidden" name="articel[send]" value="{{ $articel->status == 5 ? '1' : '' }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="box-footer">  
@@ -304,7 +308,7 @@
 
 @section('script')
     <script src="plugins/ckeditor/ckeditor.js"></script>
-    <script src="plugins/ckeditor/html5video.js"></script>
+    {{-- <script src="plugins/ckeditor/html5video.js"></script> --}}
     
     <script src="js/article.js"></script>
     <script>
