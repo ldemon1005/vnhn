@@ -301,7 +301,7 @@
 		display: block !important;
 		width: 80%;
 		margin: auto;
-
+		text-align: center;
 	}
 	#footer .footer-left {
 	    width: auto; 
@@ -313,7 +313,8 @@
 		margin: auto;
 	}
 	.footer-mid .title{
-		display: none;
+		/*display: none;*/
+		margin-top: 20px;
 	}
 	.footer-bottom p{
 		font-size: 12px !important;

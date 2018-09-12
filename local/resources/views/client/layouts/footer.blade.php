@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="footer-mid">
-                    <p class="title">{{$web_info->summary_1}}</p>
+                    <p class="title">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Việt Nam Hội Nhập Online' : 'Việt Nam Hội Nhập Online'}}</p>
                     <p class="info-footer">{{$web_info->license}}</p>
                     <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tổng biên tập' : 'Editor-in-Chief'}} : {{$web_info->editor_in_chief}}</span></p>
                     <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phó Tổng biên tập' : 'Deputy Editor'}} : {{$web_info->deputy_editor}}</span></p>

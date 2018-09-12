@@ -14,6 +14,7 @@ class HomeController extends Controller
 {
     public $view_id;
     public function getHome(Request $request){
+        return redirect('admin/articel');
         $req = $request->all();
 
         $from = strtotime(date('Y-m-1 0:0',time()));
@@ -26,7 +27,9 @@ class HomeController extends Controller
 
         $data_google = [];
         $analytics = $this->initializeAnalytics();
+
         $response = $this->getReportPageView($analytics,$from,$to);
+     
         $this->printResults($response,$data_google['page']);
 
         $user = $this->getReportUser($analytics,$from,$to);
@@ -78,11 +81,11 @@ class HomeController extends Controller
         $pageView = new \Google_Service_AnalyticsReporting_Metric();
         $pageView->setExpression("ga:pageviews");
         $pageView->setAlias("pageviews");
-
+        
         $timeOnPage = new \Google_Service_AnalyticsReporting_Metric();
         $timeOnPage->setExpression("ga:timeOnPage");
         $timeOnPage->setAlias("timeOnPage");
-
+        // dd($timeOnPage);
         $page_title = new \Google_Service_AnalyticsReporting_Dimension();
         $page_title->setName("ga:pageTitle");
 
@@ -147,7 +150,8 @@ class HomeController extends Controller
      *
      * @param An Analytics Reporting API V4 response.
      */
-    function printResults($reports,&$data) {
+    function printResults($reports,&$data) { 
+        
         for ( $reportIndex = 0; $reportIndex < count( $reports ); $reportIndex++ ) {
             $report = $reports[ $reportIndex ];
             $header = $report->getColumnHeader();
