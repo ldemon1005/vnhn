@@ -10,11 +10,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
 class HomeController extends Controller
 {
     public $view_id;
     public function getHome(Request $request){
-        return redirect('admin/articel');
+//        return redirect('admin/articel');
         $req = $request->all();
 
         $from = strtotime(date('Y-m-1 0:0',time()));

@@ -18,6 +18,7 @@ class ArticelController extends Controller
         $slug = explode('---n-',$slug);
 
         $articel = News::find($slug[1]);
+
         if (!$articel) {
             Session::put('lang', 'en');
 
@@ -31,7 +32,6 @@ class ArticelController extends Controller
             if($articel->release_time > time()){
                 return redirect('');
             }
-            
         }
         
         

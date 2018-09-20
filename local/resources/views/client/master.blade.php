@@ -17,13 +17,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Meta facebook -->
-    @if(isset($articel_detail))
-        <meta property="og:url"           content="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" />
-    @else
-        <meta property="og:url"           content="{{ URL::current() }}" />
-    @endif
+    {{--@if(isset($articel_detail))--}}
+        {{--<meta property="og:url"           content="{{ route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id) }}" />--}}
+    {{--@else--}}
+        {{--<meta property="og:url"           content="{{ URL::current() }}" />--}}
+    {{--@endif--}}
         <meta property="og:type"          content="article" />
         <meta property="og:title"         content="@yield('fb_title')" />
+        <meta property="og:url"         content="@yield('fb_url')" />
         <meta property="og:description"   content="@yield('fb_des')" />
         <meta property="og:image"         content="@yield('fb_img')" />
         <meta property="og:image:width" content="400" />

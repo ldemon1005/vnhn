@@ -1,5 +1,6 @@
 @extends('client.master')
 @section('title', $articel_detail->title)
+@section('fb_url', route('get_detail_articel',$articel_detail->slug.'---n-'.$articel_detail->id))
 @section('fb_title', cut_string($articel_detail->title, 70))
 @section('fb_des', $articel_detail->summary)
 @section('fb_img', isset($articel_detail->fimage)  && $articel_detail->fimage ? (file_exists(storage_path('app/article/resized500-'.$articel_detail->fimage)) ? asset('local/storage/app/article/resized500-'.$articel_detail->fimage) : (file_exists(resource_path($articel_detail->fimage)) ? asset('/local/resources'.$articel_detail->fimage) : 'images/default-image.png')) : 'images/default-image.png')
