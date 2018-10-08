@@ -103,7 +103,15 @@ class IndexController extends Controller
         $count = $list_articel_new->count();
 
         if($count < 10){
-            $list = DB::table($this->db->news)->where('hot_main', 1)->where('release_time', '<=', time())->where('status',1)->orderBy('order_main')->orderBy('release_time','desc')->take(10 - $count)->get();
+            foreach ($list_articel_new as $item) {
+                $list_not_id[] = $item->id;
+            }
+            if (isset($list_not_id)) {
+                $list = DB::table($this->db->news)->where('hot_main', 1)->whereNotIn('id', $list_not_id)->where('release_time', '<=', time())->where('status',1)->orderBy('order_main')->orderBy('release_time','desc')->take(10 - $count)->get();
+            }
+            else{
+                $list = DB::table($this->db->news)->where('hot_main', 1)->where('release_time', '<=', time())->where('status',1)->orderBy('order_main')->orderBy('release_time','desc')->take(10 - $count)->get();
+            }
             $list_articel_new = $list_articel_new->toBase()->merge($list);
         }
 
@@ -155,21 +163,39 @@ class IndexController extends Controller
         $list_articel_ids = array_column(json_decode($list_articel_ids, true), 'news_vn_id');
         $list_articel_hot_ids = array_column(json_decode($list_articel_hot_ids, true), 'news_vn_id');
 
+        $list_articel_hot_ids = array_unique($list_articel_hot_ids);
+
         if ($position != 1) {
             $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->where('release_time','<=',time())->whereNotNull('order_item')->where('time_hot_item','>=',time())->where('status',1)->orderBy('order_item')->orderBy('release_time','desc')->take(5)->get();
 
             $count = $list_articel->count();
 
             if($count < 5){
+                foreach ($list_articel as $item) {
+                    $list_not_id[] = $item->id;
+                }
+                // dd($list_not_id[] = $item->id);
                 $limit = 5 - $count;
-                $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('release_time','<=',time())->whereNotIn('id', $list_articel_hot_ids )->where('status',1)->orderByDesc('release_time')->take($limit)->get();
-                $list_articel = $list_articel->toBase()->merge($list_articel_1);
+                if (isset($list_not_id)) {
+                    $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('release_time','<=',time())->whereNotIn('id', $list_not_id)->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                    $list_articel = $list_articel->toBase()->merge($list_articel_1);
+                }
+                else{
+                    $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('release_time','<=',time())->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                    $list_articel = $list_articel->toBase()->merge($list_articel_1);
+                }
+                // $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('release_time','<=',time())->whereNotIn('id', $list_articel_hot_ids )->where('status',1)->orderByDesc('release_time')->take($limit)->get();
+                // $list_articel = $list_articel->toBase()->merge($list_articel_1);
             }
 
         } else {
             $list_articel = DB::table($this->db->news)->whereIn('id', $list_articel_hot_ids)->where('release_time','<=',time())->whereNotNull('order_item')->where('time_hot_item','>=',time())->where('status',1)->orderBy('order_item')->orderBy('release_time','desc')->take(4)->get();
 
             $count = $list_articel->count();
+            // if ($position == 2) {
+            //     dd($list_articel);
+            // }
+            
             if($count < 4){
                 foreach ($list_articel as $item) {
                     $list_not_id[] = $item->id;
@@ -183,36 +209,14 @@ class IndexController extends Controller
                     $list_articel_1 = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('release_time','<=',time())->where('status',1)->orderByDesc('release_time')->take($limit)->get();
                     $list_articel = $list_articel->toBase()->merge($list_articel_1);
                 }
-
             }
         }
         $list_articel = $this->get_time_ez($list_articel);
-        // foreach ($list_articel as $item) {
-        //     if (time() - $item->release_time > 86400) {
-        //         $item->release_time = date('d/m/Y H:m', $item->release_time);
-        //     } else if(time() - $item->release_time > 3600) {
-        //         $time = time() - $item->release_time;
-        //         $item->release_time = round($time / 3600, 0, PHP_ROUND_HALF_DOWN) . ' giờ trước';
-        //     } else{
-        //         $time = time() - $item->release_time;
-        //         $item->release_time = round($time / 60, 0, PHP_ROUND_HALF_DOWN) . ' phút trước';
-        //     }
-        // }
-
+        
         $list_top_view = DB::table($this->db->news)->whereIn('id', $list_articel_ids)->where('status',1)->where('release_time','<=',time())->orderByDesc('view')->orderBy('release_time','desc')->take(5)->get();
 
         $list_top_view = $this->get_time_ez($list_top_view);
-        // foreach ($list_top_view as $item) {
-        //     if (time() - $item->release_time > 86400) {
-        //         $item->release_time = date('d/m/Y H:m', $item->release_time);
-        //     } else if(time() - $item->release_time > 3600){
-        //         $time = time() - $item->release_time;
-        //         $item->release_time = round($time / 3600, 0, PHP_ROUND_HALF_DOWN) . ' giờ trước';
-        //     } else{
-        //         $time = time() - $item->release_time;
-        //         $item->release_time = round($time / 60, 0, PHP_ROUND_HALF_DOWN) . ' phút trước';
-        //     }
-        // }
+        
         return [
             'menu_time' => $menu_time,
             'menu_child' => $menu_child->take(4),
@@ -277,16 +281,24 @@ class IndexController extends Controller
         $ads = AdvertTop::where('adt_gr_id', $id)->get();
 
         $ad = array();
-        for ($i = 1; $i < 10; $i++) {
-            $ad[$i] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
+        for ($i = 1; $i < 15; $i++) {
+            $ad[$i] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->inRandomOrder()->get();
+            // if ($i != 7) {
+                
+            // }
+            // else{
+            //     $ad[$i] = AdvertTop::where('adt_gr_id', $id)->where('adt_location', $i)->get();
+            // }
+            
         }
         return $ad;
     }
     public function get_advert_home(){
         $ads = AdvertTop::where('adt_gr_id', 1)->get();
         $ad = array();
-        for ($i = 1; $i < 10; $i++) {
-            $ad[$i] = AdvertTop::where('adt_gr_id', 1)->where('adt_location', $i)->get();
+        for ($i = 1; $i < 15; $i++) {
+            $ad[$i] = AdvertTop::where('adt_gr_id', 1)->where('adt_location', $i)->inRandomOrder()->get();
+            
         }
         return $ad;
     }

@@ -28,14 +28,15 @@ class ArticelController extends Controller
          *  lấy danh sách danh mục
          */
 
-        $from = strtotime(date('Y-m-1 0:0'));
+        // $from = strtotime(date('Y-m-1 0:0'));
 
-        $to = time();
+        // $to = time();
 
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
+        if(in_array(0, $group_ids)){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+            
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
                 $query->whereIn('id',$group_ids)
@@ -95,14 +96,19 @@ class ArticelController extends Controller
         $site = isset($paramater['site']) ? $paramater['site'] : [];
         $member = isset($paramater['member']) ? $paramater['member'] : [];
         // $group_id = [1455];
-        $list_articel = DB::table($this->db->news)->orderByDesc('id');
+        if (Auth::user()->level < 3) {
+            $list_articel = DB::table($this->db->news)->orderByDesc('approved_at');
+        }
+        else{
+            $list_articel = DB::table($this->db->news)->orderByDesc('id');
+        }
 
         if (isset($paramater['from']) && isset($paramater['to'])){
             $from = strtotime($paramater['from']."00:00");
             $to = strtotime($paramater['to']."23:59");
             
             $list_articel = $list_articel->where('created_at','>=',$from)->where('created_at','<=',$to);
-
+            $fromto = true;
         }
         
         
@@ -251,10 +257,13 @@ class ArticelController extends Controller
             'list_member' => $list_member,
             'list_group' => $result,
             'list_articel' => $list_articel,
-            'paramater' => $paramater,
-            'from' =>  $from,
-            'to' => $to
+            'paramater' => $paramater
         ];
+        if (isset($fromto)) {
+            
+            $data['from'] = $from;
+            $data['to'] = $to;
+        }
         // dd($data);
         // dd($data);
         return view('admin.articel.index', $data);
@@ -264,7 +273,7 @@ class ArticelController extends Controller
         
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
+        if(in_array(0, $group_ids)){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
@@ -650,7 +659,7 @@ class ArticelController extends Controller
         $article_relate = [];
         $list_article_relate = DB::table($this->db->news)->where('status', 1)->where('release_time', '<=', time())->orderByDesc('id')->take(5)->get();
         if($id == 0){
-            if($user->group_id == '0'){
+            if(in_array(0, $group_ids)){
                 $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
             }else {
                 $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
@@ -707,16 +716,16 @@ class ArticelController extends Controller
             $article_user = Account::find($article_model->userid);
             $article_group_ids = explode(',',$article_user->group_id);
             // dd($article_group_ids );
-            
 
-            if($article_group_ids == '0'){
-                $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
-            }else{
-                $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($article_group_ids){
-                    $query->whereIn('id',$article_group_ids)
-                          ->orWhereIn('parentid',$article_group_ids);
-                })->get()->toArray();
-            }
+            $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+//            if(in_array(0, $article_group_ids)){
+//
+//            }else{
+//                $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($article_group_ids){
+//                    $query->whereIn('id',$article_group_ids)
+//                          ->orWhereIn('parentid',$article_group_ids);
+//                })->get()->toArray();
+//            }
 
             
             // $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
@@ -1181,7 +1190,7 @@ class ArticelController extends Controller
     public function post_article(Request $request){
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
+        if(in_array(0, $group_ids)){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
@@ -1369,7 +1378,7 @@ class ArticelController extends Controller
         $list_admin = Account::where('level', 2)->get();
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
+        if(in_array(0, $group_ids)){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
@@ -1555,7 +1564,7 @@ class ArticelController extends Controller
         $list_admin = Account::where('level', 2)->get();
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
+        if(in_array(0, $group_ids)){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
@@ -1750,7 +1759,7 @@ class ArticelController extends Controller
     public function draft_article(Request $request){
         $user = Auth::user();
         $group_ids = explode(',',$user->group_id);
-        if($user->group_id == '0'){
+        if(in_array(0, $group_ids)){
             $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
         }else {
             $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
@@ -2388,5 +2397,9 @@ class ArticelController extends Controller
         }
     }
 
+
+    // public function getAbout(){
+        
+    // }
 
 }

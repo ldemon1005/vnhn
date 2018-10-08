@@ -1,11 +1,11 @@
 $(document).ready(function(){
 	
 
-    $(document).on('click', ".menu_footer_right", function(){
-       $('html, body').animate({
-          scrollTop: 0
-        }, 500);
-    });
+    // $(document).on('click', ".menu_footer_right", function(){
+    //    $('html, body').animate({
+    //       scrollTop: 0
+    //     }, 500);
+    // });
 
     if ($('#back-to-top').length) {
 		 var scrollTrigger = 100, 

@@ -1,5 +1,4 @@
 <div id="footer">
-
     <section id="footer-top">
         <div class="menu_footer">
             <div class="container">
@@ -9,14 +8,16 @@
                             <li class="lang respon768"><a href="{{ asset('') }}"><i class="fas fa-home"></i></a></li>
                             <li class="lang respon768"><a href="{{ asset('') }}">RSS</a></li>
 
-                            <li class="lang "><a href="tel:0964328383">Hotline 24/7:
-                                    {{$web_info->hotline}} </a></li>
-                            <li class="lang respon768"><a href="{{ asset('advert/order') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Magazines subcription'}}</a></li>
+                            {{--<li class="lang "><a href="tel:0964328383">Hotline 24/7:{{$web_info->hotline}} </a></li>--}}
+                            {{--<li class="lang respon768"><a href="{{ asset('advert/order') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Đặt mua Tạp chí' : 'Magazines subcription'}}</a></li>--}}
                             <li class="lang"><a href="{{ asset('advert/contact') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Liên hệ quảng cáo' : 'Contact advertising'}}</a></li>
+                            <li class="lang respon768"><a href="{{ asset('about') }}">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Giới thiệu tòa soạn' : 'About us'}}</a></li>
                         </ul>
                     </div>
                     {{-- <div class="menu_footer_right">
-                        {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Trở về đầu trang]' : '[Back to top]'}}
+                        <a href="{{ asset('about') }}">
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '[Giới thiệu]' : '[About]'}}
+                        </a>
                     </div> --}}
                 </div>
             </div>
@@ -37,8 +38,8 @@
                     <p class="title">{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Việt Nam Hội Nhập Online' : 'Việt Nam Hội Nhập Online'}}</p>
                     <p class="info-footer">{{$web_info->license}}</p>
                     <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tổng biên tập' : 'Editor-in-Chief'}} : {{$web_info->editor_in_chief}}</span></p>
-                    <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phó Tổng biên tập' : 'Deputy Editor'}} : {{$web_info->deputy_editor}}</span></p>
-
+                    <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Phó Tổng biên tập' : 'Deputy Editor'}} : {{$web_info->deputy_editor}} - Hotline 24/7:{{$web_info->hotline}} </span></p>
+                    <p class="info-footer"><span>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Tổng Thư ký Toà soạn' : 'Secretary General'}} : {{ $web_info->secretary_general }} </span></p>
                     {{-- <p class="info-footer"><span>Hotline 24/7:</span> {{$web_info->hotline}} - <span>Email:</span> bannoidung@vietnamhoinhap.vn</p> --}}
                     {{--   --}}
                     {{-- <p class="info-footer"><span>Ủy viên HĐBT: {{$web_info->senior_executive_editor}}</span></p> --}}

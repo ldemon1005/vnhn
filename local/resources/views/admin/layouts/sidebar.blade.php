@@ -158,7 +158,7 @@
                         </li>
                         @endif
                         
-                        @if (Auth::user()->level < 3 && Auth::user()->site == 1)
+                        @if (Auth::user()->level < 3)
                             <li class="nav-item">
                                 <a href="{{route('sort_hot_articel')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
@@ -270,7 +270,7 @@
                     </li>
                 @endif
 
-                @if (Auth::user()->site == 1 && Auth::user()->level < 4)
+                @if ( Auth::user()->level < 4)
                     <li class="nav-item has-treeview">
                         <a href="{{ asset('admin') }}" class="nav-link @if (Request::segment(2) == 'advert') active @endif">
                             <i class="nav-icon fas fa-paper-plane"></i>
@@ -408,15 +408,25 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
-                            <i class="nav-icon fas fa-info-circle"></i>
+                    <li class="nav-item has-treeview {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? '' : 'd-none '}}">
+                        <a href="{{ asset('admin/articel/form_articel/11994') }}" class="nav-link @if (Request::segment(2) == 'about') active @endif">
+                            <i class="nav-icon fas fa-broadcast-tower"></i>
                             <p>
-                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin website' : 'Website information '}}
+                                {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Giới thiệu' : 'Introduce'}}
                             </p>
                         </a>
                     </li>
+
+
                 @endif
+                <li class="nav-item has-treeview">
+                    <a href="{{ asset('admin/website_info') }}" class="nav-link @if (Request::segment(2) == 'website_info') active @endif">
+                        <i class="nav-icon fas fa-info-circle"></i>
+                        <p>
+                            {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thông tin website' : 'Website information '}}
+                        </p>
+                    </a>
+                </li>
 
                 
                 <li class="nav-item has-treeview">
@@ -424,7 +434,7 @@
                         <i class="nav-icon far fa-flag"></i>
                         <p>
                             {{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Thống kê' : 'Statistical '}}
-                            <i class="fa fa-angle-left right"></i>
+                            <i class="nav-icon fa fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">

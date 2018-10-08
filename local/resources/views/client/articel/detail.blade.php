@@ -18,14 +18,27 @@
     <div id="main">
         <section class="section1">
             <div class="detailTitle my-2">
-                @foreach($list_group as $group)
-                    @if($loop->index != 0)
-                        <i class="fas fa-angle-right"></i>
-                    @endif
-                    <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">
-                        {{$group->title}}
+                @if ($articel_detail->status == 1)
+                    @foreach($list_group as $group)
+                        @if($loop->index != 0)
+                            <i class="fas fa-angle-right"></i>
+                        @endif
+                        <a href="{{ route('get_articel_by_group',$group->slug.'---n-'.$group->id) }}">
+                            {{$group->title}}
+                        </a>
+                    @endforeach
+                @else
+                    
+                    <a href="{{ asset('') }}">
+                        Việt nam hội nhập
                     </a>
-                @endforeach
+                    <i class="fas fa-angle-right"></i>
+                    <a href="{{ asset('about') }}">
+                        giới thiệu
+                    </a>
+                    
+                @endif
+                    
             </div>
             <div class="detailMain">
                 <div class="mainDetailLeft">

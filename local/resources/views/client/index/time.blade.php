@@ -95,12 +95,10 @@
                                         @endif
                                     @endif
                                     @if (count($ad_home[3])>0)
-                                        @for ($i = 0; $i < count($ad_home[3]); $i++)
-                                            @if ($ad_home[3][$i]->advert->ad_status == 1 && $count_ad == 0)
-                                                <a href="{{ $ad_home[3][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[3][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[3][$i]->advert->ad_img)}}"></a>
-                                                <?php $count_ad++ ?>
-                                            @endif
-                                        @endfor
+                                        @if ($ad_home[3][0]->advert->ad_status == 1 && $count_ad == 0)
+                                            <a href="{{ $ad_home[3][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[3][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[3][0]->advert->ad_img)}}"></a>
+                                            <?php $count_ad++ ?>
+                                        @endif
                                     @endif
                                     @if ($count_ad == 0)
                                         <a href="{{ asset('') }}">
@@ -119,20 +117,16 @@
                         <div class="quangcao-1">
                             <?php $count_ad = 0?>
                             @if (count($list_ad[2]) > 0)
-                                @for ($i = 0; $i < count($list_ad[2]); $i++)
-                                    @if ($list_ad[2][$i]->advert->ad_status == 1)
-                                        <a href="{{ $list_ad[2][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[2][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[2][$i]->advert->ad_img)}}"></a>
-                                        <?php $count_ad++ ?>
-                                    @endif
-                                @endfor
+                                @if ($list_ad[2][0]->advert->ad_status == 1)
+                                    <a href="{{ $list_ad[2][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[2][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[2][0]->advert->ad_img)}}"></a>
+                                    <?php $count_ad++ ?>
+                                @endif
                             @endif
                             @if (count($ad_home[2])>0)
-                                @for ($i = 0; $i < count($ad_home[2]); $i++)
-                                    @if ($ad_home[2][$i]->advert->ad_status == 1 && $count_ad == 0)
-                                        <a href="{{ $ad_home[2][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[2][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[2][$i]->advert->ad_img)}}"></a>
-                                        <?php $count_ad++ ?>
-                                    @endif
-                                @endfor
+                                @if ($ad_home[2][0]->advert->ad_status == 1 && $count_ad == 0)
+                                    <a href="{{ $ad_home[2][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[2][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[2][0]->advert->ad_img)}}"></a>
+                                    <?php $count_ad++ ?>
+                                @endif
                             @endif
                             @if ($count_ad == 0)
                                 <a href="{{ asset('') }}">
@@ -186,7 +180,7 @@
             <div class="container">
                 <div class="row">
                     <div class="section2-left">
-                        <div class="row section2-left-top">
+                        <div class="section2-left-top">
                             <div class="time-hot">
                                 <div class="title-parent">
                                     <h2>{{\Illuminate\Support\Facades\Config::get('app.locale') == 'vn' ? 'Danh sách bài viết' : 'List article'}}</h2>
@@ -243,55 +237,54 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="time-subscribe">
-                                @foreach($group_articel as $item)
-                                    <section class="time-subscribe-top">
-                                        <div class="title-parent">
-                                            <h2>{{$item->title}}</h2>
-                                        </div>
-                                        <hr style="border-top: 2px solid #000000"/>
-                                        <div class="subscribe-top">
-                                            <div class="content">
-                                                @foreach($item->articel as $articel)
-                                                    <div class="item-top">
-                                                        <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}" onclick="article_view('{{ $articel->id }}')">
-                                                            <h3 class="title">{!! cut_string($articel->title,100)
-                                                            !!}</h3>
-                                                            @if($loop->index == 0)
-                                                                <div class="avatar">
-                                                                    <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}" onclick="article_view('{{ $articel->id }}')"><img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ? asset('local/storage/app/article/resized500-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}"></a>
-                                                                </div>
-                                                            @endif
-                                                            <p class="date-time">{{$articel->release_time}}</p>
-                                                        </a>
-                                                    </div>
-                                                @endforeach
+                            @if (count($group_articel))
+                                <div class="time-subscribe">
+                                    @foreach($group_articel as $item)
+                                        <section class="time-subscribe-top">
+                                            <div class="title-parent">
+                                                <h2>{{$item->title}}</h2>
                                             </div>
-                                        </div>
-                                    </section>
-                                @endforeach
-                            </div>
+                                            <hr style="border-top: 2px solid #000000"/>
+                                            <div class="subscribe-top">
+                                                <div class="content">
+                                                    @foreach($item->articel as $articel)
+                                                        <div class="item-top">
+                                                            <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}" onclick="article_view('{{ $articel->id }}')">
+                                                                <h3 class="title">{!! cut_string($articel->title,100)
+                                                                !!}</h3>
+                                                                @if($loop->index == 0)
+                                                                    <div class="avatar">
+                                                                        <a href="{{ route('get_detail_articel',$articel->slug.'---n-'.$articel->id) }}" onclick="article_view('{{ $articel->id }}')"><img src="{{ isset($articel->fimage)  && $articel->fimage ? (file_exists(storage_path('app/article/resized500-'.$articel->fimage)) ? asset('local/storage/app/article/resized500-'.$articel->fimage) : (file_exists(resource_path($articel->fimage)) ? asset('/local/resources'.$articel->fimage) : 'images/default-image.png')) : 'images/default-image.png' }}"></a>
+                                                                    </div>
+                                                                @endif
+                                                                <p class="date-time">{{$articel->release_time}}</p>
+                                                            </a>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </section>
+                                    @endforeach
+                                </div>
+                            @endif
+                                
                         </div>
                         <div class="section2-left-bottom">
                             <div class="quangcao-7">
                                 <?php $count_ad = 0?>
-                                @if (count($list_ad[4]) > 0)
-                                    @for ($i = 0; $i < count($list_ad[4]); $i++)
-                                        @if ($list_ad[4][$i]->advert->ad_status == 1)
-                                            <a href="{{ $list_ad[4][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[4][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[4][$i]->advert->ad_img)}}"></a>
-                                            <?php $count_ad++ ?>
-                                            {{$count_ad}}
-                                        @endif
-                                    @endfor
+                                @if (count($list_ad[3]) > 0)
+                                    @if ($list_ad[3][0]->advert->ad_status == 1)
+                                        <a href="{{ $list_ad[3][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[3][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][0]->advert->ad_img)}}"></a>
+                                        <?php $count_ad++ ?>
+                                        {{$count_ad}}
+                                    @endif
                                 @endif
                                 @if (count($ad_home[6])>0 && $count_ad == 0)
-                                    @for ($i = 0; $i < count($ad_home[6]); $i++)
-                                        @if ($ad_home[6][$i]->advert->ad_status == 1)
-                                            <a href="{{ $ad_home[6][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[6][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[6][$i]->advert->ad_img)}}"></a>
-                                            <?php $count_ad++ ?>
+                                    @if ($ad_home[6][0]->advert->ad_status == 1)
+                                        <a href="{{ $ad_home[6][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[6][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[6][0]->advert->ad_img)}}"></a>
+                                        <?php $count_ad++ ?>
 
-                                        @endif
-                                    @endfor
+                                    @endif
                                 @endif
                                 @if ($count_ad == 0)
                                     <a href="{{ asset('') }}">
@@ -311,29 +304,28 @@
                         </div>
                         <div class="row">
                             <div class="quangcao-6">
-                                <?php $count_ad = 0?>
-                                @if (count($list_ad[3]) > 0)
-                                    @for ($i = 0; $i < count($list_ad[3]); $i++)
-                                        @if ($list_ad[3][$i]->advert->ad_status == 1)
-                                            <a href="{{ $list_ad[3][$i]->advert->ad_link}}" onclick="ad_view('{{$list_ad[3][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[3][$i]->advert->ad_img)}}"></a>
+                                @for ($j = 0; $j < 3; $j++)
+                                    <?php $count_ad = 0?>
+                                    @if (count($list_ad[4+$j]) > 0)
+                                        @if ($list_ad[4+$j][0]->advert->ad_status == 1)
+                                            <a href="{{ $list_ad[4+$j][0]->advert->ad_link}}" onclick="ad_view('{{$list_ad[4+$j][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$list_ad[4+$j][0]->advert->ad_img)}}"></a>
                                             <?php $count_ad++ ?>
                                         @endif
-                                    @endfor
-                                @endif
-                                @if (count($ad_home[7])>0 && $count_ad == 0 )
-                                    @for ($i = 0; $i < count($ad_home[7]); $i++)
-                                        @if ($ad_home[7][$i]->advert->ad_status == 1)
-                                            <a href="{{ $ad_home[7][$i]->advert->ad_link}}" onclick="ad_view('{{$ad_home[7][$i]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[7][$i]->advert->ad_img)}}"></a>
+                                    @endif
+                                    @if (count($ad_home[7+$j])>0 && $count_ad == 0 )
+                                        @if ($ad_home[7+$j][0]->advert->ad_status == 1)
+                                            <a href="{{ $ad_home[7+$j][0]->advert->ad_link}}" onclick="ad_view('{{$ad_home[7+$j][0]->advert->ad_id}}')" target="blank"><img src="{{asset('local/storage/app/advert/'.$ad_home[7+$j][0]->advert->ad_img)}}"></a>
                                             <?php $count_ad++ ?>
                                         @endif
-                                    @endfor
-                                @endif
-                                @if ($count_ad == 0)
-                                    <a href="{{ asset('') }}">
-                                        <img src="images/300x250.png">
-                                    </a>
+                                    @endif
+                                    @if ($count_ad == 0)
+                                        <a href="{{ asset('') }}">
+                                            <img src="images/300x250.png">
+                                        </a>
+                                        
+                                    @endif
+                                @endfor
                                     
-                                @endif
                                 {{-- <a href="{{ asset('') }}">
                                     <img src="images/300x250.png">
                                 </a> --}}

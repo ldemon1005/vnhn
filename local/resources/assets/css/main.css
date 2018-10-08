@@ -588,11 +588,16 @@ a:hover {
 
 
 .quangcao_right{
-
+	display: flex;
+    flex-direction: column;
 }
 .quangcao_right a {
 	display: block;
 	margin-bottom: 5px;
+	margin-right: 8px;
+}
+.quangcao_right a:last-child{
+	margin-right: 0;
 }
 .quangcao_right a img{
 	width: 100%;
@@ -658,7 +663,11 @@ a:hover {
 	    width: auto;
 	}
 }
-
+@media only screen and (max-width: 768px) {
+	.quangcao_right{
+	    flex-direction: row;
+	}
+}
 @media only screen and (max-width: 767px) {
    	.new-left-main {
    		order: 1;	
@@ -797,9 +806,15 @@ a:hover {
 	.articel-new{
 		margin-bottom: 0;
 	}
+	.quangcao_right{
+	    flex-direction: column;
+	}
 
 }
 @media only screen and (max-width: 576px) {
+	.quangcao_right{
+	    flex-direction: column;
+	}
 	#main{
 		width: 90vw;
    		margin: auto;

@@ -1,6 +1,6 @@
 @extends('client.master')
-@section('title', 'Liên hệ quảng cáo')
-@section('fb_title', 'Liên hệ quảng cáo')
+@section('title', 'Đặt mua tạp chí')
+@section('fb_title', 'Đặt mua tạp chí')
 @section('fb_des', '')
 @section('fb_img', '')
 

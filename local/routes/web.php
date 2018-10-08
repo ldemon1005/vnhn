@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Client'],function (){
     Route::post('ad_view', 'IndexController@ad_view');
     Route::post('article_view', 'IndexController@article_view');
 
-
+    Route::get('about', 'ArticelController@getAbout');
 
     Route::group(['prefix' => 'magazine'], function(){
         Route::get('/', 'MagazineController@getHome');
@@ -52,6 +52,7 @@ Route::group(['namespace' => 'Client'],function (){
         Route::get('get_wards/{id}','AdvertController@get_wards')->name('get_wards');
 
     });
+
 
 });
 
@@ -190,6 +191,35 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('detail_report_article/{id}', 'ReportController@detail_report_article')->name('detail_report_article');
         });
 
+        Route::group(['prefix' => 'advert'], function(){
+            Route::get('/', 'AdvertController@index');
+
+            Route::get('add','AdvertController@create');
+            Route::post('add','AdvertController@store');
+
+            Route::get('edit/{id}','AdvertController@edit');
+            Route::post('edit/{id}','AdvertController@update');
+
+            Route::get('delete/{id}','AdvertController@destroy');
+
+            Route::get('top', 'AdvertController@getTop');
+            Route::get('top/{id}/{lo_id}', 'AdvertController@getGroup');
+            Route::get('top_add/{id}/{lo_id}/{ad_id}', 'AdvertController@addTopAdvert');
+            Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
+
+            Route::post('on', 'AdvertController@getOn');
+            Route::post('off', 'AdvertController@getOff');
+        });
+
+
+        Route::group(['prefix' => 'website_info'],function(){
+            Route::get('/','WebsiteInfoController@index')->name('website_info');
+            Route::post('/add_info','WebsiteInfoController@add_info')->name('add_info');
+            Route::post('/update_info','WebsiteInfoController@update_info')->name('update_info');
+            Route::get('/delete_info/{id}','WebsiteInfoController@delete_info')->name('delete_info');
+        });
+
+
         Route::group(['middleware' => 'CheckSite'], function(){
             Route::group(['prefix' => 'account'], function(){
                 Route::get('/', 'AccountController@getList');
@@ -238,32 +268,8 @@ Route::group(['namespace' => 'Admin'], function (){
 
             
 
-            Route::group(['prefix' => 'advert'], function(){
-                Route::get('/', 'AdvertController@index');
 
-                Route::get('add','AdvertController@create');
-                Route::post('add','AdvertController@store');
 
-                Route::get('edit/{id}','AdvertController@edit');
-                Route::post('edit/{id}','AdvertController@update');
-
-                Route::get('delete/{id}','AdvertController@destroy');
-
-                Route::get('top', 'AdvertController@getTop');
-                Route::get('top/{id}/{lo_id}', 'AdvertController@getGroup');
-                Route::get('top_add/{id}/{lo_id}/{ad_id}', 'AdvertController@addTopAdvert');
-                Route::get('top_delete/{id}', 'AdvertController@deleteTopAdvert');
-
-                Route::post('on', 'AdvertController@getOn');
-                Route::post('off', 'AdvertController@getOff');
-            });
-
-            Route::group(['prefix' => 'website_info'],function(){
-                Route::get('/','WebsiteInfoController@index')->name('website_info');
-                Route::post('/add_info','WebsiteInfoController@add_info')->name('add_info');
-                Route::post('/update_info','WebsiteInfoController@update_info')->name('update_info');
-                Route::get('/delete_info/{id}','WebsiteInfoController@delete_info')->name('delete_info');
-            });
 
             // Route::group(['prefix' => 'magazine'], function(){
             //     Route::get('/','MagazineController@index')->name('admin_magazine');
@@ -290,7 +296,7 @@ Route::group(['namespace' => 'Admin'], function (){
                 Route::post('order', 'ContactController@getDetailAdvertOrder');
             });
 
-            
+            // Route::get('about', 'ArticelController@getAbout');
         });
 
 

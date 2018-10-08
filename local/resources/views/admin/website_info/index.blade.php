@@ -89,7 +89,10 @@
           </div>
             <!-- ./row -->
         </section>
+        {{-- {{ time() }}
+    {{ (date('d/m/Y H:m:s',time())) }} --}}
     </div>
+
 @stop
 
 @section('script')

@@ -237,6 +237,12 @@ ul.mainDetailRightList li a:hover {
 	display: block;
 	margin: auto;
 }
+.mainDetailLeftContent table{
+	max-width: 80%;
+	height: auto!important;
+	display: block;
+	margin: auto;
+}
 .mainDetailLeftContent video{
 	max-width: 80%;
 	margin: auto;

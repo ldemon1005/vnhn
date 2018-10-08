@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Tài khoản')
+@section('title', 'Quảng cáo')
 @section('main')
 <!-- DataTables -->
 <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap4.css">
@@ -40,11 +40,11 @@
                   </div>
                   <div class="col-6">
                     <select class="form-control location">
-                      @for ($i = 1; $i < (Request::segment(4) == 1 ? 8 : 5); $i++)
+                      @for ($i = 1; $i < (Request::segment(4) == 1 ? 10 : 7); $i++)
                         <option value="{{$i}}" {{Request::segment(5) == $i ? 'selected' : '' }}>Vị trí {{$i}}</option>
                       @endfor
-                      <option value="8" {{Request::segment(5) == 8 ? 'selected' : '' }}>Vị trí đầu (điện thoại)</option>
-                      <option value="9" {{Request::segment(5) == 9 ? 'selected' : '' }}>Vị trí dưới (điện thoại)</option>
+                      <option value="11" {{Request::segment(5) == 11 ? 'selected' : '' }}>Vị trí đầu (điện thoại)</option>
+                      <option value="12" {{Request::segment(5) == 12 ? 'selected' : '' }}>Vị trí dưới (điện thoại)</option>
                     </select>
                   </div>
                 </div>

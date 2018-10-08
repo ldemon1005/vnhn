@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Thêm tài khoản')
+@section('title', isset($item) ? 'Sửa lại' : 'Thêm mới')
 @section('main')
 	
 <div class="content-wrapper">
@@ -36,11 +36,11 @@
                 <div class="card-body">
                 	<div class="form-group">
 	                    <label for="exampleInputEmail1">Tên quảng cáo</label>
-	                    <input type="text" class="form-control" placeholder="tên quảng cáo" name="name" value="{{isset($item) ? $item->ad_name : ''}}">
+	                    <input type="text" class="form-control" placeholder="tên quảng cáo" name="name" value="{{isset($item) ? $item->ad_name : ''}}" required>
 	                </div>
 	                <div class="form-group">
 	                    <label for="exampleInputEmail1">Liên kết đến</label>
-	                    <input type="text" class="form-control" placeholder="https://" name="link" value="{{isset($item) ? $item->ad_link : ''}}">
+	                    <input type="text" class="form-control" placeholder="https://" name="link" value="{{isset($item) ? $item->ad_link : ''}}" required>
 	                </div>
 	                {{-- <div class="form-group">
 	                    <label for="exampleInputEmail1">Thời gian hiển thị</label>

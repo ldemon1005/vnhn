@@ -130,20 +130,25 @@
                                                 <button type="button" class="btn btn-default" title="{{ isset($paramater['from']) ? $paramater['from'] : ''}} - {{ isset($paramater['to']) ? $paramater['to'] : ''}}" 
                                                         id="daterange-btn"><span><i class="fa fa-calendar"></i></span>
                                                 </button>
-                                                <input id="from" name="articel[from]" class="d-none" value="{{date('m/d/Y',$from)}}">
-                                                <input id="to" name="articel[to]" class="d-none" value="{{ date('m/d/Y',$to) }}">
+                                                <input id="from" name="articel[from]" class="d-none" value="{{ isset($from) ? date('m/d/Y',$from) : ''}}">
+                                                <input id="to" name="articel[to]" class="d-none" value="{{ isset($to) ? date('m/d/Y',$to) : '' }}">
                                             </div>
                                             <div class="mt-1">
                                                 <b>
-                                                    <span id="from_show">
-                                                        {{date('d/m/Y',$from)}} 
-                                                    </span>
-                                                    
-                                                    <span class="text-warning">đến</span> 
-                                                    
-                                                    <span id="to_show">
-                                                        {{date('d/m/Y',$to)}} 
-                                                    </span>
+                                                    @if (isset($from))
+                                                        <span id="from_show">
+                                                            {{date('d/m/Y',$from)}} 
+                                                        </span>
+                                                        
+                                                        <span class="text-warning">đến</span> 
+                                                        
+                                                        <span id="to_show">
+                                                            {{date('d/m/Y',$to)}} 
+                                                        </span>
+                                                    @else  
+                                                        Tất cả
+                                                    @endif
+                                                        
                                                 </b>
                                             </div>
                                         </div>

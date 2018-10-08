@@ -36,7 +36,7 @@
                     <div class="card-header">
                         <h3 class="card-title">{{ $articel->id == 0? 'Thêm mới ': 'Chỉnh sửa '}}</h3>
                     </div>
-                    <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <form id="create_articel" action="{{ url('/admin/articel/action_articel') }}" method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                        
                         <div class="card-body">

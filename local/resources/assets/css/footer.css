@@ -61,14 +61,18 @@
 
 
 
-.menu_footer_right{
+.menu_footer_right a{
 	color: #fff;
     font-size: 13px;
     font-weight: 600;
     float: right;
     padding: 10px;
     cursor: pointer;
+    text-decoration: none;
  }
+.menu_footer_right a:hover{
+	color: #fff;
+}
 .menu-footer {
 	height: 45px;
 	background-color: #d71a21;

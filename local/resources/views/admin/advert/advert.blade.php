@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Tài khoản')
+@section('title', 'Quảng cáo')
 @section('main')
 <!-- DataTables -->
 <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap4.css">
