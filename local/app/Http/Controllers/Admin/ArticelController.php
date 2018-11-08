@@ -660,12 +660,12 @@ class ArticelController extends Controller
         $list_article_relate = DB::table($this->db->news)->where('status', 1)->where('release_time', '<=', time())->orderByDesc('id')->take(5)->get();
         if($id == 0){
             if(in_array(0, $group_ids)){
-                $list_group = DB::table($this->db->group)->where('status', 1)->get()->toArray();
+                $list_group = DB::table($this->db->group)->where('status', 1)->orderBy('order', 'asc')->get()->toArray();
             }else {
                 $list_group = DB::table($this->db->group)->where('status', 1)->where(function ($query) use ($group_ids){
                     $query->whereIn('id',$group_ids)
                           ->orWhereIn('parentid',$group_ids);
-                })->get()->toArray();
+                })->orderBy('order', 'asc')->get()->toArray();
             }
 
             if (count($list_group)){
@@ -714,6 +714,7 @@ class ArticelController extends Controller
                 return redirect('admin/articel');
             }
             $article_user = Account::find($article_model->userid);
+            if ($article_user == null) return back()->with('error', 'Bản ghi bị lỗi');
             $article_group_ids = explode(',',$article_user->group_id);
             // dd($article_group_ids );
 
@@ -2184,7 +2185,7 @@ class ArticelController extends Controller
         
         $list_group = DB::table($this->db->group)->where('status', 1)->get();
         // dd($parentid);
-        $data['list_group_child'] = DB::table($this->db->group)->where('parentid', $parentid)->get();
+        $data['list_group_child'] = DB::table($this->db->group)->where('parentid', $parentid)->where('status', 1)->get();
         // dd($list_group_child);
         // $list_article = DB::table($this->db->news)->whereIn('groupid',$group_id)->get();
 

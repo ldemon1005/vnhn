@@ -81,6 +81,66 @@
                             </a> --}}
                         </div>
 
+
+
+                    </div>
+
+                    <div class="new-right">
+                        <div class="item-quangcao">
+                            @if (count($list_ad[2]) > 0)
+                                <a href="{{ $list_ad[2][0]->advert->ad_link}}"
+                                   onclick="ad_view('{{$list_ad[2][0]->advert->ad_id}}')" target="_blank"><img
+                                            src="{{asset('local/storage/app/advert/'.$list_ad[2][0]->advert->ad_img)}}"></a>
+                            @else
+                                <a href="{{ asset('') }}">
+                                    <img src="images/300x250.png">
+                                </a>
+                            @endif
+
+
+                            {{-- <a href="{{ asset('') }}">
+                                <img src="images/300x250.png">
+                            </a> --}}
+                        </div>
+                        <section class="new-right-2">
+                            <div class="category">
+                                <h3><a href="http://media.vietnamhoinhap.vn/" target="_blank"> VNHN video </a></h3>
+                            </div>
+                            <div class="video">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe id="{{$list_video_new[0]->id}}" class="embed-responsive-item"
+                                            src="{{ (file_exists(resource_path($list_video_new[0]->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$list_video_new[0]->url_video) ? : '') ? : $list_video_new[0]->url_video }}"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="list-video">
+                                <ul>
+                                    <li>
+                                        <a>
+                                            <i class="fas fa-caret-right mr-1"></i>{{$list_video_new[0]->title}}
+                                        </a>
+                                    </li>
+
+                                    @for($i = 1;$i < count($list_video_new); $i++)
+                                        <li>
+                                            <a style="cursor: pointer;text-decoration: none;color: #000000"
+                                               onclick="open_video('{{route('open_video',$list_video_new[$i]->id)}}')">
+                                                <i class="fas fa-caret-right"></i>
+                                                {{$list_video_new[$i]->title}}
+                                            </a>
+                                        </li>
+                                    @endfor
+                                </ul>
+                            </div>
+                        </section>
+
+                        <!-- đọc nhiều -->
+
+                    </div>
+                </div>
+
+                <div class="row article-relate articel-new">
+                    <div class="new-left">
                         <div class="category-1">
                             <div class="category-1-left">
                                 <div class="menu">
@@ -144,61 +204,8 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                     <div class="new-right">
-
-
-                        <div class="item-quangcao">
-                            @if (count($list_ad[2]) > 0)
-                                <a href="{{ $list_ad[2][0]->advert->ad_link}}"
-                                   onclick="ad_view('{{$list_ad[2][0]->advert->ad_id}}')" target="_blank"><img
-                                            src="{{asset('local/storage/app/advert/'.$list_ad[2][0]->advert->ad_img)}}"></a>
-                            @else
-                                <a href="{{ asset('') }}">
-                                    <img src="images/300x250.png">
-                                </a>
-                            @endif
-
-
-                            {{-- <a href="{{ asset('') }}">
-                                <img src="images/300x250.png">
-                            </a> --}}
-                        </div>
-                        <section class="new-right-2">
-                            <div class="category">
-                                <h3>VNHN video</h3>
-                            </div>
-                            <div class="video">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe id="{{$list_video_new[0]->id}}" class="embed-responsive-item"
-                                            src="{{ (file_exists(resource_path($list_video_new[0]->url_video)) ? : file_exists('http://vietnamhoinhap.vn/'.$list_video_new[0]->url_video) ? : '') ? : $list_video_new[0]->url_video }}"
-                                            allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <div class="list-video">
-                                <ul>
-                                    <li>
-                                        <a>
-                                            <i class="fas fa-caret-right mr-1"></i>{{$list_video_new[0]->title}}
-                                        </a>
-                                    </li>
-
-                                    @for($i = 1;$i < count($list_video_new); $i++)
-                                        <li>
-                                            <a style="cursor: pointer;text-decoration: none;color: #000000"
-                                               onclick="open_video('{{route('open_video',$list_video_new[$i]->id)}}')">
-                                                <i class="fas fa-caret-right"></i>
-                                                {{$list_video_new[$i]->title}}
-                                            </a>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
-                        </section>
-
-                        <!-- đọc nhiều -->
                         <div class="category-1">
                             <div class="category-1-right">
                                 <div class="title">
@@ -223,7 +230,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row quangcao-4 item-quangcao">
                     <div class="quangcao-3 item-quangcao">
                         <?php $count_ad = 0?>

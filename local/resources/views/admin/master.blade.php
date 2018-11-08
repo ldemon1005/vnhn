@@ -125,7 +125,7 @@
     // });
     $('.cssInput').click(function(){
       $(this).prev().click();
-    })
+    });
     $('.errorAlert').css('bottom','100px');
     setTimeout(function(){
       $('.errorAlert').css('bottom', '-200px');

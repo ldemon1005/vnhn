@@ -11,6 +11,10 @@ class GroupNews_vn extends Model
 
     public $timestamps = false;
 
+//    public $primaryKey = ['group_vn_id', 'news_vn_id'];
+//
+//    public $incrementing = false;
+
     protected $guarded = [];
 
 

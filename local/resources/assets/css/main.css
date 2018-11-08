@@ -124,6 +124,9 @@ a:hover {
 	font-weight: Bold;
 }
 
+.articel-new .new-right .category h3 a{
+	color: #d71a21;
+}
 .articel-new .new-right .title{
 	height: 65px;
 	padding-top: 10px;
@@ -381,7 +384,7 @@ a:hover {
 }
 
 .category-1 .category-1-right .item-top-view .stt p{
-	margin-bottom: none;
+	margin-bottom: 0;
 }
 
 .category-1 .category-1-right .item-top-view .caption{
@@ -594,11 +597,11 @@ a:hover {
 .quangcao_right a {
 	display: block;
 	margin-bottom: 5px;
-	margin-right: 8px;
+	/*margin-right: 8px;*/
 }
-.quangcao_right a:last-child{
-	margin-right: 0;
-}
+/*.quangcao_right a:last-child{*/
+	/*margin-right: 0;*/
+/*}*/
 .quangcao_right a img{
 	width: 100%;
 }
@@ -690,8 +693,29 @@ a:hover {
 	    font-size: 1.5rem;
 	    line-height: 1.4;
 	}
-	.articel-new .new-right {
-	    display: none;
+	.articel-new {
+
+		flex-direction: column;
+	}
+	.articel-new .new-right{
+		display: block;
+		width: 100%;
+	}
+	.article-relate.articel-new .new-right{
+		display: none;
+	}
+	.category .item-category {
+		border-right: 0;
+	}
+	/*.articel-new .new-right {*/
+	    /*display: none;*/
+	/*}*/
+	.new-right .item-quangcao {
+		display: none;
+	}
+	.articel-new .new-right-2{
+		width: 100%;
+		margin-bottom: 35px;
 	}
 	.articel-new .new-list-bottom .avatar {
 	    width: 35vw;

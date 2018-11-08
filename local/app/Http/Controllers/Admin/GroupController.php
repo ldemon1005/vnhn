@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Group_vn;
+use App\Model\GroupNews_vn;
+use App\Model\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -242,6 +244,16 @@ class GroupController extends Controller
             }
         }
 
+    }
+
+    public function merge_group(Request $request){
+//        $gr = Group_vn::find($request->id);
+//        $gr_merge = Group_vn::find($request->id_merge);
+        $count = DB::table($this->db->news)->where('groupid', $request->id)->count();
+        DB::table($this->db->news)->where('groupid', $request->id)->update(['groupid' => $request->id_merge]);
+        DB::table($this->db->group_news)->where('group_vn_id', $request->id)->update(['group_vn_id' => $request->id_merge]);
+
+        return redirect('admin/group')->with('success', 'Sáp nhập thành công '.$request->id.'--'.$request->id_merge.' !');
     }
 
     public function getOn(){

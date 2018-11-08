@@ -261,6 +261,7 @@ Route::group(['namespace' => 'Admin'], function (){
             Route::get('/group','GroupController@getList')->name('admin_group');
             Route::get('/group/form_group/{id}',['as' => 'form_group','uses' => 'GroupController@form_group']);
             Route::post('/action_group',['as' => 'action_group','uses' => 'GroupController@action_group']);
+            Route::post('/merge_group',['as' => 'merge_group','uses' => 'GroupController@merge_group']);
             Route::get('/delete_group/{id}/{group_id}',['as' => 'delete_group','uses' => 'GroupController@delete_group']);
             Route::get('/group/form_sort_group/{id}',['as' => 'form_sort_group','uses' => 'GroupController@form_sort_group']);
             Route::get('/group/form_sort_group_category/{id}',['as' => 'form_sort_group_category','uses' => 'GroupController@form_sort_group_category']);

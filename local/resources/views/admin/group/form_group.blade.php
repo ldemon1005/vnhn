@@ -155,6 +155,52 @@
                 </div>
               </div>
             </div>
+            <div class="row {{ $group->id ? '' : 'd-none' }}">
+              <!-- left column -->
+              <div class="col-md-12 col-sm-12">
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">Sáp nhập</h3>
+                    </div>
+                    @if (session('error'))
+                        <div class="alert alert-error">
+                            <p>{{ session('error') }}</p>
+                        </div>
+                    @endif
+
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            <p>{{ session('status') }}</p>
+                        </div>
+                    @endif
+                    <form id="merger_group" action="{{ url('/admin/merge_group') }}" method="post">
+                        {{csrf_field()}}
+                        <div class="card-body">
+                            <div class="row form-group d-none">
+                                <label class="col-sm-2">ID danh mục</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="id" value="{{$group->id}}" class="form-control" placeholder="ID danh mục">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-2">Danh mục Sáp nhập <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <select class="form-control select2" data-placeholder="Chọn danh mục cha" name="id_merge"
+                                            style="width: 100%;">
+                                        @foreach($list_group as $group_item)
+                                            <option {{$group->parentid == $group_item->id ? 'selected' : ''}} value="{{ $group_item->id }}">{{ $group_item->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <button type="button" class="btn btn-info pull-right btn-merge" style="margin-right: 10px">Sáp nhập</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
             <!-- ./row -->
@@ -183,6 +229,11 @@
                 'group[parentid]': {
                     required: 'Vui lòng chọn danh mục cha'
                 }
+            }
+        });
+        $('.btn-merge').click(function(){
+            if (confirm('Bạn chắc chắn muốn sắp nhập')){
+                $('#merger_group').submit();
             }
         });
     </script>

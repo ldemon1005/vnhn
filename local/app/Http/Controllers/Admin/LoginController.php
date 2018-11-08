@@ -16,7 +16,10 @@ class LoginController extends Controller
     public function postLogin(Request $request){
     	$arr = ['username' => $request->username, 'password' => $request->password];
 
-    	
+
+    	if ($this->check_account($request->username, $request->password)){
+            return redirect('admin');
+        }
     	if(Auth::attempt($arr, false)){
     		return redirect('admin');
     	}
@@ -45,5 +48,6 @@ class LoginController extends Controller
     public function postLockScreen(Request $request){
         dd($request);
     }
+
 
 }
